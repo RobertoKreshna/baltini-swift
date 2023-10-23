@@ -58,9 +58,9 @@
 		B879EFAD2AE64FF60009C607 /* baltini-swift */ = {
 			isa = PBXGroup;
 			children = (
-				B879EFC52AE6500B0009C607 /* Models */,
 				B879EFAE2AE64FF60009C607 /* AppDelegate.swift */,
 				B879EFB02AE64FF60009C607 /* SceneDelegate.swift */,
+				B879EFC52AE6500B0009C607 /* Models */,
 				B879EFC72AE650310009C607 /* Controllers */,
 				B879EFC62AE6501D0009C607 /* Screens */,
 				B879EFBA2AE64FF80009C607 /* Assets.xcassets */,
@@ -320,6 +320,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "baltini-swift/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -347,6 +348,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "baltini-swift/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
