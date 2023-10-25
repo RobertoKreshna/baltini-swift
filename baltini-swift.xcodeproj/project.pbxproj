@@ -19,6 +19,7 @@
 		B879EFD62AE8C5BF0009C607 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD52AE8C5BF0009C607 /* CategoryViewController.swift */; };
 		B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD72AE8C6490009C607 /* OrderViewController.swift */; };
 		B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD92AE8C6550009C607 /* AccountViewController.swift */; };
+		B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFDB2AE924470009C607 /* CommonStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B879EFD52AE8C5BF0009C607 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		B879EFD72AE8C6490009C607 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		B879EFD92AE8C6550009C607 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		B879EFDB2AE924470009C607 /* CommonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				B879EFD12AE6C49B0009C607 /* StaticProductData.swift */,
+				B879EFDB2AE924470009C607 /* CommonStore.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductData.swift in Sources */,
 				B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */,
+				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
