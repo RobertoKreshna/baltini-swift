@@ -15,6 +15,7 @@
 		B879EFBB2AE64FF80009C607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B879EFBA2AE64FF80009C607 /* Assets.xcassets */; };
 		B879EFBE2AE64FF80009C607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B879EFBC2AE64FF80009C607 /* LaunchScreen.storyboard */; };
 		B879EFD22AE6C49B0009C607 /* StaticProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD12AE6C49B0009C607 /* StaticProductData.swift */; };
+		B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD32AE7CCC50009C607 /* TabbarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B879EFBD2AE64FF80009C607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B879EFBF2AE64FF80009C607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B879EFD12AE6C49B0009C607 /* StaticProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProductData.swift; sourceTree = "<group>"; };
+		B879EFD32AE7CCC50009C607 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B879EFB22AE64FF60009C607 /* HomeViewController.swift */,
+				B879EFD32AE7CCC50009C607 /* TabbarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				B879EFB32AE64FF60009C607 /* HomeViewController.swift in Sources */,
 				B879EFB92AE64FF60009C607 /* baltini_swift.xcdatamodeld in Sources */,
+				B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */,
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductData.swift in Sources */,

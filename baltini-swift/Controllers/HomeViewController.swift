@@ -20,6 +20,9 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     func createUI(){
+        //change view bg color
+        view.backgroundColor = .white
+        
         //create scroll view
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
