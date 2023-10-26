@@ -10,17 +10,12 @@ import UIKit
 class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationItem()
         createUI()
-    }
-    
-    func setupNavigationItem(){
-        
     }
 }
 
@@ -38,11 +33,7 @@ extension LoginViewController {
         pageStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         pageStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         
-        let titleLabel = UILabel()
-        titleLabel.text = "My Account"
-        titleLabel.font = UIFont(name: "Futura-Medium", size: 18)!
-        
-        pageStackView.addArrangedSubview(titleLabel)
-        pageStackView.setCustomSpacing(30, after: titleLabel)
+        BackButton.addBackButton(to: pageStackView, sender: self)
     }
+    
 }
