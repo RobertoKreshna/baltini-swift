@@ -20,6 +20,7 @@
 		B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD72AE8C6490009C607 /* OrderViewController.swift */; };
 		B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD92AE8C6550009C607 /* AccountViewController.swift */; };
 		B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFDB2AE924470009C607 /* CommonStore.swift */; };
+		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		B879EFD72AE8C6490009C607 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		B879EFD92AE8C6550009C607 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B879EFDB2AE924470009C607 /* CommonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStore.swift; sourceTree = "<group>"; };
+		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +74,8 @@
 			children = (
 				B879EFAE2AE64FF60009C607 /* AppDelegate.swift */,
 				B879EFB02AE64FF60009C607 /* SceneDelegate.swift */,
-				B879EFCE2AE6C4730009C607 /* Data */,
 				B879EFC52AE6500B0009C607 /* Models */,
+				B879EFCE2AE6C4730009C607 /* Data */,
 				B879EFC72AE650310009C607 /* Controllers */,
 				B879EFC62AE6501D0009C607 /* Screens */,
 				B879EFBA2AE64FF80009C607 /* Assets.xcassets */,
@@ -107,6 +109,7 @@
 				B879EFD52AE8C5BF0009C607 /* CategoryViewController.swift */,
 				B879EFD72AE8C6490009C607 /* OrderViewController.swift */,
 				B879EFD92AE8C6550009C607 /* AccountViewController.swift */,
+				B8D3AB952AEA2DA00026832F /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */,
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */,
+				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,8 +53,4 @@ class TabbarViewController: UITabBarController {
         self.tabBar.backgroundColor = .black
         self.tabBar.tintColor = .white
     }
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print(item.title)
-    }
 }

@@ -14,12 +14,8 @@ class AccountViewController: UIViewController {
         createUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        removeUI()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
-        createUI()
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
@@ -87,13 +83,6 @@ extension AccountViewController {
         
     }
     
-    func removeUI(){
-        let subviews = view.subviews
-        subviews.forEach { subview in
-            view.willRemoveSubview(subview)
-        }
-    }
-    
     func createLoginButton() -> UIButton{
         let button = UIButton(type: .system)
         let attributedTitle = NSAttributedString(
@@ -107,7 +96,13 @@ extension AccountViewController {
         var configuration = UIButton.Configuration.plain()
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 14, leading: 0, bottom: 14, trailing: 0)
         button.configuration = configuration
+        //add action
+        button.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return button
+    }
+    
+    @objc func loginButtonPressed(){
+        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
     func createBlackRow(title: String) -> UIView {
