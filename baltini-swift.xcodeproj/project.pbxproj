@@ -24,9 +24,15 @@
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
 		B8D3ABA12AEB5ED50026832F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABA02AEB5ED50026832F /* CustomButton.swift */; };
+		B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABA42AEB77DB0026832F /* ForgotPasswordViewController.swift */; };
+		B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABA62AEB80120026832F /* RegisterViewController.swift */; };
+		B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABAA2AEBBD010026832F /* CustomToast.swift */; };
+		C469E80C2F85741D457E6D1F /* Pods_baltini_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0649E51DC7D896F1366CAF /* Pods_baltini_swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0649E51DC7D896F1366CAF /* Pods_baltini_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_baltini_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FD559395C856E42EDBC2CC /* Pods-baltini-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baltini-swift.debug.xcconfig"; path = "Target Support Files/Pods-baltini-swift/Pods-baltini-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		B879EFAB2AE64FF60009C607 /* baltini-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baltini-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B879EFAE2AE64FF60009C607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B879EFB02AE64FF60009C607 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +52,10 @@
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		B8D3ABA02AEB5ED50026832F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		B8D3ABA42AEB77DB0026832F /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		B8D3ABA62AEB80120026832F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B8D3ABAA2AEBBD010026832F /* CustomToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToast.swift; sourceTree = "<group>"; };
+		DFF7E896A50F4677FBE38F21 /* Pods-baltini-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baltini-swift.release.xcconfig"; path = "Target Support Files/Pods-baltini-swift/Pods-baltini-swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +63,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C469E80C2F85741D457E6D1F /* Pods_baltini_swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E063372CCD39D78B8676DD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4FD559395C856E42EDBC2CC /* Pods-baltini-swift.debug.xcconfig */,
+				DFF7E896A50F4677FBE38F21 /* Pods-baltini-swift.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B0EE7C1DAAF4DFDCD3003162 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A0649E51DC7D896F1366CAF /* Pods_baltini_swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B879EFA22AE64FF60009C607 = {
 			isa = PBXGroup;
 			children = (
 				B879EFAD2AE64FF60009C607 /* baltini-swift */,
 				B879EFAC2AE64FF60009C607 /* Products */,
+				6E063372CCD39D78B8676DD9 /* Pods */,
+				B0EE7C1DAAF4DFDCD3003162 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +147,8 @@
 				B879EFD72AE8C6490009C607 /* OrderViewController.swift */,
 				B879EFD92AE8C6550009C607 /* AccountViewController.swift */,
 				B8D3AB952AEA2DA00026832F /* LoginViewController.swift */,
+				B8D3ABA42AEB77DB0026832F /* ForgotPasswordViewController.swift */,
+				B8D3ABA62AEB80120026832F /* RegisterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -136,6 +168,7 @@
 				B8D3AB9B2AEA4D080026832F /* BackButton.swift */,
 				B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */,
 				B8D3ABA02AEB5ED50026832F /* CustomButton.swift */,
+				B8D3ABAA2AEBBD010026832F /* CustomToast.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -147,9 +180,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B879EFC22AE64FF80009C607 /* Build configuration list for PBXNativeTarget "baltini-swift" */;
 			buildPhases = (
+				81EF27D64A3A87490C23344E /* [CP] Check Pods Manifest.lock */,
 				B879EFA72AE64FF60009C607 /* Sources */,
 				B879EFA82AE64FF60009C607 /* Frameworks */,
 				B879EFA92AE64FF60009C607 /* Resources */,
+				2F17FEEAA25FD3E4B22860FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,6 +241,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2F17FEEAA25FD3E4B22860FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-baltini-swift/Pods-baltini-swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-baltini-swift/Pods-baltini-swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-baltini-swift/Pods-baltini-swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81EF27D64A3A87490C23344E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-baltini-swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B879EFA72AE64FF60009C607 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -222,9 +299,12 @@
 				B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */,
 				B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */,
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
+				B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */,
+				B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */,
 				B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */,
 				B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */,
 				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,
+				B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,12 +451,14 @@
 		};
 		B879EFC32AE64FF80009C607 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4FD559395C856E42EDBC2CC /* Pods-baltini-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "baltini-swift/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -399,12 +481,14 @@
 		};
 		B879EFC42AE64FF80009C607 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFF7E896A50F4677FBE38F21 /* Pods-baltini-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "baltini-swift/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

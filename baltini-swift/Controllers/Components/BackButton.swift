@@ -26,7 +26,7 @@ class BackButton {
         return label
     }
     
-    static func addBackButton(to stack: UIStackView, sender: UIViewController){
+    static func addBackButton(to stack: UIStackView, title:String,  sender: UIViewController){
         let backButtonBlueprint = BackButton()
 
         let function = UIAction { action in sender.navigationController?.popViewController(animated: true) }
@@ -34,7 +34,7 @@ class BackButton {
         let backButtonStack = UIStackView()
         backButtonStack.axis = .horizontal
         
-        let backBtnLabel = backButtonBlueprint.createBackButtonTitle(title: "Login")
+        let backBtnLabel = backButtonBlueprint.createBackButtonTitle(title: title)
         let backBtnImage = backButtonBlueprint.createBackButton()
         backBtnImage.addAction(function, for: .touchUpInside)
         
