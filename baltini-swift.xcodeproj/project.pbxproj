@@ -22,6 +22,7 @@
 		B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFDB2AE924470009C607 /* CommonStore.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
+		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		B879EFDB2AE924470009C607 /* CommonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStore.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				B8D3AB9B2AEA4D080026832F /* BackButton.swift */,
+				B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */,
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */,
+				B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */,
 				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
