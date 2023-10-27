@@ -41,6 +41,7 @@ extension LoginViewController {
         addTextfield(to: pageStackView, placeholder: "Email", isPassword: false)
         pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
         addTextfield(to: pageStackView, placeholder: "Password", isPassword: true)
+        pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
     }
     
     func addDescLabel(to stack: UIStackView){
@@ -58,7 +59,7 @@ extension LoginViewController {
     func addTextfield(to stack: UIStackView, placeholder: String, isPassword: Bool){
         let desc = CustomTextfield.createLabel(placeholder: placeholder)
         let textfield = isPassword 
-        ? createTextfieldStack(placeholder: placeholder, owner: self)
+        ? CustomTextfield.createPasswordTextfield(placeholder: placeholder, owner: self)
         : CustomTextfield.createTextfield(placeholder: placeholder, owner: self)
         let border = CustomTextfield.createBorderLine(width: 1, length: UIScreen.main.bounds.width-32)
 
@@ -67,20 +68,6 @@ extension LoginViewController {
         stack.addArrangedSubview(textfield)
         stack.setCustomSpacing(4, after: textfield)
         stack.addArrangedSubview(border)
-    }
-    
-    func createTextfieldStack(placeholder: String, owner: UITextFieldDelegate) -> UIView {
-        let textfield = CustomTextfield.createTextfield(placeholder: placeholder, owner: owner)
-        let button = CustomTextfield.createTogglePasswordButton(textfield: textfield)
-        
-        let textfieldStack = UIStackView()
-        textfieldStack.addArrangedSubview(textfield)
-        textfieldStack.addArrangedSubview(button)
-        
-        button.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        return textfieldStack
     }
 }
 

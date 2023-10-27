@@ -40,6 +40,20 @@ class CustomTextfield {
         return passwordToggleButton
     }
     
+    static func createPasswordTextfield(placeholder: String, owner: UITextFieldDelegate) -> UIView {
+        let textfield = CustomTextfield.createTextfield(placeholder: placeholder, owner: owner)
+        let button = CustomTextfield.createTogglePasswordButton(textfield: textfield)
+        
+        let textfieldStack = UIStackView()
+        textfieldStack.addArrangedSubview(textfield)
+        textfieldStack.addArrangedSubview(button)
+        
+        button.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        return textfieldStack
+    }
+    
     static func createLabel(placeholder: String) -> UILabel {
         let label = UILabel()
         let attributedString = NSAttributedString(
