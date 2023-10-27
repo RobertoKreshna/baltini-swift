@@ -23,6 +23,7 @@
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
+		B8D3ABA12AEB5ED50026832F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABA02AEB5ED50026832F /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
+		B8D3ABA02AEB5ED50026832F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				B8D3AB9B2AEA4D080026832F /* BackButton.swift */,
 				B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */,
+				B8D3ABA02AEB5ED50026832F /* CustomButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				B879EFB92AE64FF60009C607 /* baltini_swift.xcdatamodeld in Sources */,
 				B879EFD62AE8C5BF0009C607 /* CategoryViewController.swift in Sources */,
 				B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */,
+				B8D3ABA12AEB5ED50026832F /* CustomButton.swift in Sources */,
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductData.swift in Sources */,

@@ -76,33 +76,16 @@ extension AccountViewController {
         
         if(CommonStore.shared.getName() == nil) {
             pageStackView.setCustomSpacing(30, after: helpsRow)
-            let loginButton = createLoginButton()
+            let loginButton = CustomButton.createWhiteButton(
+                title: "LOGIN TO BALTINI",
+                action: UIAction(handler: { action in
+                    self.navigationController?.pushViewController(LoginViewController(), animated: true)
+                })
+            )
             pageStackView.addArrangedSubview(loginButton)
             loginButton.widthAnchor.constraint(equalTo: pageStackView.widthAnchor).isActive = true
         }
         
-    }
-    
-    func createLoginButton() -> UIButton{
-        let button = UIButton(type: .system)
-        let attributedTitle = NSAttributedString(
-            string: "LOGIN TO BALTINI",
-            attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
-        )
-        button.setAttributedTitle(attributedTitle,for: .normal)
-        button.layer.borderWidth = 1.5
-        button.layer.cornerRadius = 4
-        //add padding
-        var configuration = UIButton.Configuration.plain()
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 14, leading: 0, bottom: 14, trailing: 0)
-        button.configuration = configuration
-        //add action
-        button.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
-        return button
-    }
-    
-    @objc func loginButtonPressed(){
-        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
     func createBlackRow(title: String) -> UIView {
