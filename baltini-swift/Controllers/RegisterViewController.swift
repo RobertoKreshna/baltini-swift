@@ -84,11 +84,22 @@ extension RegisterViewController: UITextFieldDelegate {
 //MARK: Business Logic
 extension RegisterViewController {
     func createAccount(firstName: String, lastname: String, email: String, password: String){
-        if checkIsNotEmpty(firstName, lastname, email, password) {
-            print("yey")
-        } else {
-            CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
-        }
+//        if checkIsNotEmpty(firstName, lastname, email, password) {
+//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//            let newUser = User(context: context)
+//            newUser.firstName = firstName
+//            newUser.lastName = lastname
+//            newUser.email = email
+//            newUser.password = password
+//            do {
+//                try context.save()
+//            } catch {
+//                CustomToast.showErrorToast(msg: "Failed to create User", sender: self)
+//            }
+//        } else {
+//            CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
+//        }
+        CustomPopup.displayRegisterPopup(sender: self)
     }
     
     func checkIsNotEmpty(_ firstName: String, _ lastname: String, _ email: String, _ password: String) -> Bool{

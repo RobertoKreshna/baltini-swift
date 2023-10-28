@@ -27,6 +27,7 @@
 		B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABA42AEB77DB0026832F /* ForgotPasswordViewController.swift */; };
 		B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABA62AEB80120026832F /* RegisterViewController.swift */; };
 		B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABAA2AEBBD010026832F /* CustomToast.swift */; };
+		B8D3ABAE2AEBC7B50026832F /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABAD2AEBC7B50026832F /* CustomPopup.swift */; };
 		C469E80C2F85741D457E6D1F /* Pods_baltini_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0649E51DC7D896F1366CAF /* Pods_baltini_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		B8D3ABA42AEB77DB0026832F /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		B8D3ABA62AEB80120026832F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B8D3ABAA2AEBBD010026832F /* CustomToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToast.swift; sourceTree = "<group>"; };
+		B8D3ABAD2AEBC7B50026832F /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
 		DFF7E896A50F4677FBE38F21 /* Pods-baltini-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baltini-swift.release.xcconfig"; path = "Target Support Files/Pods-baltini-swift/Pods-baltini-swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 				B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */,
 				B8D3ABA02AEB5ED50026832F /* CustomButton.swift */,
 				B8D3ABAA2AEBBD010026832F /* CustomToast.swift */,
+				B8D3ABAD2AEBC7B50026832F /* CustomPopup.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				B879EFD62AE8C5BF0009C607 /* CategoryViewController.swift in Sources */,
 				B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */,
 				B8D3ABA12AEB5ED50026832F /* CustomButton.swift in Sources */,
+				B8D3ABAE2AEBC7B50026832F /* CustomPopup.swift in Sources */,
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductData.swift in Sources */,
