@@ -9,17 +9,17 @@ import Foundation
 
 class CommonStore {
     static let shared = CommonStore()
-    private var name: String?
+    private var user: User?
     
     private init() {
-        name = nil
+        user = nil
     }
     
-    func setName(name: String){
-        self.name = name
+    func setUser(user: User?){
+        self.user = user
     }
     
-    func getName() -> String?{
-        return name
+    func getUser() -> User?{
+        return user
     }
 }

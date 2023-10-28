@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
     
@@ -73,7 +74,14 @@ extension LoginViewController {
     func addLoginOrRegisterButton(to stack: UIStackView){
         let loginButton = CustomButton.createBlackButton(
             title: "LOGIN",
-            action: UIAction(handler: { action in self.loginPressed() })
+            action: UIAction(handler: { action in
+                //get all textfield
+                let emailTextfield = stack.arrangedSubviews[3] as! UITextField
+                let passwordStack = stack.arrangedSubviews[6] as! UIStackView
+                let passwordTextfield = passwordStack.arrangedSubviews[0] as! UITextField
+                
+                self.loginPressed(email: emailTextfield.text!, password: passwordTextfield.text!)
+            })
         )
         let orLabel = createOrLabel()
         let registerButton = CustomButton.createWhiteButton(
@@ -119,7 +127,42 @@ extension LoginViewController: UITextFieldDelegate {
 
 //MARK: Business Logic
 extension LoginViewController {
-    func loginPressed(){
-        
+    func loginPressed(email: String, password: String){
+        if checkIsNotEmpty(email, password) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            //get all users
+            var mailArray = [String]()
+            var passwordArray = [String]()
+            var userArray = [User]()
+            let request: NSFetchRequest<User> = User.fetchRequest()
+            do {
+                let results = try context.fetch(request)
+                for result in results {
+                    mailArray.append(result.email!)
+                    passwordArray.append(result.password!)
+                    userArray.append(result)
+                }
+            } catch { CustomToast.showErrorToast(msg: "Failed to get all users data", sender: self) }
+            //check if user exist
+            if(!mailArray.contains(email)){
+                CustomToast.showErrorToast(msg: "No user registered with that email", sender: self)
+                return
+            }
+            //check if password matched
+            let userIndex = mailArray.firstIndex(where: { $0 == email })
+            if passwordArray[userIndex!] != password {
+                CustomToast.showErrorToast(msg: "Password is not matched", sender: self)
+                return
+            }
+            //set user
+            CommonStore.shared.setUser(user: userArray[userIndex!])
+            self.navigationController?.popToRootViewController(animated: true)
+        } else {
+            CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
+        }
+    }
+    
+    func checkIsNotEmpty(_ email: String, _ password: String) -> Bool{
+        return email.isEmpty || password.isEmpty ? false : true
     }
 }

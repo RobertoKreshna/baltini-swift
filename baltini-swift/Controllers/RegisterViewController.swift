@@ -57,7 +57,7 @@ extension RegisterViewController {
                 //use the textfield to create account
                 self.createAccount(
                     firstName: firstNameTextfield.text!,
-                    lastname: lastNameTextfield.text!,
+                    lastName: lastNameTextfield.text!,
                     email: emailTextfield.text!,
                     password: passwordTextfield.text!
                 )
@@ -83,23 +83,24 @@ extension RegisterViewController: UITextFieldDelegate {
 
 //MARK: Business Logic
 extension RegisterViewController {
-    func createAccount(firstName: String, lastname: String, email: String, password: String){
-//        if checkIsNotEmpty(firstName, lastname, email, password) {
-//            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//            let newUser = User(context: context)
-//            newUser.firstName = firstName
-//            newUser.lastName = lastname
-//            newUser.email = email
-//            newUser.password = password
-//            do {
-//                try context.save()
-//            } catch {
-//                CustomToast.showErrorToast(msg: "Failed to create User", sender: self)
-//            }
-//        } else {
-//            CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
-//        }
-        CustomPopup.displayRegisterPopup(sender: self)
+    func createAccount(firstName: String, lastName: String, email: String, password: String){
+        if checkIsNotEmpty(firstName, lastName, email, password) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let newUser = User(context: context)
+            newUser.firstName = firstName
+            newUser.lastName = lastName
+            newUser.email = email
+            newUser.password = password
+            do {
+                try context.save()
+                CommonStore.shared.setUser(user: newUser)
+                CustomPopup.displayRegisterPopup(sender: self)
+            } catch {
+                CustomToast.showErrorToast(msg: "Failed to create new user with name \(firstName) \(lastName)", sender: self)
+            }
+        } else {
+            CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
+        }
     }
     
     func checkIsNotEmpty(_ firstName: String, _ lastname: String, _ email: String, _ password: String) -> Bool{
