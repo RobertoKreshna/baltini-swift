@@ -12,12 +12,20 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        removeUI()
+        createUI()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createUI()
     }
+    
+    func removeUI() {
+       let subviews = view.subviews
+       subviews.forEach { subview in
+           subview.removeFromSuperview()
+       }
+   }
 }
 
 //MARK: Create UI Methods

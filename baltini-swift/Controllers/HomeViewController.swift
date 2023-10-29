@@ -11,12 +11,20 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        createUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        removeUI()
+        createUI()
     }
+    
+    func removeUI() {
+       let subviews = view.subviews
+       subviews.forEach { subview in
+           subview.removeFromSuperview()
+       }
+   }
 }
 
 

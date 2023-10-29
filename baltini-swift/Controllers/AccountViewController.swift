@@ -50,19 +50,19 @@ extension AccountViewController {
         pageStackView.setCustomSpacing(30, after: titleLabel)
         
         if(CommonStore.shared.getUser() != nil) {
-            let profileRow = createBlackRow(title: "My Profile")
-            let addressRow = createBlackRow(title: "My Address")
+            let profileRow = createBlackRow(title: "My Profile", action: #selector(tapped))
+            let addressRow = createBlackRow(title: "My Address", action: #selector(goToAddress))
             pageStackView.addArrangedSubview(profileRow)
             pageStackView.addArrangedSubview(addressRow)
             profileRow.widthAnchor.constraint(equalTo: pageStackView.widthAnchor).isActive = true
             addressRow.widthAnchor.constraint(equalTo: pageStackView.widthAnchor).isActive = true
         }
         
-        let magazineRow = createBlackRow(title: "Baltini Magazine")
-        let aboutRow = createBlackRow(title: "About Baltini")
-        let tcRow = createBlackRow(title: "Terms and Conditions")
-        let partnerRow = createBlackRow(title: "Partnership")
-        let helpsRow = createBlackRow(title: "Helps")
+        let magazineRow = createBlackRow(title: "Baltini Magazine", action: #selector(tapped))
+        let aboutRow = createBlackRow(title: "About Baltini", action: #selector(tapped))
+        let tcRow = createBlackRow(title: "Terms and Conditions", action: #selector(tapped))
+        let partnerRow = createBlackRow(title: "Partnership", action: #selector(tapped))
+        let helpsRow = createBlackRow(title: "Helps", action: #selector(tapped))
         
         pageStackView.addArrangedSubview(magazineRow)
         pageStackView.addArrangedSubview(aboutRow)
@@ -96,7 +96,7 @@ extension AccountViewController {
         
     }
     
-    func createBlackRow(title: String) -> UIView {
+    func createBlackRow(title: String, action: Selector) -> UIView {
         let row = UIStackView()
         row.axis = .horizontal
         
@@ -111,6 +111,8 @@ extension AccountViewController {
         
         row.layoutMargins = UIEdgeInsets(top: 14, left: 0, bottom: 14, right: 0)
         row.isLayoutMarginsRelativeArrangement = true
+        
+        row.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
         
         return row
     }
@@ -132,8 +134,8 @@ extension AccountViewController {
             row.layoutMargins = UIEdgeInsets(top: 14, left: 0, bottom: 14, right: 0)
             row.isLayoutMarginsRelativeArrangement = true
         
-        row.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(logout)))
-            
+            row.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(logout)))
+        
             return row
         }
     
@@ -141,6 +143,13 @@ extension AccountViewController {
         CommonStore.shared.setUser(user: nil)
         removeUI()
         createUI()
+    }
+    
+    @objc func tapped(){ print("abc") }
+    
+    @objc func goToAddress(){
+        let addressVC = MyAddressViewController()
+        self.navigationController?.pushViewController(addressVC, animated: true)
     }
 }
 

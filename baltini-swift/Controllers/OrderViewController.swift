@@ -11,10 +11,17 @@ class OrderViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        view.backgroundColor = .systemBlue
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
     }
+    
+    func removeUI() {
+       let subviews = view.subviews
+       subviews.forEach { subview in
+           subview.removeFromSuperview()
+       }
+   }
 }

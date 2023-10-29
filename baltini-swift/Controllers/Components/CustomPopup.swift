@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomPopup {
-    static func displayRegisterPopup(sender: UIViewController){
+    static func displayRegisterPopup(sender: UIViewController, title: String){
 
         let backgroundFrame = CGRect(x: 0, y: 0, width: Int(sender.view.frame.size.width), height: Int(sender.view.frame.size.height))
         let popupBackgroundView = UIView(frame: backgroundFrame)
@@ -24,7 +24,7 @@ class CustomPopup {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
         let attributedLabelText = NSAttributedString(
-            string: "Account Created",
+            string: title,
             attributes: [.font : UIFont(name: "Futura-Medium", size: 18)!, .foregroundColor : UIColor.black]
         )
         description.attributedText = attributedLabelText

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */; };
+		B869B7BF2AEE20D300ABB82D /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */; };
 		B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFAE2AE64FF60009C607 /* AppDelegate.swift */; };
 		B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFB02AE64FF60009C607 /* SceneDelegate.swift */; };
 		B879EFB32AE64FF60009C607 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFB22AE64FF60009C607 /* HomeViewController.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		3A0649E51DC7D896F1366CAF /* Pods_baltini_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_baltini_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FD559395C856E42EDBC2CC /* Pods-baltini-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baltini-swift.debug.xcconfig"; path = "Target Support Files/Pods-baltini-swift/Pods-baltini-swift.debug.xcconfig"; sourceTree = "<group>"; };
+		B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressViewController.swift; sourceTree = "<group>"; };
+		B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		B879EFAB2AE64FF60009C607 /* baltini-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baltini-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B879EFAE2AE64FF60009C607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B879EFB02AE64FF60009C607 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				B8D3AB952AEA2DA00026832F /* LoginViewController.swift */,
 				B8D3ABA42AEB77DB0026832F /* ForgotPasswordViewController.swift */,
 				B8D3ABA62AEB80120026832F /* RegisterViewController.swift */,
+				B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */,
+				B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 				B879EFD22AE6C49B0009C607 /* StaticProductData.swift in Sources */,
 				B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */,
 				B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */,
+				B869B7BF2AEE20D300ABB82D /* AddAddressViewController.swift in Sources */,
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */,
 				B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */,
@@ -309,6 +316,7 @@
 				B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */,
 				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,
 				B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */,
+				B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

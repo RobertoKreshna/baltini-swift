@@ -6,13 +6,26 @@
 //
 
 import UIKit
+import CoreData
 
 class RegisterViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        removeUI()
         createUI()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    func removeUI() {
+       let subviews = view.subviews
+       subviews.forEach { subview in
+           subview.removeFromSuperview()
+       }
+   }
 }
 
 //MARK: Create UI Methods
@@ -86,17 +99,31 @@ extension RegisterViewController {
     func createAccount(firstName: String, lastName: String, email: String, password: String){
         if checkIsNotEmpty(firstName, lastName, email, password) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let newUser = User(context: context)
-            newUser.firstName = firstName
-            newUser.lastName = lastName
-            newUser.email = email
-            newUser.password = password
+            //check email is used or no
+            var mailArray = [String]()
+            let request: NSFetchRequest<User> = User.fetchRequest()
             do {
-                try context.save()
-                CommonStore.shared.setUser(user: newUser)
-                CustomPopup.displayRegisterPopup(sender: self)
-            } catch {
-                CustomToast.showErrorToast(msg: "Failed to create new user with name \(firstName) \(lastName)", sender: self)
+                let results = try context.fetch(request)
+                for result in results {
+                    mailArray.append(result.email!)
+                }
+            } catch { CustomToast.showErrorToast(msg: "Failed to get all users data", sender: self) }
+            //register
+            if mailArray.contains(email){
+                CustomToast.showErrorToast(msg: "Email (\(email)) has been used by another user", sender: self)
+            } else {
+                let newUser = User(context: context)
+                newUser.firstName = firstName
+                newUser.lastName = lastName
+                newUser.email = email
+                newUser.password = password
+                do {
+                    try context.save()
+                    CommonStore.shared.setUser(user: newUser)
+                    CustomPopup.displayRegisterPopup(sender: self, title: "Account Created")
+                } catch {
+                    CustomToast.showErrorToast(msg: "Failed to create new user with name \(firstName) \(lastName)", sender: self)
+                }
             }
         } else {
             CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
