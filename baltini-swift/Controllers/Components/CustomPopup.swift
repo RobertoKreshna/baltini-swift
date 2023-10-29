@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomPopup {
-    static func displayRegisterPopup(sender: UIViewController, title: String){
+    static func displayRegisterPopup(sender: UIViewController, title: String, toRoot: Bool){
 
         let backgroundFrame = CGRect(x: 0, y: 0, width: Int(sender.view.frame.size.width), height: Int(sender.view.frame.size.height))
         let popupBackgroundView = UIView(frame: backgroundFrame)
@@ -40,7 +40,13 @@ class CustomPopup {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(
-            UIAction(handler: { action in sender.navigationController?.popToRootViewController(animated: true) }),
+            UIAction(handler: { action in
+                if toRoot {
+                    sender.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    sender.navigationController?.popViewController(animated: true)
+                }
+            }),
             for: .touchUpInside
         )
         button.layer.borderWidth = 1
