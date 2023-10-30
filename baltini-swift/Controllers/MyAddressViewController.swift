@@ -58,7 +58,7 @@ extension MyAddressViewController {
         pageStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         
         BackButton.addBackButton(to: pageStackView, title: "My Address", sender: self)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
+        pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
         
         if userAddressList!.isEmpty {
             let label = createAddressEmptyLabel()
@@ -66,7 +66,22 @@ extension MyAddressViewController {
             pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
             label.widthAnchor.constraint(equalTo: pageStackView.widthAnchor).isActive = true
         } else {
-            print(userAddressList?.count)
+            userAddressList?.forEach({ address in
+                //add address tile
+                let display = CustomDisplay.getAddressDisplay(
+                    address: address,
+                    deletePressed: UIAction(handler: { action in
+                        print("delete")
+                    }),
+                    editPressed: UIAction(handler: { action in
+                        print("edit")
+                    })
+                )
+                pageStackView.addArrangedSubview(display)
+                pageStackView.setCustomSpacing(24, after: display)
+                //create constraint
+                display.widthAnchor.constraint(equalTo: pageStackView.widthAnchor).isActive = true
+            })
         }
         let addButton = createAddButton()
         pageStackView.addArrangedSubview(addButton)
@@ -86,7 +101,7 @@ extension MyAddressViewController {
     
     func createAddButton() -> UIButton{
         let addButton = CustomButton.createBlackButton(
-            title: "Add new address",
+            title: "ADD NEW ADDRESS",
             action: UIAction(handler: { action in
                 self.navigationController?.pushViewController(AddAddressViewController(), animated: true)
             })

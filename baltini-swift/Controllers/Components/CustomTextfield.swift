@@ -19,6 +19,8 @@ class CustomTextfield {
         textfield.font = UIFont(name: "Futura-Medium", size: 16)!
         textfield.textColor = .black
         textfield.borderStyle = .none
+        textfield.autocorrectionType = .no
+        textfield.autocapitalizationType = .none
         textfield.delegate = owner
         
         return textfield
