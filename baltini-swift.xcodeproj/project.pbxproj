@@ -23,6 +23,8 @@
 		B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD92AE8C6550009C607 /* AccountViewController.swift */; };
 		B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFDB2AE924470009C607 /* CommonStore.swift */; };
 		B8CB5DF62AEF494300E9558C /* CustomDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5DF52AEF494300E9558C /* CustomDisplay.swift */; };
+		B8CB5DF82AEFB3D900E9558C /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5DF72AEFB3D900E9558C /* EditAddressViewController.swift */; };
+		B8CB5DFB2AEFB40100E9558C /* AddressArgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5DFA2AEFB40100E9558C /* AddressArgs.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -55,6 +57,8 @@
 		B879EFD92AE8C6550009C607 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B879EFDB2AE924470009C607 /* CommonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStore.swift; sourceTree = "<group>"; };
 		B8CB5DF52AEF494300E9558C /* CustomDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisplay.swift; sourceTree = "<group>"; };
+		B8CB5DF72AEFB3D900E9558C /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
+		B8CB5DFA2AEFB40100E9558C /* AddressArgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressArgs.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 		B879EFC72AE650310009C607 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B8CB5DF92AEFB3F300E9558C /* Args */,
 				B8D3AB9A2AEA4CFE0026832F /* Components */,
 				B879EFB22AE64FF60009C607 /* HomeViewController.swift */,
 				B879EFD32AE7CCC50009C607 /* TabbarViewController.swift */,
@@ -159,6 +164,7 @@
 				B8D3ABA62AEB80120026832F /* RegisterViewController.swift */,
 				B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */,
 				B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */,
+				B8CB5DF72AEFB3D900E9558C /* EditAddressViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +176,14 @@
 				B879EFDB2AE924470009C607 /* CommonStore.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		B8CB5DF92AEFB3F300E9558C /* Args */ = {
+			isa = PBXGroup;
+			children = (
+				B8CB5DFA2AEFB40100E9558C /* AddressArgs.swift */,
+			);
+			path = Args;
 			sourceTree = "<group>";
 		};
 		B8D3AB9A2AEA4CFE0026832F /* Components */ = {
@@ -301,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B879EFB32AE64FF60009C607 /* HomeViewController.swift in Sources */,
+				B8CB5DF82AEFB3D900E9558C /* EditAddressViewController.swift in Sources */,
 				B879EFB92AE64FF60009C607 /* baltini_swift.xcdatamodeld in Sources */,
 				B879EFD62AE8C5BF0009C607 /* CategoryViewController.swift in Sources */,
 				B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */,
@@ -316,6 +331,7 @@
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */,
 				B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */,
+				B8CB5DFB2AEFB40100E9558C /* AddressArgs.swift in Sources */,
 				B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */,
 				B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */,
 				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,

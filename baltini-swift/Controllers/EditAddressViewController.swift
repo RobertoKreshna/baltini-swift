@@ -1,13 +1,16 @@
 //
-//  AddAddressViewController.swift
+//  EditAddressViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 29/10/23.
+//  Created by Roberto Kreshna on 30/10/23.
 //
 
 import UIKit
+import CoreData
 
-class AddAddressViewController : UIViewController {
+class EditAddressViewController : UIViewController {
+    
+    var currentAddress: Address?
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -28,7 +31,7 @@ class AddAddressViewController : UIViewController {
 }
 
 //MARK: Create UI Methods
-extension AddAddressViewController {
+extension EditAddressViewController {
     func createUI(){
         view.backgroundColor = .white
 
@@ -53,27 +56,27 @@ extension AddAddressViewController {
         pageStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         pageStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32).isActive = true
         
-        BackButton.addBackButton(to: pageStackView, title: "Add Address", sender: self)
+        BackButton.addBackButton(to: pageStackView, title: "Edit Address", sender: self)
         pageStackView.setCustomSpacing(30, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self, text: currentAddress?.firstName)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Last Name", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Last Name", isPassword: false, owner: self, text: currentAddress?.lastName)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Company (Optional)", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Company (Optional)", isPassword: false, owner: self, text: currentAddress?.company)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Address 1", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Address 1", isPassword: false, owner: self, text: currentAddress?.address1)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Address 2", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Address 2", isPassword: false, owner: self, text: currentAddress?.address2)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "City", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "City", isPassword: false, owner: self, text: currentAddress?.city)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Country", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Country", isPassword: false, owner: self, text: currentAddress?.country)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Province / State", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Province / State", isPassword: false, owner: self, text: currentAddress?.province)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "ZIP Code", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "ZIP Code", isPassword: false, owner: self, text: currentAddress?.zipcode)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Phone Number", isPassword: false, owner: self)
+        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Phone Number", isPassword: false, owner: self, text: currentAddress?.phone)
         pageStackView.setCustomSpacing(4, after: pageStackView.arrangedSubviews.last!)
         addTextfieldDescription(to: pageStackView, text: "Incase we need to contact you about your order.")
         pageStackView.setCustomSpacing(42, after: pageStackView.arrangedSubviews.last!)
@@ -96,7 +99,7 @@ extension AddAddressViewController {
             title: "SAVE ADDRESS",
             action: UIAction(handler: { action in
                 let addressArgs = AddressArgs(from: stack)
-                self.saveNewAddress(args: addressArgs)
+                self.updateAddress(args: addressArgs)
             })
         )
         stack.addArrangedSubview(button)
@@ -104,7 +107,7 @@ extension AddAddressViewController {
 }
 
 //MARK: UI Textfield Delegate
-extension AddAddressViewController: UITextFieldDelegate {
+extension EditAddressViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
@@ -117,27 +120,27 @@ extension AddAddressViewController: UITextFieldDelegate {
 }
 
 //MARK: Business Logic
-extension AddAddressViewController {
-    func saveNewAddress(args: AddressArgs){
+extension EditAddressViewController {
+    func updateAddress(args: AddressArgs){
         if checkIsNotEmpty(args: args) {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let newAddress = Address(context: context)
-            newAddress.firstName = args.firstName
-            newAddress.lastName = args.lastName
-            newAddress.company = args.company
-            newAddress.address1 = args.address1
-            newAddress.address2 = args.address2
-            newAddress.city = args.city
-            newAddress.country = args.country
-            newAddress.province = args.province
-            newAddress.zipcode = args.zipCode
-            newAddress.phone = args.phoneNumber
-            newAddress.belongsTo = CommonStore.shared.getUser()
-            do {
+            let editedAddress = getEditedAddress(context)
+            editedAddress?.firstName = args.firstName
+            editedAddress?.firstName = args.firstName
+            editedAddress?.lastName = args.lastName
+            editedAddress?.company = args.company
+            editedAddress?.address1 = args.address1
+            editedAddress?.address2 = args.address2
+            editedAddress?.city = args.city
+            editedAddress?.country = args.country
+            editedAddress?.province = args.province
+            editedAddress?.zipcode = args.zipCode
+            editedAddress?.phone = args.phoneNumber
+            do{
                 try context.save()
                 CustomPopup.displayRegisterPopup(sender: self, title: "Address Saved", toRoot: false)
             } catch {
-                CustomToast.showErrorToast(msg: "Failed to create new address", sender: self)
+                CustomToast.showErrorToast(msg: "Error updating address", sender: self)
             }
         }  else {
             CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
@@ -146,5 +149,21 @@ extension AddAddressViewController {
     
     func checkIsNotEmpty(args: AddressArgs) -> Bool{
         return (args.firstName.isEmpty) || (args.lastName.isEmpty) || (args.address1.isEmpty) || (args.city.isEmpty) || (args.country.isEmpty) || (args.province.isEmpty) || (args.zipCode.isEmpty) || (args.phoneNumber.isEmpty) ? false : true
+    }
+    
+    func getEditedAddress(_ context: NSManagedObjectContext) -> Address? {
+        var res: Address? = nil
+        
+        let request: NSFetchRequest<Address> = Address.fetchRequest()
+        do{
+            let allAddress = (try context.fetch(request))
+            allAddress.forEach { address in
+                if(address.id == currentAddress?.id) { res = address }
+            }
+        } catch {
+            CustomToast.showErrorToast(msg: "No address found", sender: self)
+        }
+        
+        return res
     }
 }

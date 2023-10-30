@@ -13,13 +13,17 @@ class MyAddressViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        removeUI()
-        loadData()
-        createUI()
+        resetPage()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func resetPage(){
+        removeUI()
+        loadData()
+        createUI()
     }
     
     func removeUI() {
@@ -71,10 +75,19 @@ extension MyAddressViewController {
                 let display = CustomDisplay.getAddressDisplay(
                     address: address,
                     deletePressed: UIAction(handler: { action in
-                        print("delete")
+                        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                        context.delete(address)
+                        do {
+                            try context.save()
+                            self.resetPage()
+                        } catch {
+                            print("Error saving context \(error)")
+                        }
                     }),
                     editPressed: UIAction(handler: { action in
-                        print("edit")
+                        let vc = EditAddressViewController()
+                        vc.currentAddress = address
+                        self.navigationController?.pushViewController(vc, animated: true)
                     })
                 )
                 pageStackView.addArrangedSubview(display)
