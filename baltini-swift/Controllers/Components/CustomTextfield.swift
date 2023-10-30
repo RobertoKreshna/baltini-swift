@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomTextfield {
-     func createTextfield(placeholder: String, owner: UITextFieldDelegate) -> UITextField {
+    func createTextfield(placeholder: String, owner: UITextFieldDelegate, text: String?) -> UITextField {
         let attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [.font: UIFont(name: "Futura-Medium", size: 16)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)]
@@ -21,6 +21,11 @@ class CustomTextfield {
         textfield.borderStyle = .none
         textfield.autocorrectionType = .no
         textfield.autocapitalizationType = .none
+        
+        if(text != nil) {
+            textfield.text = text
+        }
+        
         textfield.delegate = owner
         
         return textfield
@@ -42,8 +47,8 @@ class CustomTextfield {
         return passwordToggleButton
     }
     
-     func createPasswordTextfield(placeholder: String, owner: UITextFieldDelegate) -> UIView {
-        let textfield = createTextfield(placeholder: placeholder, owner: owner)
+    func createPasswordTextfield(placeholder: String, owner: UITextFieldDelegate, text: String?) -> UIView {
+        let textfield = createTextfield(placeholder: placeholder, owner: owner, text: text)
         let button = createTogglePasswordButton(textfield: textfield)
         
         let textfieldStack = UIStackView()
@@ -75,12 +80,12 @@ class CustomTextfield {
         return view
     }
     
-    static func addTextfield(to stack: UIStackView, placeholder: String, isPassword: Bool, owner: UITextFieldDelegate){
+    static func addTextfield(to stack: UIStackView, placeholder: String, isPassword: Bool, owner: UITextFieldDelegate, text: String? = nil){
         let blueprint = CustomTextfield()
         let desc = blueprint.createLabel(placeholder: placeholder)
         let textfield = isPassword
-        ? blueprint.createPasswordTextfield(placeholder: placeholder, owner: owner)
-        : blueprint.createTextfield(placeholder: placeholder, owner: owner)
+        ? blueprint.createPasswordTextfield(placeholder: placeholder, owner: owner, text: text)
+        : blueprint.createTextfield(placeholder: placeholder, owner: owner, text: text)
         let border = blueprint.createBorderLine(width: 1, length: UIScreen.main.bounds.width-32)
 
         stack.addArrangedSubview(desc)
