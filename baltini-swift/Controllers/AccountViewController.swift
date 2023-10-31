@@ -50,7 +50,7 @@ extension AccountViewController {
         pageStackView.setCustomSpacing(30, after: titleLabel)
         
         if(CommonStore.shared.getUser() != nil) {
-            let profileRow = createBlackRow(title: "My Profile", action: #selector(tapped))
+            let profileRow = createBlackRow(title: "My Profile", action: #selector(goToProfile))
             let addressRow = createBlackRow(title: "My Address", action: #selector(goToAddress))
             pageStackView.addArrangedSubview(profileRow)
             pageStackView.addArrangedSubview(addressRow)
@@ -148,8 +148,11 @@ extension AccountViewController {
     @objc func tapped(){ print("abc") }
     
     @objc func goToAddress(){
-        let addressVC = MyAddressViewController()
-        self.navigationController?.pushViewController(addressVC, animated: true)
+        self.navigationController?.pushViewController(MyAddressViewController(), animated: true)
+    }
+    
+    @objc func goToProfile(){
+        self.navigationController?.pushViewController(MyProfileViewController(), animated: true)
     }
 }
 
