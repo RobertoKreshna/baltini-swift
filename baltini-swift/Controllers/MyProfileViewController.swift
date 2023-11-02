@@ -113,7 +113,7 @@ extension MyProfileViewController {
                 editedAccount?.email = email
                 do{
                     try context.save()
-                    CustomPopup.displayRegisterPopup(sender: self, title: "Account updated", toRoot: false)
+                    CustomPopup.displayPopup(sender: self, title: "Account updated", toRoot: false)
                 } catch {
                     CustomToast.showErrorToast(msg: "Error updating account", sender: self)
                 }

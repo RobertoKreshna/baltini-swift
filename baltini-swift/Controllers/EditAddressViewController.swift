@@ -138,7 +138,7 @@ extension EditAddressViewController {
             editedAddress?.phone = args.phoneNumber
             do{
                 try context.save()
-                CustomPopup.displayRegisterPopup(sender: self, title: "Address Saved", toRoot: false)
+                CustomPopup.displayPopup(sender: self, title: "Address Saved", toRoot: false)
             } catch {
                 CustomToast.showErrorToast(msg: "Error updating address", sender: self)
             }

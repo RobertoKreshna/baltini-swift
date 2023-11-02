@@ -120,7 +120,7 @@ extension RegisterViewController {
                 do {
                     try context.save()
                     CommonStore.shared.setUser(user: newUser)
-                    CustomPopup.displayRegisterPopup(sender: self, title: "Account Created", toRoot: true)
+                    CustomPopup.displayPopup(sender: self, title: "Account Created", toRoot: true)
                 } catch {
                     CustomToast.showErrorToast(msg: "Failed to create new user with name \(firstName) \(lastName)", sender: self)
                 }

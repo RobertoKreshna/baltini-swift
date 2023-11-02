@@ -37,6 +37,7 @@ extension HomeViewController {
         
         //create scroll view
         let scrollView = UIScrollView()
+        scrollView.isUserInteractionEnabled = true
         view.addSubview(scrollView)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +52,7 @@ extension HomeViewController {
         
         stackView.axis = .vertical
         stackView.alignment = .center
+        stackView.isUserInteractionEnabled = true
         stackView.spacing = 16
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +75,9 @@ extension HomeViewController {
     func addCollectionBanner(to stack: UIStackView){
         let imageView = UIImageView()
         imageView.image = UIImage(named: "collectionBanner")
+        imageView.isUserInteractionEnabled = true
+        
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToList)))
         
         stack.addArrangedSubview(imageView)
         
@@ -139,9 +144,9 @@ extension HomeViewController {
         
         newArrivalStack.addArrangedSubview(newArrivalLabel)
         newArrivalStack.addArrangedSubview(newArrivalButton)
-        addNewArrivalItemStack(to: newArrivalStack, itemLeft: const.productData[0], itemRight: const.productData[1])
-        addNewArrivalItemStack(to: newArrivalStack, itemLeft: const.productData[2], itemRight: const.productData[3])
-        addNewArrivalItemStack(to: newArrivalStack, itemLeft: const.productData[4], itemRight: const.productData[5])
+        addNewArrivalItemStack(to: newArrivalStack, itemLeft: Constants.productData[0], itemRight: Constants.productData[1])
+        addNewArrivalItemStack(to: newArrivalStack, itemLeft: Constants.productData[2], itemRight: Constants.productData[3])
+        addNewArrivalItemStack(to: newArrivalStack, itemLeft: Constants.productData[4], itemRight: Constants.productData[5])
         
         stack.addArrangedSubview(newArrivalStack)
         
@@ -164,74 +169,11 @@ extension HomeViewController {
     }
     
     func addIndividualItemStack(to stack: UIStackView, item: Product){
-        let individualItemStack = UIStackView()
-        individualItemStack.axis = .vertical
-        individualItemStack.spacing = 4
-        individualItemStack.alignment = .center
-        
-        let itemImageView = UIImageView()
-        itemImageView.image = UIImage(named: item.imageName)
-        
-        let itemBrandLabel = UILabel()
-        itemBrandLabel.attributedText = NSAttributedString(
-            string: item.brand.uppercased(),
-            attributes: [
-                .font : UIFont(name: "Futura-Medium", size: 14)!,
-            ]
-        )
-        
-        let itemNameLabel = UILabel()
-        itemNameLabel.attributedText = NSAttributedString(
-            string: item.name,
-            attributes: [
-                .font : UIFont(name: "Futura-Medium", size: 14)!,
-                .foregroundColor : UIColor.black.withAlphaComponent(0.5)
-            ]
-        )
-        itemNameLabel.numberOfLines = 3
-        itemNameLabel.textAlignment = .center
-        
-        individualItemStack.addArrangedSubview(itemImageView)
-        individualItemStack.addArrangedSubview(itemBrandLabel)
-        individualItemStack.addArrangedSubview(itemNameLabel)
-        addPriceStack(to: individualItemStack, item: item)
-        
-        itemImageView.heightAnchor.constraint(equalToConstant: 245).isActive = true
-        
-        stack.addArrangedSubview(individualItemStack)
+        let itemCard = CustomCard.createItemCard(product: item, loadImage: false)
+        itemCard.heightAnchor.constraint(equalToConstant: 245).isActive = true
+        stack.addArrangedSubview(itemCard)
     }
     
-    func addPriceStack(to stack: UIStackView, item: Product){
-        let priceStack = UIStackView()
-        priceStack.axis = .horizontal
-        priceStack.spacing = 4
-        
-        let itemPriceLabel = UILabel()
-        itemPriceLabel.attributedText = NSAttributedString(
-            string: String(format: "$%.2f", item.price),
-            attributes: [
-                .font : UIFont(name: "Futura-Medium", size: 14)!,
-                .foregroundColor : UIColor.black.withAlphaComponent(0.5),
-                .strikethroughStyle : item.isDisc ? 1 : 0,
-            ]
-        )
-        
-        priceStack.addArrangedSubview(itemPriceLabel)
-        
-        if(item.isDisc == true){
-            let itemDiscPriceLabel = UILabel()
-            itemDiscPriceLabel.attributedText = NSAttributedString(
-                string: String(format: "$%.2f", item.discPrice!),
-                attributes: [
-                    .font : UIFont(name: "Futura-Medium", size: 14)!,
-                    .foregroundColor : UIColor.brandRed
-                ]
-            )
-            priceStack.addArrangedSubview(itemDiscPriceLabel)
-        }
-        
-        stack.addArrangedSubview(priceStack)
-    }
     
     func addExcPieces(to stack: UIStackView){
         stack.setCustomSpacing(40, after: stack.arrangedSubviews.last!)
@@ -251,9 +193,9 @@ extension HomeViewController {
         
         excPiecesStack.addArrangedSubview(excPiecesLabel)
         excPiecesStack.setCustomSpacing(24, after: excPiecesLabel)
-        addBrandExclusive(to: excPiecesStack, brand: const.brandData[0])
-        addBrandExclusive(to: excPiecesStack, brand: const.brandData[1])
-        addBrandExclusive(to: excPiecesStack, brand: const.brandData[2])
+        addBrandExclusive(to: excPiecesStack, brand: Constants.brandData[0])
+        addBrandExclusive(to: excPiecesStack, brand: Constants.brandData[1])
+        addBrandExclusive(to: excPiecesStack, brand: Constants.brandData[2])
         
         stack.addArrangedSubview(excPiecesStack)
         
@@ -325,10 +267,10 @@ extension HomeViewController {
         
         magazineStack.addArrangedSubview(magazineLabel)
         magazineStack.addArrangedSubview(magazineButton)
-        addIndividualMagazineStack(to: magazineStack, magazine: const.magazinesData[0])
-        addIndividualMagazineStack(to: magazineStack, magazine: const.magazinesData[1])
-        addIndividualMagazineStack(to: magazineStack, magazine: const.magazinesData[2])
-        addIndividualMagazineStack(to: magazineStack, magazine: const.magazinesData[3])
+        addIndividualMagazineStack(to: magazineStack, magazine: Constants.magazinesData[0])
+        addIndividualMagazineStack(to: magazineStack, magazine: Constants.magazinesData[1])
+        addIndividualMagazineStack(to: magazineStack, magazine: Constants.magazinesData[2])
+        addIndividualMagazineStack(to: magazineStack, magazine: Constants.magazinesData[3])
         
         stack.addArrangedSubview(magazineStack)
     }
@@ -381,6 +323,14 @@ extension HomeViewController {
         stack.addArrangedSubview(individualMagazineStack)
         
         individualMagazineStack.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
+    }
+}
+
+//Business Logic
+
+extension HomeViewController {
+    @objc func goToList(){
+        self.navigationController?.pushViewController(ProductListViewController(), animated: true)
     }
 }
 

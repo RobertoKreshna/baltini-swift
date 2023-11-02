@@ -103,7 +103,7 @@ extension ChangePasswordViewController {
                     editedAccount?.password = newPassword
                     do{
                         try context.save()
-                        CustomPopup.displayRegisterPopup(sender: self, title: "Account updated", toRoot: true)
+                        CustomPopup.displayPopup(sender: self, title: "Account updated", toRoot: true)
                     } catch {
                         CustomToast.showErrorToast(msg: "Error updating account", sender: self)
                     }
