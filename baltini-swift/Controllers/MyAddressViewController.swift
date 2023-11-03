@@ -66,7 +66,6 @@ extension MyAddressViewController {
         
         if userAddressList!.isEmpty {
             let label = createAddressEmptyLabel()
-            pageStackView.addArrangedSubview(label)
             pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
             label.widthAnchor.constraint(equalTo: pageStackView.widthAnchor).isActive = true
         } else {

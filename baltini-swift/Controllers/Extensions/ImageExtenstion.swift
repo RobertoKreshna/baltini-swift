@@ -7,27 +7,28 @@
 
 import UIKit
 
-class ImageDownloader {
-    static func downloadImage(_ urlString: String, completion: ((_ image: UIImage?, _ urlString: String?) -> ())?) {
-       guard let url = URL(string: urlString) else {
-          completion?(nil, urlString)
-          return
-      }
-      URLSession.shared.dataTask(with: url) { (data, response,error) in
-         if let error = error {
-            print("error in downloading image: \(error)")
-            completion?(nil, urlString)
-            return
-         }
-         guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
-            completion?(nil, urlString)
-            return
-         }
-         if let data = data, let image = UIImage(data: data) {
-            completion?(image, urlString)
-            return
-         }
-         completion?(nil, urlString)
-      }.resume()
-   }
+extension UIImageView {
+    func imageFromServerURL(_ URLString: String, placeHolder: UIImage?) {
+        self.image = nil
+        let imageServerUrl = URLString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        if let url = URL(string: imageServerUrl) {
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print("ERROR LOADING IMAGES FROM URL: \(error!)")
+                    DispatchQueue.main.async {
+                        self.image = placeHolder
+                    }
+                    return
+                }
+                DispatchQueue.main.async {
+                    if let data = data {
+                        if let downloadedImage = UIImage(data: data) {
+                            
+                            self.image = downloadedImage
+                        }
+                    }
+                }
+            }).resume()
+        }
+    }
 }

@@ -31,6 +31,7 @@
 		B8CB5E032AF2117B00E9558C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E022AF2117B00E9558C /* Constants.swift */; };
 		B8CB5E052AF25B0700E9558C /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E042AF25B0700E9558C /* CustomCard.swift */; };
 		B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E072AF3410200E9558C /* ImageExtenstion.swift */; };
+		B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -71,6 +72,7 @@
 		B8CB5E022AF2117B00E9558C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B8CB5E042AF25B0700E9558C /* CustomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard.swift; sourceTree = "<group>"; };
 		B8CB5E072AF3410200E9558C /* ImageExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtenstion.swift; sourceTree = "<group>"; };
+		B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBanner.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				B8D3ABAD2AEBC7B50026832F /* CustomPopup.swift */,
 				B8CB5DF52AEF494300E9558C /* CustomDisplay.swift */,
 				B8CB5E042AF25B0700E9558C /* CustomCard.swift */,
+				B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				B8CB5DF82AEFB3D900E9558C /* EditAddressViewController.swift in Sources */,
 				B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */,
 				B879EFB92AE64FF60009C607 /* baltini_swift.xcdatamodeld in Sources */,
+				B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */,
 				B879EFD62AE8C5BF0009C607 /* CategoryViewController.swift in Sources */,
 				B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */,
 				B8D3ABA12AEB5ED50026832F /* CustomButton.swift in Sources */,
@@ -522,6 +526,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "baltini-swift/Info.plist";
@@ -552,6 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "baltini-swift/Info.plist";

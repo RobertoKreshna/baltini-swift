@@ -31,11 +31,12 @@ class Product: Codable {
         let products = json["products"] as? [Dictionary<String, Any>]
         products?.forEach { product in
             let productVariant = product["variants"] as? [Dictionary<String, Any>]
+            let productImage = product["image"] as? Dictionary<String, Any>
             let productData = Product(
-                imageName: (product["image"] as? String) ?? "",
+                imageName: (productImage?["src"] as? String) ?? "",
                 name: (product["vendor"] as? String) ?? "",
                 brand: (product["vendor"] as? String) ?? "",
-                price: (productVariant?[0]["price"] as? Double) ?? 0,
+                price: (productVariant?[0]["price"] as? NSString)?.doubleValue ?? 0,
                 isDisc: false,
                 discPrice: nil,
                 id: product["id"] as? String

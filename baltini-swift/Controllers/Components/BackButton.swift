@@ -50,5 +50,4 @@ class BackButton {
         backButtonStack.leftAnchor.constraint(equalTo: stack.leftAnchor).isActive = true
     }
     
-    
 }

@@ -22,12 +22,7 @@ class CustomCard {
             if(product.imageName == ""){
                 itemImageView.image = UIImage(named: "productPlaceholder")
             } else {
-                let url = URL(string: product.imageName)
-                let data = try? Data(contentsOf: url!)
-                
-                if let imageData = data {
-                    itemImageView.image = UIImage(data: imageData)
-                }
+                itemImageView.imageFromServerURL(product.imageName, placeHolder: UIImage(named: "productPlaceholder"))
             }
         } else {
             itemImageView.image = UIImage(named: product.imageName)
@@ -55,6 +50,9 @@ class CustomCard {
         individualItemStack.addArrangedSubview(itemImageView)
         individualItemStack.addArrangedSubview(itemBrandLabel)
         individualItemStack.addArrangedSubview(itemNameLabel)
+        
+        itemImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
+        
         blueprint.addPriceStack(to: individualItemStack, item: product)
         
         return individualItemStack

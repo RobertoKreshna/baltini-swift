@@ -64,7 +64,7 @@ extension ProductListViewController {
         view.addSubview(scrollView)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -74,8 +74,8 @@ extension ProductListViewController {
         scrollView.addSubview(stackView)
         
         stackView.axis = .vertical
-        stackView.alignment = .center
         stackView.spacing = 16
+        stackView.distribution = .fill
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
@@ -83,14 +83,29 @@ extension ProductListViewController {
         stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -16).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32).isActive = true
+        BackButton.addBackButton(to: stackView, title: "Product List", sender: self)
         
         if ((productList != nil)) {
-            productList?.forEach({ product in
-                let card = CustomCard.createItemCard(product: product)
-                stackView.addArrangedSubview(card)
-            })
+            var index : Int = 0
+            repeat {
+                let stack = UIStackView()
+                stack.axis = .horizontal
+                stack.spacing = 16
+
+                let leftCard = CustomCard.createItemCard(product: productList![index])
+                stack.addArrangedSubview(leftCard)
+            
+                let rightCard = CustomCard.createItemCard(product: productList![index + 1 < productList!.count ? index + 1 :index])
+                rightCard.alpha = index + 1 < productList!.count ? 1 : 0
+                stack.addArrangedSubview(rightCard)
+                
+                stackView.addArrangedSubview(stack)
+
+                //update condition
+                index += 2
+            } while index < productList!.count
         } else {
-            print("bbbbb")
+            CustomToast.showErrorToast(msg: "There are no product", sender: self)
         }
     }
 }

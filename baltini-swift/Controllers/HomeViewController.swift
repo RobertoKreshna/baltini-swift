@@ -57,61 +57,20 @@ extension HomeViewController {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 16).isActive = true
-        stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -16).isActive = true
+        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        addCollectionBanner(to: stackView)
-        addGenderBanner(to: stackView)
-        addSpotlightBanner(to: stackView, using: "spotlightBanner1")
-        addSpotlightBanner(to: stackView, using: "spotlightBanner2")
-        addSpotlightBanner(to: stackView, using: "spotlightBanner3")
+        CustomBanner.addPromotionBanner(to: stackView)
+        CustomBanner.addCollectionBanner(to: stackView, tap: UITapGestureRecognizer(target: self, action: #selector(goToList)))
+        CustomBanner.addGenderBanner(to: stackView)
+        CustomBanner.addSpotlightBanner(to: stackView, using: "spotlightBanner1")
+        CustomBanner.addSpotlightBanner(to: stackView, using: "spotlightBanner2")
+        CustomBanner.addSpotlightBanner(to: stackView, using: "spotlightBanner3")
         addNewArrival(to: stackView)
         addExcPieces(to: stackView)
         addMagazineStack(to: stackView)
-    }
-    
-    func addCollectionBanner(to stack: UIStackView){
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "collectionBanner")
-        imageView.isUserInteractionEnabled = true
-        
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToList)))
-        
-        stack.addArrangedSubview(imageView)
-        
-        imageView.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
-    }
-    
-    func addGenderBanner(to stack: UIStackView){
-        let genderStack = UIStackView()
-        genderStack.axis = .horizontal
-        genderStack.spacing = 16
-        genderStack.translatesAutoresizingMaskIntoConstraints = false
-        genderStack.distribution = .fillEqually
-        
-        let menBannerView = UIImageView()
-        menBannerView.image = UIImage(named: "menBanner")
-        let womenBannerView = UIImageView()
-        womenBannerView.image = UIImage(named: "womenBanner")
-        
-        genderStack.addArrangedSubview(menBannerView)
-        genderStack.addArrangedSubview(womenBannerView)
-        
-        stack.addArrangedSubview(genderStack)
-        stack.setCustomSpacing(24, after: genderStack)
-        
-        genderStack.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
-    }
-    
-    func addSpotlightBanner(to stack: UIStackView, using imageName: String){
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: imageName)
-        
-        stack.addArrangedSubview(imageView)
-        
-        imageView.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
     }
     
     func addNewArrival(to stack: UIStackView){
@@ -150,7 +109,8 @@ extension HomeViewController {
         
         stack.addArrangedSubview(newArrivalStack)
         
-        newArrivalStack.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
+        newArrivalStack.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
+        newArrivalStack.rightAnchor.constraint(equalTo: stack.rightAnchor, constant: -16).isActive = true
     }
     
     func addNewArrivalItemStack(to stack: UIStackView, itemLeft: Product, itemRight: Product){
@@ -170,7 +130,7 @@ extension HomeViewController {
     
     func addIndividualItemStack(to stack: UIStackView, item: Product){
         let itemCard = CustomCard.createItemCard(product: item, loadImage: false)
-        itemCard.heightAnchor.constraint(equalToConstant: 245).isActive = true
+        itemCard.heightAnchor.constraint(equalToConstant: 345).isActive = true
         stack.addArrangedSubview(itemCard)
     }
     
@@ -199,7 +159,8 @@ extension HomeViewController {
         
         stack.addArrangedSubview(excPiecesStack)
         
-        excPiecesStack.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
+        excPiecesStack.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
+        excPiecesStack.rightAnchor.constraint(equalTo: stack.rightAnchor, constant: -16).isActive = true
     }
     
     func addBrandExclusive(to stack: UIStackView, brand: ExclusiveBrand){
@@ -273,6 +234,9 @@ extension HomeViewController {
         addIndividualMagazineStack(to: magazineStack, magazine: Constants.magazinesData[3])
         
         stack.addArrangedSubview(magazineStack)
+        
+        magazineStack.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
+        magazineStack.rightAnchor.constraint(equalTo: stack.rightAnchor, constant: -16).isActive = true
     }
     
     func addIndividualMagazineStack(to stack: UIStackView, magazine: Magazine){
