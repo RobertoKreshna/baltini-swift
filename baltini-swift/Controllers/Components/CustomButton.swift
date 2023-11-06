@@ -86,7 +86,7 @@ class CustomButton {
         )
         
         let attributedValue = AttributedString(
-            value,
+            value.uppercased(),
             attributes: AttributeContainer([.font: UIFont(name: "Futura-Medium", size: 14)!])
         )
         

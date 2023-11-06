@@ -9,6 +9,15 @@ import UIKit
 
 class ProductListViewController : UIViewController {
     var productList: [Product]? = nil
+    var sortValue: String = "Featured" {
+        didSet {
+            Task{
+                removeUI()
+                await loadData()
+                createUI()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +127,7 @@ extension ProductListViewController {
     
     func addFilterSort(to stack: UIStackView){
         let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in CustomBottomSheet.getFilterPopup(owner: self) }))
-        let sortButton = CustomButton.createSortButton(value: "VALUE", tapped: UIAction(handler: { action in CustomBottomSheet.getSortPopup(owner: self) }))
+        let sortButton = CustomButton.createSortButton(value: sortValue, tapped: UIAction(handler: { action in CustomBottomSheet.getSortPopup(owner: self) }))
         
         let buttonStack = UIStackView()
         buttonStack.axis = .horizontal
