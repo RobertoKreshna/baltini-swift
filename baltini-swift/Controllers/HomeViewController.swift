@@ -130,7 +130,6 @@ extension HomeViewController {
     
     func addIndividualItemStack(to stack: UIStackView, item: Product){
         let itemCard = CustomCard.createItemCard(product: item, loadImage: false)
-        itemCard.heightAnchor.constraint(equalToConstant: 345).isActive = true
         stack.addArrangedSubview(itemCard)
     }
     

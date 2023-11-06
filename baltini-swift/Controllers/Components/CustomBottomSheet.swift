@@ -9,11 +9,11 @@ import UIKit
 
 class CustomBottomSheet {
     
-    static func displayFilterPopup(){
-        print("filter")
+    static func getFilterPopup(owner: UIViewController){
+        
     }
     
-    static func displaySortPopup(){
-        print("sort")
+    static func getSortPopup(owner: UIViewController){
+        
     }
 }

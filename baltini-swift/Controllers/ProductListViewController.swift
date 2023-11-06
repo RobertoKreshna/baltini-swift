@@ -97,13 +97,11 @@ extension ProductListViewController {
 
                 let leftCard = CustomCard.createItemCard(product: productList![index])
                 leftCard.translatesAutoresizingMaskIntoConstraints = false
-                leftCard.heightAnchor.constraint(equalToConstant: 345).isActive = true
                 itemStack.addArrangedSubview(leftCard)
             
                 let rightCard = CustomCard.createItemCard(product: productList![index + 1 < productList!.count ? index + 1 :index])
                 rightCard.alpha = index + 1 < productList!.count ? 1 : 0
                 rightCard.translatesAutoresizingMaskIntoConstraints = false
-                rightCard.heightAnchor.constraint(equalToConstant: 345).isActive = true
                 itemStack.addArrangedSubview(rightCard)
                 
                 itemStack.isLayoutMarginsRelativeArrangement = true
@@ -119,12 +117,8 @@ extension ProductListViewController {
     }
     
     func addFilterSort(to stack: UIStackView){
-        let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in
-            print("filter")
-        }))
-        let sortButton = CustomButton.createSortButton(value: "VALUE", tapped: UIAction(handler: { action in
-            print("sort")
-        }))
+        let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in CustomBottomSheet.getFilterPopup(owner: self) }))
+        let sortButton = CustomButton.createSortButton(value: "VALUE", tapped: UIAction(handler: { action in CustomBottomSheet.getSortPopup(owner: self) }))
         
         let buttonStack = UIStackView()
         buttonStack.axis = .horizontal

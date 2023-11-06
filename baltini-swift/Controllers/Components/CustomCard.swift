@@ -53,9 +53,6 @@ class CustomCard {
         individualItemStack.addArrangedSubview(itemNameLabel)
         
         itemImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
-        itemImageView.widthAnchor.constraint(equalTo: individualItemStack.widthAnchor).isActive = true
-        itemBrandLabel.widthAnchor.constraint(equalTo: individualItemStack.widthAnchor).isActive = true
-        itemNameLabel.widthAnchor.constraint(equalTo: individualItemStack.widthAnchor).isActive = true
         
         blueprint.addPriceStack(to: individualItemStack, item: product)
         
