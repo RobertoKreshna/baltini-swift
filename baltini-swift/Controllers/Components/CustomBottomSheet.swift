@@ -9,31 +9,12 @@ import UIKit
 
 class CustomBottomSheet {
     
-    static func getFilterPopup(owner: UIViewController){
+    static func getFilterPopup(owner: ProductListViewController){
         let popupBackgroundView = createBackgroundView(width: Int(owner.view.frame.size.width), height: Int(owner.view.frame.size.height))
         
-        let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 16
-        
-        let successImage = UIImageView(image: UIImage(named: "icSuccess"))
-        successImage.translatesAutoresizingMaskIntoConstraints = false
-        let description = UILabel()
-        description.translatesAutoresizingMaskIntoConstraints = false
-        let attributedLabelText = NSAttributedString(
-            string: "FILTER",
-            attributes: [.font : UIFont(name: "Futura-Medium", size: 18)!, .foregroundColor : UIColor.black]
-        )
-        description.attributedText = attributedLabelText
-        
-        contentView.addSubview(successImage)
-        contentView.addSubview(description)
-        
-        successImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60).isActive = true
-        successImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        description.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -60).isActive = true
-        description.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        let contentView = createFilterContent(owner: owner, close: {
+            popupBackgroundView.removeFromSuperview()
+        })
         
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -41,13 +22,12 @@ class CustomBottomSheet {
             UIAction(handler: { action in popupBackgroundView.removeFromSuperview() }),
             for: .touchUpInside
         )
-        button.layer.borderWidth = 1
         
         popupBackgroundView.addSubview(button)
         popupBackgroundView.addSubview(contentView)
 
         contentView.widthAnchor.constraint(equalTo: popupBackgroundView.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: popupBackgroundView.heightAnchor, multiplier: 0.3).isActive = true
+        contentView.heightAnchor.constraint(equalTo: popupBackgroundView.heightAnchor, multiplier: 0.56).isActive = true
         contentView.bottomAnchor.constraint(equalTo: popupBackgroundView.bottomAnchor).isActive = true
         button.widthAnchor.constraint(equalTo: popupBackgroundView.widthAnchor).isActive = true
         button.heightAnchor.constraint(equalTo: popupBackgroundView.heightAnchor).isActive = true
@@ -241,5 +221,125 @@ class CustomBottomSheet {
             owner.sortValue = newValue
             close()
         }
+    }
+    
+    static private func createFilterTile(title: String, value: [String]) -> UIView {
+        let attributedTitle = NSAttributedString(
+            string: title,
+            attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+        )
+        let attributedSubtitle = NSAttributedString(
+            string: value.joined(separator: ","),
+            attributes: [.font: UIFont(name: "Futura-Medium", size: 10)!, .foregroundColor : UIColor.black.withAlphaComponent(0.5)]
+        )
+        
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.attributedText = attributedTitle
+        
+        let valueLabel = UILabel()
+        valueLabel.translatesAutoresizingMaskIntoConstraints = false
+        valueLabel.attributedText = attributedSubtitle
+        
+        let tileStack = UIStackView()
+        tileStack.axis = .horizontal
+        tileStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        let checkBox = UIImageView(image: UIImage(named: value.isEmpty ? "icCheck" : "icCheckSelected"))
+        checkBox.translatesAutoresizingMaskIntoConstraints = false
+        
+        let labelStack = UIStackView(arrangedSubviews: value.isEmpty ? [titleLabel] : [titleLabel, valueLabel])
+        labelStack.axis = .vertical
+        labelStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        let rightArrow = UIImageView(image: UIImage(named: "icRight"))
+        rightArrow.translatesAutoresizingMaskIntoConstraints = false
+        
+        tileStack.addArrangedSubview(checkBox)
+        tileStack.setCustomSpacing(12, after: checkBox)
+        tileStack.addArrangedSubview(labelStack)
+        tileStack.addArrangedSubview(rightArrow)
+        
+        checkBox.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        checkBox.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        labelStack.heightAnchor.constraint(greaterThanOrEqualToConstant: 24).isActive = true
+        rightArrow.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        rightArrow.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        tileStack.isLayoutMarginsRelativeArrangement = true
+        tileStack.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        
+        return tileStack
+    }
+    
+    static private func createFilterContent(owner: ProductListViewController, close: @escaping () -> Void) -> UIView {
+        let keys = Array(owner.filterValue.keys)
+        let values = Array(owner.filterValue.values)
+        
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 16
+        
+        let indicator = createGrayIndicator()
+        let description = createDescription(string: "FILTER")
+        let gender = createFilterTile(title: keys[0], value: values[0])
+        let category = createFilterTile(title: keys[1], value: values[1])
+        let productType = createFilterTile(title: keys[2], value: values[2])
+        let designer = createFilterTile(title: keys[3], value: values[3])
+        let size = createFilterTile(title: keys[4], value: values[4])
+        let price = createFilterTile(title: keys[5], value: values[5])
+        let button = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in close() }))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(indicator)
+        contentView.addSubview(description)
+        contentView.addSubview(gender)
+        contentView.addSubview(category)
+        contentView.addSubview(productType)
+        contentView.addSubview(designer)
+        contentView.addSubview(size)
+        contentView.addSubview(price)
+        contentView.addSubview(button)
+        
+        indicator.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: 4).isActive = true
+        indicator.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+        indicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        
+        description.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32).isActive = true
+        description.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        description.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        description.topAnchor.constraint(equalTo: indicator.bottomAnchor, constant: 17).isActive = true
+        
+        gender.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        gender.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        gender.topAnchor.constraint(equalTo: description.bottomAnchor, constant: 4).isActive = true
+        
+        category.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        category.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        category.topAnchor.constraint(equalTo: gender.bottomAnchor).isActive = true
+        
+        productType.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        productType.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        productType.topAnchor.constraint(equalTo: category.bottomAnchor).isActive = true
+        
+        designer.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        designer.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        designer.topAnchor.constraint(equalTo: productType.bottomAnchor).isActive = true
+        
+        size.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        size.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        size.topAnchor.constraint(equalTo: designer.bottomAnchor).isActive = true
+        
+        price.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        price.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        price.topAnchor.constraint(equalTo: size.bottomAnchor).isActive = true
+        
+        button.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        button.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
+        button.topAnchor.constraint(equalTo: price.bottomAnchor, constant: 24).isActive = true
+        
+        return contentView
     }
 }

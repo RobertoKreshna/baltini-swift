@@ -10,14 +10,16 @@ import UIKit
 class ProductListViewController : UIViewController {
     var productList: [Product]? = nil
     var sortValue: String = "Featured" {
-        didSet {
-            Task{
-                removeUI()
-                await loadData()
-                createUI()
-            }
-        }
+        didSet { Task{ removeUI(); await loadData(); createUI(); } }
     }
+    var filterValue: [String : [String]] = [
+        "Gender" : [],
+        "Category" : [],
+        "ProductType" : [],
+        "Designer" : [],
+        "Size" : [],
+        "Price" : [],
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,6 @@ class ProductListViewController : UIViewController {
            subview.removeFromSuperview()
        }
    }
-    
 }
 
 //MARK: Load data by API
