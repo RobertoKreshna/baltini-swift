@@ -32,6 +32,7 @@
 		B8CB5E052AF25B0700E9558C /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E042AF25B0700E9558C /* CustomCard.swift */; };
 		B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E072AF3410200E9558C /* ImageExtenstion.swift */; };
 		B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */; };
+		B8CB5E0E2AF4FA6C00E9558C /* CustomBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E0D2AF4FA6C00E9558C /* CustomBottomSheet.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -73,6 +74,7 @@
 		B8CB5E042AF25B0700E9558C /* CustomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard.swift; sourceTree = "<group>"; };
 		B8CB5E072AF3410200E9558C /* ImageExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtenstion.swift; sourceTree = "<group>"; };
 		B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBanner.swift; sourceTree = "<group>"; };
+		B8CB5E0D2AF4FA6C00E9558C /* CustomBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBottomSheet.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				B8CB5DF52AEF494300E9558C /* CustomDisplay.swift */,
 				B8CB5E042AF25B0700E9558C /* CustomCard.swift */,
 				B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */,
+				B8CB5E0D2AF4FA6C00E9558C /* CustomBottomSheet.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				B8D3ABAE2AEBC7B50026832F /* CustomPopup.swift in Sources */,
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
+				B8CB5E0E2AF4FA6C00E9558C /* CustomBottomSheet.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductDataModel.swift in Sources */,
 				B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */,
 				B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */,

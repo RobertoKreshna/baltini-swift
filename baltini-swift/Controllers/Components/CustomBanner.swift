@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomBanner {
-    static func addPromotionBanner(to stack: UIStackView){
+    static func addPromotionBanner(to stack: UIStackView, spacing: CGFloat = 0){
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 36))
         view.backgroundColor = .black
@@ -60,7 +60,7 @@ class CustomBanner {
         view.addSubview(label)
         
         stack.addArrangedSubview(view)
-        stack.setCustomSpacing(0, after: view)
+        stack.setCustomSpacing(spacing, after: view)
         
         view.heightAnchor.constraint(equalToConstant: 36).isActive = true
         view.leftAnchor.constraint(equalTo: stack.leftAnchor).isActive = true

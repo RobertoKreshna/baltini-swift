@@ -55,4 +55,57 @@ class CustomButton {
         button.addAction(action, for: .touchUpInside)
         return button
     }
+    
+    static func createFilterButton(tapped: UIAction) -> UIButton{
+        let attributedTitle = NSAttributedString(
+            string: "FILTER",
+            attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!]
+        )
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.layer.cornerRadius = 4
+        button.layer.borderWidth = 1
+        button.contentHorizontalAlignment = .left
+        button.setImage(UIImage(named: "icFilter"), for: .normal)
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12)
+        configuration.imagePadding = 8
+        button.configuration = configuration
+        
+        button.addAction(tapped, for: .touchUpInside)
+        
+        return button
+    }
+    
+    static func createSortButton(value: String, tapped: UIAction) -> UIButton{
+        let attributedTitle = NSAttributedString(
+            string: "SORT",
+            attributes: [.font: UIFont(name: "Futura-Medium", size: 10)!]
+        )
+        
+        let attributedValue = AttributedString(
+            value,
+            attributes: AttributeContainer([.font: UIFont(name: "Futura-Medium", size: 14)!])
+        )
+        
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.layer.cornerRadius = 4
+        button.layer.borderWidth = 1
+        button.contentHorizontalAlignment = .left
+        button.setImage(UIImage(named: "icSort"), for: .normal)
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12)
+        configuration.imagePadding = 8
+        configuration.attributedSubtitle = attributedValue
+        button.configuration = configuration
+        
+        button.addAction(tapped, for: .touchUpInside)
+        
+        return button
+    }
 }

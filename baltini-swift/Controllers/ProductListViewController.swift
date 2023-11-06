@@ -16,13 +16,9 @@ class ProductListViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        let loading = CustomPopup.displayLoading(sender: self)
         Task{
             removeUI()
-            self.view.addSubview(loading)
             await loadData()
-            loading.removeFromSuperview()
             createUI()
         }
     }
@@ -39,6 +35,8 @@ class ProductListViewController : UIViewController {
 //MARK: Load data by API
 extension ProductListViewController {
     func loadData() async {
+        let loading = CustomPopup.displayLoading(sender: self)
+        self.view.addSubview(loading)
         let url = URL(string: "https://baltini-staging.myshopify.com/admin/api/2023-01/products.json?status=active")!
         var request = URLRequest(url: url)
         request.setValue(Constants.key, forHTTPHeaderField: "X-Shopify-Access-Token")
@@ -49,6 +47,7 @@ extension ProductListViewController {
         } catch {
             print("error gettting data")
         }
+        loading.removeFromSuperview()
     }
 }
 
@@ -75,37 +74,69 @@ extension ProductListViewController {
         
         stackView.axis = .vertical
         stackView.spacing = 16
-        stackView.distribution = .fill
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 16).isActive = true
-        stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -16).isActive = true
+        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        
         BackButton.addBackButton(to: stackView, title: "Product List", sender: self)
+        CustomBanner.addPromotionBanner(to: stackView, spacing: 16)
+        addFilterSort(to: stackView)
         
         if ((productList != nil)) {
             var index : Int = 0
             repeat {
-                let stack = UIStackView()
-                stack.axis = .horizontal
-                stack.spacing = 16
+                let itemStack = UIStackView()
+                itemStack.axis = .horizontal
+                itemStack.spacing = 16
+                itemStack.translatesAutoresizingMaskIntoConstraints = false
+                itemStack.distribution = .fillEqually
 
                 let leftCard = CustomCard.createItemCard(product: productList![index])
-                stack.addArrangedSubview(leftCard)
+                leftCard.translatesAutoresizingMaskIntoConstraints = false
+                leftCard.heightAnchor.constraint(equalToConstant: 345).isActive = true
+                itemStack.addArrangedSubview(leftCard)
             
                 let rightCard = CustomCard.createItemCard(product: productList![index + 1 < productList!.count ? index + 1 :index])
                 rightCard.alpha = index + 1 < productList!.count ? 1 : 0
-                stack.addArrangedSubview(rightCard)
+                rightCard.translatesAutoresizingMaskIntoConstraints = false
+                rightCard.heightAnchor.constraint(equalToConstant: 345).isActive = true
+                itemStack.addArrangedSubview(rightCard)
                 
-                stackView.addArrangedSubview(stack)
-
+                itemStack.isLayoutMarginsRelativeArrangement = true
+                itemStack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+                
+                stackView.addArrangedSubview(itemStack)
                 //update condition
                 index += 2
             } while index < productList!.count
         } else {
             CustomToast.showErrorToast(msg: "There are no product", sender: self)
         }
+    }
+    
+    func addFilterSort(to stack: UIStackView){
+        let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in
+            print("filter")
+        }))
+        let sortButton = CustomButton.createSortButton(value: "VALUE", tapped: UIAction(handler: { action in
+            print("sort")
+        }))
+        
+        let buttonStack = UIStackView()
+        buttonStack.axis = .horizontal
+        buttonStack.spacing = 16
+        buttonStack.distribution = .fillEqually
+        
+        buttonStack.addArrangedSubview(filterButton)
+        buttonStack.addArrangedSubview(sortButton)
+        
+        stack.addArrangedSubview(buttonStack)
+        
+        buttonStack.isLayoutMarginsRelativeArrangement = true
+        buttonStack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
 }
