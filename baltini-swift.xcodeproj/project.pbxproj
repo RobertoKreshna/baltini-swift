@@ -33,6 +33,8 @@
 		B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E072AF3410200E9558C /* ImageExtenstion.swift */; };
 		B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */; };
 		B8CB5E0E2AF4FA6C00E9558C /* CustomBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E0D2AF4FA6C00E9558C /* CustomBottomSheet.swift */; };
+		B8CB5E122AF9CE6A00E9558C /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E112AF9CE6A00E9558C /* ProductDetailViewController.swift */; };
+		B8CB5E142AF9DF5800E9558C /* ItemTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E132AF9DF5800E9558C /* ItemTapped.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -75,6 +77,8 @@
 		B8CB5E072AF3410200E9558C /* ImageExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtenstion.swift; sourceTree = "<group>"; };
 		B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBanner.swift; sourceTree = "<group>"; };
 		B8CB5E0D2AF4FA6C00E9558C /* CustomBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBottomSheet.swift; sourceTree = "<group>"; };
+		B8CB5E112AF9CE6A00E9558C /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		B8CB5E132AF9DF5800E9558C /* ItemTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTapped.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				B8CB5DFC2AF0A6A800E9558C /* MyProfileViewController.swift */,
 				B8CB5DFE2AF0CFE400E9558C /* ChangePasswordViewController.swift */,
 				B8CB5E002AF1FB3700E9558C /* ProductListViewController.swift */,
+				B8CB5E112AF9CE6A00E9558C /* ProductDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CB5DFA2AEFB40100E9558C /* AddressArgs.swift */,
+				B8CB5E132AF9DF5800E9558C /* ItemTapped.swift */,
 			);
 			path = Args;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
 				B8CB5E0E2AF4FA6C00E9558C /* CustomBottomSheet.swift in Sources */,
+				B8CB5E122AF9CE6A00E9558C /* ProductDetailViewController.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductDataModel.swift in Sources */,
 				B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */,
 				B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */,
@@ -369,6 +376,7 @@
 				B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */,
 				B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */,
 				B8CB5DFF2AF0CFE400E9558C /* ChangePasswordViewController.swift in Sources */,
+				B8CB5E142AF9DF5800E9558C /* ItemTapped.swift in Sources */,
 				B8CB5E052AF25B0700E9558C /* CustomCard.swift in Sources */,
 				B8CB5DFB2AEFB40100E9558C /* AddressArgs.swift in Sources */,
 				B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */,

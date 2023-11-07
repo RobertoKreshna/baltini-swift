@@ -39,7 +39,7 @@ class Product: Codable {
                 price: (productVariant?[0]["price"] as? NSString)?.doubleValue ?? 0,
                 isDisc: false,
                 discPrice: nil,
-                id: product["id"] as? String
+                id: String(describing: product["id"])
             )
             if(res == nil){ res = [Product]()}
             res?.append(productData)

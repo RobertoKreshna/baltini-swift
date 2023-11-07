@@ -10,8 +10,6 @@ import UIKit
 class CustomCard {
     
     static func createItemCard(product: Product, loadImage: Bool = true) -> UIStackView{
-        let blueprint = CustomCard()
-        
         let individualItemStack = UIStackView()
         individualItemStack.axis = .vertical
         individualItemStack.spacing = 4
@@ -51,15 +49,18 @@ class CustomCard {
         individualItemStack.addArrangedSubview(itemImageView)
         individualItemStack.addArrangedSubview(itemBrandLabel)
         individualItemStack.addArrangedSubview(itemNameLabel)
+        addPriceStack(to: individualItemStack, item: product)
         
         itemImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         
-        blueprint.addPriceStack(to: individualItemStack, item: product)
+        individualItemStack.isUserInteractionEnabled = true
+        let gestureRecognizer = ItemTapped(target: self, action: #selector(self.tapped(_:)), id: product.id ?? "")
+        individualItemStack.addGestureRecognizer(gestureRecognizer)
         
         return individualItemStack
     }
     
-    func addPriceStack(to stack: UIStackView, item: Product){
+    static private func addPriceStack(to stack: UIStackView, item: Product){
         let priceStack = UIStackView()
         priceStack.axis = .horizontal
         priceStack.spacing = 4
@@ -89,5 +90,10 @@ class CustomCard {
         }
         
         stack.addArrangedSubview(priceStack)
+    }
+    
+    @objc static private func tapped(_ recognizer: ItemTapped){
+        print("ID")
+        print(recognizer.id)
     }
 }
