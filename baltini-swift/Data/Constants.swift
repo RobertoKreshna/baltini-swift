@@ -9,17 +9,17 @@ import Foundation
 
 class Constants {
     static let productData: [Product] = [
-        Product(imageName: "product_1", name: "Wind Jacket", brand: "Moschino", price: 672.00, isDisc: true, discPrice: 287.00, id: nil),
-        Product(imageName: "product_2", name: "Jewelled Hobo Leather Shoulder Bag", brand: "Alexander McQueen", price: 2595.00, isDisc: true, discPrice: 1922.00, id: nil),
-        Product(imageName: "product_3", name: "Sporty Jogger Pants", brand: "Ambush", price: 645.00, isDisc: true, discPrice: 259.00, id: nil),
-        Product(imageName: "product_4", name: "Leopard Print Lace Detail Camisole Top", brand: "Just Cavalli", price: 202.00, isDisc: true, discPrice: 155.00, id: nil),
-        Product(imageName: "product_5", name: "'Folding Packable' T-Shirt", brand: "Ambush", price: 411.00, isDisc: true, discPrice: 181.00, id: nil),
-        Product(imageName: "product_6", name: "Denim Shorts", brand: "MSGM", price: 294.00, isDisc: false, discPrice: nil, id: nil),
-        Product(imageName: "product_7", name: "Rainproof Wool Coats", brand: "Fabiana Filippi", price: 1339.00, isDisc: true, discPrice: 992.00, id: nil),
-        Product(imageName: "product_8", name: "Paris Cut-Out Detail Mini Dress", brand: "Ami Alexandre Mattiussi", price: 800.00, isDisc: false, discPrice: nil, id: nil),
-        Product(imageName: "product_9", name: "Purple Flowery Long Dress", brand: "H&M", price: 50.00, isDisc: true, discPrice: 37.00, id: nil),
-        Product(imageName: "product_10", name: "Blue Basic Dress", brand: "Uniqlo", price: 50.00, isDisc: true, discPrice: 30.00, id: nil),
-        Product(imageName: "product_11", name: "Reflection Party Dress", brand: "Zara", price: 125.00, isDisc: false, discPrice: nil, id: nil)
+        Product(imageName: "product_1", name: "Wind Jacket", brand: "Moschino", price: 672.00, isDisc: true, discPrice: 287.00, id: ""),
+        Product(imageName: "product_2", name: "Jewelled Hobo Leather Shoulder Bag", brand: "Alexander McQueen", price: 2595.00, isDisc: true, discPrice: 1922.00, id: ""),
+        Product(imageName: "product_3", name: "Sporty Jogger Pants", brand: "Ambush", price: 645.00, isDisc: true, discPrice: 259.00, id: ""),
+        Product(imageName: "product_4", name: "Leopard Print Lace Detail Camisole Top", brand: "Just Cavalli", price: 202.00, isDisc: true, discPrice: 155.00, id: ""),
+        Product(imageName: "product_5", name: "'Folding Packable' T-Shirt", brand: "Ambush", price: 411.00, isDisc: true, discPrice: 181.00, id: ""),
+        Product(imageName: "product_6", name: "Denim Shorts", brand: "MSGM", price: 294.00, isDisc: false, discPrice: nil, id: ""),
+        Product(imageName: "product_7", name: "Rainproof Wool Coats", brand: "Fabiana Filippi", price: 1339.00, isDisc: true, discPrice: 992.00, id: ""),
+        Product(imageName: "product_8", name: "Paris Cut-Out Detail Mini Dress", brand: "Ami Alexandre Mattiussi", price: 800.00, isDisc: false, discPrice: nil, id: ""),
+        Product(imageName: "product_9", name: "Purple Flowery Long Dress", brand: "H&M", price: 50.00, isDisc: true, discPrice: 37.00, id: ""),
+        Product(imageName: "product_10", name: "Blue Basic Dress", brand: "Uniqlo", price: 50.00, isDisc: true, discPrice: 30.00, id: ""),
+        Product(imageName: "product_11", name: "Reflection Party Dress", brand: "Zara", price: 125.00, isDisc: false, discPrice: nil, id: "")
     ]
     
     static let brandData: [ExclusiveBrand] = [

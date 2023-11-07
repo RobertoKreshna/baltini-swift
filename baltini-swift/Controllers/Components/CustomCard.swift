@@ -53,10 +53,6 @@ class CustomCard {
         
         itemImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         
-        individualItemStack.isUserInteractionEnabled = true
-        let gestureRecognizer = ItemTapped(target: self, action: #selector(self.tapped(_:)), id: product.id ?? "")
-        individualItemStack.addGestureRecognizer(gestureRecognizer)
-        
         return individualItemStack
     }
     
@@ -90,10 +86,5 @@ class CustomCard {
         }
         
         stack.addArrangedSubview(priceStack)
-    }
-    
-    @objc static private func tapped(_ recognizer: ItemTapped){
-        print("ID")
-        print(recognizer.id)
     }
 }

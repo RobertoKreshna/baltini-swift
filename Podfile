@@ -7,5 +7,6 @@ target 'baltini-swift' do
 
   # Pods for baltini-swift
   pod 'Toast-Swift'
+  pod 'HSCycleGalleryView'
 
 end

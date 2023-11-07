@@ -7,18 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DCADBADF5D7AA854954D1CDCC990835 /* HSCycleGalleryViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E0DD83C65F76EC8702992390C5C57 /* HSCycleGalleryViewLayout.swift */; };
+		0EB16DCAFEEE0CA0634D290E4A858ABA /* HSCycleGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9FD2C71CEE84D5DC98B6E887AF68E9 /* HSCycleGalleryView.swift */; };
 		17E5507F92F0DF1DD5C3AB12E53F559F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
-		183A0D34DB18EBBB0E2404EDDEA53745 /* Pods-baltini-swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F23D0132BAF9D5F45B3DFA1F4A159410 /* Pods-baltini-swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6DFA70326D4C540DC43BD455F5A4A658 /* Toast-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FCD31C4EE1DA60FB90F8B432CDE1C /* Toast-Swift-dummy.m */; };
+		3CC90938F4EC0078B2BCFD8BE38B0418 /* HSCycleGalleryView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A7F2254C1022B8BD89184385A694C96 /* HSCycleGalleryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		43F41E85622FB6D4F68B88504F19F444 /* HSCycleGalleryView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A6019E46384EDB91CF2C6655462BEE /* HSCycleGalleryView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		498B99FABAF100D519BBA41D6D9D654D /* Pods-baltini-swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F23D0132BAF9D5F45B3DFA1F4A159410 /* Pods-baltini-swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52418848D17810D79551599E5DFEE3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		6DFA70326D4C540DC43BD455F5A4A658 /* Toast-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7668DFDF151E4510CF5E61C31F6C3BD3 /* Toast-Swift-dummy.m */; };
 		87E3B15B2AA7D226CB60059610C1241A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FEFE490E4A06D19E868B2B9014BB8BF /* QuartzCore.framework */; };
-		AC13667FD44D50A4248E62BE6978F7A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
-		BF20C741EBB18F936CA31F2E41DC9F23 /* Toast-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E15AC60C991B08D578D75E5D7EABB64 /* Toast-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CAE29563450C7ED7B9BEFD4F8C3788CA /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318FE758DBBEDD53C43B7374CF4B0EF /* Toast.swift */; };
-		D569F665B68CBEBEA9410C780E26C012 /* Pods-baltini-swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0008DF5775897B61C5F8D6B026A1FDEC /* Pods-baltini-swift-dummy.m */; };
+		87FC918E5CBAB62286BC4392DAE299F2 /* HSCycleGalleryView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1433CC8C94C10BD2E8CF95C2D6609 /* HSCycleGalleryView-dummy.m */; };
+		8E2B42C18F5A253848DD86BFEC11EBF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		BF20C741EBB18F936CA31F2E41DC9F23 /* Toast-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B84E68FC87473DD1E741BA52932EE40 /* Toast-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAE29563450C7ED7B9BEFD4F8C3788CA /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3DD69DDA1B53C7192EC2F2468CFE6 /* Toast.swift */; };
+		DCB796B0CBBCFEFBEA15574578B9EE68 /* Pods-baltini-swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0008DF5775897B61C5F8D6B026A1FDEC /* Pods-baltini-swift-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F993C80DCE5310F1D6F5D9F0792FF125 /* PBXContainerItemProxy */ = {
+		17A30187534F0497B97FC237A75A596E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41C15161077742B7DA8C045C15BFA042;
+			remoteInfo = HSCycleGalleryView;
+		};
+		8C53CF0749B0A56B2501A1666907EED1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -29,35 +42,46 @@
 
 /* Begin PBXFileReference section */
 		0008DF5775897B61C5F8D6B026A1FDEC /* Pods-baltini-swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-baltini-swift-dummy.m"; sourceTree = "<group>"; };
-		0E6FCD31C4EE1DA60FB90F8B432CDE1C /* Toast-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Toast-Swift-dummy.m"; sourceTree = "<group>"; };
-		1E15AC60C991B08D578D75E5D7EABB64 /* Toast-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Toast-Swift-umbrella.h"; sourceTree = "<group>"; };
-		2F50B18C74D2D97745E4801987A30384 /* Toast-Swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Toast-Swift-Info.plist"; sourceTree = "<group>"; };
+		1A7F2254C1022B8BD89184385A694C96 /* HSCycleGalleryView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HSCycleGalleryView.h; path = HSCycleGalleryView/Source/HSCycleGalleryView.h; sourceTree = "<group>"; };
+		27A6019E46384EDB91CF2C6655462BEE /* HSCycleGalleryView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HSCycleGalleryView-umbrella.h"; sourceTree = "<group>"; };
 		2FEFE490E4A06D19E868B2B9014BB8BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		391FFBEB18D104B9A29B03B6E391796F /* Pods-baltini-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-baltini-swift.debug.xcconfig"; sourceTree = "<group>"; };
-		3B2845562E646CF443B9CC526C2668A3 /* Toast-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Toast-Swift.debug.xcconfig"; sourceTree = "<group>"; };
-		4007A72BDCD28826D29D220D8AF11806 /* Toast-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Toast-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		3B15316E22AC9A5020E8BB9B6C42535E /* HSCycleGalleryView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "HSCycleGalleryView-Info.plist"; sourceTree = "<group>"; };
+		470698933F828D2F77F9E6FCDCE74487 /* HSCycleGalleryView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HSCycleGalleryView-prefix.pch"; sourceTree = "<group>"; };
 		4C5EDB28E562E617D929723371FC3371 /* Pods-baltini-swift-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-baltini-swift-acknowledgements.plist"; sourceTree = "<group>"; };
+		56E3EF8ED539335BD29BAECC41251B99 /* HSCycleGalleryView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HSCycleGalleryView.release.xcconfig; sourceTree = "<group>"; };
+		5955E14990CF8981D3F4662C571BDB36 /* Toast-Swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Toast-Swift-Info.plist"; sourceTree = "<group>"; };
 		5D0FC9709FF3506FA29DD91AB56C9413 /* Pods-baltini-swift-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-baltini-swift-frameworks.sh"; sourceTree = "<group>"; };
+		5D9FD2C71CEE84D5DC98B6E887AF68E9 /* HSCycleGalleryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSCycleGalleryView.swift; path = HSCycleGalleryView/Source/HSCycleGalleryView.swift; sourceTree = "<group>"; };
+		5F3DA0E5155E4D3985EA154CD8B2B4C7 /* Toast-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Toast-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		672BE5FB7110D40314A241E1668EEB22 /* Pods-baltini-swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-baltini-swift-Info.plist"; sourceTree = "<group>"; };
+		739260A74115C4F2274E7E454FB9EF46 /* HSCycleGalleryView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HSCycleGalleryView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		741A9E9DE95D6E1914F70A94F6AC3C25 /* Pods-baltini-swift */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-baltini-swift"; path = Pods_baltini_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		825B95930816FF3991519AC0ED095A7F /* Toast-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Toast-Swift.modulemap"; sourceTree = "<group>"; };
+		749E0DD83C65F76EC8702992390C5C57 /* HSCycleGalleryViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSCycleGalleryViewLayout.swift; path = HSCycleGalleryView/Source/HSCycleGalleryViewLayout.swift; sourceTree = "<group>"; };
+		7668DFDF151E4510CF5E61C31F6C3BD3 /* Toast-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Toast-Swift-dummy.m"; sourceTree = "<group>"; };
+		799D272CE5622A53D7B9C165726C2721 /* Toast-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Toast-Swift.modulemap"; sourceTree = "<group>"; };
+		84D3DD69DDA1B53C7192EC2F2468CFE6 /* Toast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Toast.swift; path = Toast/Toast.swift; sourceTree = "<group>"; };
 		8884F801EE332339A13F5CC0428E04AF /* Pods-baltini-swift-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-baltini-swift-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9B84E68FC87473DD1E741BA52932EE40 /* Toast-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Toast-Swift-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A5A1433CC8C94C10BD2E8CF95C2D6609 /* HSCycleGalleryView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HSCycleGalleryView-dummy.m"; sourceTree = "<group>"; };
+		B19F810A22C07A5DC0704B073A5145A6 /* Toast-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Toast-Swift-prefix.pch"; sourceTree = "<group>"; };
 		BCEC7A4CA4FA2CB81BD33B006D4BD1AA /* Pods-baltini-swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-baltini-swift.modulemap"; sourceTree = "<group>"; };
-		BF1E10D2888B2F7C3435BFF6A7F4667A /* Toast-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Toast-Swift-prefix.pch"; sourceTree = "<group>"; };
+		C03CA12EB624E5C51E20B2737A3005FD /* HSCycleGalleryView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HSCycleGalleryView.debug.xcconfig; sourceTree = "<group>"; };
 		C0B556916E802A72792024AFF0F29B87 /* Pods-baltini-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-baltini-swift.release.xcconfig"; sourceTree = "<group>"; };
+		C8527DC585E53C17366C74A13DEA0A9C /* HSCycleGalleryView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HSCycleGalleryView.modulemap; sourceTree = "<group>"; };
+		CFA344E7644FF880F4D76426EB9C3C5B /* Toast-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Toast-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		D6043471C96F93DC41F7DD1E0D7D8B35 /* Toast_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Toast_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23D0132BAF9D5F45B3DFA1F4A159410 /* Pods-baltini-swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-baltini-swift-umbrella.h"; sourceTree = "<group>"; };
-		F318FE758DBBEDD53C43B7374CF4B0EF /* Toast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Toast.swift; path = Toast/Toast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0023B6E2310242A3EBA42336F26DF9B4 /* Frameworks */ = {
+		08384492D6C24F4B16DE475AF3531D22 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC13667FD44D50A4248E62BE6978F7A7 /* Foundation.framework in Frameworks */,
+				52418848D17810D79551599E5DFEE3F0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,23 +94,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84C1C2534D393A2608C424A970C334E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E2B42C18F5A253848DD86BFEC11EBF1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		01B6499BB351F4D13DA64A16EF49B6FC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E4DD821E3F92A576E63FCE4FAEA66257 /* Toast-Swift */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				D325A42620E7427FB70FB046C7B7B240 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		232577A5AAE630AC50E42717AE6C5552 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				598D8FADF085280C646314B259945D95 /* HSCycleGalleryView */,
+				A72F0C2D0D4C491A7E650AC8F61D2913 /* Toast-Swift */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		598D8FADF085280C646314B259945D95 /* HSCycleGalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				1A7F2254C1022B8BD89184385A694C96 /* HSCycleGalleryView.h */,
+				5D9FD2C71CEE84D5DC98B6E887AF68E9 /* HSCycleGalleryView.swift */,
+				749E0DD83C65F76EC8702992390C5C57 /* HSCycleGalleryViewLayout.swift */,
+				9138081CA12053A1EB26B4DBFA111FFB /* Support Files */,
+			);
+			path = HSCycleGalleryView;
 			sourceTree = "<group>";
 		};
 		5D19945DD6A1CAEFC361E6F0AF2CB6FC /* Targets Support Files */ = {
@@ -97,28 +141,53 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		A40F101ABD8F41F588A5A2A105BCBCE4 /* Products */ = {
+		912F9C0D469875F03C047949BE4606E0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				799D272CE5622A53D7B9C165726C2721 /* Toast-Swift.modulemap */,
+				7668DFDF151E4510CF5E61C31F6C3BD3 /* Toast-Swift-dummy.m */,
+				5955E14990CF8981D3F4662C571BDB36 /* Toast-Swift-Info.plist */,
+				B19F810A22C07A5DC0704B073A5145A6 /* Toast-Swift-prefix.pch */,
+				9B84E68FC87473DD1E741BA52932EE40 /* Toast-Swift-umbrella.h */,
+				CFA344E7644FF880F4D76426EB9C3C5B /* Toast-Swift.debug.xcconfig */,
+				5F3DA0E5155E4D3985EA154CD8B2B4C7 /* Toast-Swift.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Toast-Swift";
+			sourceTree = "<group>";
+		};
+		9138081CA12053A1EB26B4DBFA111FFB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C8527DC585E53C17366C74A13DEA0A9C /* HSCycleGalleryView.modulemap */,
+				A5A1433CC8C94C10BD2E8CF95C2D6609 /* HSCycleGalleryView-dummy.m */,
+				3B15316E22AC9A5020E8BB9B6C42535E /* HSCycleGalleryView-Info.plist */,
+				470698933F828D2F77F9E6FCDCE74487 /* HSCycleGalleryView-prefix.pch */,
+				27A6019E46384EDB91CF2C6655462BEE /* HSCycleGalleryView-umbrella.h */,
+				C03CA12EB624E5C51E20B2737A3005FD /* HSCycleGalleryView.debug.xcconfig */,
+				56E3EF8ED539335BD29BAECC41251B99 /* HSCycleGalleryView.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/HSCycleGalleryView";
+			sourceTree = "<group>";
+		};
+		97E491B8966F846E9F61717638A6777B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				739260A74115C4F2274E7E454FB9EF46 /* HSCycleGalleryView.framework */,
 				741A9E9DE95D6E1914F70A94F6AC3C25 /* Pods-baltini-swift */,
 				D6043471C96F93DC41F7DD1E0D7D8B35 /* Toast_Swift.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ADB41ECB626BC7FC84F0B17847BEB04F /* Support Files */ = {
+		A72F0C2D0D4C491A7E650AC8F61D2913 /* Toast-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				825B95930816FF3991519AC0ED095A7F /* Toast-Swift.modulemap */,
-				0E6FCD31C4EE1DA60FB90F8B432CDE1C /* Toast-Swift-dummy.m */,
-				2F50B18C74D2D97745E4801987A30384 /* Toast-Swift-Info.plist */,
-				BF1E10D2888B2F7C3435BFF6A7F4667A /* Toast-Swift-prefix.pch */,
-				1E15AC60C991B08D578D75E5D7EABB64 /* Toast-Swift-umbrella.h */,
-				3B2845562E646CF443B9CC526C2668A3 /* Toast-Swift.debug.xcconfig */,
-				4007A72BDCD28826D29D220D8AF11806 /* Toast-Swift.release.xcconfig */,
+				84D3DD69DDA1B53C7192EC2F2468CFE6 /* Toast.swift */,
+				912F9C0D469875F03C047949BE4606E0 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Toast-Swift";
+			path = "Toast-Swift";
 			sourceTree = "<group>";
 		};
 		C6B3C29320F514E4CDA986444DC2B863 /* Pods-baltini-swift */ = {
@@ -143,8 +212,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				01B6499BB351F4D13DA64A16EF49B6FC /* Pods */,
-				A40F101ABD8F41F588A5A2A105BCBCE4 /* Products */,
+				232577A5AAE630AC50E42717AE6C5552 /* Pods */,
+				97E491B8966F846E9F61717638A6777B /* Products */,
 				5D19945DD6A1CAEFC361E6F0AF2CB6FC /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -158,15 +227,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		E4DD821E3F92A576E63FCE4FAEA66257 /* Toast-Swift */ = {
-			isa = PBXGroup;
-			children = (
-				F318FE758DBBEDD53C43B7374CF4B0EF /* Toast.swift */,
-				ADB41ECB626BC7FC84F0B17847BEB04F /* Support Files */,
-			);
-			path = "Toast-Swift";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -178,11 +238,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7BEC6ACEFFE9E7EA45F78E4A51E8F876 /* Headers */ = {
+		AF28CA6544C09EC810459AD23A97CC9A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				183A0D34DB18EBBB0E2404EDDEA53745 /* Pods-baltini-swift-umbrella.h in Headers */,
+				498B99FABAF100D519BBA41D6D9D654D /* Pods-baltini-swift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE249FE1F1A3A67F6359664FC5C0C965 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CC90938F4EC0078B2BCFD8BE38B0418 /* HSCycleGalleryView.h in Headers */,
+				43F41E85622FB6D4F68B88504F19F444 /* HSCycleGalleryView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,21 +260,40 @@
 /* Begin PBXNativeTarget section */
 		0AFC73BC54E89C8C1E6D569642D65EFE /* Pods-baltini-swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB30C16B8A27A357A868520398998EB9 /* Build configuration list for PBXNativeTarget "Pods-baltini-swift" */;
+			buildConfigurationList = 855AED20EE56AB6E129D3C9BA3918B0C /* Build configuration list for PBXNativeTarget "Pods-baltini-swift" */;
 			buildPhases = (
-				7BEC6ACEFFE9E7EA45F78E4A51E8F876 /* Headers */,
-				6641B9E9B8FC892B01C0F67E28CDB154 /* Sources */,
-				0023B6E2310242A3EBA42336F26DF9B4 /* Frameworks */,
-				FA20237B90892B0C64D96C2F58FA5C05 /* Resources */,
+				AF28CA6544C09EC810459AD23A97CC9A /* Headers */,
+				BB54E1970E90FEBC0A896505549626AC /* Sources */,
+				84C1C2534D393A2608C424A970C334E6 /* Frameworks */,
+				5C27D78FE7773C9DF62AE28D3550A123 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E32F8A3FC3D444808ECE081E8CDD71BF /* PBXTargetDependency */,
+				59649D0B01D66EE6B8A96112C743C28B /* PBXTargetDependency */,
+				F9FBFF0D79C258667F5A8155A53D43BF /* PBXTargetDependency */,
 			);
 			name = "Pods-baltini-swift";
 			productName = Pods_baltini_swift;
 			productReference = 741A9E9DE95D6E1914F70A94F6AC3C25 /* Pods-baltini-swift */;
+			productType = "com.apple.product-type.framework";
+		};
+		41C15161077742B7DA8C045C15BFA042 /* HSCycleGalleryView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B610E8B14F754459E4F010F40383C0D0 /* Build configuration list for PBXNativeTarget "HSCycleGalleryView" */;
+			buildPhases = (
+				CE249FE1F1A3A67F6359664FC5C0C965 /* Headers */,
+				5F49FD31F3CB90486CC8EF90CAE94886 /* Sources */,
+				08384492D6C24F4B16DE475AF3531D22 /* Frameworks */,
+				A022B32FAA72A00E52F39F3128455DE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HSCycleGalleryView;
+			productName = HSCycleGalleryView;
+			productReference = 739260A74115C4F2274E7E454FB9EF46 /* HSCycleGalleryView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B990BD87169C76A3ED3FE8A9258D91A3 /* Toast-Swift */ = {
@@ -244,10 +332,11 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = A40F101ABD8F41F588A5A2A105BCBCE4 /* Products */;
+			productRefGroup = 97E491B8966F846E9F61717638A6777B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				41C15161077742B7DA8C045C15BFA042 /* HSCycleGalleryView */,
 				0AFC73BC54E89C8C1E6D569642D65EFE /* Pods-baltini-swift */,
 				B990BD87169C76A3ED3FE8A9258D91A3 /* Toast-Swift */,
 			);
@@ -262,7 +351,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA20237B90892B0C64D96C2F58FA5C05 /* Resources */ = {
+		5C27D78FE7773C9DF62AE28D3550A123 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A022B32FAA72A00E52F39F3128455DE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,11 +368,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6641B9E9B8FC892B01C0F67E28CDB154 /* Sources */ = {
+		5F49FD31F3CB90486CC8EF90CAE94886 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D569F665B68CBEBEA9410C780E26C012 /* Pods-baltini-swift-dummy.m in Sources */,
+				0EB16DCAFEEE0CA0634D290E4A858ABA /* HSCycleGalleryView.swift in Sources */,
+				87FC918E5CBAB62286BC4392DAE299F2 /* HSCycleGalleryView-dummy.m in Sources */,
+				0DCADBADF5D7AA854954D1CDCC990835 /* HSCycleGalleryViewLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB54E1970E90FEBC0A896505549626AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCB796B0CBBCFEFBEA15574578B9EE68 /* Pods-baltini-swift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,18 +398,91 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E32F8A3FC3D444808ECE081E8CDD71BF /* PBXTargetDependency */ = {
+		59649D0B01D66EE6B8A96112C743C28B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HSCycleGalleryView;
+			target = 41C15161077742B7DA8C045C15BFA042 /* HSCycleGalleryView */;
+			targetProxy = 17A30187534F0497B97FC237A75A596E /* PBXContainerItemProxy */;
+		};
+		F9FBFF0D79C258667F5A8155A53D43BF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Toast-Swift";
 			target = B990BD87169C76A3ED3FE8A9258D91A3 /* Toast-Swift */;
-			targetProxy = F993C80DCE5310F1D6F5D9F0792FF125 /* PBXContainerItemProxy */;
+			targetProxy = 8C53CF0749B0A56B2501A1666907EED1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1B9216BC1248FEE2ED994FB8A9C294F4 /* Release */ = {
+		14AE59C6F71F6A776297F33C8C5285AE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0B556916E802A72792024AFF0F29B87 /* Pods-baltini-swift.release.xcconfig */;
+			baseConfigurationReference = C03CA12EB624E5C51E20B2737A3005FD /* HSCycleGalleryView.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/HSCycleGalleryView/HSCycleGalleryView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HSCycleGalleryView/HSCycleGalleryView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/HSCycleGalleryView/HSCycleGalleryView.modulemap";
+				PRODUCT_MODULE_NAME = HSCycleGalleryView;
+				PRODUCT_NAME = HSCycleGalleryView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1F6D3DD34E8A819816BB3E88E22EDACC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFA344E7644FF880F4D76426EB9C3C5B /* Toast-Swift.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Toast-Swift/Toast-Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Toast-Swift/Toast-Swift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Toast-Swift/Toast-Swift.modulemap";
+				PRODUCT_MODULE_NAME = Toast_Swift;
+				PRODUCT_NAME = Toast_Swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3FA6038FCFAACC668708D3D8D59D3737 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 391FFBEB18D104B9A29B03B6E391796F /* Pods-baltini-swift.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -332,41 +511,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		1F6D3DD34E8A819816BB3E88E22EDACC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B2845562E646CF443B9CC526C2668A3 /* Toast-Swift.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Toast-Swift/Toast-Swift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Toast-Swift/Toast-Swift-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/Toast-Swift/Toast-Swift.modulemap";
-				PRODUCT_MODULE_NAME = Toast_Swift;
-				PRODUCT_NAME = Toast_Swift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -411,7 +555,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -440,9 +583,43 @@
 			};
 			name = Debug;
 		};
-		A0BF2B7BC0A2508A61D3C9F476D3C265 /* Debug */ = {
+		9286E94CAC9DB11B72E93DEC49A3EF63 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 391FFBEB18D104B9A29B03B6E391796F /* Pods-baltini-swift.debug.xcconfig */;
+			baseConfigurationReference = 56E3EF8ED539335BD29BAECC41251B99 /* HSCycleGalleryView.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/HSCycleGalleryView/HSCycleGalleryView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HSCycleGalleryView/HSCycleGalleryView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/HSCycleGalleryView/HSCycleGalleryView.modulemap";
+				PRODUCT_MODULE_NAME = HSCycleGalleryView;
+				PRODUCT_NAME = HSCycleGalleryView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B543A9FD35B613FECA96AA175210F108 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0B556916E802A72792024AFF0F29B87 /* Pods-baltini-swift.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -472,14 +649,15 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		DD076AFEEE0A686B597DD62BCA7E46CF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4007A72BDCD28826D29D220D8AF11806 /* Toast-Swift.release.xcconfig */;
+			baseConfigurationReference = 5F3DA0E5155E4D3985EA154CD8B2B4C7 /* Toast-Swift.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -492,7 +670,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Toast-Swift/Toast-Swift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Toast-Swift/Toast-Swift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,7 +728,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -596,11 +773,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB30C16B8A27A357A868520398998EB9 /* Build configuration list for PBXNativeTarget "Pods-baltini-swift" */ = {
+		855AED20EE56AB6E129D3C9BA3918B0C /* Build configuration list for PBXNativeTarget "Pods-baltini-swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A0BF2B7BC0A2508A61D3C9F476D3C265 /* Debug */,
-				1B9216BC1248FEE2ED994FB8A9C294F4 /* Release */,
+				3FA6038FCFAACC668708D3D8D59D3737 /* Debug */,
+				B543A9FD35B613FECA96AA175210F108 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B610E8B14F754459E4F010F40383C0D0 /* Build configuration list for PBXNativeTarget "HSCycleGalleryView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14AE59C6F71F6A776297F33C8C5285AE /* Debug */,
+				9286E94CAC9DB11B72E93DEC49A3EF63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

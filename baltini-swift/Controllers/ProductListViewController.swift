@@ -52,7 +52,7 @@ extension ProductListViewController {
         request.setValue(Constants.key, forHTTPHeaderField: "X-Shopify-Access-Token")
         do{
             let (data, _) = try await URLSession.shared.data(for: request)
-            let json = (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any])!
+            let json = (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any])
             self.productList = Product.fromJson(json: json)
         } catch {
             print("error gettting data")
@@ -96,7 +96,7 @@ extension ProductListViewController {
         CustomBanner.addPromotionBanner(to: stackView, spacing: 16)
         addFilterSort(to: stackView)
         
-        if ((productList != nil)) {
+        if let list = productList {
             var index : Int = 0
             repeat {
                 let itemStack = UIStackView()
@@ -105,13 +105,20 @@ extension ProductListViewController {
                 itemStack.translatesAutoresizingMaskIntoConstraints = false
                 itemStack.distribution = .fillEqually
 
-                let leftCard = CustomCard.createItemCard(product: productList![index])
+                let leftCard = CustomCard.createItemCard(product: list[index])
                 leftCard.translatesAutoresizingMaskIntoConstraints = false
+                leftCard.isUserInteractionEnabled = true
+                let leftGestureRecognizer = ItemTapped(target: self, action: #selector(tapped(_:)), id: list[index].id)
+                leftCard.addGestureRecognizer(leftGestureRecognizer)
                 itemStack.addArrangedSubview(leftCard)
+                
             
-                let rightCard = CustomCard.createItemCard(product: productList![index + 1 < productList!.count ? index + 1 :index])
+                let rightCard = CustomCard.createItemCard(product: list[index + 1 < productList!.count ? index + 1 :index])
                 rightCard.alpha = index + 1 < productList!.count ? 1 : 0
                 rightCard.translatesAutoresizingMaskIntoConstraints = false
+                rightCard.isUserInteractionEnabled = true
+                let rightGestureRecognizer = ItemTapped(target: self, action: #selector(tapped(_:)), id: list[index + 1 < productList!.count ? index + 1 :index].id)
+                rightCard.addGestureRecognizer(rightGestureRecognizer)
                 itemStack.addArrangedSubview(rightCard)
                 
                 itemStack.isLayoutMarginsRelativeArrangement = true
@@ -142,5 +149,12 @@ extension ProductListViewController {
         
         buttonStack.isLayoutMarginsRelativeArrangement = true
         buttonStack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    }
+    
+    
+    @objc private func tapped(_ recognizer: ItemTapped){
+        let vc = ProductDetailViewController()
+        vc.productId = recognizer.id
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

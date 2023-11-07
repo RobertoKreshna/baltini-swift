@@ -1,16 +1,20 @@
 PODS:
+  - HSCycleGalleryView (1.2.0)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
+  - HSCycleGalleryView
   - Toast-Swift
 
 SPEC REPOS:
   trunk:
+    - HSCycleGalleryView
     - Toast-Swift
 
 SPEC CHECKSUMS:
+  HSCycleGalleryView: 5101435175a26d08f1c062cf6cb245f58f09b425
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: b53dc54b324d635b00857ff3ab5d6d60adbbf55d
+PODFILE CHECKSUM: c73e478b0b75cd85e94b109b20a82449327ad18e
 
 COCOAPODS: 1.13.0
