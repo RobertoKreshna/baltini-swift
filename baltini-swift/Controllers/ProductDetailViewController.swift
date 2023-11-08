@@ -12,6 +12,8 @@ class ProductDetailViewController : UIViewController {
     var productId: String = ""
     var product: ProductDetail?
     
+    let imagePagerControl = UIPageControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -78,6 +80,7 @@ extension ProductDetailViewController {
         
         stackView.axis = .vertical
         stackView.spacing = 16
+        stackView.alignment = .center
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
@@ -89,9 +92,9 @@ extension ProductDetailViewController {
         BackButton.addBackButton(to: stackView, title: "\(String(describing: product!.name))", sender: self)
         CustomBanner.addPromotionBanner(to: stackView, spacing: 0)
         
+        //add image carousel
         let imageCarouselContainer = UIView()
         imageCarouselContainer.translatesAutoresizingMaskIntoConstraints = false
-        imageCarouselContainer.backgroundColor = .brandRed
         
         let pager = HSCycleGalleryView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 390))
         pager.register(cellClass: ImageCarouselCell.self, forCellReuseIdentifier: "TestCollectionViewCell")
@@ -105,10 +108,27 @@ extension ProductDetailViewController {
         imageCarouselContainer.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
         imageCarouselContainer.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
         
+        //add indicator
+        imagePagerControl.translatesAutoresizingMaskIntoConstraints = false
+        imagePagerControl.backgroundStyle = .minimal
+        imagePagerControl.numberOfPages = product!.images.count
+        
+        imagePagerControl.pageIndicatorTintColor = .lightGray
+        imagePagerControl.currentPageIndicatorTintColor = .black
+        
+        stackView.addArrangedSubview(imagePagerControl)
+        
+        imagePagerControl.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        imagePagerControl.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+        imagePagerControl.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
     }
 }
 
 extension ProductDetailViewController : HSCycleGalleryViewDelegate {
+    func changePageControl(currentIndex: Int) {
+        self.imagePagerControl.currentPage = currentIndex
+    }
+    
     func numberOfItemInCycleGalleryView(_ cycleGalleryView: HSCycleGalleryView) -> Int {
         return product!.images.count
     }

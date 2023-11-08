@@ -11,6 +11,8 @@ import UIKit
 @objc public protocol HSCycleGalleryViewDelegate: class {
     
     func numberOfItemInCycleGalleryView(_ cycleGalleryView: HSCycleGalleryView) -> Int
+
+    func changePageControl(currentIndex: Int)
     
     func cycleGalleryView(_ cycleGalleryView: HSCycleGalleryView, cellForItemAtIndex index: Int) -> UICollectionViewCell
     
@@ -136,6 +138,14 @@ extension HSCycleGalleryView {
         let nextIndex = currentIndex + 1
         collectionView.scrollToItem(at: IndexPath(item: nextIndex, section: 0), at: .centeredHorizontally, animated: true)
         currentIndexPath = IndexPath(item: nextIndex, section: 0)
+        
+        if dataNum > 0 {
+            let pointInView = self.convert(collectionView.center, to: collectionView)
+            let indexPathNow = collectionView.indexPathForItem(at: pointInView)
+            let index = ((indexPathNow?.row ?? 0) + 1) % dataNum
+            
+            delegate?.changePageControl(currentIndex: index)
+        }
     }
 }
 
@@ -166,6 +176,7 @@ extension HSCycleGalleryView: UICollectionViewDelegate, UICollectionViewDataSour
         let indexPathNow = collectionView.indexPathForItem(at: pointInView)
         let index = (indexPathNow?.row ?? 0) % dataNum
         // Reset to the middle position
+        delegate?.changePageControl(currentIndex: index)
         currentIndexPath = IndexPath(item: groupCount / 2 * dataNum + index, section: 0)
         collectionView.scrollToItem(at: currentIndexPath, at: .centeredHorizontally, animated: false)
     }
