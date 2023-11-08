@@ -115,7 +115,7 @@ extension ProductDetailViewController : HSCycleGalleryViewDelegate {
     
     func cycleGalleryView(_ cycleGalleryView: HSCycleGalleryView, cellForItemAtIndex index: Int) -> UICollectionViewCell {
         let cell = cycleGalleryView.dequeueReusableCell(withIdentifier: "TestCollectionViewCell", for: IndexPath(item: index, section: 0)) as! ImageCarouselCell
-        cell.imageView.image = UIImage(named: "product_1")
+        cell.imageView.imageFromServerURL(product!.images[index], placeHolder: UIImage(named: "productPlaceholder"))
         return cell
     }
 }

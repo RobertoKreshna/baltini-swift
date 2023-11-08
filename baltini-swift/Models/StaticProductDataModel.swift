@@ -71,9 +71,16 @@ class ProductDetail: Codable {
     
     static func fromJson(json: Dictionary<String, Any>) -> ProductDetail?{
         let product = json["product"] as! Dictionary<String, Any>
+        //get images
         let images = product["images"] as! [Dictionary<String, Any>]
         var imagesUrl = [String]()
         images.forEach { dict in imagesUrl.append(dict["src"] as! String) }
+        if(imagesUrl.isEmpty){
+            imagesUrl.append("http://placekitten.com/200/300")
+            imagesUrl.append("http://placekitten.com/200/300")
+            imagesUrl.append("http://placekitten.com/200/300")
+        }
+        //get variants and price
         let variants = product["variants"] as! [Dictionary<String, Any>]
         var prices = [Double]()
         var variantsTitle = [String]()
