@@ -61,11 +61,12 @@ extension MyAddressViewController {
         pageStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         pageStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         
-        BackButton.addBackButton(to: pageStackView, title: "My Address", sender: self)
+        BackButton.addBackButton(to: pageStackView, title: "My Address", icName: "icBack", sender: self, usePadding: false)
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
         
         if userAddressList!.isEmpty {
             let label = createAddressEmptyLabel()
+            pageStackView.addArrangedSubview(label)
             pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
             label.widthAnchor.constraint(equalTo: pageStackView.widthAnchor).isActive = true
         } else {

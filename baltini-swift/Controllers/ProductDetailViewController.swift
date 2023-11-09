@@ -12,7 +12,12 @@ class ProductDetailViewController : UIViewController {
     var productId: String = ""
     var product: ProductDetail?
     
-    let imagePagerControl = UIPageControl()
+    lazy var imagePagerControl = UIPageControl()
+    lazy var brandLabel = createLabel(content: product!.brand, fontsize: 18, textColor: .black)
+    lazy var nameLabel = createLabel(content: product!.name, fontsize: 14, textColor: .black)
+    lazy var priceLabel = createLabel(content: "$\(product!.price[0])", fontsize: 16, textColor: .black.withAlphaComponent(0.5))
+    lazy var alternativePriceLabel = createLabel(content: "or 4 interest-free payments of $\(product!.price[0] / 4.0) with", fontsize: 12, textColor: .black)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +94,7 @@ extension ProductDetailViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "\(String(describing: product!.name))", sender: self)
+        BackButton.addBackButton(to: stackView, title: "\(String(describing: product!.name))", icName: "icBack", sender: self, usePadding: true)
         CustomBanner.addPromotionBanner(to: stackView, spacing: 0)
         
         //add image carousel
@@ -117,10 +122,109 @@ extension ProductDetailViewController {
         imagePagerControl.currentPageIndicatorTintColor = .black
         
         stackView.addArrangedSubview(imagePagerControl)
+        stackView.setCustomSpacing(32, after: imagePagerControl)
         
         imagePagerControl.heightAnchor.constraint(equalToConstant: 10).isActive = true
         imagePagerControl.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
         imagePagerControl.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
+        
+        //add product main content
+        let contentStack = createProductMainDescriptionStack()
+        stackView.addArrangedSubview(contentStack)
+        
+        contentStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        contentStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        //add variants
+        let variantStack = createVariantStack()
+        stackView.addArrangedSubview(variantStack)
+        
+        variantStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        variantStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+    }
+    
+    func createLabel(content: String, fontsize: CGFloat, textColor: UIColor) -> UILabel {
+        let attributedLabelText = NSAttributedString(
+            string: content,
+            attributes: [.font : UIFont(name: "Futura-Medium", size: fontsize)!, .foregroundColor : textColor]
+        )
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.attributedText = attributedLabelText
+        return label
+    }
+    
+    func createPriceAlternativeStack(text: UILabel) -> UIStackView{
+        let imageView = UIImageView(image: UIImage(named: "afterpay"))
+        let alternativePriceStack = UIStackView(arrangedSubviews: [text, imageView])
+        alternativePriceStack.spacing = 0
+        alternativePriceStack.alignment = .center
+        
+        return alternativePriceStack
+    }
+    
+    func createProductMainDescriptionStack() -> UIStackView {
+        let contentStack = UIStackView()
+        contentStack.axis = .vertical
+        contentStack.alignment = .leading
+        
+        contentStack.addArrangedSubview(brandLabel)
+        contentStack.setCustomSpacing(4, after: brandLabel)
+        contentStack.addArrangedSubview(nameLabel)
+        contentStack.setCustomSpacing(8, after: nameLabel)
+        contentStack.addArrangedSubview(priceLabel)
+        contentStack.setCustomSpacing(8, after: priceLabel)
+        let alternativePriceStack = createPriceAlternativeStack(text: alternativePriceLabel)
+        contentStack.addArrangedSubview(alternativePriceStack)
+        
+        return contentStack
+    }
+    
+    func createVariantStack() -> UIStackView {
+        let contentStack = UIStackView()
+        contentStack.axis = .vertical
+        contentStack.spacing = 8
+        contentStack.alignment = .leading
+        
+        let titleStack = createVariantTitleStack()
+        contentStack.addArrangedSubview(titleStack)
+        titleStack.leftAnchor.constraint(equalTo: contentStack.leftAnchor).isActive = true
+        titleStack.rightAnchor.constraint(equalTo: contentStack.rightAnchor).isActive = true
+        
+        let sizesStack = UIStackView()
+        sizesStack.spacing = 8
+        for i in 0...product!.variants!.count - 1 {
+            let button = CustomButton.createSizeButton(
+                value: product!.variants![i],
+                selected: i%2==0 ? true : false,
+                tapped: UIAction(handler: { action in
+                    print("tapped")
+                })
+            )
+            sizesStack.addArrangedSubview(button)
+        }
+        contentStack.addArrangedSubview(sizesStack)
+        
+        return contentStack
+    }
+    
+    func createVariantTitleStack() -> UIStackView {
+        let titleStack = UIStackView()
+        titleStack.axis = .horizontal
+        
+        let attributedLabelText = NSAttributedString(
+            string: "SIZE",
+            attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+        )
+        let label = UILabel()
+        label.attributedText = attributedLabelText
+        let button = CustomButton.createUnderlinedButton(title: "SIZE CHART", action: UIAction(handler: { action in
+            self.navigationController?.pushViewController(SizeChartViewController(), animated: true)
+        }))
+        
+        titleStack.addArrangedSubview(label)
+        titleStack.addArrangedSubview(button)
+        return titleStack
     }
 }
 

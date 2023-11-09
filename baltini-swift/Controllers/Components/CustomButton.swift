@@ -108,4 +108,23 @@ class CustomButton {
         
         return button
     }
+    
+    static func createSizeButton(value: String, selected: Bool, tapped: UIAction) -> UIButton {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSAttributedString(
+            string: value,
+            attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : selected ? UIColor.white : UIColor.black]
+        )
+        button.setAttributedTitle(attributedTitle,for: .normal)
+        button.backgroundColor = selected ? .black : .white
+        button.layer.borderWidth = 1.5
+        button.layer.cornerRadius = 4
+        //add padding
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+        button.configuration = configuration
+        //add action
+        button.addAction(tapped, for: .touchUpInside)
+        return button
+    }
 }

@@ -9,14 +9,14 @@ import UIKit
 
 
 class BackButton {
-    func createBackButton() -> UIButton {
+    private static func createBackButton(icName: String) -> UIButton {
         let imageButton = UIButton()
-        imageButton.setImage(UIImage(named: "icBack"), for: .normal)
+        imageButton.setImage(UIImage(named: icName), for: .normal)
         
         return imageButton
     }
     
-    func createBackButtonTitle(title: String) -> UILabel {
+    private static func createBackButtonTitle(title: String) -> UILabel {
         let label = UILabel()
         let attributedText = NSAttributedString(
             string: title,
@@ -26,20 +26,23 @@ class BackButton {
         return label
     }
     
-    static func addBackButton(to stack: UIStackView, title:String,  sender: UIViewController){
-        let backButtonBlueprint = BackButton()
-
+    static func addBackButton(to stack: UIStackView, title:String, icName: String,  sender: UIViewController, usePadding: Bool){
         let function = UIAction { action in sender.navigationController?.popViewController(animated: true) }
         
         let backButtonStack = UIStackView()
         backButtonStack.axis = .horizontal
         
-        let backBtnLabel = backButtonBlueprint.createBackButtonTitle(title: title)
-        let backBtnImage = backButtonBlueprint.createBackButton()
+        let backBtnLabel = createBackButtonTitle(title: title)
+        let backBtnImage = createBackButton(icName: icName)
         backBtnImage.addAction(function, for: .touchUpInside)
         
         backBtnImage.widthAnchor.constraint(equalToConstant: 36).isActive = true
         backBtnImage.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        
+        if(usePadding){
+            backButtonStack.isLayoutMarginsRelativeArrangement = true
+            backButtonStack.layoutMargins = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 22)
+        }
         
         backButtonStack.addArrangedSubview(backBtnImage)
         backButtonStack.addArrangedSubview(backBtnLabel)

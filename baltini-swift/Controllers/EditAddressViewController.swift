@@ -56,7 +56,7 @@ extension EditAddressViewController {
         pageStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         pageStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32).isActive = true
         
-        BackButton.addBackButton(to: pageStackView, title: "Edit Address", sender: self)
+        BackButton.addBackButton(to: pageStackView, title: "Edit Address", icName: "icBack", sender: self, usePadding: false)
         pageStackView.setCustomSpacing(30, after: pageStackView.arrangedSubviews.last!)
         CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self, text: currentAddress?.firstName)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)

@@ -92,7 +92,7 @@ extension ProductListViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "Product List", sender: self)
+        BackButton.addBackButton(to: stackView, title: "Product List", icName: "icBack", sender: self, usePadding: true)
         CustomBanner.addPromotionBanner(to: stackView, spacing: 16)
         addFilterSort(to: stackView)
         

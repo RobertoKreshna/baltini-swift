@@ -52,7 +52,7 @@ extension ChangePasswordViewController {
         pageStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         pageStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         
-        BackButton.addBackButton(to: pageStackView, title: "Change Password", sender: self)
+        BackButton.addBackButton(to: pageStackView, title: "Change Password", icName: "icBack", sender: self, usePadding: false)
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
         CustomTextfield.addTextfield(to: pageStackView, placeholder: "Old Password", isPassword: false, owner: self)
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)

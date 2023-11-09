@@ -37,6 +37,8 @@
 		B8CB5E142AF9DF5800E9558C /* ItemTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E132AF9DF5800E9558C /* ItemTapped.swift */; };
 		B8CB5E162AFA2ACC00E9558C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E152AFA2ACC00E9558C /* StringExtension.swift */; };
 		B8CB5E182AFA44B300E9558C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E172AFA44B300E9558C /* CustomCell.swift */; };
+		B8CB5E1C2AFC730F00E9558C /* SizeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E1B2AFC730F00E9558C /* SizeChartViewController.swift */; };
+		B8CB5E1E2AFC9AAE00E9558C /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E1D2AFC9AAE00E9558C /* LabelExtension.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -83,6 +85,8 @@
 		B8CB5E132AF9DF5800E9558C /* ItemTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTapped.swift; sourceTree = "<group>"; };
 		B8CB5E152AFA2ACC00E9558C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B8CB5E172AFA44B300E9558C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		B8CB5E1B2AFC730F00E9558C /* SizeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeChartViewController.swift; sourceTree = "<group>"; };
+		B8CB5E1D2AFC9AAE00E9558C /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				B8CB5DFE2AF0CFE400E9558C /* ChangePasswordViewController.swift */,
 				B8CB5E002AF1FB3700E9558C /* ProductListViewController.swift */,
 				B8CB5E112AF9CE6A00E9558C /* ProductDetailViewController.swift */,
+				B8CB5E1B2AFC730F00E9558C /* SizeChartViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 			children = (
 				B8CB5E072AF3410200E9558C /* ImageExtenstion.swift */,
 				B8CB5E152AFA2ACC00E9558C /* StringExtension.swift */,
+				B8CB5E1D2AFC9AAE00E9558C /* LabelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
 				B8CB5E182AFA44B300E9558C /* CustomCell.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
+				B8CB5E1E2AFC9AAE00E9558C /* LabelExtension.swift in Sources */,
 				B8CB5E0E2AF4FA6C00E9558C /* CustomBottomSheet.swift in Sources */,
 				B8CB5E122AF9CE6A00E9558C /* ProductDetailViewController.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductDataModel.swift in Sources */,
@@ -382,6 +389,7 @@
 				B8CB5DF62AEF494300E9558C /* CustomDisplay.swift in Sources */,
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */,
+				B8CB5E1C2AFC730F00E9558C /* SizeChartViewController.swift in Sources */,
 				B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */,
 				B8CB5DFF2AF0CFE400E9558C /* ChangePasswordViewController.swift in Sources */,
 				B8CB5E142AF9DF5800E9558C /* ItemTapped.swift in Sources */,

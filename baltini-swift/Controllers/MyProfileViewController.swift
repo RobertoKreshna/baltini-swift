@@ -51,7 +51,7 @@ extension MyProfileViewController {
         pageStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         pageStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         
-        BackButton.addBackButton(to: pageStackView, title: "My Profile", sender: self)
+        BackButton.addBackButton(to: pageStackView, title: "My Profile", icName: "icBack", sender: self, usePadding: false)
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
         CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self, text: currentUser?.firstName)
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
