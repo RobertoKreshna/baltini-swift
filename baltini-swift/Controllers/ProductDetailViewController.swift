@@ -11,13 +11,10 @@ import HSCycleGalleryView
 class ProductDetailViewController : UIViewController {
     var productId: String = ""
     var product: ProductDetail?
+    var selectedVariantIndex = 0
+    var quantity = 1
     
     lazy var imagePagerControl = UIPageControl()
-    lazy var brandLabel = createLabel(content: product!.brand, fontsize: 18, textColor: .black)
-    lazy var nameLabel = createLabel(content: product!.name, fontsize: 14, textColor: .black)
-    lazy var priceLabel = createLabel(content: "$\(product!.price[0])", fontsize: 16, textColor: .black.withAlphaComponent(0.5))
-    lazy var alternativePriceLabel = createLabel(content: "or 4 interest-free payments of $\(product!.price[0] / 4.0) with", fontsize: 12, textColor: .black)
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +91,7 @@ extension ProductDetailViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "\(String(describing: product!.name))", icName: "icBack", sender: self, usePadding: true)
+        BackButton.addBackButton(to: stackView, title: "\(String(describing: product!.brand)) - \(String(describing: product!.name))", icName: "icBack", sender: self, usePadding: true)
         CustomBanner.addPromotionBanner(to: stackView, spacing: 0)
         
         //add image carousel
@@ -141,6 +138,13 @@ extension ProductDetailViewController {
         
         variantStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         variantStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        //add quantity
+        let quantityStack = createQtyStack()
+        stackView.addArrangedSubview(quantityStack)
+        
+        quantityStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        quantityStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
     }
     
     func createLabel(content: String, fontsize: CGFloat, textColor: UIColor) -> UILabel {
@@ -167,6 +171,11 @@ extension ProductDetailViewController {
         let contentStack = UIStackView()
         contentStack.axis = .vertical
         contentStack.alignment = .leading
+        
+        lazy var brandLabel = createLabel(content: product!.brand, fontsize: 18, textColor: .black)
+        lazy var nameLabel = createLabel(content: product!.name, fontsize: 14, textColor: .black)
+        lazy var priceLabel = createLabel(content: "$\(product!.price[selectedVariantIndex])", fontsize: 16, textColor: .black.withAlphaComponent(0.5))
+        lazy var alternativePriceLabel = createLabel(content: "or 4 interest-free payments of $\(product!.price[selectedVariantIndex] / 4.0) with", fontsize: 12, textColor: .black)
         
         contentStack.addArrangedSubview(brandLabel)
         contentStack.setCustomSpacing(4, after: brandLabel)
@@ -196,10 +205,8 @@ extension ProductDetailViewController {
         for i in 0...product!.variants!.count - 1 {
             let button = CustomButton.createSizeButton(
                 value: product!.variants![i],
-                selected: i%2==0 ? true : false,
-                tapped: UIAction(handler: { action in
-                    print("tapped")
-                })
+                selected: i == selectedVariantIndex,
+                tapped: UIAction(handler: { action in self.selectedVariantIndex = i; self.removeUI(); self.createUI() })
             )
             sizesStack.addArrangedSubview(button)
         }
@@ -225,6 +232,63 @@ extension ProductDetailViewController {
         titleStack.addArrangedSubview(label)
         titleStack.addArrangedSubview(button)
         return titleStack
+    }
+    
+    func createQtyStack() -> UIStackView {
+        let contentStack = UIStackView()
+        contentStack.axis = .vertical
+        contentStack.spacing = 8
+        contentStack.alignment = .leading
+        
+        let titleLabel = createLabel(content: "QUANTITY", fontsize: 14, textColor: .black)
+        contentStack.addArrangedSubview(titleLabel)
+        
+        let qtyButtonStack = createQtyButtonStack()
+        contentStack.addArrangedSubview(qtyButtonStack)
+        
+        return contentStack
+    }
+    
+    func createQtyButtonStack() -> UIStackView{
+        let buttonStack = UIStackView()
+        buttonStack.axis = .horizontal
+        
+        let qtyTitle = NSAttributedString(
+            string: String(quantity),
+            attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+        )
+        
+        let label = PaddingLabel()
+        label.attributedText = qtyTitle
+        label.topInset = 10
+        label.bottomInset = 10
+        label.leftInset = 20
+        label.rightInset = 20
+        label.layer.borderWidth = 1
+        label.layer.borderColor = UIColor.brandGray.cgColor
+        
+        let minButton = CustomButton.createQuantityButton(imageName: "icMin", isLeft: true, tapped: UIAction(handler: { action in
+            if self.quantity > 1 { self.quantity -= 1 }; DispatchQueue.main.async {
+                label.attributedText = NSAttributedString(
+                    string: String(self.quantity),
+                    attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+                )
+            }
+        }))
+        let plusButton = CustomButton.createQuantityButton(imageName: "icPlus", isLeft: false, tapped: UIAction(handler: { action in
+            self.quantity += 1; DispatchQueue.main.async {
+                label.attributedText = NSAttributedString(
+                    string: String(self.quantity),
+                    attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+                )
+            }
+        }))
+        
+        buttonStack.addArrangedSubview(minButton)
+        buttonStack.addArrangedSubview(label)
+        buttonStack.addArrangedSubview(plusButton)
+        
+        return buttonStack
     }
 }
 

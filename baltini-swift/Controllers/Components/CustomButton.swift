@@ -127,4 +127,20 @@ class CustomButton {
         button.addAction(tapped, for: .touchUpInside)
         return button
     }
+    
+    static func createQuantityButton(imageName: String, isLeft: Bool, tapped: UIAction) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.layer.borderWidth = 1.5
+        button.layer.borderColor = UIColor.brandGray.cgColor
+        button.layer.cornerRadius = 4
+        button.layer.maskedCorners = isLeft ? [.layerMinXMinYCorner, .layerMinXMaxYCorner] : [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        //add padding
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        button.configuration = configuration
+        //add action
+        button.addAction(tapped, for: .touchUpInside)
+        return button
+    }
 }
