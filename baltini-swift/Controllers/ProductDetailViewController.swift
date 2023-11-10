@@ -126,15 +126,16 @@ extension ProductDetailViewController {
         imagePagerControl.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
         
         //add product main content
-        let contentStack = createProductMainDescriptionStack()
-        stackView.addArrangedSubview(contentStack)
+        let productMain = createProductMainDescriptionStack()
+        stackView.addArrangedSubview(productMain)
         
-        contentStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-        contentStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        productMain.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        productMain.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
         //add variants
         let variantStack = createVariantStack()
         stackView.addArrangedSubview(variantStack)
+        stackView.setCustomSpacing(32, after: variantStack)
         
         variantStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         variantStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
@@ -142,9 +143,17 @@ extension ProductDetailViewController {
         //add quantity
         let quantityStack = createQtyStack()
         stackView.addArrangedSubview(quantityStack)
+        stackView.setCustomSpacing(32, after: quantityStack)
         
         quantityStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         quantityStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        //add product detail
+        let productDetail = createProductDetailStack()
+        stackView.addArrangedSubview(productDetail)
+        
+        productDetail.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        productDetail.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
     }
     
     func createLabel(content: String, fontsize: CGFloat, textColor: UIColor) -> UILabel {
@@ -155,8 +164,18 @@ extension ProductDetailViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.attributedText = attributedLabelText
+        label.numberOfLines = 0
         return label
     }
+    
+    func createLabelWithAttributedString(content: NSAttributedString) -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.attributedText = content
+        label.numberOfLines = 0
+        return label
+    }
+        
     
     func createPriceAlternativeStack(text: UILabel) -> UIStackView{
         let imageView = UIImageView(image: UIImage(named: "afterpay"))
@@ -218,13 +237,9 @@ extension ProductDetailViewController {
     func createVariantTitleStack() -> UIStackView {
         let titleStack = UIStackView()
         titleStack.axis = .horizontal
+        titleStack.distribution = .equalCentering
         
-        let attributedLabelText = NSAttributedString(
-            string: "SIZE",
-            attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
-        )
-        let label = UILabel()
-        label.attributedText = attributedLabelText
+        let label = createLabel(content: "SIZE", fontsize: 14, textColor: .black)
         let button = CustomButton.createUnderlinedButton(title: "SIZE CHART", action: UIAction(handler: { action in
             self.navigationController?.pushViewController(SizeChartViewController(), animated: true)
         }))
@@ -290,8 +305,29 @@ extension ProductDetailViewController {
         
         return buttonStack
     }
+    
+    func createProductDetailStack() -> UIStackView {
+        let contentStack = UIStackView()
+        contentStack.translatesAutoresizingMaskIntoConstraints = false
+        contentStack.axis = .vertical
+        contentStack.spacing = 8
+        
+        let label = createLabel(content: "PRODUCT DETAILS", fontsize: 14, textColor: .black)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 2
+        let desc =  "Hooded Neck<br>Front Zip Closure<br>Two Side Pocket<br>Unlined inner<br>100% Polyamide<br>Made in Italy<br>Model is 184 cm tall and wear size 48 IT"
+        let detailsDesc = createLabelWithAttributedString(content: desc.htmlAttributedString(font: "Futura-Medium", size: 14, color: .black)!)
+        let details = createLabelWithAttributedString(content: product!.tags!.htmlAttributedString(font: "Futura-Medium", size: 14, color: .black)!)
+        
+        contentStack.addArrangedSubview(label)
+        contentStack.addArrangedSubview(detailsDesc)
+        contentStack.addArrangedSubview(details)
+        
+        return contentStack
+    }
 }
 
+//MARK: Carousel Methods
 extension ProductDetailViewController : HSCycleGalleryViewDelegate {
     func changePageControl(currentIndex: Int) {
         self.imagePagerControl.currentPage = currentIndex
