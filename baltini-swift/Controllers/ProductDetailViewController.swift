@@ -154,6 +154,22 @@ extension ProductDetailViewController {
         
         productDetail.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         productDetail.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        //add shippingreturn, authenticity, ask question
+        let utilStack = createUtilStack()
+        stackView.addArrangedSubview(utilStack)
+        
+        utilStack.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+        utilStack.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
+        
+        //add button
+        let addToCartButton = CustomButton.createBlackButton(title: "ADD TO CART", action: UIAction(handler: { action in
+            print("add to cart tapped")
+        }))
+        stackView.addArrangedSubview(addToCartButton)
+        
+        addToCartButton.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        addToCartButton.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
     }
     
     func createLabel(content: String, fontsize: CGFloat, textColor: UIColor) -> UILabel {
@@ -175,7 +191,6 @@ extension ProductDetailViewController {
         label.numberOfLines = 0
         return label
     }
-        
     
     func createPriceAlternativeStack(text: UILabel) -> UIStackView{
         let imageView = UIImageView(image: UIImage(named: "afterpay"))
@@ -324,6 +339,45 @@ extension ProductDetailViewController {
         contentStack.addArrangedSubview(details)
         
         return contentStack
+    }
+    
+    func createUtilStack() -> UIStackView {
+        let utilStack = UIStackView()
+        utilStack.translatesAutoresizingMaskIntoConstraints = false
+        utilStack.axis = .vertical
+        
+        let topSeparator = CustomSeparator.createHorizontalLine(width: 2, color: .brandGray)
+        let shipReturnRow = createUtilContentRow(label: "Shipping & Returns" )
+        let authenticityRow = createUtilContentRow(label: "Authenticity Guarantee")
+        let questionRow = createUtilContentRow(label: "Ask A Question")
+        let bottomSeparator = CustomSeparator.createHorizontalLine(width: 2, color: .brandGray)
+        utilStack.addArrangedSubview(topSeparator)
+        utilStack.setCustomSpacing(16, after: topSeparator)
+        utilStack.addArrangedSubview(shipReturnRow)
+        utilStack.addArrangedSubview(authenticityRow)
+        utilStack.addArrangedSubview(questionRow)
+        utilStack.setCustomSpacing(16, after: questionRow)
+        utilStack.addArrangedSubview(bottomSeparator)
+        
+        return utilStack
+    }
+    
+    func createUtilContentRow(label: String) -> UIStackView {
+        let row = UIStackView()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        row.distribution = .equalCentering
+        
+        let label = createLabel(content: label, fontsize: 14, textColor: .black)
+        let image = UIImageView(image: UIImage(named: "icRight"))
+        
+        row.addArrangedSubview(label)
+        row.addArrangedSubview(image)
+        
+        row.isLayoutMarginsRelativeArrangement = true
+        row.layoutMargins = UIEdgeInsets(top: 10, left: 24, bottom: 10, right: 12)
+        
+        return row
     }
 }
 

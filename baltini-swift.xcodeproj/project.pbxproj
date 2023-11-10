@@ -39,6 +39,7 @@
 		B8CB5E182AFA44B300E9558C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E172AFA44B300E9558C /* CustomCell.swift */; };
 		B8CB5E1C2AFC730F00E9558C /* SizeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E1B2AFC730F00E9558C /* SizeChartViewController.swift */; };
 		B8CB5E1E2AFC9AAE00E9558C /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E1D2AFC9AAE00E9558C /* LabelExtension.swift */; };
+		B8CB5E202AFDF24900E9558C /* CustomSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E1F2AFDF24900E9558C /* CustomSeparator.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -87,6 +88,7 @@
 		B8CB5E172AFA44B300E9558C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		B8CB5E1B2AFC730F00E9558C /* SizeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeChartViewController.swift; sourceTree = "<group>"; };
 		B8CB5E1D2AFC9AAE00E9558C /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
+		B8CB5E1F2AFDF24900E9558C /* CustomSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSeparator.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */,
 				B8CB5E0D2AF4FA6C00E9558C /* CustomBottomSheet.swift */,
 				B8CB5E172AFA44B300E9558C /* CustomCell.swift */,
+				B8CB5E1F2AFDF24900E9558C /* CustomSeparator.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			files = (
 				B879EFB32AE64FF60009C607 /* HomeViewController.swift in Sources */,
 				B8CB5DF82AEFB3D900E9558C /* EditAddressViewController.swift in Sources */,
+				B8CB5E202AFDF24900E9558C /* CustomSeparator.swift in Sources */,
 				B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */,
 				B879EFB92AE64FF60009C607 /* baltini_swift.xcdatamodeld in Sources */,
 				B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */,
