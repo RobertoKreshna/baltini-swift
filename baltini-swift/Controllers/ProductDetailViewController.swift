@@ -347,9 +347,9 @@ extension ProductDetailViewController {
         utilStack.axis = .vertical
         
         let topSeparator = CustomSeparator.createHorizontalLine(width: 2, color: .brandGray)
-        let shipReturnRow = createUtilContentRow(label: "Shipping & Returns" )
-        let authenticityRow = createUtilContentRow(label: "Authenticity Guarantee")
-        let questionRow = createUtilContentRow(label: "Ask A Question")
+        let shipReturnRow = createUtilContentRow(label: "Shipping & Returns", tapped: UITapGestureRecognizer(target: self, action: #selector(goToShippingReturn)))
+        let authenticityRow = createUtilContentRow(label: "Authenticity Guarantee", tapped: UITapGestureRecognizer(target: self, action: #selector(goToAuthenticity)))
+        let questionRow = createUtilContentRow(label: "Ask A Question", tapped: UITapGestureRecognizer(target: self, action: #selector(goToAskQuestion)))
         let bottomSeparator = CustomSeparator.createHorizontalLine(width: 2, color: .brandGray)
         utilStack.addArrangedSubview(topSeparator)
         utilStack.setCustomSpacing(16, after: topSeparator)
@@ -362,7 +362,7 @@ extension ProductDetailViewController {
         return utilStack
     }
     
-    func createUtilContentRow(label: String) -> UIStackView {
+    func createUtilContentRow(label: String, tapped: UITapGestureRecognizer) -> UIStackView {
         let row = UIStackView()
         row.translatesAutoresizingMaskIntoConstraints = false
         row.axis = .horizontal
@@ -376,6 +376,8 @@ extension ProductDetailViewController {
         
         row.isLayoutMarginsRelativeArrangement = true
         row.layoutMargins = UIEdgeInsets(top: 10, left: 24, bottom: 10, right: 12)
+    
+        row.addGestureRecognizer(tapped)
         
         return row
     }
@@ -395,5 +397,21 @@ extension ProductDetailViewController : HSCycleGalleryViewDelegate {
         let cell = cycleGalleryView.dequeueReusableCell(withIdentifier: "TestCollectionViewCell", for: IndexPath(item: index, section: 0)) as! ImageCarouselCell
         cell.imageView.imageFromServerURL(product!.images[index], placeHolder: UIImage(named: "productPlaceholder"))
         return cell
+    }
+}
+
+//MARK: Navigation Methods
+
+extension ProductDetailViewController {
+    @objc func goToShippingReturn(){
+        self.navigationController?.pushViewController(ShippingReturnViewController(), animated: true)
+    }
+    
+    @objc func goToAuthenticity(){
+        self.navigationController?.pushViewController(AuthenticityViewController(), animated: true)
+    }
+    
+    @objc func goToAskQuestion(){
+        self.navigationController?.pushViewController(AskQuestionViewController(), animated: true)
     }
 }
