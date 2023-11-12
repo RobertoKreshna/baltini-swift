@@ -13,6 +13,28 @@
         <attribute name="zipcode" attributeType="String"/>
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasAddress" inverseEntity="User"/>
     </entity>
+    <entity name="Order" representedClassName="Order" syncable="YES" codeGenerationType="class">
+        <attribute name="contactEmail" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="orderDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="paymentAddress" attributeType="String"/>
+        <attribute name="paymentDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="paymentMethod" attributeType="String"/>
+        <attribute name="shippingAddress" attributeType="String"/>
+        <attribute name="shippingCost" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="shippingMethod" attributeType="String"/>
+        <attribute name="taxCost" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="has" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrderProduct" inverseName="belongsTo" inverseEntity="OrderProduct"/>
+    </entity>
+    <entity name="OrderProduct" representedClassName="OrderProduct" syncable="YES" codeGenerationType="class">
+        <attribute name="brand" attributeType="String"/>
+        <attribute name="imageName" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="price" attributeType="String"/>
+        <attribute name="quantity" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="size" attributeType="String"/>
+        <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="has" inverseEntity="Order"/>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>

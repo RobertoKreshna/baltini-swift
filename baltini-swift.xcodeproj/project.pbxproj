@@ -43,6 +43,9 @@
 		B8CB5E222AFE006B00E9558C /* ShippingReturnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E212AFE006B00E9558C /* ShippingReturnViewController.swift */; };
 		B8CB5E242AFE008300E9558C /* AuthenticityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */; };
 		B8CB5E262AFE009400E9558C /* AskQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */; };
+		B8CB5E282AFE142300E9558C /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E272AFE142300E9558C /* CartModel.swift */; };
+		B8CB5E2A2AFFA33400E9558C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E292AFFA33400E9558C /* CartViewController.swift */; };
+		B8CB5E2C2B00D08800E9558C /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E2B2B00D08800E9558C /* SelectCategoryViewController.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -95,6 +98,9 @@
 		B8CB5E212AFE006B00E9558C /* ShippingReturnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingReturnViewController.swift; sourceTree = "<group>"; };
 		B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticityViewController.swift; sourceTree = "<group>"; };
 		B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskQuestionViewController.swift; sourceTree = "<group>"; };
+		B8CB5E272AFE142300E9558C /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
+		B8CB5E292AFFA33400E9558C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		B8CB5E2B2B00D08800E9558C /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 			children = (
 				B879EFB72AE64FF60009C607 /* baltini_swift.xcdatamodeld */,
 				B879EFD12AE6C49B0009C607 /* StaticProductDataModel.swift */,
+				B8CB5E272AFE142300E9558C /* CartModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,8 +199,8 @@
 				B8CB5E062AF340F200E9558C /* Extensions */,
 				B8CB5DF92AEFB3F300E9558C /* Args */,
 				B8D3AB9A2AEA4CFE0026832F /* Components */,
-				B879EFB22AE64FF60009C607 /* HomeViewController.swift */,
 				B879EFD32AE7CCC50009C607 /* TabbarViewController.swift */,
+				B879EFB22AE64FF60009C607 /* HomeViewController.swift */,
 				B879EFD52AE8C5BF0009C607 /* CategoryViewController.swift */,
 				B879EFD72AE8C6490009C607 /* OrderViewController.swift */,
 				B879EFD92AE8C6550009C607 /* AccountViewController.swift */,
@@ -211,6 +218,8 @@
 				B8CB5E212AFE006B00E9558C /* ShippingReturnViewController.swift */,
 				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
 				B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */,
+				B8CB5E292AFFA33400E9558C /* CartViewController.swift */,
+				B8CB5E2B2B00D08800E9558C /* SelectCategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -382,14 +391,17 @@
 				B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */,
 				B879EFB92AE64FF60009C607 /* baltini_swift.xcdatamodeld in Sources */,
 				B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */,
+				B8CB5E2C2B00D08800E9558C /* SelectCategoryViewController.swift in Sources */,
 				B879EFD62AE8C5BF0009C607 /* CategoryViewController.swift in Sources */,
 				B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */,
 				B8D3ABA12AEB5ED50026832F /* CustomButton.swift in Sources */,
+				B8CB5E282AFE142300E9558C /* CartModel.swift in Sources */,
 				B8CB5E162AFA2ACC00E9558C /* StringExtension.swift in Sources */,
 				B8CB5DFD2AF0A6A800E9558C /* MyProfileViewController.swift in Sources */,
 				B8D3ABAE2AEBC7B50026832F /* CustomPopup.swift in Sources */,
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
 				B8CB5E182AFA44B300E9558C /* CustomCell.swift in Sources */,
+				B8CB5E2A2AFFA33400E9558C /* CartViewController.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
 				B8CB5E1E2AFC9AAE00E9558C /* LabelExtension.swift in Sources */,
 				B8CB5E0E2AF4FA6C00E9558C /* CustomBottomSheet.swift in Sources */,

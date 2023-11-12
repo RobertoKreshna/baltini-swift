@@ -11,6 +11,7 @@ class AddAddressViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.tabBarController?.tabBar.isHidden = true
         removeUI()
         createUI()
     }

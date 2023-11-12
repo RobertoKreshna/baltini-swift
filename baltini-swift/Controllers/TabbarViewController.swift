@@ -28,7 +28,8 @@ class TabbarViewController: UITabBarController {
         accountVC.title = "ACCOUNT"
         
         //add to tabbar
-        self.setViewControllers( [ homeVC, categoryVC, orderVC, accountVC ] ,animated: false)
+        let controllers = [homeVC, categoryVC, orderVC, accountVC]
+        self.setViewControllers(controllers.map { UINavigationController(rootViewController: $0)}, animated: true)
         
         //customize items
         guard let items = self.tabBar.items else { return }

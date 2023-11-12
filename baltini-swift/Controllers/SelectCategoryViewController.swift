@@ -1,35 +1,37 @@
 //
-//  ShippingReturnViewController.swift
+//  SelectCategoryViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 10/11/23.
+//  Created by Roberto Kreshna on 12/11/23.
 //
+
 
 import UIKit
 
-class ShippingReturnViewController : UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+class SelectCategoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
         removeUI()
         createUI()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     func removeUI() {
        let subviews = view.subviews
        subviews.forEach { subview in
+           print(subview)
            subview.removeFromSuperview()
        }
    }
 }
 
 //MARK: Create UI Methods
-
-extension ShippingReturnViewController {
+extension SelectCategoryViewController {
     func createUI(){
         view.backgroundColor = .white
         
@@ -58,6 +60,6 @@ extension ShippingReturnViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "Shipping & Return", icName: "icBack", sender: self, usePadding: true)
+        BackButton.addBackButton(to: stackView, title: "Select Category", icName: "icBack", sender: self, usePadding: true)
     }
 }
