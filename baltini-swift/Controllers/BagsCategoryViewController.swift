@@ -1,5 +1,5 @@
 //
-//  MenCategoryViewController.swift
+//  BagCategoryViewController.swift
 //  baltini-swift
 //
 //  Created by Roberto Kreshna on 13/11/23.
@@ -7,17 +7,24 @@
 
 import UIKit
 
-class ManCategoryViewController: UIViewController {
+class BagsCategoryViewController: UIViewController {
+    
+    private let clothingData = [
+        "Man" : ["Backpacks", "Belt Bags", "Other Bags", "Shoulder Bags", "Totes"],
+        "Woman": ["Backpacks", "Belt Bags", "Clutches", "Handbags", "Other Bags", "Shoulder Bags", "Totes"]
+    ]
+    
+    var selectedGender: String? = nil
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
         removeUI()
         createUI()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     func removeUI() {
@@ -28,13 +35,17 @@ class ManCategoryViewController: UIViewController {
    }
 }
 
+
 //MARK: Create UI Methods
-extension ManCategoryViewController {
+extension BagsCategoryViewController {
+    
     func createUI(){
+        //change view bg color
         view.backgroundColor = .white
         
         //create scroll view
         let scrollView = UIScrollView()
+        scrollView.isUserInteractionEnabled = true
         view.addSubview(scrollView)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,8 +59,8 @@ extension ManCategoryViewController {
         scrollView.addSubview(stackView)
         
         stackView.axis = .vertical
-        stackView.spacing = 16
-        stackView.alignment = .center
+        stackView.isUserInteractionEnabled = true
+        stackView.spacing = 4
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
@@ -58,10 +69,24 @@ extension ManCategoryViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        let button = CustomButton.createBlackButton(title: "Man", action: UIAction(handler: { action in
-            print("man tapped")
-        }))
+        BackButton.addBackButton(to: stackView, title: "Clothing", icName: "icBack", sender: self, usePadding: true)
+        stackView.setCustomSpacing(24, after: stackView.arrangedSubviews.last!)
         
-        stackView.addArrangedSubview(button)
+        clothingData[selectedGender!]?.forEach({ string in
+            let row = CustomCell.createCategoryCell(
+                title: string,
+                useIcon: false,
+                tapped: UITapGestureRecognizer(target: self, action: #selector(tapped))
+            )
+            stackView.addArrangedSubview(row)
+        })
     }
 }
+
+//MARK: Tapped
+extension BagsCategoryViewController {
+    @objc func tapped(){
+        print("tapped")
+    }
+}
+

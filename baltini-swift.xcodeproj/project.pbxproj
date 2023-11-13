@@ -46,7 +46,11 @@
 		B8CB5E282AFE142300E9558C /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E272AFE142300E9558C /* CartModel.swift */; };
 		B8CB5E2A2AFFA33400E9558C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E292AFFA33400E9558C /* CartViewController.swift */; };
 		B8CB5E2C2B00D08800E9558C /* WomanCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E2B2B00D08800E9558C /* WomanCategoryViewController.swift */; };
-		B8CB5E2E2B01BC2900E9558C /* MenCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E2D2B01BC2800E9558C /* MenCategoryViewController.swift */; };
+		B8CB5E2E2B01BC2900E9558C /* ManCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E2D2B01BC2800E9558C /* ManCategoryViewController.swift */; };
+		B8CB5E302B02207A00E9558C /* ClothingCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E2F2B02207A00E9558C /* ClothingCategoryViewController.swift */; };
+		B8CB5E322B022A3800E9558C /* ShoesCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E312B022A3800E9558C /* ShoesCategoryViewController.swift */; };
+		B8CB5E362B022A5E00E9558C /* BagsCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E352B022A5E00E9558C /* BagsCategoryViewController.swift */; };
+		B8CB5E382B022A7800E9558C /* AccessoriesCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E372B022A7800E9558C /* AccessoriesCategoryViewController.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -102,7 +106,11 @@
 		B8CB5E272AFE142300E9558C /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		B8CB5E292AFFA33400E9558C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		B8CB5E2B2B00D08800E9558C /* WomanCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WomanCategoryViewController.swift; sourceTree = "<group>"; };
-		B8CB5E2D2B01BC2800E9558C /* MenCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenCategoryViewController.swift; sourceTree = "<group>"; };
+		B8CB5E2D2B01BC2800E9558C /* ManCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManCategoryViewController.swift; sourceTree = "<group>"; };
+		B8CB5E2F2B02207A00E9558C /* ClothingCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCategoryViewController.swift; sourceTree = "<group>"; };
+		B8CB5E312B022A3800E9558C /* ShoesCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoesCategoryViewController.swift; sourceTree = "<group>"; };
+		B8CB5E352B022A5E00E9558C /* BagsCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagsCategoryViewController.swift; sourceTree = "<group>"; };
+		B8CB5E372B022A7800E9558C /* AccessoriesCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesCategoryViewController.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -222,7 +230,11 @@
 				B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */,
 				B8CB5E292AFFA33400E9558C /* CartViewController.swift */,
 				B8CB5E2B2B00D08800E9558C /* WomanCategoryViewController.swift */,
-				B8CB5E2D2B01BC2800E9558C /* MenCategoryViewController.swift */,
+				B8CB5E2D2B01BC2800E9558C /* ManCategoryViewController.swift */,
+				B8CB5E2F2B02207A00E9558C /* ClothingCategoryViewController.swift */,
+				B8CB5E312B022A3800E9558C /* ShoesCategoryViewController.swift */,
+				B8CB5E352B022A5E00E9558C /* BagsCategoryViewController.swift */,
+				B8CB5E372B022A7800E9558C /* AccessoriesCategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -389,9 +401,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B879EFB32AE64FF60009C607 /* HomeViewController.swift in Sources */,
+				B8CB5E362B022A5E00E9558C /* BagsCategoryViewController.swift in Sources */,
 				B8CB5DF82AEFB3D900E9558C /* EditAddressViewController.swift in Sources */,
 				B8CB5E202AFDF24900E9558C /* CustomSeparator.swift in Sources */,
-				B8CB5E2E2B01BC2900E9558C /* MenCategoryViewController.swift in Sources */,
+				B8CB5E2E2B01BC2900E9558C /* ManCategoryViewController.swift in Sources */,
 				B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */,
 				B879EFB92AE64FF60009C607 /* baltini_swift.xcdatamodeld in Sources */,
 				B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */,
@@ -400,10 +413,12 @@
 				B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */,
 				B8D3ABA12AEB5ED50026832F /* CustomButton.swift in Sources */,
 				B8CB5E282AFE142300E9558C /* CartModel.swift in Sources */,
+				B8CB5E302B02207A00E9558C /* ClothingCategoryViewController.swift in Sources */,
 				B8CB5E162AFA2ACC00E9558C /* StringExtension.swift in Sources */,
 				B8CB5DFD2AF0A6A800E9558C /* MyProfileViewController.swift in Sources */,
 				B8D3ABAE2AEBC7B50026832F /* CustomPopup.swift in Sources */,
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
+				B8CB5E322B022A3800E9558C /* ShoesCategoryViewController.swift in Sources */,
 				B8CB5E182AFA44B300E9558C /* CustomCell.swift in Sources */,
 				B8CB5E2A2AFFA33400E9558C /* CartViewController.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
@@ -429,6 +444,7 @@
 				B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */,
 				B8CB5E242AFE008300E9558C /* AuthenticityViewController.swift in Sources */,
 				B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */,
+				B8CB5E382B022A7800E9558C /* AccessoriesCategoryViewController.swift in Sources */,
 				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,
 				B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */,
 				B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */,

@@ -25,3 +25,33 @@ class ImageCarouselCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class CustomCell {
+    static func createCategoryCell(title: String, useIcon: Bool, tapped: UITapGestureRecognizer) -> UIStackView{
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        
+        let attributedTitle = NSAttributedString(
+            string: title,
+            attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+        )
+        
+        let label = UILabel()
+        label.attributedText = attributedTitle
+        
+        stack.addArrangedSubview(label)
+        if(useIcon){
+            let icon = UIImageView(image: UIImage(named: "icRight"))
+            stack.addArrangedSubview(icon)
+        }
+        
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.layoutMargins = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
+        
+        stack.addGestureRecognizer(tapped)
+        
+        return stack
+    }
+}

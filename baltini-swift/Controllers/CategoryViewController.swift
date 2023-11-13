@@ -17,8 +17,9 @@ class CategoryViewController: UIViewController {
         manVC.title = "MAN"
         return [womanVC, manVC]
     }()
-        
     
+    private var contentViewPager = LZViewPager()
+        
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
@@ -58,7 +59,6 @@ extension CategoryViewController {
         
         BackButton.addBackButton(to: stackView, title: "Woman", icName: "icBack", sender: self, usePadding: true)
         
-        let contentViewPager = LZViewPager()
         contentViewPager.dataSource = self
         contentViewPager.delegate = self
         contentViewPager.hostController = self

@@ -1,14 +1,13 @@
 //
-//  SelectCategoryViewController.swift
+//  MenCategoryViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 12/11/23.
+//  Created by Roberto Kreshna on 13/11/23.
 //
-
 
 import UIKit
 
-class WomanCategoryViewController: UIViewController {
+class ManCategoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -30,7 +29,7 @@ class WomanCategoryViewController: UIViewController {
 }
 
 //MARK: Create UI Methods
-extension WomanCategoryViewController {
+extension ManCategoryViewController {
     func createUI(){
         view.backgroundColor = .white
         
@@ -100,32 +99,32 @@ extension WomanCategoryViewController {
 
 //MARK: Navigations
 
-extension WomanCategoryViewController {
+extension ManCategoryViewController {
     @objc func tapped(){
         print("tapped")
     }
     
     @objc func goToClothing(){
         let vc = ClothingCategoryViewController()
-        vc.selectedGender = "Woman"
+        vc.selectedGender = "Man"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func goToShoes(){
         let vc = ShoesCategoryViewController()
-        vc.selectedGender = "Woman"
+        vc.selectedGender = "Man"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func goToBags(){
         let vc = BagsCategoryViewController()
-        vc.selectedGender = "Woman"
+        vc.selectedGender = "Man"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func goToAccessories(){
         let vc = AccessoriesCategoryViewController()
-        vc.selectedGender = "Woman"
+        vc.selectedGender = "Man"
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
