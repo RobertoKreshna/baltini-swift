@@ -143,4 +143,24 @@ class CustomButton {
         button.addAction(tapped, for: .touchUpInside)
         return button
     }
+    
+    static func createCategoryTab(title: String, isSelected: Bool, tapped: UIAction) -> UIButton{
+        let button = UIButton(type: .system)
+        let attributedTitle = NSAttributedString(
+            string: title,
+            attributes: [
+                .font: UIFont(name: isSelected ? "Futura-Bold" : "Futura-Medium", size: 14)!,
+                .foregroundColor : UIColor.black
+            ]
+        )
+        button.setAttributedTitle(attributedTitle,for: .normal)
+        //add padding
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 11, leading: 0, bottom: 16, trailing: 0)
+        button.configuration = configuration
+        //add action
+        button.addAction(tapped, for: .touchUpInside)
+        
+        return button
+    }
 }

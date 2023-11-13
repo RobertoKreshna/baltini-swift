@@ -1,14 +1,13 @@
 //
-//  SelectCategoryViewController.swift
+//  MenCategoryViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 12/11/23.
+//  Created by Roberto Kreshna on 13/11/23.
 //
-
 
 import UIKit
 
-class SelectCategoryViewController: UIViewController {
+class ManCategoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -24,14 +23,13 @@ class SelectCategoryViewController: UIViewController {
     func removeUI() {
        let subviews = view.subviews
        subviews.forEach { subview in
-           print(subview)
            subview.removeFromSuperview()
        }
    }
 }
 
 //MARK: Create UI Methods
-extension SelectCategoryViewController {
+extension ManCategoryViewController {
     func createUI(){
         view.backgroundColor = .white
         
@@ -60,6 +58,10 @@ extension SelectCategoryViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "Select Category", icName: "icBack", sender: self, usePadding: true)
+        let button = CustomButton.createBlackButton(title: "Man", action: UIAction(handler: { action in
+            print("man tapped")
+        }))
+        
+        stackView.addArrangedSubview(button)
     }
 }

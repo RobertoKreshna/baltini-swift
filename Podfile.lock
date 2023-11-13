@@ -1,20 +1,32 @@
 PODS:
   - HSCycleGalleryView (1.2.0)
+  - LZViewPager (1.2.8):
+    - SnapKit (~> 5.6.0)
+  - SnapKit (5.6.0)
   - Toast-Swift (5.0.1)
+  - ViewPager-Swift (2.0.2)
 
 DEPENDENCIES:
   - HSCycleGalleryView
+  - LZViewPager
   - Toast-Swift
+  - ViewPager-Swift
 
 SPEC REPOS:
   trunk:
     - HSCycleGalleryView
+    - LZViewPager
+    - SnapKit
     - Toast-Swift
+    - ViewPager-Swift
 
 SPEC CHECKSUMS:
   HSCycleGalleryView: 5101435175a26d08f1c062cf6cb245f58f09b425
+  LZViewPager: 832bd177210060e1282b67aa1e9cd201ded67a5b
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  ViewPager-Swift: 92fa2a54d56998c85526eaaafc4b7b3f4830ca36
 
-PODFILE CHECKSUM: c73e478b0b75cd85e94b109b20a82449327ad18e
+PODFILE CHECKSUM: 36e637c0c6848d5a45e140232b13a65fc6327380
 
 COCOAPODS: 1.13.0
