@@ -49,7 +49,7 @@ extension WomanCategoryViewController {
         let designerCell = CustomCell.createCategoryCell(
             title: "Designer",
             useIcon: true,
-            tapped:UITapGestureRecognizer(target: self, action: #selector(tapped))
+            tapped:UITapGestureRecognizer(target: self, action: #selector(goToDesigner))
         )
         let newArrivalCell = CustomCell.createCategoryCell(
             title: "New Arrival",
@@ -103,6 +103,11 @@ extension WomanCategoryViewController {
 extension WomanCategoryViewController {
     @objc func tapped(){
         print("tapped")
+    }
+    
+    @objc func goToDesigner(){
+        let vc = DesignerViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func goToClothing(){

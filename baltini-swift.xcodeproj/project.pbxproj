@@ -51,6 +51,7 @@
 		B8CB5E322B022A3800E9558C /* ShoesCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E312B022A3800E9558C /* ShoesCategoryViewController.swift */; };
 		B8CB5E362B022A5E00E9558C /* BagsCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E352B022A5E00E9558C /* BagsCategoryViewController.swift */; };
 		B8CB5E382B022A7800E9558C /* AccessoriesCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E372B022A7800E9558C /* AccessoriesCategoryViewController.swift */; };
+		B8CB5E3A2B030BCD00E9558C /* DesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E392B030BCD00E9558C /* DesignerViewController.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -111,6 +112,7 @@
 		B8CB5E312B022A3800E9558C /* ShoesCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoesCategoryViewController.swift; sourceTree = "<group>"; };
 		B8CB5E352B022A5E00E9558C /* BagsCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagsCategoryViewController.swift; sourceTree = "<group>"; };
 		B8CB5E372B022A7800E9558C /* AccessoriesCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesCategoryViewController.swift; sourceTree = "<group>"; };
+		B8CB5E392B030BCD00E9558C /* DesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewController.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				B8CB5E312B022A3800E9558C /* ShoesCategoryViewController.swift */,
 				B8CB5E352B022A5E00E9558C /* BagsCategoryViewController.swift */,
 				B8CB5E372B022A7800E9558C /* AccessoriesCategoryViewController.swift */,
+				B8CB5E392B030BCD00E9558C /* DesignerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				B8D3ABAE2AEBC7B50026832F /* CustomPopup.swift in Sources */,
 				B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */,
 				B8CB5E322B022A3800E9558C /* ShoesCategoryViewController.swift in Sources */,
+				B8CB5E3A2B030BCD00E9558C /* DesignerViewController.swift in Sources */,
 				B8CB5E182AFA44B300E9558C /* CustomCell.swift in Sources */,
 				B8CB5E2A2AFFA33400E9558C /* CartViewController.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
