@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomTextfield {
-    func createTextfield(placeholder: String, owner: UITextFieldDelegate, text: String?) -> UITextField {
+    private static func createTextfield(placeholder: String, owner: UITextFieldDelegate, text: String?) -> UITextField {
         let attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [.font: UIFont(name: "Futura-Medium", size: 16)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)]
@@ -31,7 +31,7 @@ class CustomTextfield {
         return textfield
     }
     
-     func createTogglePasswordButton(textfield: UITextField) -> UIButton {
+    private static func createTogglePasswordButton(textfield: UITextField) -> UIButton {
         let passwordToggleButton = UIButton()
         passwordToggleButton.setImage(UIImage(named: "icEyeClosed"), for: .normal)
         textfield.isSecureTextEntry = true
@@ -47,7 +47,7 @@ class CustomTextfield {
         return passwordToggleButton
     }
     
-    func createPasswordTextfield(placeholder: String, owner: UITextFieldDelegate, text: String?) -> UIView {
+    private static func createPasswordTextfield(placeholder: String, owner: UITextFieldDelegate, text: String?) -> UIView {
         let textfield = createTextfield(placeholder: placeholder, owner: owner, text: text)
         let button = createTogglePasswordButton(textfield: textfield)
         
@@ -61,7 +61,7 @@ class CustomTextfield {
         return textfieldStack
     }
     
-     func createLabel(placeholder: String) -> UILabel {
+    private static func createLabel(placeholder: String) -> UILabel {
         let label = UILabel()
         let attributedString = NSAttributedString(
             string: placeholder.uppercased(),
@@ -71,7 +71,7 @@ class CustomTextfield {
         return label
     }
     
-     func createBorderLine(width: CGFloat, length: CGFloat) -> UIView {
+    private static func createBorderLine(width: CGFloat, length: CGFloat) -> UIView {
         let view = UIView()
         let border = CALayer()
         border.backgroundColor = UIColor.textfieldLine.cgColor
@@ -81,12 +81,11 @@ class CustomTextfield {
     }
     
     static func addTextfield(to stack: UIStackView, placeholder: String, isPassword: Bool, owner: UITextFieldDelegate, text: String? = nil){
-        let blueprint = CustomTextfield()
-        let desc = blueprint.createLabel(placeholder: placeholder)
+        let desc = createLabel(placeholder: placeholder)
         let textfield = isPassword
-        ? blueprint.createPasswordTextfield(placeholder: placeholder, owner: owner, text: text)
-        : blueprint.createTextfield(placeholder: placeholder, owner: owner, text: text)
-        let border = blueprint.createBorderLine(width: 1, length: UIScreen.main.bounds.width-32)
+        ? createPasswordTextfield(placeholder: placeholder, owner: owner, text: text)
+        : createTextfield(placeholder: placeholder, owner: owner, text: text)
+        let border = createBorderLine(width: 1, length: UIScreen.main.bounds.width-32)
 
         stack.addArrangedSubview(desc)
         stack.setCustomSpacing(4, after: desc)
@@ -95,5 +94,35 @@ class CustomTextfield {
         stack.addArrangedSubview(border)
         
         textfield.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
+    }
+    
+    static func createSearchBar(owner: UITextFieldDelegate, text: String) -> UITextField {
+        let attributedPlaceholder = NSAttributedString(
+            string: "Search designer",
+            attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)]
+        )
+        
+        let textfield = UITextField()
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        
+        textfield.attributedPlaceholder = attributedPlaceholder
+        textfield.backgroundColor = .brandGray
+        textfield.font = UIFont(name: "Futura-Medium", size: 14)!
+        textfield.textColor = .black
+        textfield.borderStyle = .roundedRect
+        textfield.autocorrectionType = .no
+        textfield.autocapitalizationType = .none
+        if(text.isEmpty == false) { textfield.text = text }
+        
+        let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        iconView.image = UIImage(named: "icSearch")
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        iconContainerView.addSubview(iconView)
+        textfield.leftView = iconContainerView
+        textfield.leftViewMode = .always
+        
+        textfield.delegate = owner
+        
+        return textfield
     }
 }
