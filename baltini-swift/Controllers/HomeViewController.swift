@@ -63,6 +63,7 @@ extension HomeViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
+        addSearchCartBar(to: stackView)
         CustomBanner.addPromotionBanner(to: stackView)
         CustomBanner.addCollectionBanner(to: stackView, tap: UITapGestureRecognizer(target: self, action: #selector(goToList)))
         CustomBanner.addGenderBanner(to: stackView)
@@ -79,10 +80,16 @@ extension HomeViewController {
         searchCartBar.translatesAutoresizingMaskIntoConstraints = false
         
         let searchTextfield = CustomTextfield.createSearchBar(owner: self, placeholder: "Search...")
+        let cart = UIImageView(image: UIImage(named: "icCart"))
+        cart.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         searchCartBar.addArrangedSubview(searchTextfield)
+        searchCartBar.setCustomSpacing(10, after: searchTextfield)
+        searchCartBar.addArrangedSubview(cart)
         
         stack.addArrangedSubview(searchCartBar)
+        searchCartBar.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
+        searchCartBar.rightAnchor.constraint(equalTo: stack.rightAnchor, constant: -16).isActive = true
     }
     
     func addNewArrival(to stack: UIStackView){
