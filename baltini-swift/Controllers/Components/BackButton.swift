@@ -49,12 +49,20 @@ class BackButton {
         return backButtonStack
     }
     
-    static func createSearchCartBar(owner: UITextFieldDelegate) -> UIStackView{
+    private static func createCartButton(tapped: UIAction) -> UIButton{
+        let imageButton = UIButton()
+        imageButton.setImage(UIImage(named: "icCart"), for: .normal)
+        imageButton.addAction(tapped, for: .touchUpInside)
+        
+        return imageButton
+    }
+    
+    static func createSearchCartBar(owner: UITextFieldDelegate, cartTapped: UIAction) -> UIStackView{
         let searchCartBar = UIStackView()
         searchCartBar.translatesAutoresizingMaskIntoConstraints = false
         
         let searchTextfield = CustomTextfield.createSearchBar(owner: owner, placeholder: "Search...")
-        let cart = UIImageView(image: UIImage(named: "icCart"))
+        let cart = createCartButton(tapped: cartTapped)
         cart.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         if(CommonStore.shared.getCartProductCount() != 0){
@@ -80,14 +88,15 @@ class BackButton {
         return searchCartBar
     }
     
-    static func createBackSearchCartBar(owner: UITextFieldDelegate, backTapped: UIAction) -> UIStackView {
+    static func createBackSearchCartBar(owner: UITextFieldDelegate, backTapped: UIAction, cartTapped: UIAction) -> UIStackView {
         let backSearchCartBar = UIStackView()
+        backSearchCartBar.isUserInteractionEnabled = true
         backSearchCartBar.translatesAutoresizingMaskIntoConstraints = false
         
         let backBtnImage = createBackButton(icName: "icBack", tapped: backTapped)
         backBtnImage.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         let searchTextfield = CustomTextfield.createSearchBar(owner: owner, placeholder: "Search...")
-        let cart = UIImageView(image: UIImage(named: "icCart"))
+        let cart = createCartButton(tapped: cartTapped)
         cart.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         if(CommonStore.shared.getCartProductCount() != 0){

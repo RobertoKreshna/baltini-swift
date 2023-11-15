@@ -136,9 +136,11 @@ extension ProductListViewController {
     }
     
     func addSearchCartBar(to stack: UIStackView) {
-        let searchCartBar = BackButton.createBackSearchCartBar(owner: self, backTapped: UIAction(handler: { action in
-            self.navigationController?.popViewController(animated: true)
-        }))
+        let searchCartBar = BackButton.createBackSearchCartBar(
+            owner: self,
+            backTapped: UIAction(handler: { action in self.navigationController?.popViewController(animated: true) }),
+            cartTapped: UIAction(handler: { action in self.goToCart() })
+        )
         
         stack.addArrangedSubview(searchCartBar)
         searchCartBar.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
@@ -167,6 +169,10 @@ extension ProductListViewController {
         let vc = ProductDetailViewController()
         vc.productId = recognizer.id
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func goToCart(){
+        self.navigationController?.pushViewController(CartViewController(), animated: true)
     }
 }
 

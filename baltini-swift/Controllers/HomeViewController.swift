@@ -77,7 +77,7 @@ extension HomeViewController {
     }
     
     func addSearchCartBar(to stack: UIStackView) {
-        let searchCartBar = BackButton.createSearchCartBar(owner: self)
+        let searchCartBar = BackButton.createSearchCartBar(owner: self, cartTapped: UIAction(handler: { action in self.goToCart() }))
         
         stack.addArrangedSubview(searchCartBar)
         searchCartBar.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
@@ -303,6 +303,10 @@ extension HomeViewController {
 extension HomeViewController {
     @objc func goToList(){
         self.navigationController?.pushViewController(ProductListViewController(), animated: true)
+    }
+    
+    @objc func goToCart(){
+        self.navigationController?.pushViewController(CartViewController(), animated: true)
     }
 }
 
