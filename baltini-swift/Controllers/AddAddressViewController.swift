@@ -54,7 +54,13 @@ extension AddAddressViewController {
         pageStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         pageStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32).isActive = true
         
-        BackButton.addBackButton(to: pageStackView, title: "Add Address", icName: "icBack", sender: self, usePadding: false)
+        let backButton = BackButton.createBackButton(title: "Add Address" , icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        pageStackView.addArrangedSubview(backButton)
+        backButton.topAnchor.constraint(equalTo: pageStackView.topAnchor).isActive = true
+        backButton.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
+        
         pageStackView.setCustomSpacing(30, after: pageStackView.arrangedSubviews.last!)
         CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)

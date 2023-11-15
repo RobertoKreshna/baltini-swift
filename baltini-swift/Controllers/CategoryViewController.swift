@@ -57,7 +57,12 @@ extension CategoryViewController {
         stackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "Woman", icName: "icBack", sender: self, usePadding: true)
+        let backButton = BackButton.createBackButton(title: "Woman" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        stackView.addArrangedSubview(backButton)
+        backButton.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
         
         contentViewPager.dataSource = self
         contentViewPager.delegate = self

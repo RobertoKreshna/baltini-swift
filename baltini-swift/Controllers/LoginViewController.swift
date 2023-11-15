@@ -45,7 +45,13 @@ extension LoginViewController {
         pageStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         pageStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         
-        BackButton.addBackButton(to: pageStackView, title: "Login", icName: "icBack", sender: self, usePadding: false)
+        let backButton = BackButton.createBackButton(title: "Login" , icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        pageStackView.addArrangedSubview(backButton)
+        backButton.topAnchor.constraint(equalTo: pageStackView.topAnchor).isActive = true
+        backButton.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
+        
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
         addDescLabel(to: pageStackView)
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)

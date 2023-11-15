@@ -52,7 +52,13 @@ extension MyProfileViewController {
         pageStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         pageStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         
-        BackButton.addBackButton(to: pageStackView, title: "My Profile", icName: "icBack", sender: self, usePadding: false)
+        let backButton = BackButton.createBackButton(title: "My Profile" , icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        pageStackView.addArrangedSubview(backButton)
+        backButton.topAnchor.constraint(equalTo: pageStackView.topAnchor).isActive = true
+        backButton.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
+        
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
         CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self, text: currentUser?.firstName)
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)

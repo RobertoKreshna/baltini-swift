@@ -9,9 +9,10 @@ import UIKit
 
 
 class BackButton {
-    private static func createBackButton(icName: String) -> UIButton {
+    private static func createBackButton(icName: String, tapped: UIAction) -> UIButton {
         let imageButton = UIButton()
         imageButton.setImage(UIImage(named: icName), for: .normal)
+        imageButton.addAction(tapped, for: .touchUpInside)
         
         return imageButton
     }
@@ -26,15 +27,12 @@ class BackButton {
         return label
     }
     
-    static func addBackButton(to stack: UIStackView, title:String, icName: String,  sender: UIViewController, usePadding: Bool){
-        let function = UIAction { action in sender.navigationController?.popViewController(animated: true) }
-        
+    static func createBackButton(title:String, icName: String, usePadding: Bool, tapped: UIAction) -> UIStackView{
         let backButtonStack = UIStackView()
         backButtonStack.axis = .horizontal
         
         let backBtnLabel = createBackButtonTitle(title: title)
-        let backBtnImage = createBackButton(icName: icName)
-        backBtnImage.addAction(function, for: .touchUpInside)
+        let backBtnImage = createBackButton(icName: icName, tapped: tapped)
         
         backBtnImage.widthAnchor.constraint(equalToConstant: 36).isActive = true
         backBtnImage.heightAnchor.constraint(equalToConstant: 36).isActive = true
@@ -47,10 +45,11 @@ class BackButton {
         backButtonStack.addArrangedSubview(backBtnImage)
         backButtonStack.addArrangedSubview(backBtnLabel)
         
-        stack.addArrangedSubview(backButtonStack)
+        return backButtonStack
+    }
+    
+    static func addSearchBackButton(){
         
-        backButtonStack.topAnchor.constraint(equalTo: stack.topAnchor).isActive = true
-        backButtonStack.leftAnchor.constraint(equalTo: stack.leftAnchor).isActive = true
     }
     
 }

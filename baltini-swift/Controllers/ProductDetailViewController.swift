@@ -92,7 +92,13 @@ extension ProductDetailViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "\(String(describing: product!.brand)) - \(String(describing: product!.name))", icName: "icBack", sender: self, usePadding: true)
+        let backButton = BackButton.createBackButton(title: "\(String(describing: product!.brand)) - \(String(describing: product!.name))" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        stackView.addArrangedSubview(backButton)
+        backButton.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+        
         CustomBanner.addPromotionBanner(to: stackView, spacing: 0)
         
         //add image carousel
@@ -165,7 +171,7 @@ extension ProductDetailViewController {
         
         //add button
         let addToCartButton = CustomButton.createBlackButton(title: "ADD TO CART", action: UIAction(handler: { action in
-            print("add to cart tapped")
+            CommonStore.shared.addProductToCart(item: self.product!, quantity: self.quantity, varIndex: self.selectedVariantIndex)
         }))
         stackView.addArrangedSubview(addToCartButton)
         

@@ -69,7 +69,12 @@ extension BagsCategoryViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "Clothing", icName: "icBack", sender: self, usePadding: true)
+        let backButton = BackButton.createBackButton(title: "Bags" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        stackView.addArrangedSubview(backButton)
+        backButton.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
         stackView.setCustomSpacing(24, after: stackView.arrangedSubviews.last!)
         
         clothingData[selectedGender!]?.forEach({ string in

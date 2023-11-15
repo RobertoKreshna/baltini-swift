@@ -92,8 +92,14 @@ extension ProductListViewController {
         stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+
+        let backButton = BackButton.createBackButton(title: "Product List" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        stackView.addArrangedSubview(backButton)
+        backButton.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
         
-        BackButton.addBackButton(to: stackView, title: "Product List", icName: "icBack", sender: self, usePadding: true)
         CustomBanner.addPromotionBanner(to: stackView, spacing: 16)
         addFilterSort(to: stackView)
         

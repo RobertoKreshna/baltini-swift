@@ -230,7 +230,6 @@
 				B8CB5E212AFE006B00E9558C /* ShippingReturnViewController.swift */,
 				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
 				B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */,
-				B8CB5E292AFFA33400E9558C /* CartViewController.swift */,
 				B8CB5E2B2B00D08800E9558C /* WomanCategoryViewController.swift */,
 				B8CB5E2D2B01BC2800E9558C /* ManCategoryViewController.swift */,
 				B8CB5E2F2B02207A00E9558C /* ClothingCategoryViewController.swift */,
@@ -238,6 +237,7 @@
 				B8CB5E352B022A5E00E9558C /* BagsCategoryViewController.swift */,
 				B8CB5E372B022A7800E9558C /* AccessoriesCategoryViewController.swift */,
 				B8CB5E392B030BCD00E9558C /* DesignerViewController.swift */,
+				B8CB5E292AFFA33400E9558C /* CartViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
