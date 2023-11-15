@@ -10,5 +10,6 @@ target 'baltini-swift' do
   pod 'HSCycleGalleryView'
   pod 'LZViewPager'
   pod 'BadgeSwift'
+  pod 'TTGSnackbar'
 
 end

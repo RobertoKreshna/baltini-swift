@@ -163,4 +163,11 @@ class CustomButton {
         
         return button
     }
+    
+    static func createImageButton(imageName: String, tapped: UIAction) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: imageName)!.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addAction(tapped, for: .touchUpInside)
+        return button
+    }
 }

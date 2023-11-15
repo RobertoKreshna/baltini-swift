@@ -5,12 +5,14 @@ PODS:
     - SnapKit (~> 5.6.0)
   - SnapKit (5.6.0)
   - Toast-Swift (5.0.1)
+  - TTGSnackbar (1.11.1)
 
 DEPENDENCIES:
   - BadgeSwift
   - HSCycleGalleryView
   - LZViewPager
   - Toast-Swift
+  - TTGSnackbar
 
 SPEC REPOS:
   trunk:
@@ -19,6 +21,7 @@ SPEC REPOS:
     - LZViewPager
     - SnapKit
     - Toast-Swift
+    - TTGSnackbar
 
 SPEC CHECKSUMS:
   BadgeSwift: a81547ffde1f462bb5fc02e3fa3fdcbc1b888354
@@ -26,7 +29,8 @@ SPEC CHECKSUMS:
   LZViewPager: 832bd177210060e1282b67aa1e9cd201ded67a5b
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  TTGSnackbar: fea91c62637b5662f808a4c3b55f7631cb7e1ef7
 
-PODFILE CHECKSUM: 551f2fb591b4940ded9b5c938f37993ac5f7bd22
+PODFILE CHECKSUM: 9d90c6da1e8d179d35f7916be00021291fbc5e39
 
 COCOAPODS: 1.13.0

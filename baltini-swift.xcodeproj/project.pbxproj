@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99E98AF461EFDB368BC2FC01 /* Pods_baltini_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */; };
 		B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */; };
 		B869B7BF2AEE20D300ABB82D /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */; };
 		B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFAE2AE64FF60009C607 /* AppDelegate.swift */; };
@@ -60,12 +61,10 @@
 		B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABA62AEB80120026832F /* RegisterViewController.swift */; };
 		B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABAA2AEBBD010026832F /* CustomToast.swift */; };
 		B8D3ABAE2AEBC7B50026832F /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3ABAD2AEBC7B50026832F /* CustomPopup.swift */; };
-		C469E80C2F85741D457E6D1F /* Pods_baltini_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0649E51DC7D896F1366CAF /* Pods_baltini_swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A0649E51DC7D896F1366CAF /* Pods_baltini_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_baltini_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4FD559395C856E42EDBC2CC /* Pods-baltini-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baltini-swift.debug.xcconfig"; path = "Target Support Files/Pods-baltini-swift/Pods-baltini-swift.debug.xcconfig"; sourceTree = "<group>"; };
+		AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_baltini_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressViewController.swift; sourceTree = "<group>"; };
 		B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		B879EFAB2AE64FF60009C607 /* baltini-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baltini-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,7 +120,8 @@
 		B8D3ABA62AEB80120026832F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B8D3ABAA2AEBBD010026832F /* CustomToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToast.swift; sourceTree = "<group>"; };
 		B8D3ABAD2AEBC7B50026832F /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
-		DFF7E896A50F4677FBE38F21 /* Pods-baltini-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baltini-swift.release.xcconfig"; path = "Target Support Files/Pods-baltini-swift/Pods-baltini-swift.release.xcconfig"; sourceTree = "<group>"; };
+		BDFCB6EED6A5F24659F30444 /* Pods-baltini-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baltini-swift.release.xcconfig"; path = "Target Support Files/Pods-baltini-swift/Pods-baltini-swift.release.xcconfig"; sourceTree = "<group>"; };
+		FA17FE41525E97E9D16B6CA3 /* Pods-baltini-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baltini-swift.debug.xcconfig"; path = "Target Support Files/Pods-baltini-swift/Pods-baltini-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,28 +129,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C469E80C2F85741D457E6D1F /* Pods_baltini_swift.framework in Frameworks */,
+				99E98AF461EFDB368BC2FC01 /* Pods_baltini_swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A2F550C9255E43245A41454 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6E063372CCD39D78B8676DD9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A4FD559395C856E42EDBC2CC /* Pods-baltini-swift.debug.xcconfig */,
-				DFF7E896A50F4677FBE38F21 /* Pods-baltini-swift.release.xcconfig */,
+				FA17FE41525E97E9D16B6CA3 /* Pods-baltini-swift.debug.xcconfig */,
+				BDFCB6EED6A5F24659F30444 /* Pods-baltini-swift.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		B0EE7C1DAAF4DFDCD3003162 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3A0649E51DC7D896F1366CAF /* Pods_baltini_swift.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B879EFA22AE64FF60009C607 = {
@@ -159,7 +159,7 @@
 				B879EFAD2AE64FF60009C607 /* baltini-swift */,
 				B879EFAC2AE64FF60009C607 /* Products */,
 				6E063372CCD39D78B8676DD9 /* Pods */,
-				B0EE7C1DAAF4DFDCD3003162 /* Frameworks */,
+				2A2F550C9255E43245A41454 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -295,11 +295,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B879EFC22AE64FF80009C607 /* Build configuration list for PBXNativeTarget "baltini-swift" */;
 			buildPhases = (
-				81EF27D64A3A87490C23344E /* [CP] Check Pods Manifest.lock */,
+				F205793503D7B26A70F77AC4 /* [CP] Check Pods Manifest.lock */,
 				B879EFA72AE64FF60009C607 /* Sources */,
 				B879EFA82AE64FF60009C607 /* Frameworks */,
 				B879EFA92AE64FF60009C607 /* Resources */,
-				2F17FEEAA25FD3E4B22860FB /* [CP] Embed Pods Frameworks */,
+				3B62B1F21149A6DAF04B4C9A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -357,7 +357,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2F17FEEAA25FD3E4B22860FB /* [CP] Embed Pods Frameworks */ = {
+		3B62B1F21149A6DAF04B4C9A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,7 +374,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-baltini-swift/Pods-baltini-swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		81EF27D64A3A87490C23344E /* [CP] Check Pods Manifest.lock */ = {
+		F205793503D7B26A70F77AC4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -599,7 +599,7 @@
 		};
 		B879EFC32AE64FF80009C607 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4FD559395C856E42EDBC2CC /* Pods-baltini-swift.debug.xcconfig */;
+			baseConfigurationReference = FA17FE41525E97E9D16B6CA3 /* Pods-baltini-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -630,7 +630,7 @@
 		};
 		B879EFC42AE64FF80009C607 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFF7E896A50F4677FBE38F21 /* Pods-baltini-swift.release.xcconfig */;
+			baseConfigurationReference = BDFCB6EED6A5F24659F30444 /* Pods-baltini-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
