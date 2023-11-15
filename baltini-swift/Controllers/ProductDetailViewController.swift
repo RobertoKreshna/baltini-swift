@@ -172,6 +172,7 @@ extension ProductDetailViewController {
         //add button
         let addToCartButton = CustomButton.createBlackButton(title: "ADD TO CART", action: UIAction(handler: { action in
             CommonStore.shared.addProductToCart(item: self.product!, quantity: self.quantity, varIndex: self.selectedVariantIndex)
+            CustomToast.showGrayToast(msg: "Item added to cart. (tap to undo)", sender: self)
         }))
         stackView.addArrangedSubview(addToCartButton)
         

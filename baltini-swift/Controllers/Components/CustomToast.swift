@@ -24,4 +24,16 @@ class CustomToast {
         style.messageFont = UIFont(name: "Futura-Medium", size: 12)!
         sender.view.makeToast(msg, duration: 2.0, position: .bottom, style: style)
     }
+    
+    static func showGrayToast(msg: String, sender: UIViewController) {
+        var style = ToastStyle()
+        style.backgroundColor = UIColor.brandGray
+        style.messageColor = UIColor.black
+        style.messageFont = UIFont(name: "Futura-Medium", size: 12)!
+        sender.view.makeToast(msg, duration: 2.0, position: .bottom, style: style) { didTap in
+            if didTap {
+                CommonStore.shared.removeLatest()
+            }
+        }
+    }
 }

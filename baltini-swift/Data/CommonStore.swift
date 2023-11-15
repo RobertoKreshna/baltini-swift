@@ -42,4 +42,14 @@ class CommonStore {
     func resetCart(){
         cart = Cart()
     }
+    
+    func removeLatest(){
+        cart.recentlyDeleted =  cart.products.removeLast()
+        cart.recentlyDeletedQty = cart.qty.removeLast()
+        cart.recentlyDeletedVariantsIndex = cart.variantsIndex.removeLast()
+    }
+    
+    func getCartProductCount() -> Int {
+        return cart.products.count
+    }
 }

@@ -9,6 +9,6 @@ target 'baltini-swift' do
   pod 'Toast-Swift'
   pod 'HSCycleGalleryView'
   pod 'LZViewPager'
-  pod 'ViewPager-Swift'
+  pod 'BadgeSwift'
 
 end

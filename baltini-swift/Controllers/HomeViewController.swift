@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BadgeSwift
 
 class HomeViewController: UIViewController {
 
@@ -83,6 +84,22 @@ extension HomeViewController {
         let cart = UIImageView(image: UIImage(named: "icCart"))
         cart.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
+        if(CommonStore.shared.getCartProductCount() != 0){
+            let badge = BadgeSwift()
+            badge.translatesAutoresizingMaskIntoConstraints = false
+            cart.addSubview(badge)
+            
+            badge.text = String(describing: CommonStore.shared.getCartProductCount())
+            badge.insets = CGSize(width: 2, height: 1)
+            badge.font = UIFont(name: "Futura-Medium", size: 11)!
+            badge.textColor = UIColor.white
+            badge.badgeColor = UIColor.brandRed
+            badge.cornerRadius = 10
+            
+            badge.bottomAnchor.constraint(equalTo: cart.bottomAnchor).isActive = true
+            badge.rightAnchor.constraint(equalTo: cart.rightAnchor).isActive = true
+        }
+
         searchCartBar.addArrangedSubview(searchTextfield)
         searchCartBar.setCustomSpacing(10, after: searchTextfield)
         searchCartBar.addArrangedSubview(cart)

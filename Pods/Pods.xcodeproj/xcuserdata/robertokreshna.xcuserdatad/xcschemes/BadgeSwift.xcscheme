@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "309365BF03531BE4E18829E1B6C46B1E"
-               BuildableName = "ViewPager_Swift.framework"
-               BlueprintName = "ViewPager-Swift"
+               BlueprintIdentifier = "1C3333A067F97EB7822138226EC5A633"
+               BuildableName = "BadgeSwift.framework"
+               BlueprintName = "BadgeSwift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

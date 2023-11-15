@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double ViewPager_SwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char ViewPager_SwiftVersionString[];
+FOUNDATION_EXPORT double BadgeSwiftVersionNumber;
+FOUNDATION_EXPORT const unsigned char BadgeSwiftVersionString[];
 
