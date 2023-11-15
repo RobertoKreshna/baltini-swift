@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BadgeSwift
 
 
 class BackButton {
@@ -48,5 +49,68 @@ class BackButton {
         return backButtonStack
     }
     
+    static func createSearchCartBar(owner: UITextFieldDelegate) -> UIStackView{
+        let searchCartBar = UIStackView()
+        searchCartBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let searchTextfield = CustomTextfield.createSearchBar(owner: owner, placeholder: "Search...")
+        let cart = UIImageView(image: UIImage(named: "icCart"))
+        cart.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        if(CommonStore.shared.getCartProductCount() != 0){
+            let badge = BadgeSwift()
+            badge.translatesAutoresizingMaskIntoConstraints = false
+            cart.addSubview(badge)
+            
+            badge.text = String(describing: CommonStore.shared.getCartProductCount())
+            badge.insets = CGSize(width: 2, height: 1)
+            badge.font = UIFont(name: "Futura-Medium", size: 11)!
+            badge.textColor = UIColor.white
+            badge.badgeColor = UIColor.brandRed
+            badge.cornerRadius = 10
+            
+            badge.bottomAnchor.constraint(equalTo: cart.bottomAnchor).isActive = true
+            badge.rightAnchor.constraint(equalTo: cart.rightAnchor).isActive = true
+        }
+
+        searchCartBar.addArrangedSubview(searchTextfield)
+        searchCartBar.setCustomSpacing(10, after: searchTextfield)
+        searchCartBar.addArrangedSubview(cart)
+        
+        return searchCartBar
+    }
     
+    static func createBackSearchCartBar(owner: UITextFieldDelegate, backTapped: UIAction) -> UIStackView {
+        let backSearchCartBar = UIStackView()
+        backSearchCartBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let backBtnImage = createBackButton(icName: "icBack", tapped: backTapped)
+        backBtnImage.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let searchTextfield = CustomTextfield.createSearchBar(owner: owner, placeholder: "Search...")
+        let cart = UIImageView(image: UIImage(named: "icCart"))
+        cart.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        if(CommonStore.shared.getCartProductCount() != 0){
+            let badge = BadgeSwift()
+            badge.translatesAutoresizingMaskIntoConstraints = false
+            cart.addSubview(badge)
+            
+            badge.text = String(describing: CommonStore.shared.getCartProductCount())
+            badge.insets = CGSize(width: 2, height: 1)
+            badge.font = UIFont(name: "Futura-Medium", size: 11)!
+            badge.textColor = UIColor.white
+            badge.badgeColor = UIColor.brandRed
+            badge.cornerRadius = 10
+            
+            badge.bottomAnchor.constraint(equalTo: cart.bottomAnchor).isActive = true
+            badge.rightAnchor.constraint(equalTo: cart.rightAnchor).isActive = true
+        }
+        
+        backSearchCartBar.addArrangedSubview(backBtnImage)
+        backSearchCartBar.addArrangedSubview(searchTextfield)
+        backSearchCartBar.setCustomSpacing(10, after: searchTextfield)
+        backSearchCartBar.addArrangedSubview(cart)
+        
+        return backSearchCartBar
+    }
 }

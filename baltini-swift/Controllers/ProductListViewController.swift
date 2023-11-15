@@ -84,6 +84,7 @@ extension ProductListViewController {
         scrollView.addSubview(stackView)
         
         stackView.axis = .vertical
+        stackView.alignment = .center
         stackView.spacing = 16
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,13 +94,7 @@ extension ProductListViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 
-        let backButton = BackButton.createBackButton(title: "Product List" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        stackView.addArrangedSubview(backButton)
-        backButton.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
-        
+        addSearchCartBar(to: stackView)
         CustomBanner.addPromotionBanner(to: stackView, spacing: 16)
         addFilterSort(to: stackView)
         
@@ -128,16 +123,26 @@ extension ProductListViewController {
                 rightCard.addGestureRecognizer(rightGestureRecognizer)
                 itemStack.addArrangedSubview(rightCard)
                 
-                itemStack.isLayoutMarginsRelativeArrangement = true
-                itemStack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-                
                 stackView.addArrangedSubview(itemStack)
+                itemStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+                itemStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+                
                 //update condition
                 index += 2
             } while index < productList!.count
         } else {
             CustomToast.showErrorToast(msg: "There are no product", sender: self)
         }
+    }
+    
+    func addSearchCartBar(to stack: UIStackView) {
+        let searchCartBar = BackButton.createBackSearchCartBar(owner: self, backTapped: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        stack.addArrangedSubview(searchCartBar)
+        searchCartBar.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
+        searchCartBar.rightAnchor.constraint(equalTo: stack.rightAnchor, constant: -16).isActive = true
     }
     
     func addFilterSort(to stack: UIStackView){
@@ -153,9 +158,8 @@ extension ProductListViewController {
         buttonStack.addArrangedSubview(sortButton)
         
         stack.addArrangedSubview(buttonStack)
-        
-        buttonStack.isLayoutMarginsRelativeArrangement = true
-        buttonStack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        buttonStack.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
+        buttonStack.rightAnchor.constraint(equalTo: stack.rightAnchor, constant: -16).isActive = true
     }
     
     
@@ -163,5 +167,18 @@ extension ProductListViewController {
         let vc = ProductDetailViewController()
         vc.productId = recognizer.id
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+//MARK: Textfield Delegate Methods
+extension ProductListViewController : UITextFieldDelegate{
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
 }
