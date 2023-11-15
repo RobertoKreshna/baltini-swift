@@ -13,7 +13,6 @@ class CustomTextfield {
             string: placeholder,
             attributes: [.font: UIFont(name: "Futura-Medium", size: 16)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)]
         )
-        
         let textfield = UITextField()
         textfield.attributedPlaceholder = attributedPlaceholder
         textfield.font = UIFont(name: "Futura-Medium", size: 16)!
@@ -96,22 +95,22 @@ class CustomTextfield {
         textfield.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
     }
     
-    static func createSearchBar(owner: UITextFieldDelegate, text: String) -> UITextField {
+    static func createSearchBar(owner: UITextFieldDelegate, placeholder: String = "", text: String = "") -> UITextField {
         let attributedPlaceholder = NSAttributedString(
-            string: "Search designer",
+            string: placeholder,
             attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)]
         )
         
         let textfield = UITextField()
         textfield.translatesAutoresizingMaskIntoConstraints = false
         
-        textfield.attributedPlaceholder = attributedPlaceholder
         textfield.backgroundColor = .brandGray
         textfield.font = UIFont(name: "Futura-Medium", size: 14)!
         textfield.textColor = .black
         textfield.borderStyle = .roundedRect
         textfield.autocorrectionType = .no
         textfield.autocapitalizationType = .none
+        if(placeholder.isEmpty == false) { textfield.attributedPlaceholder = attributedPlaceholder }
         if(text.isEmpty == false) { textfield.text = text }
         
         let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))

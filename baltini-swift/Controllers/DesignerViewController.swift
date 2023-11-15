@@ -76,7 +76,7 @@ extension DesignerViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        let backButton = BackButton.createBackButton(title: "Designers" , icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+        let backButton = BackButton.createBackButton(title: "Designers" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
             self.navigationController?.popViewController(animated: true)
         }))
         stackView.addArrangedSubview(backButton)
@@ -84,7 +84,7 @@ extension DesignerViewController {
         backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
         stackView.setCustomSpacing(24, after: stackView.arrangedSubviews.last!)
         
-        let searchTextfield = CustomTextfield.createSearchBar(owner: self, text: keyword)
+        let searchTextfield = CustomTextfield.createSearchBar(owner: self, placeholder: "Search designer", text: keyword)
         
         stackView.addArrangedSubview(searchTextfield)
         searchTextfield.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true

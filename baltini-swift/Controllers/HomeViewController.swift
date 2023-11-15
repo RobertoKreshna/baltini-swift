@@ -74,6 +74,17 @@ extension HomeViewController {
         addMagazineStack(to: stackView)
     }
     
+    func addSearchCartBar(to stack: UIStackView) {
+        let searchCartBar = UIStackView()
+        searchCartBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let searchTextfield = CustomTextfield.createSearchBar(owner: self, placeholder: "Search...")
+        
+        searchCartBar.addArrangedSubview(searchTextfield)
+        
+        stack.addArrangedSubview(searchCartBar)
+    }
+    
     func addNewArrival(to stack: UIStackView){
         stack.setCustomSpacing(40, after: stack.arrangedSubviews.last!)
         
@@ -133,7 +144,6 @@ extension HomeViewController {
         let itemCard = CustomCard.createItemCard(product: item, loadImage: false)
         stack.addArrangedSubview(itemCard)
     }
-    
     
     func addExcPieces(to stack: UIStackView){
         stack.setCustomSpacing(40, after: stack.arrangedSubviews.last!)
@@ -290,11 +300,23 @@ extension HomeViewController {
     }
 }
 
-//Business Logic
-
+//MARK: Navigation
 extension HomeViewController {
     @objc func goToList(){
         self.navigationController?.pushViewController(ProductListViewController(), animated: true)
+    }
+}
+
+//MARK: Textfield Delegate Methods
+extension HomeViewController : UITextFieldDelegate{
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
 }
 

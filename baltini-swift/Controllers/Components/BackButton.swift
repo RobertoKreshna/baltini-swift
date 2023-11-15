@@ -48,8 +48,5 @@ class BackButton {
         return backButtonStack
     }
     
-    static func addSearchBackButton(){
-        
-    }
     
 }
