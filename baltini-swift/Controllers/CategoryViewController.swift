@@ -49,6 +49,7 @@ extension CategoryViewController {
         view.addSubview(stackView)
         
         stackView.axis = .vertical
+        stackView.alignment = .center
         stackView.isUserInteractionEnabled = true
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,18 +58,21 @@ extension CategoryViewController {
         stackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        let backButton = BackButton.createBackButton(title: "Woman" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
-            self.navigationController?.popViewController(animated: true)
-        }))
+        let backButton = BackButton.createSearchCartBar(owner: self, cartTapped: UIAction(handler: { action in self.goToCart() }))
         stackView.addArrangedSubview(backButton)
-        backButton.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        backButton.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
+        stackView.setCustomSpacing(12, after: backButton)
+        
+        contentViewPager.translatesAutoresizingMaskIntoConstraints = false
         contentViewPager.dataSource = self
         contentViewPager.delegate = self
         contentViewPager.hostController = self
         
         stackView.addArrangedSubview(contentViewPager)
+        contentViewPager.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+        contentViewPager.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
         
         contentViewPager.reload()
     }
@@ -115,6 +119,24 @@ extension CategoryViewController: LZViewPagerDelegate, LZViewPagerDataSource {
         button.backgroundColor = .white
         return button
     }
+}
+
+//MARK: Navigation
+extension CategoryViewController {
+    @objc func goToCart(){
+        self.navigationController?.pushViewController(CartViewController(), animated: true)
+    }
+}
+
+//MARK: Textfield Delegate Methods
+extension CategoryViewController : UITextFieldDelegate{
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 }
