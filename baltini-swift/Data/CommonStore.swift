@@ -31,6 +31,28 @@ class CommonStore {
         cart.variantsIndex.append(varIndex)
     }
     
+    func undoAdd(){
+        cart.products.removeLast()
+        cart.qty.removeLast()
+        cart.variantsIndex.removeLast()
+    }
+    
+    func removeProductFromCart(index: Int){
+        cart.recentlyDeleted = cart.products.remove(at: index)
+        cart.recentlyDeletedQty = cart.qty.remove(at: index)
+        cart.recentlyDeletedVariantsIndex = cart.variantsIndex.remove(at: index)
+    }
+    
+    func undoRemove(){
+        cart.products.append(cart.recentlyDeleted!)
+        cart.qty.append(cart.recentlyDeletedQty!)
+        cart.variantsIndex.append(cart.recentlyDeletedVariantsIndex!)
+        
+        cart.recentlyDeleted = nil
+        cart.recentlyDeletedQty = nil
+        cart.recentlyDeletedVariantsIndex = nil
+    }
+    
     func cartSetProtect(value: Bool){
         cart.useProtect = value
     }
@@ -43,10 +65,16 @@ class CommonStore {
         cart = Cart()
     }
     
-    func removeLatest(){
-        cart.recentlyDeleted =  cart.products.removeLast()
-        cart.recentlyDeletedQty = cart.qty.removeLast()
-        cart.recentlyDeletedVariantsIndex = cart.variantsIndex.removeLast()
+    func getCartProductsAtIndex(index: Int) -> ProductDetail {
+        return cart.products[index]
+    }
+    
+    func getQtyAtIndex(index: Int) -> Int {
+        return cart.qty[index]
+    }
+    
+    func getVariantsAtIndex(index: Int) -> Int {
+        return cart.variantsIndex[index]
     }
     
     func getCartProductCount() -> Int {

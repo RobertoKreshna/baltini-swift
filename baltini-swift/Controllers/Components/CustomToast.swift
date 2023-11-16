@@ -26,15 +26,15 @@ class CustomToast {
         sender.view.makeToast(msg, duration: 2.0, position: .bottom, style: style)
     }
     
-    static func showGrayUndoToast(msg: String, sender: UIViewController) {
+    static func showGrayUndoToast(msg: String, undoPressed: @escaping () -> Void,  sender: UIViewController) {
         let snackbar = TTGSnackbar()
         snackbar.backgroundColor = .brandGray
-        snackbar.customContentView = getUndoToastContent(msg: msg, close: snackbar.dismiss)
+        snackbar.customContentView = getUndoToastContent(msg: msg, undo: undoPressed, close: snackbar.dismiss)
         snackbar.duration = .middle
         snackbar.show()
     }
     
-    static func getUndoToastContent(msg: String, close: @escaping () -> Void ) -> UIStackView {
+    static func getUndoToastContent(msg: String, undo: @escaping () -> Void, close: @escaping () -> Void ) -> UIStackView {
         let stackview = UIStackView()
         stackview.translatesAutoresizingMaskIntoConstraints = false
         stackview.backgroundColor = .brandGray
@@ -48,7 +48,7 @@ class CustomToast {
         label.numberOfLines = 0
         
         let undo = CustomButton.createUnderlinedButton(title: "UNDO", action: UIAction(handler: { action in
-            CommonStore.shared.removeLatest()
+            undo()
             close()
         }))
         
