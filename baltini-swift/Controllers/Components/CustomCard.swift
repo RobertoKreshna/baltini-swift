@@ -88,7 +88,7 @@ class CustomCard {
         stack.addArrangedSubview(priceStack)
     }
     
-    static func createCartItemCard(product: ProductDetail, qty: Int, variant: Int, deletePressed: UIAction) -> UIStackView{
+    static func createCartItemCard(product: ProductDetail, qty: Int, variant: Int, deletePressed: UIAction, minPressed: UIAction, plusPressed: UIAction, qtyLabel: PaddingLabel) -> UIStackView{
         let card = UIStackView()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.alignment = .leading
@@ -109,7 +109,11 @@ class CustomCard {
             brand: product.brand,
             name: product.name,
             variants: product.variants![variant],
-            price: String(describing: product.price)
+            price: String(describing: product.price),
+            qty: qty,
+            minPressed: minPressed,
+            plusPressed: plusPressed,
+            qtyLabel: qtyLabel
         )
         
         card.addArrangedSubview(labelStack)
@@ -123,10 +127,11 @@ class CustomCard {
         return card
     }
     
-    static func createCartItemLabelStack(brand: String, name: String, variants: String, price: String) -> UIStackView{
+    static func createCartItemLabelStack(brand: String, name: String, variants: String, price: String, qty: Int, minPressed: UIAction, plusPressed: UIAction, qtyLabel: PaddingLabel) -> UIStackView{
         let labelStack = UIStackView()
         labelStack.translatesAutoresizingMaskIntoConstraints = false
         labelStack.axis = .vertical
+        labelStack.alignment = .leading
         
         let brandLabel = UILabel()
         brandLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -149,6 +154,8 @@ class CustomCard {
         priceLabel.text = price
         priceLabel.font = UIFont(name: "Futura-Medium", size: 14)!
         
+        let quantityStack = createItemQuantityStack(qty: qty, minPressed: minPressed, plusPressed: plusPressed, qtyLabel: qtyLabel)
+        
         labelStack.addArrangedSubview(brandLabel)
         labelStack.setCustomSpacing(4, after: brandLabel)
         labelStack.addArrangedSubview(nameLabel)
@@ -156,7 +163,36 @@ class CustomCard {
         labelStack.addArrangedSubview(variantLabel)
         labelStack.setCustomSpacing(8, after: variantLabel)
         labelStack.addArrangedSubview(priceLabel)
+        labelStack.setCustomSpacing(8, after: priceLabel)
+        labelStack.addArrangedSubview(quantityStack)
         
         return labelStack
+    }
+    
+    static func createItemQuantityStack(qty: Int, minPressed: UIAction, plusPressed: UIAction, qtyLabel: PaddingLabel) -> UIStackView{
+        let buttonStack = UIStackView()
+        buttonStack.axis = .horizontal
+        
+        let qtyTitle = NSAttributedString(
+            string: String(qty),
+            attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+        )
+        
+        qtyLabel.attributedText = qtyTitle
+        qtyLabel.topInset = 10
+        qtyLabel.bottomInset = 10
+        qtyLabel.leftInset = 20
+        qtyLabel.rightInset = 20
+        qtyLabel.layer.borderWidth = 1
+        qtyLabel.layer.borderColor = UIColor.brandGray.cgColor
+        
+        let minButton = CustomButton.createQuantityButton(imageName: "icMin", isLeft: true, tapped: minPressed)
+        let plusButton = CustomButton.createQuantityButton(imageName: "icPlus", isLeft: false, tapped: plusPressed)
+        
+        buttonStack.addArrangedSubview(minButton)
+        buttonStack.addArrangedSubview(qtyLabel)
+        buttonStack.addArrangedSubview(plusButton)
+        
+        return buttonStack
     }
 }

@@ -73,44 +73,67 @@ extension CartViewController {
         
         stackView.setCustomSpacing(12, after: backButton)
         if(CommonStore.shared.getCartProductCount() > 0) {
-            for i in 0 ... CommonStore.shared.getCartProductCount() - 1 {
-                let card = CustomCard.createCartItemCard(
-                    product: CommonStore.shared.getCartProductsAtIndex(index: i),
-                    qty: CommonStore.shared.getQtyAtIndex(index: i),
-                    variant: CommonStore.shared.getVariantsAtIndex(index: i),
-                    deletePressed: UIAction(handler: { action in
-                        CommonStore.shared.removeProductFromCart(index: i)
-                        CustomToast.showGrayUndoToast(
-                            msg: "Item deleted to cart.",
-                            undoPressed: {
-                                CommonStore.shared.undoRemove()
-                                UIView.animate(
-                                    withDuration: 0.0,
-                                    animations: { self.view.alpha = 0.5 },
-                                    completion: {(value: Bool) in
-                                        self.removeUI()
-                                    }
-                                )
-                                UIView.animate(
-                                    withDuration: 0.0,
-                                    animations: { self.view.alpha = 1.0 },
-                                    completion: {(value: Bool) in
-                                        self.createUI()
-                                    }
-                                )
-                            },
-                            sender: self
-                        )
+            createAllProductCard(addTo: stackView)
+        }
+    }
+    
+    func createAllProductCard(addTo stackView: UIStackView){
+        for i in 0 ... CommonStore.shared.getCartProductCount() - 1 {
+            let quantityLabel = PaddingLabel()
+            
+            let card = CustomCard.createCartItemCard(
+                product: CommonStore.shared.getCartProductsAtIndex(index: i),
+                qty: CommonStore.shared.getQtyAtIndex(index: i),
+                variant: CommonStore.shared.getVariantsAtIndex(index: i),
+                deletePressed: UIAction(handler: { action in self.deleteIconPressed(index: i) }),
+                minPressed: UIAction(handler: { action in self.qtyButtonPressed(isAdd: false, label: quantityLabel, index: i) }),
+                plusPressed: UIAction(handler: { action in self.qtyButtonPressed(isAdd: true, label: quantityLabel, index: i) }),
+                qtyLabel: quantityLabel
+            )
+            
+            stackView.addArrangedSubview(card)
+            
+            card.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+            card.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        }
+    }
+}
+
+extension CartViewController {
+    func deleteIconPressed(index i: Int){
+        CommonStore.shared.removeProductFromCart(index: i)
+        CustomToast.showGrayUndoToast(
+            msg: "Item deleted to cart.",
+            undoPressed: {
+                CommonStore.shared.undoRemove()
+                UIView.animate(
+                    withDuration: 0.0,
+                    animations: { self.view.alpha = 0.5 },
+                    completion: {(value: Bool) in
                         self.removeUI()
-                        self.createUI()
-                    })
+                    }
                 )
-                
-                stackView.addArrangedSubview(card)
-                
-                card.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-                card.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
-            }
+                UIView.animate(
+                    withDuration: 0.0,
+                    animations: { self.view.alpha = 1.0 },
+                    completion: {(value: Bool) in
+                        self.createUI()
+                    }
+                )
+            },
+            sender: self
+        )
+        self.removeUI()
+        self.createUI()
+    }
+    
+    func qtyButtonPressed(isAdd: Bool, label: PaddingLabel, index: Int){
+        isAdd ? CommonStore.shared.plusQtyAtIndex(index: index) : CommonStore.shared.minQtyAtIndex(index: index)
+        DispatchQueue.main.async {
+            label.attributedText = NSAttributedString(
+                string: String(describing: CommonStore.shared.getQtyAtIndex(index: index)),
+                attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+            )
         }
     }
 }

@@ -80,4 +80,14 @@ class CommonStore {
     func getCartProductCount() -> Int {
         return cart.products.count
     }
+    
+    func minQtyAtIndex(index: Int) {
+        let qtyAtIndex = cart.qty[index]
+        if qtyAtIndex > 1 { cart.qty[index] = qtyAtIndex - 1 }
+    }
+    
+    func plusQtyAtIndex(index: Int) {
+        let qtyAtIndex = cart.qty[index]
+        cart.qty[index] = qtyAtIndex + 1
+    }
 }
