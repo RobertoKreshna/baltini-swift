@@ -74,6 +74,17 @@ extension CartViewController {
         stackView.setCustomSpacing(12, after: backButton)
         if(CommonStore.shared.getCartProductCount() > 0) {
             createAllProductCard(addTo: stackView)
+            
+            let notesStack = createOrderNotesStack()
+            stackView.addArrangedSubview(notesStack)
+            stackView.setCustomSpacing(40, after: notesStack)
+            notesStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+            notesStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+            
+            let clickProtectStack = createCreateProtectStack()
+            stackView.addArrangedSubview(clickProtectStack)
+            clickProtectStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+            clickProtectStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         }
     }
     
@@ -92,10 +103,102 @@ extension CartViewController {
             )
             
             stackView.addArrangedSubview(card)
+            stackView.setCustomSpacing(i == CommonStore.shared.getCartProductCount() - 1 ? 40 : 24, after: card)
             
             card.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
             card.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         }
+    }
+    
+    func createOrderNotesStack() -> UIStackView{
+        let contentStack = UIStackView()
+        contentStack.translatesAutoresizingMaskIntoConstraints = false
+        contentStack.axis = .vertical
+        contentStack.alignment = .leading
+        
+        let notesLabel = UILabel()
+        notesLabel.translatesAutoresizingMaskIntoConstraints = false
+        notesLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        notesLabel.text = "ORDER NOTES"
+        
+        contentStack.addArrangedSubview(notesLabel)
+        contentStack.setCustomSpacing(30, after: notesLabel)
+        CustomTextfield.addTextfield(to: contentStack, placeholder: "Leave Notes", isPassword: false, owner: self, useDesc: false)
+        
+        return contentStack
+    }
+    
+    func createCreateProtectStack() -> UIStackView {
+        let contentStack = UIStackView()
+        contentStack.translatesAutoresizingMaskIntoConstraints = false
+        contentStack.axis = .horizontal
+        contentStack.alignment = .leading
+        
+        let mainStack = createProtectMainContentStack()
+        
+        let switchButton = UISwitch()
+        switchButton.isOn = CommonStore.shared.cartGetProtect()
+        switchButton.offImage = UIImage(named: "switchOff")
+        switchButton.onImage = UIImage(named: "switchOn")
+        switchButton.addTarget(self, action: #selector(switchChanged(_:)), for: UIControl.Event.valueChanged)
+        
+        contentStack.addArrangedSubview(mainStack)
+        contentStack.addArrangedSubview(switchButton)
+        
+        return contentStack
+    }
+    
+    func createProtectMainContentStack() -> UIStackView {
+        let mainStack = UIStackView()
+        mainStack.translatesAutoresizingMaskIntoConstraints = false
+        mainStack.axis = .vertical
+        mainStack.alignment = .leading
+        
+        let priceStack = createProtectPriceStack()
+        let descLabel = createProtectDescLabel()
+        let learnMoreButton = CustomButton.createUnderlinedButton(title: "LEARN MORE", action: UIAction(handler: { action in
+            print("learn more tapped")
+        }))
+        
+        mainStack.addArrangedSubview(priceStack)
+        mainStack.setCustomSpacing(8, after: priceStack)
+        mainStack.addArrangedSubview(descLabel)
+        mainStack.setCustomSpacing(4, after: descLabel)
+        mainStack.addArrangedSubview(learnMoreButton)
+        
+        return mainStack
+    }
+    
+    func createProtectPriceStack() -> UIStackView {
+        let priceStack = UIStackView()
+        priceStack.translatesAutoresizingMaskIntoConstraints = false
+        priceStack.axis = .horizontal
+        
+        let nameLabel = UILabel()
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.text = "1 CLICK PROTECT"
+        nameLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        
+        let priceLabel = UILabel()
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        priceLabel.text = "(USD 22.00)"
+        priceLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        priceLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+        
+        priceStack.addArrangedSubview(nameLabel)
+        priceStack.setCustomSpacing(8, after: nameLabel)
+        priceStack.addArrangedSubview(priceLabel)
+        
+        return priceStack
+    }
+    
+    func createProtectDescLabel() -> UILabel {
+        let descLabel = UILabel()
+        descLabel.translatesAutoresizingMaskIntoConstraints = false
+        descLabel.text = "Instantly resolve shipping issues."
+        descLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        
+        return descLabel
     }
 }
 
@@ -135,5 +238,21 @@ extension CartViewController {
                 attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
             )
         }
+    }
+    
+    @objc func switchChanged(_ mySwitch: UISwitch) {
+        mySwitch.isOn ? CommonStore.shared.cartSetProtect(value: false) : CommonStore.shared.cartSetProtect(value: true)
+    }
+}
+
+extension CartViewController : UITextFieldDelegate {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
 }

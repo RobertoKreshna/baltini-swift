@@ -57,6 +57,10 @@ class CommonStore {
         cart.useProtect = value
     }
     
+    func cartGetProtect() -> Bool {
+        return cart.useProtect
+    }
+    
     func cartSetAgreeTC(value: Bool){
         cart.agreeTC = value
     }

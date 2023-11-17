@@ -79,15 +79,16 @@ class CustomTextfield {
         return view
     }
     
-    static func addTextfield(to stack: UIStackView, placeholder: String, isPassword: Bool, owner: UITextFieldDelegate, text: String? = nil){
-        let desc = createLabel(placeholder: placeholder)
+    static func addTextfield(to stack: UIStackView, placeholder: String, isPassword: Bool, owner: UITextFieldDelegate, text: String? = nil, useDesc: Bool = true){
         let textfield = isPassword
         ? createPasswordTextfield(placeholder: placeholder, owner: owner, text: text)
         : createTextfield(placeholder: placeholder, owner: owner, text: text)
         let border = createBorderLine(width: 1, length: UIScreen.main.bounds.width-32)
-
-        stack.addArrangedSubview(desc)
-        stack.setCustomSpacing(4, after: desc)
+        if useDesc{
+            let desc = createLabel(placeholder: placeholder)
+            stack.addArrangedSubview(desc)
+            stack.setCustomSpacing(4, after: desc)
+        }
         stack.addArrangedSubview(textfield)
         stack.setCustomSpacing(4, after: textfield)
         stack.addArrangedSubview(border)
