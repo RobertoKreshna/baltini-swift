@@ -98,4 +98,16 @@ class CommonStore {
         let qtyAtIndex = cart.qty[index]
         cart.qty[index] = qtyAtIndex + 1
     }
+
+    func calculateSubtotal() -> String{
+        var res = 0.0
+        
+        if(cart.products.count >= 1){
+            for i in 0...cart.products.count - 1 {
+                res += Double(cart.products[i].price[cart.variantsIndex[i]]) * Double(cart.qty[i])
+            }
+        }
+        
+        return String(format: "%.2f", res)
+    }
 }

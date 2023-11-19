@@ -10,6 +10,13 @@ import UIKit
 import BadgeSwift
 
 class CartViewController: UIViewController {
+    
+    var totalLabel: UILabel = {
+        let totalLabel = UILabel()
+        totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"
+        totalLabel.font = UIFont(name: "Futura-Bold", size: 14)!
+        return totalLabel
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +105,18 @@ extension CartViewController {
             stackView.setCustomSpacing(35, after: agreeTCStack)
             agreeTCStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
             agreeTCStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+            
+            let separator = CustomSeparator.createHorizontalLine(width: 1, color: UIColor.brandGray)
+            stackView.addArrangedSubview(separator)
+            stackView.setCustomSpacing(12, after: separator)
+            separator.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+            separator.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
+            
+            let totalCheckoutStack = createTotalCheckoutStack()
+            stackView.addArrangedSubview(totalCheckoutStack)
+            stackView.setCustomSpacing(20, after: totalCheckoutStack)
+            totalCheckoutStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+            totalCheckoutStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         }
     }
     
@@ -259,6 +278,42 @@ extension CartViewController {
         
         return contentStack
     }
+    
+    func createTotalCheckoutStack() -> UIStackView {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.alignment = .center
+        
+        let totalStack = createTotalStack()
+        let checkoutButton = CustomButton.createBlackButton(title: "CHECK OUT", action: UIAction(handler: { action in
+            print("checkout pressed")
+        }))
+        
+        stack.addArrangedSubview(totalStack)
+        stack.setCustomSpacing(17, after: totalStack)
+        stack.addArrangedSubview(checkoutButton)
+        
+        checkoutButton.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.5).isActive = true
+        
+        return stack
+    }
+    
+    func createTotalStack() -> UIStackView {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.alignment = .trailing
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Subtotal"
+        titleLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        
+        stack.addArrangedSubview(titleLabel)
+        stack.addArrangedSubview(totalLabel)
+        
+        return stack
+    }
 }
 
 //MARK: Button pressed functions
@@ -297,6 +352,7 @@ extension CartViewController {
                 string: String(describing: CommonStore.shared.getQtyAtIndex(index: index)),
                 attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
             )
+            self.totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"
         }
     }
     
