@@ -83,8 +83,21 @@ extension CartViewController {
             
             let clickProtectStack = createCreateProtectStack()
             stackView.addArrangedSubview(clickProtectStack)
+            stackView.setCustomSpacing(40, after: clickProtectStack)
             clickProtectStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
             clickProtectStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+            
+            let descLabel = createDescLabel()
+            stackView.addArrangedSubview(descLabel)
+            stackView.setCustomSpacing(17, after: descLabel)
+            descLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+            descLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+            
+            let agreeTCStack = createAgreeTCStack()
+            stackView.addArrangedSubview(agreeTCStack)
+            stackView.setCustomSpacing(35, after: agreeTCStack)
+            agreeTCStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+            agreeTCStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         }
     }
     
@@ -200,8 +213,55 @@ extension CartViewController {
         
         return descLabel
     }
+    
+    func createDescLabel() -> UILabel {
+        let descLabel = UILabel()
+        descLabel.translatesAutoresizingMaskIntoConstraints = false
+        descLabel.text = "All orders are processed in USD at the most recent exchange rate available. Shipping, taxes, and discounts codes calculated at checkout. Please check the box below to agree with our Terms and Conditions."
+        descLabel.font = UIFont(name: "Futura-Medium", size: 12)!
+        descLabel.numberOfLines = 0
+        descLabel.textAlignment = .justified
+        descLabel.textColor = .black.withAlphaComponent(0.5)
+        
+        return descLabel
+    }
+    
+    func createAgreeTCStack() -> UIStackView {
+        let contentStack = UIStackView()
+        contentStack.translatesAutoresizingMaskIntoConstraints = false
+        contentStack.axis = .vertical
+        contentStack.alignment = .leading
+        
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.alignment = .center
+        
+        let checkButton = UIButton(type: .system)
+        checkButton.setImage(UIImage(named: CommonStore.shared.cartGetAgreeTC() ? "icCheckSelected" : "icCheck")!.withRenderingMode(.alwaysOriginal), for: .normal)
+        checkButton.addAction(UIAction(handler: { action in self.tcPressed(checkButton) }), for: .touchUpInside)
+        
+        let descLabel = UILabel()
+        descLabel.text = "I agree with the"
+        descLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        
+        let tcButton = CustomButton.createUnderlinedButton(title: "TERMS AND CONDITION", action: UIAction(handler: { action in
+            print("tc pressed")
+        }))
+        
+        stack.addArrangedSubview(checkButton)
+        stack.setCustomSpacing(8, after: checkButton)
+        stack.addArrangedSubview(descLabel)
+        stack.setCustomSpacing(2, after: descLabel)
+        stack.addArrangedSubview(tcButton)
+        
+        contentStack.addArrangedSubview(stack)
+        
+        return contentStack
+    }
 }
 
+//MARK: Button pressed functions
 extension CartViewController {
     func deleteIconPressed(index i: Int){
         CommonStore.shared.removeProductFromCart(index: i)
@@ -242,6 +302,11 @@ extension CartViewController {
     
     @objc func switchChanged(_ mySwitch: UISwitch) {
         mySwitch.isOn ? CommonStore.shared.cartSetProtect(value: false) : CommonStore.shared.cartSetProtect(value: true)
+    }
+    
+    func tcPressed(_ sender: UIButton){
+        CommonStore.shared.cartSetAgreeTC(value: CommonStore.shared.cartGetAgreeTC() ? false : true);
+        sender.setImage(UIImage(named: CommonStore.shared.cartGetAgreeTC() ? "icCheckSelected" : "icCheck")!.withRenderingMode(.alwaysOriginal), for: .normal)
     }
 }
 

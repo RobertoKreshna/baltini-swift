@@ -104,6 +104,7 @@ class CustomCard {
         card.addArrangedSubview(itemImageView)
         itemImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
         itemImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        card.setCustomSpacing(8, after: itemImageView)
         
         let labelStack = createCartItemLabelStack(
             brand: product.brand,
