@@ -62,10 +62,7 @@ class BackButton {
         searchCartBar.translatesAutoresizingMaskIntoConstraints = false
         
         let searchField = CustomButton.createSearchLikeButton(action: UIAction(handler: { action in
-            let vc = SearchViewController()
-            vc.modalPresentationStyle = .overFullScreen
-            
-            owner.navigationController?.present(vc, animated: false)
+            owner.navigationController?.pushViewController(SearchViewController(), animated: false)
         }))
         let cart = createCartButton(tapped: cartTapped)
         cart.setContentHuggingPriority(.defaultHigh, for: .horizontal)

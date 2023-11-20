@@ -10,7 +10,7 @@ import UIKit
 class ProductListViewController : UIViewController {
     var productList: [Product]? = nil
     var sortValue: String = "Featured" {
-        didSet { Task{ removeUI(); await loadData(); createUI(); } }
+        didSet { Task{ removeUI(); if loadData{ await loadData() }; createUI(); } }
     }
     var filterValue: [String : [String]] = [
         "Gender" : [],
@@ -20,6 +20,7 @@ class ProductListViewController : UIViewController {
         "Size" : [],
         "Price" : [],
     ]
+    var loadData: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class ProductListViewController : UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         Task{
             removeUI()
-            await loadData()
+            if loadData { await loadData() }
             createUI()
         }
     }

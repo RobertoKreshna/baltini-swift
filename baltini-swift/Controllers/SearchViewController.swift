@@ -28,7 +28,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         removeUI()
         getSearchHistory()
         createUI()
@@ -105,7 +105,7 @@ extension SearchViewController {
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
         let backButton = BackButton.createBackSearchBar(owner: self, backTapped: UIAction(handler: { action in
-            self.dismiss(animated: false)
+            self.navigationController?.popViewController(animated: false)
         }))
         
         stackView.addArrangedSubview(backButton)
@@ -145,7 +145,10 @@ extension SearchViewController {
             let viewAllButton = CustomButton.createUnderlinedButton(
                 title: "VIEW ALL \(searchRes.count) PRODUCT",
                 action: UIAction(handler: { action in
-                    print("view all pressed")
+                    let vc = ProductListViewController()
+                    vc.loadData = false
+                    vc.productList = self.searchRes
+                    self.navigationController?.pushViewController(vc, animated: true)
                 })
             )
             
