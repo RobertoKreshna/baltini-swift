@@ -138,7 +138,6 @@ extension ProductListViewController {
     func addSearchCartBar(to stack: UIStackView) {
         let searchCartBar = BackButton.createBackSearchCartBar(
             owner: self,
-            backTapped: UIAction(handler: { action in self.navigationController?.popViewController(animated: true) }),
             cartTapped: UIAction(handler: { action in self.goToCart() })
         )
         
@@ -173,18 +172,5 @@ extension ProductListViewController {
     
     @objc private func goToCart(){
         self.navigationController?.pushViewController(CartViewController(), animated: true)
-    }
-}
-
-//MARK: Textfield Delegate Methods
-extension ProductListViewController : UITextFieldDelegate{
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        return true
     }
 }

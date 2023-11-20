@@ -170,4 +170,25 @@ class CustomButton {
         button.addAction(tapped, for: .touchUpInside)
         return button
     }
+    
+    static func createSearchLikeButton(action: UIAction) -> UIButton {
+        let placeholder = NSAttributedString(string: "Search...", attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)])
+        
+        let button = UIButton(type: .system)
+        button.setAttributedTitle(placeholder, for: .normal)
+        button.backgroundColor = .brandGray
+        button.layer.cornerRadius = 4
+        button.contentHorizontalAlignment = .leading
+        button.contentVerticalAlignment = .center
+        button.setImage(UIImage(named: "icSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        //add padding
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        configuration.imagePadding = 8
+        button.configuration = configuration
+        //add action
+        button.addAction(action, for: .touchUpInside)
+        
+        return button
+    }
 }

@@ -310,16 +310,3 @@ extension HomeViewController {
     }
 }
 
-//MARK: Textfield Delegate Methods
-extension HomeViewController : UITextFieldDelegate{
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        return true
-    }
-}
-
