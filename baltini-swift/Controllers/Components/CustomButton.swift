@@ -171,9 +171,9 @@ class CustomButton {
         return button
     }
     
-    static func createSearchLikeButton(action: UIAction) -> UIButton {
+    static func createSearchLikeButton(text: String? = nil, action: UIAction) -> UIButton {
         let placeholder = NSAttributedString(string: "Search...", attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)])
-        
+
         let button = UIButton(type: .system)
         button.setAttributedTitle(placeholder, for: .normal)
         button.backgroundColor = .brandGray
@@ -181,6 +181,10 @@ class CustomButton {
         button.contentHorizontalAlignment = .leading
         button.contentVerticalAlignment = .center
         button.setImage(UIImage(named: "icSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        if text != nil {
+            let attributedText = NSAttributedString(string: text!, attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor: UIColor.black])
+            button.setAttributedTitle(attributedText, for: .normal)
+        }
         //add padding
         var configuration = UIButton.Configuration.plain()
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)

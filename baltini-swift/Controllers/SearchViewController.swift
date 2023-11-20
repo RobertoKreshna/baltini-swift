@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    var searchKeyword: String?
     var searchTimer: Timer?
     var searchRes = [Product]()
     var searchHistory = [String]()
@@ -145,9 +146,9 @@ extension SearchViewController {
             let viewAllButton = CustomButton.createUnderlinedButton(
                 title: "VIEW ALL \(searchRes.count) PRODUCT",
                 action: UIAction(handler: { action in
-                    let vc = ProductListViewController()
-                    vc.loadData = false
+                    let vc = SearchResultViewController()
                     vc.productList = self.searchRes
+                    vc.searchKeyword = self.searchKeyword
                     self.navigationController?.pushViewController(vc, animated: true)
                 })
             )
@@ -197,6 +198,7 @@ extension SearchViewController : UITextFieldDelegate {
         searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { timer in
             Task{
                 await self.loadData(keyword: textField.text!)
+                self.searchKeyword = textField.text
                 DispatchQueue.main.async { self.getContent() }
             }
         })

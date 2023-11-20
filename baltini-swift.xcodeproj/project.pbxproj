@@ -24,6 +24,7 @@
 		B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFD92AE8C6550009C607 /* AccountViewController.swift */; };
 		B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFDB2AE924470009C607 /* CommonStore.swift */; };
 		B8BD63882B0B0C58002E62BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD63872B0B0C58002E62BD /* SearchViewController.swift */; };
+		B8BD638C2B0B68FD002E62BD /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD638B2B0B68FD002E62BD /* SearchResultViewController.swift */; };
 		B8CB5DF62AEF494300E9558C /* CustomDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5DF52AEF494300E9558C /* CustomDisplay.swift */; };
 		B8CB5DF82AEFB3D900E9558C /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5DF72AEFB3D900E9558C /* EditAddressViewController.swift */; };
 		B8CB5DFB2AEFB40100E9558C /* AddressArgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5DFA2AEFB40100E9558C /* AddressArgs.swift */; };
@@ -84,6 +85,7 @@
 		B879EFD92AE8C6550009C607 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B879EFDB2AE924470009C607 /* CommonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStore.swift; sourceTree = "<group>"; };
 		B8BD63872B0B0C58002E62BD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B8BD638B2B0B68FD002E62BD /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		B8CB5DF52AEF494300E9558C /* CustomDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisplay.swift; sourceTree = "<group>"; };
 		B8CB5DF72AEFB3D900E9558C /* EditAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
 		B8CB5DFA2AEFB40100E9558C /* AddressArgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressArgs.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				B8CB5E372B022A7800E9558C /* AccessoriesCategoryViewController.swift */,
 				B8CB5E392B030BCD00E9558C /* DesignerViewController.swift */,
 				B8BD63872B0B0C58002E62BD /* SearchViewController.swift */,
+				B8BD638B2B0B68FD002E62BD /* SearchResultViewController.swift */,
 				B8CB5E292AFFA33400E9558C /* CartViewController.swift */,
 			);
 			path = Controllers;
@@ -456,6 +459,7 @@
 				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,
 				B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */,
 				B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */,
+				B8BD638C2B0B68FD002E62BD /* SearchResultViewController.swift in Sources */,
 				B8CB5E032AF2117B00E9558C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

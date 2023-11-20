@@ -9,10 +9,10 @@ import UIKit
 
 class CustomBottomSheet {
     
-    static func getFilterPopup(owner: ProductListViewController){
+    static func getFilterPopup(keys: [String], values: [[String]], owner: UIViewController){
         let popupBackgroundView = createBackgroundView(width: Int(owner.view.frame.size.width), height: Int(owner.view.frame.size.height))
         
-        let contentView = createFilterContent(owner: owner, close: {
+        let contentView = createFilterContent(keys: keys, values: values, close: {
             popupBackgroundView.removeFromSuperview()
         })
         
@@ -35,10 +35,10 @@ class CustomBottomSheet {
         owner.view.addSubview(popupBackgroundView)
     }
     
-    static func getSortPopup(owner: ProductListViewController){
+    static func getSortPopup(selected: String, tapped: @escaping (String) -> Void, owner: UIViewController){
         let popupBackgroundView = createBackgroundView(width: Int(owner.view.frame.size.width), height: Int(owner.view.frame.size.height))
         
-        let contentView = createSortContent(owner: owner, close: {
+        let contentView = createSortContent(selected: selected, tapped: tapped, close: {
             popupBackgroundView.removeFromSuperview()
         })
         
@@ -111,7 +111,7 @@ class CustomBottomSheet {
         return button
     }
     
-    static private func createSortContent(owner: ProductListViewController, close: @escaping () -> Void) -> UIView {
+    static private func createSortContent(selected: String, tapped: @escaping (String) -> Void , close: @escaping () -> Void) -> UIView {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
@@ -121,43 +121,43 @@ class CustomBottomSheet {
         let description = createDescription(string: "SORT PRODUCTS")
         let bestButton = createSortRadioButton(
             title: "Best Selling",
-            selected: owner.sortValue == "Best Selling" ? true : false,
-            pressed: sortPressed(owner: owner, newValue: "Best Selling", close: close)
+            selected: selected == "Best Selling" ? true : false,
+            pressed: UIAction(handler: { action in tapped("Best Selling") })
         )
         let featuredButton = createSortRadioButton(
             title: "Featured",
-            selected: owner.sortValue == "Featured" ? true : false,
-            pressed: sortPressed(owner: owner, newValue: "Featured", close: close)
+            selected: selected == "Featured" ? true : false,
+            pressed: UIAction(handler: { action in tapped("Featured") })
         )
         let lowPriceButton = createSortRadioButton(
             title: "Lowest Price", 
-            selected: owner.sortValue == "Lowest Price" ? true : false,
-            pressed: sortPressed(owner: owner, newValue: "Lowest Price", close: close)
+            selected: selected == "Lowest Price" ? true : false,
+            pressed: UIAction(handler: { action in tapped("Lowest Price") })
         )
         let highPriceButton = createSortRadioButton(
             title: "Highest Price", 
-            selected: owner.sortValue == "Highest Price" ? true : false,
-            pressed: sortPressed(owner: owner, newValue: "Highest Price", close: close)
+            selected: selected == "Highest Price" ? true : false,
+            pressed: UIAction(handler: { action in tapped("Highest Price") })
         )
         let aToZButton = createSortRadioButton(
             title: "Alphabetically, A-Z", 
-            selected: owner.sortValue == "Alphabetically, A-Z" ? true : false,
-            pressed: sortPressed(owner: owner, newValue: "Alphabetically, A-Z", close: close)
+            selected: selected == "Alphabetically, A-Z" ? true : false,
+            pressed: UIAction(handler: { action in tapped("Alphabetically, A-Z") })
         )
         let zToAButton = createSortRadioButton(
             title: "Alphabetically, Z-A",
-            selected: owner.sortValue == "Alphabetically, Z-A" ? true : false,
-            pressed: sortPressed(owner: owner, newValue: "Alphabetically, Z-A", close: close)
+            selected: selected == "Alphabetically, Z-A" ? true : false,
+            pressed: UIAction(handler: { action in tapped("Alphabetically, Z-A") })
         )
         let newToOldButton = createSortRadioButton(
             title: "Date, New to Old", 
-            selected: owner.sortValue == "Date, New to Old" ? true : false,
-            pressed: sortPressed(owner: owner, newValue: "Date, New to Old", close: close)
+            selected: selected == "Date, New to Old" ? true : false,
+            pressed: UIAction(handler: { action in tapped("Date, New to Old") })
         )
         let oldToNewButton = createSortRadioButton(
             title: "Date, Old to New", 
-            selected: owner.sortValue == "Date, Old to New" ? true : false,
-            pressed: sortPressed(owner: owner, newValue: "Date, Old to New", close: close)
+            selected: selected == "Date, Old to New" ? true : false,
+            pressed: UIAction(handler: { action in tapped("Date, Old to New") })
         )
         
         contentView.addSubview(indicator)
@@ -216,13 +216,6 @@ class CustomBottomSheet {
         return contentView
     }
     
-    static private func sortPressed(owner: ProductListViewController, newValue: String, close: @escaping () -> Void) -> UIAction{
-        return UIAction { action in
-            owner.sortValue = newValue
-            close()
-        }
-    }
-    
     static private func createFilterTile(title: String, value: [String]) -> UIView {
         let attributedTitle = NSAttributedString(
             string: title,
@@ -272,10 +265,7 @@ class CustomBottomSheet {
         return tileStack
     }
     
-    static private func createFilterContent(owner: ProductListViewController, close: @escaping () -> Void) -> UIView {
-        let keys = Array(owner.filterValue.keys)
-        let values = Array(owner.filterValue.values)
-        
+    static private func createFilterContent(keys: [String], values:[[String]], close: @escaping () -> Void) -> UIView {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white

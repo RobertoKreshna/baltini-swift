@@ -1,16 +1,19 @@
 //
-//  ProductListViewController.swift
+//  SearchResultViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 01/11/23.
+//  Created by Roberto Kreshna on 20/11/23.
 //
 
+import Foundation
 import UIKit
 
-class ProductListViewController : UIViewController {
+class SearchResultViewController : UIViewController {
+    var searchKeyword: String? = nil
+    
     var productList: [Product]? = nil
     var sortValue: String = "Featured" {
-        didSet { Task{ removeUI(); await loadData(); createUI(); } }
+        didSet { Task{ removeUI(); createUI(); } }
     }
     var filterValue: [String : [String]] = [
         "Gender" : [],
@@ -28,11 +31,8 @@ class ProductListViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = true
-        Task{
-            removeUI()
-            await loadData()
-            createUI()
-        }
+        removeUI()
+        createUI()
     }
     
     func removeUI() {
@@ -43,28 +43,8 @@ class ProductListViewController : UIViewController {
    }
 }
 
-//MARK: Load data by API
-extension ProductListViewController {
-    func loadData() async {
-        let loading = CustomPopup.displayLoading(sender: self)
-        self.view.addSubview(loading)
-        let url = URL(string: "https://baltini-staging.myshopify.com/admin/api/2023-01/products.json?status=active")!
-        var request = URLRequest(url: url)
-        request.setValue(Constants.key, forHTTPHeaderField: "X-Shopify-Access-Token")
-        do{
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let json = (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any])
-            self.productList = Product.fromJson(json: json)
-        } catch {
-            print("error gettting data")
-        }
-        loading.removeFromSuperview()
-    }
-}
-
 //MARK: Create UI Methods
-
-extension ProductListViewController {
+extension SearchResultViewController {
     func createUI(){
         //change view bg color
         view.backgroundColor = .white
@@ -136,10 +116,7 @@ extension ProductListViewController {
     }
     
     func addSearchCartBar(to stack: UIStackView) {
-        let searchCartBar = BackButton.createBackSearchCartBar(
-            owner: self,
-            cartTapped: UIAction(handler: { action in self.goToCart() })
-        )
+        let searchCartBar = BackButton.createBackSearchButtonBar(owner: self, text: searchKeyword!)
         
         stack.addArrangedSubview(searchCartBar)
         searchCartBar.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
@@ -148,7 +125,7 @@ extension ProductListViewController {
     
     func addFilterSort(to stack: UIStackView){
         let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in
-            CustomBottomSheet.getFilterPopup(keys: Array(self.filterValue.keys), values: Array(self.filterValue.values), owner: self)
+            CustomBottomSheet.getFilterPopup(keys: Array(self.filterValue.keys), values: Array(self.filterValue.values), owner: self) 
         }))
         let sortButton = CustomButton.createSortButton(value: sortValue, tapped: UIAction(handler: { action in
             CustomBottomSheet.getSortPopup(selected: self.sortValue, tapped: self.sortValueChanged, owner: self)
@@ -176,8 +153,5 @@ extension ProductListViewController {
         vc.productId = recognizer.id
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    @objc private func goToCart(){
-        self.navigationController?.pushViewController(CartViewController(), animated: true)
-    }
 }
+

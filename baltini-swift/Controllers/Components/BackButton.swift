@@ -100,10 +100,7 @@ class BackButton {
         }))
         backBtnImage.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         let searchField = CustomButton.createSearchLikeButton(action: UIAction(handler: { action in
-            let vc = SearchViewController()
-            vc.modalPresentationStyle = .overFullScreen
-            
-            owner.navigationController?.present(vc, animated: false)
+            owner.navigationController?.pushViewController(SearchViewController(), animated: false)
         }))
         let cart = createCartButton(tapped: cartTapped)
         cart.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -130,6 +127,25 @@ class BackButton {
         backSearchCartBar.addArrangedSubview(cart)
         
         return backSearchCartBar
+    }
+    
+    static func createBackSearchButtonBar(owner: UIViewController, text:String) -> UIStackView {
+        let backSearchBar = UIStackView()
+        backSearchBar.isUserInteractionEnabled = true
+        backSearchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let backButton = createBackButton(icName: "icBack", tapped: UIAction(handler: { action in
+            owner.navigationController?.popToRootViewController(animated: true)
+        }))
+        backButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let searchField = CustomButton.createSearchLikeButton(text: text, action: UIAction(handler: { action in
+            owner.navigationController?.pushViewController(SearchViewController(), animated: false)
+        }))
+        
+        backSearchBar.addArrangedSubview(backButton)
+        backSearchBar.addArrangedSubview(searchField)
+        
+        return backSearchBar
     }
     
     static func createBackSearchBar(owner: UITextFieldDelegate, backTapped: UIAction) -> UIStackView {
