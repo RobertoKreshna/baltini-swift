@@ -46,42 +46,42 @@ extension WomanCategoryViewController {
         stackView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-        let designerCell = CustomCell.createCategoryCell(
+        let designerCell = CustomCell.createListCell(
             title: "Designer",
             useIcon: true,
             tapped:UITapGestureRecognizer(target: self, action: #selector(goToDesigner))
         )
-        let newArrivalCell = CustomCell.createCategoryCell(
+        let newArrivalCell = CustomCell.createListCell(
             title: "New Arrival",
             useIcon: false,
             tapped:UITapGestureRecognizer(target: self, action: #selector(tapped))
         )
-        let saleCell = CustomCell.createCategoryCell(
+        let saleCell = CustomCell.createListCell(
             title: "SALE",
             useIcon: false,
             tapped:UITapGestureRecognizer(target: self, action: #selector(tapped))
         )
-        let allCell = CustomCell.createCategoryCell(
+        let allCell = CustomCell.createListCell(
             title: "Shop All",
             useIcon: false,
             tapped:UITapGestureRecognizer(target: self, action: #selector(tapped))
         )
-        let clothingCell = CustomCell.createCategoryCell(
+        let clothingCell = CustomCell.createListCell(
             title: "Clothing",
             useIcon: true,
             tapped:UITapGestureRecognizer(target: self, action: #selector(goToClothing))
         )
-        let shoeCell = CustomCell.createCategoryCell(
+        let shoeCell = CustomCell.createListCell(
             title: "Shoes",
             useIcon: true,
             tapped:UITapGestureRecognizer(target: self, action: #selector(goToShoes))
         )
-        let bagCell = CustomCell.createCategoryCell(
+        let bagCell = CustomCell.createListCell(
             title: "Bags",
             useIcon: true,
             tapped:UITapGestureRecognizer(target: self, action: #selector(goToBags))
         )
-        let accCell = CustomCell.createCategoryCell(
+        let accCell = CustomCell.createListCell(
             title: "Accessories",
             useIcon: true,
             tapped:UITapGestureRecognizer(target: self, action: #selector(goToAccessories))

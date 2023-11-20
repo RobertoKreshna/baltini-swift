@@ -91,7 +91,7 @@ extension DesignerViewController {
         searchTextfield.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
         searchRes.forEach { brand in
-            let row = CustomCell.createCategoryCell(
+            let row = CustomCell.createListCell(
                 title: brand,
                 useIcon: false,
                 tapped: UITapGestureRecognizer(target: self, action: #selector(tapped))

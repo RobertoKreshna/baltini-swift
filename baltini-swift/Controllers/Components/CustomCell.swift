@@ -27,21 +27,37 @@ class ImageCarouselCell: UICollectionViewCell {
 }
 
 class CustomCell {
-    static func createCategoryCell(title: String, useIcon: Bool, tapped: UITapGestureRecognizer) -> UIStackView{
+    static func createListCell(title: String, subtitle: String? = nil, useIcon: Bool, tapped: UITapGestureRecognizer) -> UIStackView{
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.distribution = .equalSpacing
         
+        let labelStack = UIStackView()
+        labelStack.translatesAutoresizingMaskIntoConstraints = false
+        labelStack.axis = .vertical
+        
         let attributedTitle = NSAttributedString(
             string: title,
             attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
         )
+        let titleLabel = UILabel()
+        titleLabel.attributedText = attributedTitle
         
-        let label = UILabel()
-        label.attributedText = attributedTitle
+        labelStack.addArrangedSubview(titleLabel)
         
-        stack.addArrangedSubview(label)
+        if subtitle != nil {
+            let attributedSubtitle = NSAttributedString(
+                string: subtitle!,
+                attributes: [.font : UIFont(name: "Futura-Medium", size: 10)!, .foregroundColor : UIColor.black.withAlphaComponent(0.5)]
+            )
+            let subtitleLabel = UILabel()
+            subtitleLabel.attributedText = attributedSubtitle
+            labelStack.addArrangedSubview(subtitleLabel)
+        }
+        
+        stack.addArrangedSubview(labelStack)
+            
         if(useIcon){
             let icon = UIImageView(image: UIImage(named: "icRight"))
             stack.addArrangedSubview(icon)

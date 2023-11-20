@@ -10,7 +10,17 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    var searchTimer: Timer?
+    var searchRes = [Product]()
     var searchHistory = [String]()
+    var currentlySearching = false
+    
+    var contentView = {
+        let stackview = UIStackView()
+        stackview.translatesAutoresizingMaskIntoConstraints = false
+        stackview.axis = .vertical
+        return stackview
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +47,33 @@ extension SearchViewController {
     func getSearchHistory(){
         searchHistory = CommonStore.shared.getSearchHistory()
     }
+    
+    func loadData(keyword: String) async {
+        let url = URL(string: "https://baltini-staging.myshopify.com/admin/api/2023-01/products.json?status=active")!
+        var request = URLRequest(url: url)
+        request.setValue(Constants.key, forHTTPHeaderField: "X-Shopify-Access-Token")
+        do{
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let json = (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any])
+            self.searchRes = searchByName(name: keyword, data: Product.fromJson(json: json)!)
+        } catch {
+            print("error gettting data")
+        }
+    }
+    
+    func searchByName(name: String, data: [Product]) -> [Product]{
+        var res = [Product]()
+        data.forEach { item in
+            if item.name.contains(name){ res.append(item) }
+        }
+        return res
+    }
 }
 
 //MARK: Create UI Methods
 extension SearchViewController {
     func createUI(){
+        print(searchHistory.count)
         //change view bg color
         view.backgroundColor = .white
         
@@ -77,8 +109,58 @@ extension SearchViewController {
         }))
         
         stackView.addArrangedSubview(backButton)
+        stackView.setCustomSpacing(24, after: backButton)
         backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         backButton.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        stackView.addArrangedSubview(contentView)
+        
+        contentView.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        contentView.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
+    }
+    
+    func getContent(){
+        self.contentView.arrangedSubviews.forEach { subview in subview.removeFromSuperview() }
+        if currentlySearching {
+            displaySearchResult()
+        } else {
+            displayAllSearchHistory()
+        }
+    }
+    
+    func displaySearchResult(){
+        if(searchRes.count > 0 ){
+            let max = searchRes.count - 1 > 3 ? 3 : searchRes.count - 1
+            for i in 0...max {
+                let cell = CustomCell.createListCell(title: searchRes[i].name, useIcon: false, tapped: UITapGestureRecognizer(target: self, action: nil))
+                
+                contentView.addArrangedSubview(cell)
+                cell.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+                cell.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+                
+                if i == max { contentView.setCustomSpacing(16, after: cell) }
+            }
+            
+            let viewAllButton = CustomButton.createUnderlinedButton(
+                title: "VIEW ALL \(searchRes.count) PRODUCT",
+                action: UIAction(handler: { action in
+                    print("view all pressed")
+                })
+            )
+            
+            contentView.addArrangedSubview(viewAllButton)
+        }
+    }
+    
+    func displayAllSearchHistory(){
+        searchHistory.forEach { history in
+            let cell = CustomCell.createListCell(title: history, useIcon: false, tapped: UITapGestureRecognizer(target: self, action: nil))
+            
+            contentView.addArrangedSubview(cell)
+            cell.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+            cell.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        }
     }
 }
 
@@ -95,6 +177,25 @@ extension SearchViewController : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textField.text)
+        if !textField.text!.isEmpty {
+            CommonStore.shared.addSearchHistory(new: textField.text!)
+            textField.text = ""
+        }
+        currentlySearching = false
+        DispatchQueue.main.async {
+            self.getSearchHistory()
+            self.getContent()
+        }
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        currentlySearching = true
+        self.searchTimer?.invalidate()
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { timer in
+            Task{
+                await self.loadData(keyword: textField.text!)
+                DispatchQueue.main.async { self.getContent() }
+            }
+        })
     }
 }

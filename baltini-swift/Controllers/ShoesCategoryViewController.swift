@@ -79,7 +79,7 @@ extension ShoesCategoryViewController {
         stackView.setCustomSpacing(24, after: stackView.arrangedSubviews.last!)
         
         clothingData[selectedGender!]?.forEach({ string in
-            let row = CustomCell.createCategoryCell(
+            let row = CustomCell.createListCell(
                 title: string,
                 useIcon: false,
                 tapped: UITapGestureRecognizer(target: self, action: #selector(tapped))
