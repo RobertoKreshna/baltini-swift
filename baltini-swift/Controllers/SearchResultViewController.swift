@@ -75,10 +75,10 @@ extension SearchResultViewController {
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 
         addSearchCartBar(to: stackView)
-        CustomBanner.addPromotionBanner(to: stackView, spacing: 16)
-        addFilterSort(to: stackView)
         
         if let list = productList {
+            CustomBanner.addPromotionBanner(to: stackView, spacing: 16)
+            addFilterSort(to: stackView)
             var index : Int = 0
             repeat {
                 let itemStack = UIStackView()
@@ -111,7 +111,26 @@ extension SearchResultViewController {
                 index += 2
             } while index < productList!.count
         } else {
-            CustomToast.showErrorToast(msg: "There are no product", sender: self)
+            stackView.setCustomSpacing(200, after: stackView.subviews.last!)
+            
+            let emptyStack = UIStackView()
+            emptyStack.translatesAutoresizingMaskIntoConstraints = false
+            emptyStack.axis = .vertical
+            emptyStack.alignment = .center
+            
+            let imageView = UIImageView(image: UIImage(named: "icEmpty"))
+            let descLabel = UILabel()
+            descLabel.text = "No item found.\nTry again with another filter or keyword."
+            descLabel.font = UIFont(name: "Futura-Medium", size: 14)
+            descLabel.textColor = .black.withAlphaComponent(0.5)
+            descLabel.numberOfLines = 0
+            descLabel.textAlignment = .center
+            
+            emptyStack.addArrangedSubview(imageView)
+            emptyStack.setCustomSpacing(24, after: imageView)
+            emptyStack.addArrangedSubview(descLabel)
+            
+            stackView.addArrangedSubview(emptyStack)
         }
     }
     
