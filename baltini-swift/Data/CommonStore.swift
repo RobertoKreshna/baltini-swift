@@ -11,10 +11,12 @@ class CommonStore {
     static let shared = CommonStore()
     private var user: User?
     private var cart: Cart
+    private var searchHistory : [String]
     
     private init() {
         user = nil
         cart = Cart()
+        searchHistory = [String]()
     }
     
     //user functions
@@ -84,4 +86,13 @@ class CommonStore {
         
         return String(format: "%.2f", res)
     }
+    
+    //search history functions
+    
+    func addSearchHistory(new: String){
+        searchHistory.append(new)
+        if searchHistory.count > 4 { searchHistory.removeFirst() }
+    }
+    
+    func getSearchHistory() -> [String]{ return searchHistory }
 }

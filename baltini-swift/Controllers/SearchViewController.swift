@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    var searchHistory = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,7 @@ class SearchViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
         removeUI()
+        getSearchHistory()
         createUI()
     }
     
@@ -29,11 +32,18 @@ class SearchViewController: UIViewController {
    }
 }
 
+//MARK: Load Data
+extension SearchViewController {
+    func getSearchHistory(){
+        searchHistory = CommonStore.shared.getSearchHistory()
+    }
+}
+
 //MARK: Create UI Methods
 extension SearchViewController {
     func createUI(){
         //change view bg color
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         
         //create scroll view
         let scrollView = UIScrollView()
@@ -41,7 +51,7 @@ extension SearchViewController {
         view.addSubview(scrollView)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -62,10 +72,29 @@ extension SearchViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        let backBtn = BackButton.createBackButton(title: "AAAAA", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+        let backButton = BackButton.createBackSearchBar(owner: self, backTapped: UIAction(handler: { action in
             self.dismiss(animated: false)
         }))
         
-        stackView.addArrangedSubview(backBtn)
+        stackView.addArrangedSubview(backButton)
+        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        backButton.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+    }
+}
+
+//MARK: Textfield Delegate Methods
+extension SearchViewController : UITextFieldDelegate {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print(textField.text)
     }
 }

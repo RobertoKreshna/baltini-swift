@@ -105,10 +105,10 @@ class CustomTextfield {
         let textfield = UITextField()
         textfield.translatesAutoresizingMaskIntoConstraints = false
         
-        textfield.backgroundColor = .brandGray
         textfield.font = UIFont(name: "Futura-Medium", size: 14)!
         textfield.textColor = .black
-        textfield.borderStyle = .roundedRect
+        textfield.layer.borderWidth = 1
+        textfield.layer.cornerRadius = 8
         textfield.autocorrectionType = .no
         textfield.autocapitalizationType = .none
         if(placeholder.isEmpty == false) { textfield.attributedPlaceholder = attributedPlaceholder }
@@ -116,7 +116,7 @@ class CustomTextfield {
         
         let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         iconView.image = UIImage(named: "icSearch")
-        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 38, height: 30)) //width supposed to be 30, 8 for spacing
         iconContainerView.addSubview(iconView)
         textfield.leftView = iconContainerView
         textfield.leftViewMode = .always

@@ -134,4 +134,19 @@ class BackButton {
         
         return backSearchCartBar
     }
+    
+    static func createBackSearchBar(owner: UITextFieldDelegate, backTapped: UIAction) -> UIStackView {
+        let backSearchBar = UIStackView()
+        backSearchBar.isUserInteractionEnabled = true
+        backSearchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let backButton = createBackButton(icName: "icBack", tapped: backTapped)
+        backButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let searchTextfield = CustomTextfield.createSearchBar(owner: owner, placeholder: "Search...")
+        
+        backSearchBar.addArrangedSubview(backButton)
+        backSearchBar.addArrangedSubview(searchTextfield)
+        
+        return backSearchBar
+    }
 }
