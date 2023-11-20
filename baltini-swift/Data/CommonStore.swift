@@ -17,13 +17,29 @@ class CommonStore {
         cart = Cart()
     }
     
-    func setUser(user: User?){
-        self.user = user
-    }
+    //user functions
+    func setUser(user: User?){ self.user = user }
     
-    func getUser() -> User?{
-        return user
-    }
+    func getUser() -> User?{ return user }
+    
+    //cart functions
+    func cartSetProtect(value: Bool){ cart.useProtect = value }
+    
+    func cartGetProtect() -> Bool { return cart.useProtect }
+    
+    func cartGetAgreeTC() -> Bool { return cart.agreeTC }
+    
+    func cartSetAgreeTC(value: Bool){ cart.agreeTC = value }
+    
+    func getCartProductsAtIndex(index: Int) -> ProductDetail { return cart.products[index] }
+    
+    func getQtyAtIndex(index: Int) -> Int { return cart.qty[index] }
+    
+    func getVariantsAtIndex(index: Int) -> Int { return cart.variantsIndex[index] }
+    
+    func getCartProductCount() -> Int { return cart.products.count }
+    
+    func resetCart(){ cart = Cart() }
     
     func addProductToCart(item: ProductDetail, quantity: Int, varIndex: Int) {
         cart.products.append(item)
@@ -53,51 +69,9 @@ class CommonStore {
         cart.recentlyDeletedVariantsIndex = nil
     }
     
-    func cartSetProtect(value: Bool){
-        cart.useProtect = value
-    }
+    func minQtyAtIndex(index: Int) { if cart.qty[index] > 1 { cart.qty[index] = cart.qty[index] - 1 } }
     
-    func cartGetProtect() -> Bool {
-        return cart.useProtect
-    }
-    
-    func cartGetAgreeTC() -> Bool {
-        return cart.agreeTC
-    }
-    
-    func cartSetAgreeTC(value: Bool){
-        cart.agreeTC = value
-    }
-    
-    func resetCart(){
-        cart = Cart()
-    }
-    
-    func getCartProductsAtIndex(index: Int) -> ProductDetail {
-        return cart.products[index]
-    }
-    
-    func getQtyAtIndex(index: Int) -> Int {
-        return cart.qty[index]
-    }
-    
-    func getVariantsAtIndex(index: Int) -> Int {
-        return cart.variantsIndex[index]
-    }
-    
-    func getCartProductCount() -> Int {
-        return cart.products.count
-    }
-    
-    func minQtyAtIndex(index: Int) {
-        let qtyAtIndex = cart.qty[index]
-        if qtyAtIndex > 1 { cart.qty[index] = qtyAtIndex - 1 }
-    }
-    
-    func plusQtyAtIndex(index: Int) {
-        let qtyAtIndex = cart.qty[index]
-        cart.qty[index] = qtyAtIndex + 1
-    }
+    func plusQtyAtIndex(index: Int) { cart.qty[index] = cart.qty[index] + 1 }
 
     func calculateSubtotal() -> String{
         var res = 0.0
