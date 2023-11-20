@@ -10,12 +10,25 @@ import UIKit
 import BadgeSwift
 
 class CartViewController: UIViewController {
+    var itemList : [ProductDetail]?
+    var qtyList : [Int]?
+    var varIndexList : [Int]?
     
     var totalLabel: UILabel = {
         let totalLabel = UILabel()
         totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"
         totalLabel.font = UIFont(name: "Futura-Bold", size: 14)!
         return totalLabel
+    }()
+    
+    var backButton: UIStackView? = nil
+    
+    let cardStack: UIStackView = {
+        let itemCardStack = UIStackView()
+        itemCardStack.translatesAutoresizingMaskIntoConstraints = false
+        itemCardStack.axis = .vertical
+        itemCardStack.alignment = .center
+        return itemCardStack
     }()
 
     override func viewDidLoad() {
@@ -26,15 +39,22 @@ class CartViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = true
         removeUI()
+        getData()
         createUI()
     }
     
     func removeUI() {
-       let subviews = view.subviews
-       subviews.forEach { subview in
-           subview.removeFromSuperview()
-       }
-   }
+        let subviews = view.subviews
+        subviews.forEach { subview in
+            subview.removeFromSuperview()
+        }
+    }
+    
+    func getData(){
+        itemList = CommonStore.shared.getCartProducts()
+        qtyList = CommonStore.shared.getQty()
+        varIndexList = CommonStore.shared.getVariantsIndex()
+    }
 }
 
 
@@ -71,16 +91,21 @@ extension CartViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        let backButton = BackButton.createBackButton(title: "Cart (\(CommonStore.shared.getCartProductCount()))", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+        backButton = BackButton.createBackButton(title: "Cart (\(itemList!.count))", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
             self.navigationController?.popViewController(animated: true)
         }))
-        stackView.addArrangedSubview(backButton)
-        backButton.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
         
-        stackView.setCustomSpacing(12, after: backButton)
-        if(CommonStore.shared.getCartProductCount() > 0) {
-            createAllProductCard(addTo: stackView)
+        stackView.addArrangedSubview(backButton!)
+        backButton!.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        backButton!.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+        
+        stackView.setCustomSpacing(12, after: backButton!)
+        if(itemList!.count > 0) {
+            createAllProductCard(addTo: cardStack)
+            
+            stackView.addArrangedSubview(cardStack)
+            cardStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+            cardStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
             
             let notesStack = createOrderNotesStack()
             stackView.addArrangedSubview(notesStack)
@@ -121,13 +146,13 @@ extension CartViewController {
     }
     
     func createAllProductCard(addTo stackView: UIStackView){
-        for i in 0 ... CommonStore.shared.getCartProductCount() - 1 {
+        for i in 0 ... itemList!.count - 1 {
             let quantityLabel = PaddingLabel()
             
             let card = CustomCard.createCartItemCard(
-                product: CommonStore.shared.getCartProductsAtIndex(index: i),
-                qty: CommonStore.shared.getQtyAtIndex(index: i),
-                variant: CommonStore.shared.getVariantsAtIndex(index: i),
+                product: itemList![i],
+                qty: qtyList![i],
+                variant: varIndexList![i],
                 deletePressed: UIAction(handler: { action in self.deleteIconPressed(index: i) }),
                 minPressed: UIAction(handler: { action in self.qtyButtonPressed(isAdd: false, label: quantityLabel, index: i) }),
                 plusPressed: UIAction(handler: { action in self.qtyButtonPressed(isAdd: true, label: quantityLabel, index: i) }),
@@ -320,30 +345,48 @@ extension CartViewController {
 extension CartViewController {
     func deleteIconPressed(index i: Int){
         CommonStore.shared.removeProductFromCart(index: i)
-        CustomToast.showGrayUndoToast(
-            msg: "Item deleted to cart.",
-            undoPressed: {
-                CommonStore.shared.undoRemove()
-                self.removeUI()
-                self.createUI()
-                DispatchQueue.main.async {
-                    self.totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"
-                }
-            },
-            sender: self
-        )
-        self.removeUI()
-        self.createUI()
+        self.getData()
+        let label: UILabel = backButton!.arrangedSubviews[1] as! UILabel
         DispatchQueue.main.async {
+            //remove card
+            self.cardStack.arrangedSubviews.forEach { subview in subview.removeFromSuperview() }
+            //add card
+            if self.itemList!.count > 0 { self.createAllProductCard(addTo: self.cardStack) } else { self.removeUI(); self.createUI(); }
+            //update back button
+            label.text = "Cart (\(self.itemList!.count))"
+            //update total
+            self.totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"
+            //display toast
+            CustomToast.showGrayUndoToast(
+                msg: "Item deleted to cart.",
+                undoPressed: self.undoButtonPressed,
+                sender: self
+            )
+        }
+    }
+    
+    func undoButtonPressed(){
+        CommonStore.shared.undoRemove()
+        self.getData()
+        let label: UILabel = backButton!.arrangedSubviews[1] as! UILabel
+        DispatchQueue.main.async {
+            //remove card
+            self.cardStack.arrangedSubviews.forEach { subview in subview.removeFromSuperview() }
+            //add card
+            if self.itemList!.count > 0 { self.createAllProductCard(addTo: self.cardStack) } else { self.removeUI(); self.createUI(); }
+            //update back button
+            label.text = "Cart (\(self.itemList!.count))"
+            //update total
             self.totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"
         }
     }
     
     func qtyButtonPressed(isAdd: Bool, label: PaddingLabel, index: Int){
+        qtyList![index] =  isAdd ? qtyList![index] - 1 : qtyList![index] + 1
         isAdd ? CommonStore.shared.plusQtyAtIndex(index: index) : CommonStore.shared.minQtyAtIndex(index: index)
         DispatchQueue.main.async {
             label.attributedText = NSAttributedString(
-                string: String(describing: CommonStore.shared.getQtyAtIndex(index: index)),
+                string: String(describing: self.qtyList![index]),
                 attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
             )
             self.totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"

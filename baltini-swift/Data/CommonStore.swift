@@ -33,11 +33,11 @@ class CommonStore {
     
     func cartSetAgreeTC(value: Bool){ cart.agreeTC = value }
     
-    func getCartProductsAtIndex(index: Int) -> ProductDetail { return cart.products[index] }
+    func getCartProducts() -> [ProductDetail] { return cart.products }
     
-    func getQtyAtIndex(index: Int) -> Int { return cart.qty[index] }
+    func getQty() -> [Int] { return cart.qty }
     
-    func getVariantsAtIndex(index: Int) -> Int { return cart.variantsIndex[index] }
+    func getVariantsIndex() -> [Int] { return cart.variantsIndex }
     
     func getCartProductCount() -> Int { return cart.products.count }
     
