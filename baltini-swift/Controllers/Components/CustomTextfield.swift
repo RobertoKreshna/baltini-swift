@@ -96,7 +96,7 @@ class CustomTextfield {
         textfield.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
     }
     
-    static func createSearchBar(owner: UITextFieldDelegate, placeholder: String = "", text: String = "") -> UITextField {
+    static func createOutlinedSearchBar(owner: UITextFieldDelegate, placeholder: String = "", text: String = "") -> UITextField {
         let attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)]
@@ -117,6 +117,36 @@ class CustomTextfield {
         let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         iconView.image = UIImage(named: "icSearch")
         let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 38, height: 30)) //width supposed to be 30, 8 for spacing
+        iconContainerView.addSubview(iconView)
+        textfield.leftView = iconContainerView
+        textfield.leftViewMode = .always
+        
+        textfield.delegate = owner
+        
+        return textfield
+    }
+    
+    static func createFilledSearchBar(owner: UITextFieldDelegate, placeholder: String = "", text: String = "") -> UITextField {
+        let attributedPlaceholder = NSAttributedString(
+            string: placeholder,
+            attributes: [.font: UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor: UIColor.black.withAlphaComponent(0.5)]
+        )
+        
+        let textfield = UITextField()
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        
+        textfield.backgroundColor = .brandGray
+        textfield.font = UIFont(name: "Futura-Medium", size: 14)!
+        textfield.textColor = .black
+        textfield.borderStyle = .roundedRect
+        textfield.autocorrectionType = .no
+        textfield.autocapitalizationType = .none
+        if(placeholder.isEmpty == false) { textfield.attributedPlaceholder = attributedPlaceholder }
+        if(text.isEmpty == false) { textfield.text = text }
+        
+        let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        iconView.image = UIImage(named: "icSearch")
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
         iconContainerView.addSubview(iconView)
         textfield.leftView = iconContainerView
         textfield.leftViewMode = .always

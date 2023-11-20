@@ -142,7 +142,7 @@ class BackButton {
         
         let backButton = createBackButton(icName: "icBack", tapped: backTapped)
         backButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        let searchTextfield = CustomTextfield.createSearchBar(owner: owner, placeholder: "Search...")
+        let searchTextfield = CustomTextfield.createOutlinedSearchBar(owner: owner, placeholder: "Search...")
         
         backSearchBar.addArrangedSubview(backButton)
         backSearchBar.addArrangedSubview(searchTextfield)

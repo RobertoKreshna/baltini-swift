@@ -84,7 +84,7 @@ extension DesignerViewController {
         backButton.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
         stackView.setCustomSpacing(24, after: stackView.arrangedSubviews.last!)
         
-        let searchTextfield = CustomTextfield.createSearchBar(owner: self, placeholder: "Search designer", text: keyword)
+        let searchTextfield = CustomTextfield.createFilledSearchBar(owner: self, placeholder: "Search designer", text: keyword)
         
         stackView.addArrangedSubview(searchTextfield)
         searchTextfield.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
