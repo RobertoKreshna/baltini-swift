@@ -110,7 +110,7 @@ class CustomCard {
             brand: product.brand,
             name: product.name,
             variants: product.variants![variant],
-            price: String(describing: product.price),
+            price: String(describing: product.price[variant]),
             qty: qty,
             minPressed: minPressed,
             plusPressed: plusPressed,

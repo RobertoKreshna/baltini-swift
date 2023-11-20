@@ -324,25 +324,19 @@ extension CartViewController {
             msg: "Item deleted to cart.",
             undoPressed: {
                 CommonStore.shared.undoRemove()
-                UIView.animate(
-                    withDuration: 0.0,
-                    animations: { self.view.alpha = 0.5 },
-                    completion: {(value: Bool) in
-                        self.removeUI()
-                    }
-                )
-                UIView.animate(
-                    withDuration: 0.0,
-                    animations: { self.view.alpha = 1.0 },
-                    completion: {(value: Bool) in
-                        self.createUI()
-                    }
-                )
+                self.removeUI()
+                self.createUI()
+                DispatchQueue.main.async {
+                    self.totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"
+                }
             },
             sender: self
         )
         self.removeUI()
         self.createUI()
+        DispatchQueue.main.async {
+            self.totalLabel.text = "$\(CommonStore.shared.calculateSubtotal())"
+        }
     }
     
     func qtyButtonPressed(isAdd: Bool, label: PaddingLabel, index: Int){

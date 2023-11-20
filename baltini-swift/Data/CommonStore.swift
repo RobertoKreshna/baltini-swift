@@ -62,10 +62,9 @@ class CommonStore {
     }
     
     func undoRemove(){
-        cart.products.append(cart.recentlyDeleted!)
-        cart.qty.append(cart.recentlyDeletedQty!)
-        cart.variantsIndex.append(cart.recentlyDeletedVariantsIndex!)
-        
+        if let item = cart.recentlyDeleted, let qty = cart.recentlyDeletedQty, let varIndex = cart.recentlyDeletedVariantsIndex {
+            addProductToCart(item: item, quantity: qty, varIndex: varIndex)
+        }
         cart.recentlyDeleted = nil
         cart.recentlyDeletedQty = nil
         cart.recentlyDeletedVariantsIndex = nil
