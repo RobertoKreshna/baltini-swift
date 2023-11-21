@@ -382,7 +382,7 @@ extension CartViewController {
     }
     
     func qtyButtonPressed(isAdd: Bool, label: PaddingLabel, index: Int){
-        qtyList![index] =  isAdd ? qtyList![index] - 1 : qtyList![index] + 1
+        qtyList![index] =  isAdd ? qtyList![index] + 1 : qtyList![index] - 1
         isAdd ? CommonStore.shared.plusQtyAtIndex(index: index) : CommonStore.shared.minQtyAtIndex(index: index)
         DispatchQueue.main.async {
             label.attributedText = NSAttributedString(
