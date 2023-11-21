@@ -147,6 +147,24 @@ extension CheckoutViewController {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
+        stack.alignment = .trailing
+        
+        let textfield = CustomTextfield.createTextfield(
+            placeholder: "Gift card or discount code",
+            isPassword: false,
+            owner: self,
+            useDesc: false,
+            lineLength: UIScreen.main.bounds.width * 287 / 375
+        )
+        
+        let btn = CustomButton.createBlackImageButton(imageName: "icRight", tapped: UIAction(handler: { action in
+            print("tapped")
+        }))
+        
+        stack.addArrangedSubview(textfield)
+        stack.setCustomSpacing(16, after: textfield)
+        stack.addArrangedSubview(btn)
+        
         return stack
     }
 }

@@ -80,7 +80,7 @@ class CustomTextfield {
         return view
     }
     
-    static func createTextfield(placeholder: String, isPassword: Bool, owner: UITextFieldDelegate, text: String? = nil, useDesc: Bool = true, useLine: Bool = true) -> UIStackView{
+    static func createTextfield(placeholder: String, isPassword: Bool, owner: UITextFieldDelegate, text: String? = nil, useDesc: Bool = true, lineLength: CGFloat = UIScreen.main.bounds.width-32) -> UIStackView{
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
@@ -88,17 +88,15 @@ class CustomTextfield {
         let textfield = isPassword
         ? createPasswordTextfield(placeholder: placeholder, owner: owner, text: text)
         : createTextfield(placeholder: placeholder, owner: owner, text: text)
+        let border = createBorderLine(width: 1, length: lineLength)
         if useDesc{
             let desc = createLabel(placeholder: placeholder)
             stack.addArrangedSubview(desc)
             stack.setCustomSpacing(4, after: desc)
         }
         stack.addArrangedSubview(textfield)
-        if useLine {
-            let border = createBorderLine(width: 1, length: UIScreen.main.bounds.width-32)
-            stack.setCustomSpacing(4, after: textfield)
-            stack.addArrangedSubview(border)
-        }
+        stack.setCustomSpacing(4, after: textfield)
+        stack.addArrangedSubview(border)
         
         return stack
     }

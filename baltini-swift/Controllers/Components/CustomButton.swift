@@ -195,4 +195,19 @@ class CustomButton {
         
         return button
     }
+    
+    static func createBlackImageButton(imageName: String, tapped: UIAction) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: imageName)?.withTintColor(.white),for: .normal)
+        button.backgroundColor = .black
+        button.layer.borderWidth = 1.5
+        button.layer.cornerRadius = 4
+        //add padding
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        button.configuration = configuration
+        //add action
+        button.addAction(tapped, for: .touchUpInside)
+        return button
+    }
 }
