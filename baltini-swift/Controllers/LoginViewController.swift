@@ -10,6 +10,9 @@ import CoreData
 
 class LoginViewController: UIViewController {
     
+    let values: [String] = ["Email", "Password"]
+    let needButton: [Bool] = [false, true]
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = true
@@ -55,10 +58,13 @@ extension LoginViewController {
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
         addDescLabel(to: pageStackView)
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Email", isPassword: false, owner: self)
-        pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Password", isPassword: true, owner: self)
-        pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
+        
+        for i in 0 ... values.count - 1 {
+            let tf = CustomTextfield.createTextfield(placeholder: values[i], isPassword: needButton[i], owner: self)
+            pageStackView.addArrangedSubview(tf)
+            pageStackView.setCustomSpacing(32, after: tf)
+        }
+        
         addForgotPassword(to: pageStackView)
         pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
         addLoginOrRegisterButton(to: pageStackView)
@@ -91,9 +97,11 @@ extension LoginViewController {
             title: "LOGIN",
             action: UIAction(handler: { action in
                 //get all textfield
-                let emailTextfield = stack.arrangedSubviews[3] as! UITextField
-                let passwordStack = stack.arrangedSubviews[6] as! UIStackView
-                let passwordTextfield = passwordStack.arrangedSubviews[0] as! UITextField
+                let emailStack = stack.arrangedSubviews[2] as! UIStackView
+                let emailTextfield = emailStack.arrangedSubviews[1] as! UITextField
+                let passwordStack = stack.arrangedSubviews[3] as! UIStackView
+                let passwordContentStack = passwordStack.arrangedSubviews[1] as! UIStackView
+                let passwordTextfield = passwordContentStack.arrangedSubviews[0] as! UITextField
                 
                 self.loginPressed(email: emailTextfield.text!, password: passwordTextfield.text!)
             })

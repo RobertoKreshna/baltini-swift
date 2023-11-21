@@ -9,8 +9,18 @@ import UIKit
 import CoreData
 
 class EditAddressViewController : UIViewController {
-    
-    var currentAddress: Address?
+    let values = ["First Name", "Last Name", "Company (Optional)", "Address 1", "Address 2", "City", "Country", "Province / State", "ZIP Code", "Phone Number"]
+    var datas: [String?]?
+    var currentAddress: Address? {
+        didSet{
+            datas = [
+                currentAddress?.firstName, currentAddress?.lastName,
+                currentAddress?.company, currentAddress?.address1, currentAddress?.address2,
+                currentAddress?.city, currentAddress?.country, currentAddress?.province,
+                currentAddress?.zipcode, currentAddress?.phone
+            ]
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -65,26 +75,13 @@ extension EditAddressViewController {
         backButton.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
         
         pageStackView.setCustomSpacing(30, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self, text: currentAddress?.firstName)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Last Name", isPassword: false, owner: self, text: currentAddress?.lastName)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Company (Optional)", isPassword: false, owner: self, text: currentAddress?.company)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Address 1", isPassword: false, owner: self, text: currentAddress?.address1)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Address 2", isPassword: false, owner: self, text: currentAddress?.address2)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "City", isPassword: false, owner: self, text: currentAddress?.city)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Country", isPassword: false, owner: self, text: currentAddress?.country)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Province / State", isPassword: false, owner: self, text: currentAddress?.province)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "ZIP Code", isPassword: false, owner: self, text: currentAddress?.zipcode)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Phone Number", isPassword: false, owner: self, text: currentAddress?.phone)
-        pageStackView.setCustomSpacing(4, after: pageStackView.arrangedSubviews.last!)
+
+        for i in 0 ... values.count - 1 {
+            let tf = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self, text: datas![i])
+            pageStackView.addArrangedSubview(tf)
+            pageStackView.setCustomSpacing(i == values.count - 1 ? 4 : 40, after: tf)
+        }
+        
         addTextfieldDescription(to: pageStackView, text: "Incase we need to contact you about your order.")
         pageStackView.setCustomSpacing(42, after: pageStackView.arrangedSubviews.last!)
         addAddButton(to: pageStackView)

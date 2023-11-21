@@ -51,6 +51,7 @@ class CustomTextfield {
         let button = createTogglePasswordButton(textfield: textfield)
         
         let textfieldStack = UIStackView()
+        textfieldStack.translatesAutoresizingMaskIntoConstraints = false
         textfieldStack.addArrangedSubview(textfield)
         textfieldStack.addArrangedSubview(button)
         
@@ -79,21 +80,27 @@ class CustomTextfield {
         return view
     }
     
-    static func addTextfield(to stack: UIStackView, placeholder: String, isPassword: Bool, owner: UITextFieldDelegate, text: String? = nil, useDesc: Bool = true){
+    static func createTextfield(placeholder: String, isPassword: Bool, owner: UITextFieldDelegate, text: String? = nil, useDesc: Bool = true, useLine: Bool = true) -> UIStackView{
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        
         let textfield = isPassword
         ? createPasswordTextfield(placeholder: placeholder, owner: owner, text: text)
         : createTextfield(placeholder: placeholder, owner: owner, text: text)
-        let border = createBorderLine(width: 1, length: UIScreen.main.bounds.width-32)
         if useDesc{
             let desc = createLabel(placeholder: placeholder)
             stack.addArrangedSubview(desc)
             stack.setCustomSpacing(4, after: desc)
         }
         stack.addArrangedSubview(textfield)
-        stack.setCustomSpacing(4, after: textfield)
-        stack.addArrangedSubview(border)
+        if useLine {
+            let border = createBorderLine(width: 1, length: UIScreen.main.bounds.width-32)
+            stack.setCustomSpacing(4, after: textfield)
+            stack.addArrangedSubview(border)
+        }
         
-        textfield.widthAnchor.constraint(equalTo: stack.widthAnchor).isActive = true
+        return stack
     }
     
     static func createOutlinedSearchBar(owner: UITextFieldDelegate, placeholder: String = "", text: String = "") -> UITextField {

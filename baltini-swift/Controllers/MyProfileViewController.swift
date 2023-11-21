@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 
 class MyProfileViewController : UIViewController {
+    let values: [String] = ["First Name", "Last Name", "Email"]
+    var datas: [String?]?
     var currentUser : User?
     
     override func viewDidLoad() {
@@ -25,6 +27,7 @@ class MyProfileViewController : UIViewController {
     
     func loadData(){
         currentUser = CommonStore.shared.getUser()
+        datas = [currentUser?.firstName, currentUser?.lastName, currentUser?.email]
     }
     
      func removeUI() {
@@ -60,12 +63,12 @@ extension MyProfileViewController {
         backButton.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
         
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self, text: currentUser?.firstName)
-        pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Last Name", isPassword: false, owner: self, text: currentUser?.lastName)
-        pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Email", isPassword: false, owner: self, text: currentUser?.email)
-        pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
+        
+        for i in 0 ... values.count - 1 {
+            let tf = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self, text: datas![i])
+            pageStackView.addArrangedSubview(tf)
+            pageStackView.setCustomSpacing(i == values.count - 1 ? 32 : 24, after: tf)
+        }
         
         let changePasswordButton = CustomButton.createUnderlinedButton(title: "CHANGE PASSWORD", action: UIAction(handler: { action in
             self.goToChangePassword()
@@ -102,9 +105,12 @@ extension MyProfileViewController {
     
     func savePressed(from stack: UIStackView){
         //get all textfield
-        let firstNameTextfield = stack.arrangedSubviews[2] as! UITextField
-        let lastNameTextfield = stack.arrangedSubviews[5] as! UITextField
-        let emailTextfield = stack.arrangedSubviews[8] as! UITextField
+        let firstNameStack = stack.arrangedSubviews[1] as! UIStackView
+        let firstNameTextfield = firstNameStack.arrangedSubviews[1] as! UITextField
+        let lastNameStack = stack.arrangedSubviews[2] as! UIStackView
+        let lastNameTextfield = lastNameStack.arrangedSubviews[1] as! UITextField
+        let emailStack = stack.arrangedSubviews[3] as! UIStackView
+        let emailTextfield = emailStack.arrangedSubviews[1] as! UITextField
         
         let firstName = firstNameTextfield.text!
         let lastName = lastNameTextfield.text!

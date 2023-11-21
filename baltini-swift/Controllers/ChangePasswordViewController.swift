@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 
 class ChangePasswordViewController : UIViewController {
+    let values: [String] = ["Old Password", "New Password", "Confirm New Password"]
     var currentUser : User?
     
     override func viewDidLoad() {
@@ -61,12 +62,12 @@ extension ChangePasswordViewController {
         backButton.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
         
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Old Password", isPassword: false, owner: self)
-        pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "New Password", isPassword: false, owner: self)
-        pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Confirm New Password", isPassword: false, owner: self)
-        pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
+        
+        for i in 0 ... values.count - 1 {
+            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: true, owner: self)
+            pageStackView.addArrangedSubview(textfield)
+            pageStackView.setCustomSpacing(i == values.count - 1 ? 32 : 24, after: textfield)
+        }
         
         let saveButton = CustomButton.createBlackButton(title: "CHANGE PASSWORD", action: UIAction(handler: { action in
             self.changePasswordPressed(from: pageStackView)
@@ -93,9 +94,15 @@ extension ChangePasswordViewController: UITextFieldDelegate {
 extension ChangePasswordViewController {
     func changePasswordPressed(from stack: UIStackView){
         //get all textfield
-        let oldPasswordTextfield = stack.arrangedSubviews[2] as! UITextField
-        let newPasswordTextfield = stack.arrangedSubviews[5] as! UITextField
-        let confirmPasswordTextfield = stack.arrangedSubviews[8] as! UITextField
+        let oldPwStack = stack.arrangedSubviews[1] as! UIStackView
+        let oldPwContentStack = oldPwStack.arrangedSubviews[1] as! UIStackView
+        let oldPasswordTextfield = oldPwContentStack.arrangedSubviews[0] as! UITextField
+        let newPwStack = stack.arrangedSubviews[2] as! UIStackView
+        let newPwContentStack = newPwStack.arrangedSubviews[1] as! UIStackView
+        let newPasswordTextfield = newPwContentStack.arrangedSubviews[0] as! UITextField
+        let confNewPwStack = stack.arrangedSubviews[3] as! UIStackView
+        let confNewPwContentStack = confNewPwStack.arrangedSubviews[1] as! UIStackView
+        let confirmPasswordTextfield = confNewPwContentStack.arrangedSubviews[0] as! UITextField
         
         let oldPassword = oldPasswordTextfield.text!
         let newPassword = newPasswordTextfield.text!

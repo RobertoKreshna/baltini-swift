@@ -10,6 +10,9 @@ import CoreData
 
 class RegisterViewController: UIViewController {
     
+    let values: [String] = ["First Name", "Last Name", "Email", "Password"]
+    let needButton: [Bool] = [false, false, false, true]
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = true
@@ -53,14 +56,11 @@ extension RegisterViewController {
         backButton.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
         
         pageStackView.setCustomSpacing(24, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "First Name", isPassword: false, owner: self)
-        pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Last Name", isPassword: false, owner: self)
-        pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Email", isPassword: false, owner: self)
-        pageStackView.setCustomSpacing(32, after: pageStackView.arrangedSubviews.last!)
-        CustomTextfield.addTextfield(to: pageStackView, placeholder: "Password", isPassword: true, owner: self)
-        pageStackView.setCustomSpacing(40, after: pageStackView.arrangedSubviews.last!)
+        for i in 0 ... values.count - 1{
+            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: needButton[i], owner: self)
+            pageStackView.addArrangedSubview(textfield)
+            pageStackView.setCustomSpacing(i == values.count - 1 ? 40 : 32, after: textfield)
+        }
         addCreateButton(to: pageStackView)
     }
     
@@ -69,11 +69,15 @@ extension RegisterViewController {
             title: "CREATE",
             action: UIAction(handler: { action in
                 //get all textfield
-                let firstNameTextfield = stack.arrangedSubviews[2] as! UITextField
-                let lastNameTextfield = stack.arrangedSubviews[5] as! UITextField
-                let emailTextfield = stack.arrangedSubviews[8] as! UITextField
-                let passwordStack = stack.arrangedSubviews[11] as! UIStackView
-                let passwordTextfield = passwordStack.arrangedSubviews[0] as! UITextField
+                let firstNameStack = stack.arrangedSubviews[1] as! UIStackView
+                let firstNameTextfield = firstNameStack.arrangedSubviews[1] as! UITextField
+                let lastNameStack = stack.arrangedSubviews[2] as! UIStackView
+                let lastNameTextfield = lastNameStack.arrangedSubviews[1] as! UITextField
+                let emailStack = stack.arrangedSubviews[3] as! UIStackView
+                let emailTextfield = emailStack.arrangedSubviews[1] as! UITextField
+                let passwordStack = stack.arrangedSubviews[4] as! UIStackView
+                let passwordContentStack = passwordStack.arrangedSubviews[1] as! UIStackView
+                let passwordTextfield = passwordContentStack.arrangedSubviews[0] as! UITextField
                 //use the textfield to create account
                 self.createAccount(
                     firstName: firstNameTextfield.text!,

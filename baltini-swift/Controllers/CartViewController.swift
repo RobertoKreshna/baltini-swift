@@ -28,6 +28,7 @@ class CartViewController: UIViewController {
         itemCardStack.translatesAutoresizingMaskIntoConstraints = false
         itemCardStack.axis = .vertical
         itemCardStack.alignment = .center
+        itemCardStack.spacing = 24
         return itemCardStack
     }()
 
@@ -108,6 +109,7 @@ extension CartViewController {
             createAllProductCard(addTo: cardStack)
             
             stackView.addArrangedSubview(cardStack)
+            stackView.setCustomSpacing(40, after: cardStack)
             cardStack.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
             cardStack.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
             
@@ -149,7 +151,7 @@ extension CartViewController {
         }
     }
     
-    func createAllProductCard(addTo stackView: UIStackView){
+    func createAllProductCard(addTo stack: UIStackView){
         for i in 0 ... itemList!.count - 1 {
             let quantityLabel = PaddingLabel()
             
@@ -163,11 +165,10 @@ extension CartViewController {
                 qtyLabel: quantityLabel
             )
             
-            stackView.addArrangedSubview(card)
-            stackView.setCustomSpacing(i == CommonStore.shared.getCartProductCount() - 1 ? 40 : 24, after: card)
+            stack.addArrangedSubview(card)
             
-            card.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-            card.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+            card.leftAnchor.constraint(equalTo: stack.leftAnchor, constant: 16).isActive = true
+            card.rightAnchor.constraint(equalTo: stack.rightAnchor, constant: -16).isActive = true
         }
     }
     
@@ -184,7 +185,9 @@ extension CartViewController {
         
         contentStack.addArrangedSubview(notesLabel)
         contentStack.setCustomSpacing(30, after: notesLabel)
-        CustomTextfield.addTextfield(to: contentStack, placeholder: "Leave Notes", isPassword: false, owner: self, useDesc: false)
+        
+        let tf = CustomTextfield.createTextfield(placeholder: "Leave Notes", isPassword: false, owner: self, useDesc: false)
+        contentStack.addArrangedSubview(tf)
         
         return contentStack
     }

@@ -22,16 +22,26 @@ class AddressArgs {
     
     init(from stack: UIStackView){
         //get all textfield
-        let firstNameTextfield = stack.arrangedSubviews[2] as! UITextField
-        let lastNameTextfield = stack.arrangedSubviews[5] as! UITextField
-        let companyTextfield = stack.arrangedSubviews[8] as! UITextField
-        let address1Textfield = stack.arrangedSubviews[11] as! UITextField
-        let address2Textfield = stack.arrangedSubviews[14] as! UITextField
-        let cityTextfield = stack.arrangedSubviews[17] as! UITextField
-        let countryTextfield = stack.arrangedSubviews[20] as! UITextField
-        let provinceTextfield = stack.arrangedSubviews[23] as! UITextField
-        let zipCodeTextfield = stack.arrangedSubviews[26] as! UITextField
-        let phoneNumberTextfield = stack.arrangedSubviews[29] as! UITextField
+        let firstNameStack = stack.arrangedSubviews[1] as! UIStackView
+        let firstNameTextfield = firstNameStack.arrangedSubviews[1] as! UITextField
+        let lastNameStack = stack.arrangedSubviews[2] as! UIStackView
+        let lastNameTextfield = lastNameStack.arrangedSubviews[1] as! UITextField
+        let companyStack = stack.arrangedSubviews[3] as! UIStackView
+        let companyTextfield = companyStack.arrangedSubviews[1] as! UITextField
+        let address1Stack = stack.arrangedSubviews[4] as! UIStackView
+        let address1Textfield = address1Stack.arrangedSubviews[1] as! UITextField
+        let address2Stack = stack.arrangedSubviews[5] as! UIStackView
+        let address2Textfield = address2Stack.arrangedSubviews[1] as! UITextField
+        let cityStack = stack.arrangedSubviews[6] as! UIStackView
+        let cityTextfield = cityStack.arrangedSubviews[1] as! UITextField
+        let countryStack = stack.arrangedSubviews[7] as! UIStackView
+        let countryTextfield = countryStack.arrangedSubviews[1] as! UITextField
+        let provinceStack = stack.arrangedSubviews[8] as! UIStackView
+        let provinceTextfield = provinceStack.arrangedSubviews[1] as! UITextField
+        let zipStack = stack.arrangedSubviews[8] as! UIStackView
+        let zipCodeTextfield = zipStack.arrangedSubviews[1] as! UITextField
+        let phoneStack = stack.arrangedSubviews[9] as! UIStackView
+        let phoneNumberTextfield = phoneStack.arrangedSubviews[1] as! UITextField
         
         //assign value
         self.firstName = firstNameTextfield.text!
