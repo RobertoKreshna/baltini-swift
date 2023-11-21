@@ -60,6 +60,8 @@ extension RegisterViewController {
             let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: needButton[i], owner: self)
             pageStackView.addArrangedSubview(textfield)
             pageStackView.setCustomSpacing(i == values.count - 1 ? 40 : 32, after: textfield)
+            textfield.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
+            textfield.rightAnchor.constraint(equalTo: pageStackView.rightAnchor).isActive = true
         }
         addCreateButton(to: pageStackView)
     }

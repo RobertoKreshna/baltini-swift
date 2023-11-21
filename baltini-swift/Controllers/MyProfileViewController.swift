@@ -68,6 +68,8 @@ extension MyProfileViewController {
             let tf = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self, text: datas![i])
             pageStackView.addArrangedSubview(tf)
             pageStackView.setCustomSpacing(i == values.count - 1 ? 32 : 24, after: tf)
+            tf.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
+            tf.rightAnchor.constraint(equalTo: pageStackView.rightAnchor).isActive = true
         }
         
         let changePasswordButton = CustomButton.createUnderlinedButton(title: "CHANGE PASSWORD", action: UIAction(handler: { action in

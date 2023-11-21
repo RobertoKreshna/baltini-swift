@@ -188,6 +188,8 @@ extension CartViewController {
         
         let tf = CustomTextfield.createTextfield(placeholder: "Leave Notes", isPassword: false, owner: self, useDesc: false)
         contentStack.addArrangedSubview(tf)
+        tf.leftAnchor.constraint(equalTo: contentStack.leftAnchor).isActive = true
+        tf.rightAnchor.constraint(equalTo: contentStack.rightAnchor).isActive = true
         
         return contentStack
     }

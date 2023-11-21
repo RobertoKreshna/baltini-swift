@@ -67,6 +67,8 @@ extension ChangePasswordViewController {
             let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: true, owner: self)
             pageStackView.addArrangedSubview(textfield)
             pageStackView.setCustomSpacing(i == values.count - 1 ? 32 : 24, after: textfield)
+            textfield.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
+            textfield.rightAnchor.constraint(equalTo: pageStackView.rightAnchor).isActive = true
         }
         
         let saveButton = CustomButton.createBlackButton(title: "CHANGE PASSWORD", action: UIAction(handler: { action in

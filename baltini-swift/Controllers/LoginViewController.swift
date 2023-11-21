@@ -63,6 +63,8 @@ extension LoginViewController {
             let tf = CustomTextfield.createTextfield(placeholder: values[i], isPassword: needButton[i], owner: self)
             pageStackView.addArrangedSubview(tf)
             pageStackView.setCustomSpacing(32, after: tf)
+            tf.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
+            tf.rightAnchor.constraint(equalTo: pageStackView.rightAnchor).isActive = true
         }
         
         addForgotPassword(to: pageStackView)

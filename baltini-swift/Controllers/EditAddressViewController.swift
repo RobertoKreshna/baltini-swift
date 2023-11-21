@@ -80,6 +80,8 @@ extension EditAddressViewController {
             let tf = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self, text: datas![i])
             pageStackView.addArrangedSubview(tf)
             pageStackView.setCustomSpacing(i == values.count - 1 ? 4 : 40, after: tf)
+            tf.leftAnchor.constraint(equalTo: pageStackView.leftAnchor).isActive = true
+            tf.rightAnchor.constraint(equalTo: pageStackView.rightAnchor).isActive = true
         }
         
         addTextfieldDescription(to: pageStackView, text: "Incase we need to contact you about your order.")
