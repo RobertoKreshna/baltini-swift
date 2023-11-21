@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		99E98AF461EFDB368BC2FC01 /* Pods_baltini_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */; };
+		B869931D2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869931C2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift */; };
+		B869931F2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869931E2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift */; };
+		B86993212B0C71BF00FE9DA1 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993202B0C71BF00FE9DA1 /* CheckoutViewController.swift */; };
 		B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */; };
 		B869B7BF2AEE20D300ABB82D /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */; };
 		B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFAE2AE64FF60009C607 /* AppDelegate.swift */; };
@@ -67,6 +70,9 @@
 
 /* Begin PBXFileReference section */
 		AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_baltini_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B869931C2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnMoreViewController.swift; sourceTree = "<group>"; };
+		B869931E2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionViewController.swift; sourceTree = "<group>"; };
+		B86993202B0C71BF00FE9DA1 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressViewController.swift; sourceTree = "<group>"; };
 		B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		B879EFAB2AE64FF60009C607 /* baltini-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baltini-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +250,9 @@
 				B8BD63872B0B0C58002E62BD /* SearchViewController.swift */,
 				B8BD638B2B0B68FD002E62BD /* SearchResultViewController.swift */,
 				B8CB5E292AFFA33400E9558C /* CartViewController.swift */,
+				B869931C2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift */,
+				B869931E2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift */,
+				B86993202B0C71BF00FE9DA1 /* CheckoutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -415,6 +424,7 @@
 				B8BD63882B0B0C58002E62BD /* SearchViewController.swift in Sources */,
 				B8CB5E202AFDF24900E9558C /* CustomSeparator.swift in Sources */,
 				B8CB5E2E2B01BC2900E9558C /* ManCategoryViewController.swift in Sources */,
+				B869931D2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift in Sources */,
 				B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */,
 				B879EFB92AE64FF60009C607 /* baltini_swift.xcdatamodeld in Sources */,
 				B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */,
@@ -434,6 +444,7 @@
 				B8CB5E2A2AFFA33400E9558C /* CartViewController.swift in Sources */,
 				B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */,
 				B8CB5E1E2AFC9AAE00E9558C /* LabelExtension.swift in Sources */,
+				B869931F2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift in Sources */,
 				B8CB5E0E2AF4FA6C00E9558C /* CustomBottomSheet.swift in Sources */,
 				B8CB5E122AF9CE6A00E9558C /* ProductDetailViewController.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductDataModel.swift in Sources */,
@@ -445,6 +456,7 @@
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */,
 				B8CB5E1C2AFC730F00E9558C /* SizeChartViewController.swift in Sources */,
+				B86993212B0C71BF00FE9DA1 /* CheckoutViewController.swift in Sources */,
 				B8CB5E222AFE006B00E9558C /* ShippingReturnViewController.swift in Sources */,
 				B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */,
 				B8CB5E262AFE009400E9558C /* AskQuestionViewController.swift in Sources */,

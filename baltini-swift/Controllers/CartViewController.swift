@@ -48,6 +48,10 @@ class CartViewController: UIViewController {
         subviews.forEach { subview in
             subview.removeFromSuperview()
         }
+        let cards = cardStack.subviews
+        cards.forEach { card in
+            card.removeFromSuperview()
+        }
     }
     
     func getData(){
@@ -104,8 +108,8 @@ extension CartViewController {
             createAllProductCard(addTo: cardStack)
             
             stackView.addArrangedSubview(cardStack)
-            cardStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-            cardStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+            cardStack.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
+            cardStack.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
             
             let notesStack = createOrderNotesStack()
             stackView.addArrangedSubview(notesStack)
@@ -214,7 +218,7 @@ extension CartViewController {
         let priceStack = createProtectPriceStack()
         let descLabel = createProtectDescLabel()
         let learnMoreButton = CustomButton.createUnderlinedButton(title: "LEARN MORE", action: UIAction(handler: { action in
-            print("learn more tapped")
+            self.navigationController?.pushViewController(LearnMoreViewController(), animated: true)
         }))
         
         mainStack.addArrangedSubview(priceStack)
@@ -290,7 +294,7 @@ extension CartViewController {
         descLabel.font = UIFont(name: "Futura-Medium", size: 14)!
         
         let tcButton = CustomButton.createUnderlinedButton(title: "TERMS AND CONDITION", action: UIAction(handler: { action in
-            print("tc pressed")
+            self.navigationController?.pushViewController(TermsConditionViewController(), animated: true)
         }))
         
         stack.addArrangedSubview(checkButton)
@@ -312,7 +316,12 @@ extension CartViewController {
         
         let totalStack = createTotalStack()
         let checkoutButton = CustomButton.createBlackButton(title: "CHECK OUT", action: UIAction(handler: { action in
-            print("checkout pressed")
+            let vc = CheckoutViewController()
+            vc.itemList = self.itemList
+            vc.qtyList = self.qtyList
+            vc.varIndexList = self.varIndexList
+            vc.useProtect = CommonStore.shared.cartGetProtect()
+            self.navigationController?.pushViewController(vc, animated: true)
         }))
         
         stack.addArrangedSubview(totalStack)
@@ -394,7 +403,7 @@ extension CartViewController {
     }
     
     @objc func switchChanged(_ mySwitch: UISwitch) {
-        mySwitch.isOn ? CommonStore.shared.cartSetProtect(value: false) : CommonStore.shared.cartSetProtect(value: true)
+        mySwitch.isOn ? CommonStore.shared.cartSetProtect(value: true) : CommonStore.shared.cartSetProtect(value: false)
     }
     
     func tcPressed(_ sender: UIButton){

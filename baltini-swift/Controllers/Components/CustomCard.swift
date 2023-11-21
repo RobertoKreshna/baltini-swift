@@ -196,4 +196,85 @@ class CustomCard {
         
         return buttonStack
     }
+    
+    static func createCheckoutItemCard(item: ProductDetail, qty: Int, variantIndex: Int) -> UIStackView{
+        let card = UIStackView()
+        card.translatesAutoresizingMaskIntoConstraints = false
+        card.axis = .horizontal
+        card.alignment = .leading
+        
+        let itemImageView = UIImageView()
+        if(item.images[0] == "http://placekitten.com/200/300"){
+            itemImageView.image = UIImage(named: "productPlaceholder")
+        } else {
+            itemImageView.imageFromServerURL(item.images[0], placeHolder: UIImage(named: "productPlaceholder"))
+        }
+        
+        let labelStack = createCheckoutItemLabelStack(
+            brand: item.brand,
+            name: item.name,
+            variants: item.variants![variantIndex],
+            price: item.price[variantIndex],
+            qty: qty
+        )
+        
+        card.addArrangedSubview(itemImageView)
+        card.setCustomSpacing(8, after: itemImageView)
+        itemImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        itemImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        
+        card.addArrangedSubview(labelStack)
+        
+        return card
+    }
+    
+    static func createCheckoutItemLabelStack(brand: String, name: String, variants: String, price: Double, qty: Int) -> UIStackView {
+        let labelStack = UIStackView()
+        labelStack.translatesAutoresizingMaskIntoConstraints = false
+        labelStack.axis = .vertical
+        labelStack.alignment = .leading
+        
+        let brandLabel = UILabel()
+        brandLabel.translatesAutoresizingMaskIntoConstraints = false
+        brandLabel.text = brand
+        brandLabel.font = UIFont(name: "Futura-Bold", size: 14)!
+        
+        let nameLabel = UILabel()
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.text = name
+        nameLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        
+        let variantLabel = UILabel()
+        variantLabel.translatesAutoresizingMaskIntoConstraints = false
+        variantLabel.text = variants
+        variantLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        variantLabel.textColor = .black.withAlphaComponent(0.5)
+        
+        let priceLabel = UILabel()
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        priceLabel.text = "\(price) x \(qty)"
+        priceLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        
+        let totalLabel = UILabel()
+        totalLabel.textColor = .black
+        totalLabel.font = UIFont(name: "Futura-Medium", size: 16)
+        totalLabel.text = String(describing: "$\(price * Double(qty))")
+        
+        let priceAndTotalStack = UIStackView(arrangedSubviews: [priceLabel, totalLabel])
+        priceAndTotalStack.axis = .horizontal
+        priceAndTotalStack.translatesAutoresizingMaskIntoConstraints = false
+        priceAndTotalStack.distribution = .equalCentering
+        
+        labelStack.addArrangedSubview(brandLabel)
+        labelStack.setCustomSpacing(4, after: brandLabel)
+        labelStack.addArrangedSubview(nameLabel)
+        labelStack.setCustomSpacing(4, after: nameLabel)
+        labelStack.addArrangedSubview(variantLabel)
+        labelStack.setCustomSpacing(8, after: variantLabel)
+        labelStack.addArrangedSubview(priceAndTotalStack)
+        priceAndTotalStack.leftAnchor.constraint(equalTo: labelStack.leftAnchor).isActive = true
+        priceAndTotalStack.rightAnchor.constraint(equalTo: labelStack.rightAnchor).isActive = true
+        
+        return labelStack
+    }
 }
