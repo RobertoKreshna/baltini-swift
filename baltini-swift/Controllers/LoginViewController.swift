@@ -181,7 +181,7 @@ extension LoginViewController {
             }
             //set user
             CommonStore.shared.setUser(user: userArray[userIndex!])
-            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         } else {
             CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
         }

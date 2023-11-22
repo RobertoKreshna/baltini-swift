@@ -12,6 +12,7 @@ class CheckoutViewController: UIViewController {
     var qtyList : [Int]?
     var varIndexList : [Int]?
     var useProtect: Bool?
+    var mailMe: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +101,33 @@ extension CheckoutViewController {
         couponStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         couponStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
+        stackView.setCustomSpacing(45, after: couponStack)
+        
+        let descStack = createDescStack()
+        stackView.addArrangedSubview(descStack)
+        descStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        descStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        stackView.setCustomSpacing(24, after: couponStack)
+        
+        let contentContactSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
+        stackView.addArrangedSubview(contentContactSeparator)
+        stackView.setCustomSpacing(24, after: contentContactSeparator)
+        contentContactSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        contentContactSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        let contactStack = createContactStack()
+        stackView.addArrangedSubview(contactStack)
+        stackView.setCustomSpacing(24, after: contactStack)
+        contactStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        contactStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        let contactAddressSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
+        stackView.addArrangedSubview(contactAddressSeparator)
+        stackView.setCustomSpacing(24, after: contactAddressSeparator)
+        contactAddressSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        contactAddressSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
     }
     
     func createAllProductCard(addTo stackView: UIStackView){
@@ -166,6 +194,191 @@ extension CheckoutViewController {
         stack.addArrangedSubview(btn)
         
         return stack
+    }
+    
+    func createDescStack() -> UIStackView {
+        let column = UIStackView()
+        column.translatesAutoresizingMaskIntoConstraints = false
+        column.axis = .vertical
+        column.spacing = 8
+        
+        let subtotalRow = createSubtotalRow()
+        let shippingRow = createShippingRow()
+        let importDutyRow = createImportDutyRow()
+        let totalRow = createTotalRow()
+        column.addArrangedSubview(subtotalRow)
+        column.addArrangedSubview(shippingRow)
+        column.addArrangedSubview(importDutyRow)
+        column.addArrangedSubview(totalRow)
+        
+        return column
+    }
+    
+    func createSubtotalRow() -> UIStackView{
+        let row = UIStackView()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        row.alignment = .center
+        
+        let leftLabel = createLabel(title: "Subtotal", fontsize: 14, color: .black, textAlign: .left)
+        let rightLabel = createLabel(title: "$\(CommonStore.shared.calculateSubtotal())", fontsize: 14, color: .black, textAlign: .right)
+        
+        row.addArrangedSubview(leftLabel)
+        row.addArrangedSubview(rightLabel)
+        
+        return row
+    }
+    
+    func createShippingRow() -> UIStackView {
+        let row = UIStackView()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        row.alignment = .center
+        
+        let leftLabel = createLabel(title: "Shipping", fontsize: 14, color: .black, textAlign: .left)
+        let rightLabel = createLabel(title: "$0.00", fontsize: 14, color: .black, textAlign: .right)
+        
+        row.addArrangedSubview(leftLabel)
+        row.addArrangedSubview(rightLabel)
+        
+        return row
+    }
+    
+    func createImportDutyRow() -> UIStackView {
+        let row = UIStackView()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        row.alignment = .center
+        
+        let leftLabel = createLabel(title: "Import Duty/Taxes", fontsize: 14, color: .black, textAlign: .left)
+        leftLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let button = CustomButton.createImageButton(imageName: "icInfo", tapped: UIAction(handler: { action in
+            print("info tapped")
+        }))
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let rightLabel = createLabel(title: "Calculated at next step", fontsize: 12, color: .black.withAlphaComponent(0.5), textAlign: .right)
+        
+        row.addArrangedSubview(leftLabel)
+        row.setCustomSpacing(4, after: leftLabel)
+        row.addArrangedSubview(button)
+        row.addArrangedSubview(rightLabel)
+        
+        return row
+    }
+    
+    func createTotalRow() -> UIStackView {
+        let row = UIStackView()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        row.alignment = .center
+        
+        let leftLabel = createLabel(title: "Total", fontsize: 14, color: .black, textAlign: .left)
+        let currencyLabel = createLabel(title: "USD", fontsize: 12, color: .black.withAlphaComponent(0.5), textAlign: .left)
+        currencyLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        currencyLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        let rightLabel = createLabel(title: "$\(CommonStore.shared.calculateSubtotal())", fontsize: 18, color: .black, textAlign: .right)
+        rightLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        row.addArrangedSubview(leftLabel)
+        row.addArrangedSubview(currencyLabel)
+        row.setCustomSpacing(8, after: currencyLabel)
+        row.addArrangedSubview(rightLabel)
+        
+        return row
+    }
+    
+    func createContactStack() -> UIStackView {
+        let contactStack = UIStackView()
+        contactStack.translatesAutoresizingMaskIntoConstraints = false
+        contactStack.axis = .vertical
+        
+        let titleLabel = createLabel(title: "CONTACT INFORMATION", fontsize: 14, color: .black, textAlign: .left)
+        
+        contactStack.addArrangedSubview(titleLabel)
+        contactStack.setCustomSpacing(16, after: titleLabel)
+        
+        if CommonStore.shared.getUser() != nil {
+            let user = CommonStore.shared.getUser()
+            let contactLabel = createLabel(
+                title: "\(user!.firstName!) \(user!.lastName!) (\(user!.email!))",
+                fontsize: 14, color: .black, textAlign: .left
+            )
+            contactStack.addArrangedSubview(contactLabel)
+            contactStack.setCustomSpacing(16, after: contactLabel)
+        } else {
+            let descStack = createNotLoggedInDescStack()
+            let textfield = CustomTextfield.createTextfield(placeholder: "Email", isPassword: false, owner: self, useDesc: false)
+            contactStack.addArrangedSubview(descStack)
+            contactStack.setCustomSpacing(38, after: descStack)
+            contactStack.addArrangedSubview(textfield)
+            contactStack.setCustomSpacing(30, after: textfield)
+        }
+        
+        let mailStack = createMailStack()
+        contactStack.addArrangedSubview(mailStack)
+        contactStack.setCustomSpacing(24, after: mailStack)
+        
+        return contactStack
+    }
+    
+    func createNotLoggedInDescStack() -> UIStackView {
+        let descStack = UIStackView()
+        descStack.translatesAutoresizingMaskIntoConstraints = false
+        descStack.axis = .horizontal
+        
+        let descLabel = createLabel(title: "Already have an account ?", fontsize: 14, color: .black, textAlign: .left)
+        descLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let button = CustomButton.createUnderlinedButton(title: "LOG IN", action: UIAction(handler: { action in
+            self.navigationController?.pushViewController(LoginViewController(), animated: true)
+        }))
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let emptyLabel = createLabel(title: "", fontsize: 14, color: .clear, textAlign: .left)
+        
+        descStack.addArrangedSubview(descLabel)
+        descStack.setCustomSpacing(8, after: descLabel)
+        descStack.addArrangedSubview(button)
+        descStack.addArrangedSubview(emptyLabel)
+        return descStack
+    }
+    
+    func createMailStack() -> UIStackView {
+        let contentStack = UIStackView()
+        contentStack.translatesAutoresizingMaskIntoConstraints = false
+        contentStack.axis = .vertical
+        contentStack.alignment = .leading
+        
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.alignment = .center
+        
+        let checkButton = UIButton(type: .system)
+        checkButton.setImage(UIImage(named: mailMe ? "icCheckSelected" : "icCheck")!.withRenderingMode(.alwaysOriginal), for: .normal)
+        checkButton.addAction(UIAction(handler: { action in
+            self.mailMe = !self.mailMe
+            checkButton.setImage(UIImage(named: self.mailMe ? "icCheckSelected" : "icCheck")!.withRenderingMode(.alwaysOriginal), for: .normal)
+        }), for: .touchUpInside)
+        
+        let descLabel = UILabel()
+        descLabel.text = "Email me with news and offers"
+        descLabel.font = UIFont(name: "Futura-Medium", size: 14)!
+        
+        stack.addArrangedSubview(checkButton)
+        stack.setCustomSpacing(8, after: checkButton)
+        stack.addArrangedSubview(descLabel)
+        
+        contentStack.addArrangedSubview(stack)
+        
+        return contentStack
+    }
+    
+    func createLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {
+        let label = UILabel()
+        label.text = title
+        label.font = UIFont(name: "Futura-Medium", size: fontsize)
+        label.textColor = color
+        label.textAlignment = textAlign
+        return label
     }
 }
 
