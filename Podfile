@@ -11,5 +11,6 @@ target 'baltini-swift' do
   pod 'LZViewPager'
   pod 'BadgeSwift'
   pod 'TTGSnackbar'
+  pod 'DropDown'
 
 end

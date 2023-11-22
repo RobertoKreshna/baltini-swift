@@ -128,6 +128,17 @@ extension CheckoutViewController {
         contactAddressSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         contactAddressSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
+        let addressStack = createAddressStack()
+        stackView.addArrangedSubview(addressStack)
+        stackView.setCustomSpacing(66, after: addressStack)
+        addressStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        addressStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        let addressButtonSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
+        stackView.addArrangedSubview(addressButtonSeparator)
+        addressButtonSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        addressButtonSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
     }
     
     func createAllProductCard(addTo stackView: UIStackView){
@@ -370,6 +381,14 @@ extension CheckoutViewController {
         contentStack.addArrangedSubview(stack)
         
         return contentStack
+    }
+    
+    func createAddressStack() -> UIStackView {
+        let addressStack = UIStackView()
+        addressStack.translatesAutoresizingMaskIntoConstraints = false
+        addressStack.axis = .vertical
+        
+        return addressStack
     }
     
     func createLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {
