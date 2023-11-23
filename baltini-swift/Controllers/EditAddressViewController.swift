@@ -104,7 +104,7 @@ extension EditAddressViewController {
         let button = CustomButton.createBlackButton(
             title: "SAVE ADDRESS",
             action: UIAction(handler: { action in
-                let addressArgs = AddressArgs(from: stack)
+                let addressArgs = AddressArgs.initFromAddEditAddress(from: stack)
                 self.updateAddress(args: addressArgs)
             })
         )

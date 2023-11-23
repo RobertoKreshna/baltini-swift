@@ -137,9 +137,23 @@ extension CheckoutViewController {
         
         let addressButtonSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
         stackView.addArrangedSubview(addressButtonSeparator)
+        stackView.setCustomSpacing(12, after: addressButtonSeparator)
         addressButtonSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         addressButtonSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
+        let buttonStack = CustomCheckoutComponent.createTotalCheckoutStack(
+            leftTop: "Total Price",
+            leftBot: CommonStore.shared.calculateSubtotal(),
+            buttonTitle: "Shipping",
+            buttonTapped: UIAction(handler: { action in
+                let address = AddressArgs.initFromCheckout(from: addressStack, hasAccount: CommonStore.shared.getUser() != nil)
+                self.checkAddressAndDisplayPopup(address: address)
+            })
+        )
+        stackView.addArrangedSubview(buttonStack)
+        stackView.setCustomSpacing(20, after: buttonStack)
+        buttonStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        buttonStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
     }
     
     func createAllProductCard(addTo stackView: UIStackView){
@@ -479,7 +493,6 @@ extension CheckoutViewController {
         return stack
     }
     
-    
     func createLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {
         let label = UILabel()
         label.text = title
@@ -503,10 +516,22 @@ extension CheckoutViewController : UITextFieldDelegate {
     }
 }
 
-//MARK: Sort Button Methods
+//MARK: Button Tapped Methods
 extension CheckoutViewController {
     @objc private func tapped(_ recognizer: sortTapped){
         recognizer.sortDropdown.show()
+    }
+    
+    func checkAddressAndDisplayPopup(address: AddressArgs){
+        if checkAddressNotEmpty(args: address) {
+            CustomToast.showSuccessToast(msg: "Yey", sender: self)
+        } else {
+            CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
+        }
+    }
+    
+    func checkAddressNotEmpty(args: AddressArgs) -> Bool{
+        return (args.firstName.isEmpty) || (args.lastName.isEmpty) || (args.address1.isEmpty) || (args.city.isEmpty) || (args.country.isEmpty) || (args.province.isEmpty) || (args.zipCode.isEmpty) || (args.phoneNumber.isEmpty) ? false : true
     }
 }
 
