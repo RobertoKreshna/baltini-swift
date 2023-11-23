@@ -38,9 +38,9 @@ class AddressArgs {
         let countryTextfield = countryStack.arrangedSubviews[1] as! UITextField
         let provinceStack = stack.arrangedSubviews[8] as! UIStackView
         let provinceTextfield = provinceStack.arrangedSubviews[1] as! UITextField
-        let zipStack = stack.arrangedSubviews[8] as! UIStackView
+        let zipStack = stack.arrangedSubviews[9] as! UIStackView
         let zipCodeTextfield = zipStack.arrangedSubviews[1] as! UITextField
-        let phoneStack = stack.arrangedSubviews[9] as! UIStackView
+        let phoneStack = stack.arrangedSubviews[10] as! UIStackView
         let phoneNumberTextfield = phoneStack.arrangedSubviews[1] as! UITextField
         
         //assign value

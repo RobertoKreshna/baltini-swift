@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 class CheckoutViewController: UIViewController {
     var itemList : [ProductDetail]?
@@ -396,6 +397,14 @@ extension CheckoutViewController {
         addressStack.addArrangedSubview(prompt)
         addressStack.setCustomSpacing(16, after: prompt)
         
+        if CommonStore.shared.getUser() != nil {
+            let savedAdressStack = createSavedAddressDropdown()
+            addressStack.addArrangedSubview(savedAdressStack)
+            addressStack.setCustomSpacing(32, after: savedAdressStack)
+            savedAdressStack.leftAnchor.constraint(equalTo: addressStack.leftAnchor).isActive = true
+            savedAdressStack.rightAnchor.constraint(equalTo: addressStack.rightAnchor).isActive = true
+        }
+        
         let values = ["First Name", "Last Name", "Company (Optional)", "Address 1", "Address 2", "City", "Country", "Province / State", "ZIP Code", "Phone Number"]
         for i in 0 ... values.count - 1 {
             let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self)
@@ -426,6 +435,51 @@ extension CheckoutViewController {
         return prompt
     }
     
+    func createSavedAddressDropdown(text: String? = nil) -> UIStackView {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        
+        //create dropdown
+        let addressDropdown = DropDown()
+        
+        //create anchor
+        let addressLabel = UILabel()
+        let anchor = CustomDisplay.createDropdownAnchor(
+            label: addressLabel,
+            placeholder: "Saved Address",
+            tapped: sortTapped(target: self, action: #selector(tapped(_:)), dropdown: addressDropdown)
+        )
+        
+        //dropdown data
+        addressDropdown.dataSource = [ "First Address", "Second Address"]
+        //dropdown location
+        addressDropdown.anchorView = anchor
+        addressDropdown.direction = .bottom
+        addressDropdown.bottomOffset = CGPoint(x: 0, y: 40)
+        //dropdown ui
+        addressDropdown.textFont = UIFont(name: "Futura-Medium", size: 14)!
+        addressDropdown.textColor = .black
+        addressDropdown.cornerRadius = 8
+        //add dropdown tapped
+        addressDropdown.selectionAction = { (index: Int, item: String) in
+            DispatchQueue.main.async {
+                let attributedString = NSAttributedString(
+                    string: item,
+                    attributes: [.font: UIFont(name: "Futura-Medium", size: 16)!, .foregroundColor: UIColor.black]
+                )
+                addressLabel.attributedText = attributedString
+            }
+        }
+
+        stack.addArrangedSubview(anchor)
+        anchor.leftAnchor.constraint(equalTo: stack.leftAnchor).isActive = true
+        anchor.rightAnchor.constraint(equalTo: stack.rightAnchor).isActive = true
+        
+        return stack
+    }
+    
+    
     func createLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {
         let label = UILabel()
         label.text = title
@@ -446,6 +500,13 @@ extension CheckoutViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
+    }
+}
+
+//MARK: Sort Button Methods
+extension CheckoutViewController {
+    @objc private func tapped(_ recognizer: sortTapped){
+        recognizer.sortDropdown.show()
     }
 }
 

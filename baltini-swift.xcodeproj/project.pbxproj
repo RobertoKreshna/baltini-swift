@@ -40,7 +40,7 @@
 		B8CB5E0C2AF4025500E9558C /* CustomBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */; };
 		B8CB5E0E2AF4FA6C00E9558C /* CustomBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E0D2AF4FA6C00E9558C /* CustomBottomSheet.swift */; };
 		B8CB5E122AF9CE6A00E9558C /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E112AF9CE6A00E9558C /* ProductDetailViewController.swift */; };
-		B8CB5E142AF9DF5800E9558C /* ItemTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E132AF9DF5800E9558C /* ItemTapped.swift */; };
+		B8CB5E142AF9DF5800E9558C /* TappedArgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E132AF9DF5800E9558C /* TappedArgs.swift */; };
 		B8CB5E162AFA2ACC00E9558C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E152AFA2ACC00E9558C /* StringExtension.swift */; };
 		B8CB5E182AFA44B300E9558C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E172AFA44B300E9558C /* CustomCell.swift */; };
 		B8CB5E1C2AFC730F00E9558C /* SizeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E1B2AFC730F00E9558C /* SizeChartViewController.swift */; };
@@ -104,7 +104,7 @@
 		B8CB5E0B2AF4025500E9558C /* CustomBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBanner.swift; sourceTree = "<group>"; };
 		B8CB5E0D2AF4FA6C00E9558C /* CustomBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBottomSheet.swift; sourceTree = "<group>"; };
 		B8CB5E112AF9CE6A00E9558C /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
-		B8CB5E132AF9DF5800E9558C /* ItemTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTapped.swift; sourceTree = "<group>"; };
+		B8CB5E132AF9DF5800E9558C /* TappedArgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappedArgs.swift; sourceTree = "<group>"; };
 		B8CB5E152AFA2ACC00E9558C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B8CB5E172AFA44B300E9558C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		B8CB5E1B2AFC730F00E9558C /* SizeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeChartViewController.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CB5DFA2AEFB40100E9558C /* AddressArgs.swift */,
-				B8CB5E132AF9DF5800E9558C /* ItemTapped.swift */,
+				B8CB5E132AF9DF5800E9558C /* TappedArgs.swift */,
 			);
 			path = Args;
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 				B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */,
 				B8CB5E262AFE009400E9558C /* AskQuestionViewController.swift in Sources */,
 				B8CB5DFF2AF0CFE400E9558C /* ChangePasswordViewController.swift in Sources */,
-				B8CB5E142AF9DF5800E9558C /* ItemTapped.swift in Sources */,
+				B8CB5E142AF9DF5800E9558C /* TappedArgs.swift in Sources */,
 				B8CB5E052AF25B0700E9558C /* CustomCard.swift in Sources */,
 				B8CB5DFB2AEFB40100E9558C /* AddressArgs.swift in Sources */,
 				B879EFDA2AE8C6550009C607 /* AccountViewController.swift in Sources */,
