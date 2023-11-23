@@ -388,7 +388,42 @@ extension CheckoutViewController {
         addressStack.translatesAutoresizingMaskIntoConstraints = false
         addressStack.axis = .vertical
         
+        let titleLabel = createLabel(title: "SHIPPING ADDRESS", fontsize: 14, color: .black, textAlign: .left)
+        addressStack.addArrangedSubview(titleLabel)
+        addressStack.setCustomSpacing(16, after: titleLabel)
+        
+        let prompt = createAddressPrompt()
+        addressStack.addArrangedSubview(prompt)
+        addressStack.setCustomSpacing(16, after: prompt)
+        
+        let values = ["First Name", "Last Name", "Company (Optional)", "Address 1", "Address 2", "City", "Country", "Province / State", "ZIP Code", "Phone Number"]
+        for i in 0 ... values.count - 1 {
+            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self)
+            addressStack.addArrangedSubview(textfield)
+            addressStack.setCustomSpacing(32, after: textfield)
+            textfield.leftAnchor.constraint(equalTo: addressStack.leftAnchor).isActive = true
+            textfield.rightAnchor.constraint(equalTo: addressStack.rightAnchor).isActive = true
+        }
+        
         return addressStack
+    }
+    
+    func createAddressPrompt() -> UIView {
+        let prompt = UIButton()
+        prompt.isUserInteractionEnabled = false
+        
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        prompt.configuration = configuration
+        let title = NSAttributedString(
+            string: "Please double check the shipping address to ensure prompt delivery",
+            attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
+        )
+        prompt.setAttributedTitle(title, for: .normal)
+        prompt.backgroundColor = .promptBg.withAlphaComponent(0.1)
+        prompt.layer.cornerRadius = 4
+        
+        return prompt
     }
     
     func createLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {

@@ -387,7 +387,10 @@ extension CartViewController {
             //remove card
             self.cardStack.arrangedSubviews.forEach { subview in subview.removeFromSuperview() }
             //add card
-            if self.itemList!.count > 0 { self.createAllProductCard(addTo: self.cardStack) } else { self.removeUI(); self.createUI(); }
+            if self.itemList!.count > 0 {
+                self.createAllProductCard(addTo: self.cardStack)
+                if(self.itemList!.count == 1){ self.removeUI(); self.createUI(); }
+            }
             //update back button
             label.text = "Cart (\(self.itemList!.count))"
             //update total
