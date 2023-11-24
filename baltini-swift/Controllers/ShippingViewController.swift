@@ -9,6 +9,8 @@ import UIKit
 import DropDown
 
 class ShippingViewController: UIViewController {
+    var userEmail: String?
+    var address: AddressArgs?
     var shippingOptions = [
         "Standart International Shipping (7-10 Business Days) Import Duties & Tax Included" : "$0.00 Shipping\n$14.30 Import Duty & Taxes",
         "Express International Shipping (3-5 Business Days) Import Duties & Tax Included" : "$0.00 Shipping\n$25.10 Import Duty & Taxes",
@@ -69,6 +71,9 @@ extension ShippingViewController {
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
         let backButton = BackButton.createBackButton(title: "Checkout", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+            let checkoutVC = self.navigationController?.viewControllers.first(where: { $0 is CheckoutViewController }) as! CheckoutViewController
+            checkoutVC.userEmail = self.userEmail
+            checkoutVC.address = self.address
             self.navigationController?.popViewController(animated: true)
         }))
         
@@ -123,11 +128,11 @@ extension ShippingViewController {
         contactStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         contactStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
-        let contactAddressSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
-        stackView.addArrangedSubview(contactAddressSeparator)
-        stackView.setCustomSpacing(24, after: contactAddressSeparator)
-        contactAddressSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-        contactAddressSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        let contactShippingSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
+        stackView.addArrangedSubview(contactShippingSeparator)
+        stackView.setCustomSpacing(24, after: contactShippingSeparator)
+        contactShippingSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        contactShippingSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
     }
     
     func createAllProductCard(addTo stackView: UIStackView){
@@ -300,11 +305,54 @@ extension ShippingViewController {
         contactStack.axis = .vertical
         
         let titleLabel = createLabel(title: "CONTACT INFORMATION", fontsize: 14, color: .black, textAlign: .left)
+        let emailSection = createContantSection(title: "Contact", subtitle: userEmail!)
+        let addressString = address!.address2!.isEmpty
+        ? "\(address!.address1), \(address!.city), \(address!.province), \(address!.country)"
+        : "\(address!.address1), \(address!.address2!), \(address!.city), \(address!.province), \(address!.country)"
+        let addressSection = createContantSection(title: "Ship To", subtitle: addressString)
         
         contactStack.addArrangedSubview(titleLabel)
         contactStack.setCustomSpacing(16, after: titleLabel)
+        contactStack.addArrangedSubview(emailSection)
+        contactStack.setCustomSpacing(24, after: emailSection)
+        contactStack.addArrangedSubview(addressSection)
         
         return contactStack
+    }
+    
+    func createContantSection(title: String, subtitle: String) -> UIStackView {
+        let section = UIStackView()
+        section.translatesAutoresizingMaskIntoConstraints = false
+        section.axis = .vertical
+        
+        let titleAndButtonStack = UIStackView()
+        titleAndButtonStack.translatesAutoresizingMaskIntoConstraints = false
+        titleAndButtonStack.axis = .horizontal
+        
+        let titleLabel = UILabel()
+        titleLabel.text = title.uppercased()
+        titleLabel.font = UIFont(name: "Futura-Medium", size: 10)
+        titleLabel.textColor = .black.withAlphaComponent(0.5)
+        
+        let button = CustomButton.createUnderlinedButton(title: "CHANGE", action: UIAction(handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        titleAndButtonStack.addArrangedSubview(titleLabel)
+        titleAndButtonStack.addArrangedSubview(button)
+        
+        let subtitleLabel = UILabel()
+        subtitleLabel.text = subtitle
+        subtitleLabel.font = UIFont(name: "Futura-Medium", size: 16)
+        subtitleLabel.textColor = .black
+        subtitleLabel.numberOfLines = 0
+        subtitleLabel.textAlignment = .left
+        
+        section.addArrangedSubview(titleAndButtonStack)
+        section.setCustomSpacing(4, after: titleAndButtonStack)
+        section.addArrangedSubview(subtitleLabel)
+        
+        return section
     }
     
     func createLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {

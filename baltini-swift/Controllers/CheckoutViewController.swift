@@ -10,6 +10,8 @@ import DropDown
 
 class CheckoutViewController: UIViewController {
     var mailMe: Bool = false
+    var userEmail: String?
+    var address: AddressArgs?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,7 +141,7 @@ extension CheckoutViewController {
         
         let buttonStack = CustomCheckoutComponent.createTotalCheckoutStack(
             leftTop: "Total Price",
-            leftBot: CommonStore.shared.calculateSubtotal(),
+            leftBot: "$\(CommonStore.shared.calculateSubtotal())",
             buttonTitle: "SHIPPING",
             buttonTapped: UIAction(handler: { action in
                 let email = self.getEmailFromStack(from: contactStack)
@@ -337,7 +339,7 @@ extension CheckoutViewController {
             contactStack.setCustomSpacing(16, after: contactLabel)
         } else {
             let descStack = createNotLoggedInDescStack()
-            let textfield = CustomTextfield.createTextfield(placeholder: "Email", isPassword: false, owner: self, useDesc: false)
+            let textfield = CustomTextfield.createTextfield(placeholder: "Email", isPassword: false, owner: self, text: userEmail, useDesc: false)
             contactStack.addArrangedSubview(descStack)
             contactStack.setCustomSpacing(38, after: descStack)
             contactStack.addArrangedSubview(textfield)
@@ -424,8 +426,9 @@ extension CheckoutViewController {
         }
         
         let values = ["First Name", "Last Name", "Company (Optional)", "Address 1", "Address 2", "City", "Country", "Province / State", "ZIP Code", "Phone Number"]
+        let text = [ address?.firstName, address?.lastName, address?.company, address?.address1, address?.address2, address?.city, address?.country, address?.province, address?.zipCode, address?.phoneNumber ]
         for i in 0 ... values.count - 1 {
-            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self)
+            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self, text: text[i])
             addressStack.addArrangedSubview(textfield)
             addressStack.setCustomSpacing(32, after: textfield)
             textfield.leftAnchor.constraint(equalTo: addressStack.leftAnchor).isActive = true
@@ -541,7 +544,7 @@ extension CheckoutViewController {
     
     func checkAddressAndDisplayPopup(address: AddressArgs, email: String){
         if checkAddressNotEmpty(args: address) && !email.isEmpty{
-            CustomPopup.displayAddressConfirmationPopup(sender: self, address: address)
+            CustomPopup.displayAddressConfirmationPopup(sender: self, address: address, email: email)
         } else {
             CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
         }

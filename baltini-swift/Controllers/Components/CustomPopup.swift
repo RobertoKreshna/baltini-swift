@@ -111,7 +111,7 @@ class CustomPopup {
         }
     }
     
-    static func displayAddressConfirmationPopup(sender: UIViewController, address: AddressArgs){
+    static func displayAddressConfirmationPopup(sender: UIViewController, address: AddressArgs, email: String){
         let backgroundFrame = CGRect(x: 0, y: 0, width: Int(sender.view.frame.size.width), height: Int(sender.view.frame.size.height))
         let popupBackgroundView = UIView(frame: backgroundFrame)
         popupBackgroundView.backgroundColor = .black.withAlphaComponent(0.2)
@@ -135,7 +135,10 @@ class CustomPopup {
             title: "YES, CONFIRM",
             action: UIAction(handler: { action in
                 popupBackgroundView.removeFromSuperview()
-                sender.navigationController?.pushViewController(ShippingViewController(), animated: true)
+                let vc = ShippingViewController()
+                vc.userEmail = email
+                vc.address = address
+                sender.navigationController?.pushViewController(vc, animated: true)
             })
         )
         
