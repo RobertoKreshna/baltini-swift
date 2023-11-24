@@ -144,7 +144,7 @@ extension CheckoutViewController {
         let buttonStack = CustomCheckoutComponent.createTotalCheckoutStack(
             leftTop: "Total Price",
             leftBot: CommonStore.shared.calculateSubtotal(),
-            buttonTitle: "Shipping",
+            buttonTitle: "SHIPPING",
             buttonTapped: UIAction(handler: { action in
                 let address = AddressArgs.initFromCheckout(from: addressStack, hasAccount: CommonStore.shared.getUser() != nil)
                 self.checkAddressAndDisplayPopup(address: address)
@@ -524,7 +524,7 @@ extension CheckoutViewController {
     
     func checkAddressAndDisplayPopup(address: AddressArgs){
         if checkAddressNotEmpty(args: address) {
-            CustomToast.showSuccessToast(msg: "Yey", sender: self)
+            CustomPopup.displayAddressConfirmationPopup(sender: self, address: address)
         } else {
             CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
         }

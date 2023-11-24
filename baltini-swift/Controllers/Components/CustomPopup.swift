@@ -110,4 +110,64 @@ class CustomPopup {
             }
         }
     }
+    
+    static func displayAddressConfirmationPopup(sender: UIViewController, address: AddressArgs){
+        let backgroundFrame = CGRect(x: 0, y: 0, width: Int(sender.view.frame.size.width), height: Int(sender.view.frame.size.height))
+        let popupBackgroundView = UIView(frame: backgroundFrame)
+        popupBackgroundView.backgroundColor = .black.withAlphaComponent(0.2)
+        
+        let contentView = UIStackView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.axis = .vertical
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 16
+        contentView.layer.borderWidth = 1
+        
+        let label = UILabel()
+        label.text = "Is the shipping address correct ?"
+        label.font = UIFont(name: "Futura-Medium", size: 18)
+        label.textAlignment = .center
+        let addressDetails = createAddressDetails(address: address)
+        let modifyButton = CustomButton.createBlackButton(
+            title: "MODIFY ADDRESS",
+            action: UIAction(handler: { action in popupBackgroundView.removeFromSuperview() })
+        )
+        let yesButton = CustomButton.createBlackButton(
+            title: "YES, CONFIRM",
+            action: UIAction(handler: { action in
+                print("yes pressed")
+            })
+        )
+        
+        contentView.addArrangedSubview(label)
+        contentView.setCustomSpacing(16, after: label)
+        contentView.addArrangedSubview(addressDetails)
+        contentView.setCustomSpacing(32, after: addressDetails)
+        contentView.addArrangedSubview(modifyButton)
+        contentView.setCustomSpacing(8, after: modifyButton)
+        contentView.addArrangedSubview(yesButton)
+        
+        contentView.isLayoutMarginsRelativeArrangement = true
+        contentView.layoutMargins = UIEdgeInsets(top: 40, left: 16, bottom: 32, right: 16)
+        
+        popupBackgroundView.addSubview(contentView)
+        contentView.rightAnchor.constraint(equalTo: popupBackgroundView.rightAnchor, constant: -40).isActive = true
+        contentView.leftAnchor.constraint(equalTo: popupBackgroundView.leftAnchor, constant: 40).isActive = true
+        contentView.centerXAnchor.constraint(equalTo: popupBackgroundView.centerXAnchor).isActive = true
+        contentView.centerYAnchor.constraint(equalTo: popupBackgroundView.centerYAnchor).isActive = true
+        
+        sender.view.addSubview(popupBackgroundView)
+    }
+    
+    static private func createAddressDetails(address: AddressArgs) -> UILabel {
+        let label = UILabel()
+        label.text = address.address2!.isEmpty
+        ? "\(address.address1)\n\(address.city)\n\(address.province)\n\(address.zipCode)"
+        : "\(address.address1), \(address.address2!)\n\(address.city)\n\(address.province)\n\(address.zipCode)"
+        label.font = UIFont(name: "Futura-Medium", size: 14)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        
+        return label
+    }
 }
