@@ -121,7 +121,6 @@ class CustomPopup {
         contentView.axis = .vertical
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 16
-        contentView.layer.borderWidth = 1
         
         let label = UILabel()
         label.text = "Is the shipping address correct ?"
@@ -135,7 +134,8 @@ class CustomPopup {
         let yesButton = CustomButton.createBlackButton(
             title: "YES, CONFIRM",
             action: UIAction(handler: { action in
-                print("yes pressed")
+                popupBackgroundView.removeFromSuperview()
+                sender.navigationController?.pushViewController(ShippingViewController(), animated: true)
             })
         )
         

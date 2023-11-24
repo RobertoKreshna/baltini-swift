@@ -1,15 +1,19 @@
 //
-//  CheckoutViewController.swift
+//  ShippingViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 21/11/23.
+//  Created by Roberto Kreshna on 24/11/23.
 //
 
 import UIKit
 import DropDown
 
-class CheckoutViewController: UIViewController {
-    var mailMe: Bool = false
+class ShippingViewController: UIViewController {
+    var shippingOptions = [
+        "Standart International Shipping (7-10 Business Days) Import Duties & Tax Included" : "$0.00 Shipping\n$14.30 Import Duty & Taxes",
+        "Express International Shipping (3-5 Business Days) Import Duties & Tax Included" : "$0.00 Shipping\n$25.10 Import Duty & Taxes",
+        "Next Day International Shipping (1-2 Business Days) Import Duties & Tax Included" : "$0.00 Shipping\n$38.60 Import Duty & Taxes"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +36,7 @@ class CheckoutViewController: UIViewController {
 
 
 //MARK: Create UI Methods
-extension CheckoutViewController {
+extension ShippingViewController {
     func createUI(){
         //change view bg color
         view.backgroundColor = .white
@@ -124,33 +128,6 @@ extension CheckoutViewController {
         stackView.setCustomSpacing(24, after: contactAddressSeparator)
         contactAddressSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         contactAddressSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
-        
-        let addressStack = createAddressStack()
-        stackView.addArrangedSubview(addressStack)
-        stackView.setCustomSpacing(66, after: addressStack)
-        addressStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-        addressStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
-        
-        let addressButtonSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
-        stackView.addArrangedSubview(addressButtonSeparator)
-        stackView.setCustomSpacing(12, after: addressButtonSeparator)
-        addressButtonSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-        addressButtonSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
-        
-        let buttonStack = CustomCheckoutComponent.createTotalCheckoutStack(
-            leftTop: "Total Price",
-            leftBot: CommonStore.shared.calculateSubtotal(),
-            buttonTitle: "SHIPPING",
-            buttonTapped: UIAction(handler: { action in
-                let email = self.getEmailFromStack(from: contactStack)
-                let address = AddressArgs.initFromCheckout(from: addressStack, hasAccount: CommonStore.shared.getUser() != nil)
-                self.checkAddressAndDisplayPopup(address: address, email: email)
-            })
-        )
-        stackView.addArrangedSubview(buttonStack)
-        stackView.setCustomSpacing(20, after: buttonStack)
-        buttonStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-        buttonStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
     }
     
     func createAllProductCard(addTo stackView: UIStackView){
@@ -327,174 +304,7 @@ extension CheckoutViewController {
         contactStack.addArrangedSubview(titleLabel)
         contactStack.setCustomSpacing(16, after: titleLabel)
         
-        if CommonStore.shared.getUser() != nil {
-            let user = CommonStore.shared.getUser()
-            let contactLabel = createLabel(
-                title: "\(user!.firstName!) \(user!.lastName!) (\(user!.email!))",
-                fontsize: 14, color: .black, textAlign: .left
-            )
-            contactStack.addArrangedSubview(contactLabel)
-            contactStack.setCustomSpacing(16, after: contactLabel)
-        } else {
-            let descStack = createNotLoggedInDescStack()
-            let textfield = CustomTextfield.createTextfield(placeholder: "Email", isPassword: false, owner: self, useDesc: false)
-            contactStack.addArrangedSubview(descStack)
-            contactStack.setCustomSpacing(38, after: descStack)
-            contactStack.addArrangedSubview(textfield)
-            contactStack.setCustomSpacing(30, after: textfield)
-        }
-        
-        let mailStack = createMailStack()
-        contactStack.addArrangedSubview(mailStack)
-        contactStack.setCustomSpacing(24, after: mailStack)
-        
         return contactStack
-    }
-    
-    func createNotLoggedInDescStack() -> UIStackView {
-        let descStack = UIStackView()
-        descStack.translatesAutoresizingMaskIntoConstraints = false
-        descStack.axis = .horizontal
-        
-        let descLabel = createLabel(title: "Already have an account ?", fontsize: 14, color: .black, textAlign: .left)
-        descLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        let button = CustomButton.createUnderlinedButton(title: "LOG IN", action: UIAction(handler: { action in
-            self.navigationController?.pushViewController(LoginViewController(), animated: true)
-        }))
-        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        let emptyLabel = createLabel(title: "", fontsize: 14, color: .clear, textAlign: .left)
-        
-        descStack.addArrangedSubview(descLabel)
-        descStack.setCustomSpacing(8, after: descLabel)
-        descStack.addArrangedSubview(button)
-        descStack.addArrangedSubview(emptyLabel)
-        return descStack
-    }
-    
-    func createMailStack() -> UIStackView {
-        let contentStack = UIStackView()
-        contentStack.translatesAutoresizingMaskIntoConstraints = false
-        contentStack.axis = .vertical
-        contentStack.alignment = .leading
-        
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.alignment = .center
-        
-        let checkButton = UIButton(type: .system)
-        checkButton.setImage(UIImage(named: mailMe ? "icCheckSelected" : "icCheck")!.withRenderingMode(.alwaysOriginal), for: .normal)
-        checkButton.addAction(UIAction(handler: { action in
-            self.mailMe = !self.mailMe
-            checkButton.setImage(UIImage(named: self.mailMe ? "icCheckSelected" : "icCheck")!.withRenderingMode(.alwaysOriginal), for: .normal)
-        }), for: .touchUpInside)
-        
-        let descLabel = UILabel()
-        descLabel.text = "Email me with news and offers"
-        descLabel.font = UIFont(name: "Futura-Medium", size: 14)!
-        
-        stack.addArrangedSubview(checkButton)
-        stack.setCustomSpacing(8, after: checkButton)
-        stack.addArrangedSubview(descLabel)
-        
-        contentStack.addArrangedSubview(stack)
-        
-        return contentStack
-    }
-    
-    func createAddressStack() -> UIStackView {
-        let addressStack = UIStackView()
-        addressStack.translatesAutoresizingMaskIntoConstraints = false
-        addressStack.axis = .vertical
-        
-        let titleLabel = createLabel(title: "SHIPPING ADDRESS", fontsize: 14, color: .black, textAlign: .left)
-        addressStack.addArrangedSubview(titleLabel)
-        addressStack.setCustomSpacing(16, after: titleLabel)
-        
-        let prompt = createAddressPrompt()
-        addressStack.addArrangedSubview(prompt)
-        addressStack.setCustomSpacing(16, after: prompt)
-        
-        if CommonStore.shared.getUser() != nil {
-            let savedAdressStack = createSavedAddressDropdown()
-            addressStack.addArrangedSubview(savedAdressStack)
-            addressStack.setCustomSpacing(32, after: savedAdressStack)
-            savedAdressStack.leftAnchor.constraint(equalTo: addressStack.leftAnchor).isActive = true
-            savedAdressStack.rightAnchor.constraint(equalTo: addressStack.rightAnchor).isActive = true
-        }
-        
-        let values = ["First Name", "Last Name", "Company (Optional)", "Address 1", "Address 2", "City", "Country", "Province / State", "ZIP Code", "Phone Number"]
-        for i in 0 ... values.count - 1 {
-            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self)
-            addressStack.addArrangedSubview(textfield)
-            addressStack.setCustomSpacing(32, after: textfield)
-            textfield.leftAnchor.constraint(equalTo: addressStack.leftAnchor).isActive = true
-            textfield.rightAnchor.constraint(equalTo: addressStack.rightAnchor).isActive = true
-        }
-        
-        return addressStack
-    }
-    
-    func createAddressPrompt() -> UIView {
-        let prompt = UIButton()
-        prompt.isUserInteractionEnabled = false
-        
-        var configuration = UIButton.Configuration.plain()
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
-        prompt.configuration = configuration
-        let title = NSAttributedString(
-            string: "Please double check the shipping address to ensure prompt delivery",
-            attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
-        )
-        prompt.setAttributedTitle(title, for: .normal)
-        prompt.backgroundColor = .promptBg.withAlphaComponent(0.1)
-        prompt.layer.cornerRadius = 4
-        
-        return prompt
-    }
-    
-    func createSavedAddressDropdown(text: String? = nil) -> UIStackView {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        
-        //create dropdown
-        let addressDropdown = DropDown()
-        
-        //create anchor
-        let addressLabel = UILabel()
-        let anchor = CustomDisplay.createDropdownAnchor(
-            label: addressLabel,
-            placeholder: "Saved Address",
-            tapped: sortTapped(target: self, action: #selector(tapped(_:)), dropdown: addressDropdown)
-        )
-        
-        //dropdown data
-        addressDropdown.dataSource = [ "First Address", "Second Address"]
-        //dropdown location
-        addressDropdown.anchorView = anchor
-        addressDropdown.direction = .bottom
-        addressDropdown.bottomOffset = CGPoint(x: 0, y: 40)
-        //dropdown ui
-        addressDropdown.textFont = UIFont(name: "Futura-Medium", size: 14)!
-        addressDropdown.textColor = .black
-        addressDropdown.cornerRadius = 8
-        //add dropdown tapped
-        addressDropdown.selectionAction = { (index: Int, item: String) in
-            DispatchQueue.main.async {
-                let attributedString = NSAttributedString(
-                    string: item,
-                    attributes: [.font: UIFont(name: "Futura-Medium", size: 16)!, .foregroundColor: UIColor.black]
-                )
-                addressLabel.attributedText = attributedString
-            }
-        }
-
-        stack.addArrangedSubview(anchor)
-        anchor.leftAnchor.constraint(equalTo: stack.leftAnchor).isActive = true
-        anchor.rightAnchor.constraint(equalTo: stack.rightAnchor).isActive = true
-        
-        return stack
     }
     
     func createLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {
@@ -508,7 +318,7 @@ extension CheckoutViewController {
 }
 
 //MARK: Textfield Delegate Methods
-extension CheckoutViewController : UITextFieldDelegate {
+extension ShippingViewController : UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
@@ -519,36 +329,3 @@ extension CheckoutViewController : UITextFieldDelegate {
         return true
     }
 }
-
-//MARK: Button Tapped Methods
-extension CheckoutViewController {
-    @objc private func tapped(_ recognizer: sortTapped){
-        recognizer.sortDropdown.show()
-    }
-    
-    func getEmailFromStack(from stack: UIStackView) -> String{
-        var email: String
-        let user = CommonStore.shared.getUser()
-        if(user != nil){
-            email = user!.email!
-        } else {
-            let emailStack = stack.arrangedSubviews[2] as! UIStackView
-            let emailTextfield = emailStack.arrangedSubviews[0] as! UITextField
-            email = emailTextfield.text!
-        }
-        return email
-    }
-    
-    func checkAddressAndDisplayPopup(address: AddressArgs, email: String){
-        if checkAddressNotEmpty(args: address) && !email.isEmpty{
-            CustomPopup.displayAddressConfirmationPopup(sender: self, address: address)
-        } else {
-            CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
-        }
-    }
-    
-    func checkAddressNotEmpty(args: AddressArgs) -> Bool{
-        return (args.firstName.isEmpty) || (args.lastName.isEmpty) || (args.address1.isEmpty) || (args.city.isEmpty) || (args.country.isEmpty) || (args.province.isEmpty) || (args.zipCode.isEmpty) || (args.phoneNumber.isEmpty) ? false : true
-    }
-}
-

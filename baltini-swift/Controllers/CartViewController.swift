@@ -322,10 +322,6 @@ extension CartViewController {
         let totalStack = createTotalStack()
         let checkoutButton = CustomButton.createBlackButton(title: "CHECK OUT", action: UIAction(handler: { action in
             let vc = CheckoutViewController()
-            vc.itemList = self.itemList
-            vc.qtyList = self.qtyList
-            vc.varIndexList = self.varIndexList
-            vc.useProtect = CommonStore.shared.cartGetProtect()
             self.navigationController?.pushViewController(vc, animated: true)
         }))
         
