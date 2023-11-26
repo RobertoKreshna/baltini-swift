@@ -11,11 +11,59 @@ import DropDown
 class ShippingViewController: UIViewController {
     var userEmail: String?
     var address: AddressArgs?
-    var shippingOptions = [
-        "Standart International Shipping (7-10 Business Days) Import Duties & Tax Included" : "$0.00 Shipping\n$14.30 Import Duty & Taxes",
-        "Express International Shipping (3-5 Business Days) Import Duties & Tax Included" : "$0.00 Shipping\n$25.10 Import Duty & Taxes",
-        "Next Day International Shipping (1-2 Business Days) Import Duties & Tax Included" : "$0.00 Shipping\n$38.60 Import Duty & Taxes"
-    ]
+    
+    var selectedShippingIndex = 0
+    
+    var subtotalLabel: UILabel = {
+        let label = UILabel()
+        label.text = CommonStore.shared.calculateSubtotal()
+        label.font = UIFont(name: "Futura-Medium", size: 14)
+        label.textColor = .black
+        label.textAlignment = .right
+        return label
+    }()
+    var shippingLabel: UILabel = {
+        let label = UILabel()
+        label.text = String(format: "$%.2f", Constants.shippingCost[0])
+        label.font = UIFont(name: "Futura-Medium", size: 14)
+        label.textColor = .black
+        label.textAlignment = .right
+        return label
+    }()
+    var importDutyLabel: UILabel = {
+        let label = UILabel()
+        label.text = String(format: "$%.2f", Constants.importTaxesCost[0])
+        label.font = UIFont(name: "Futura-Medium", size: 14)
+        label.textColor = .black
+        label.textAlignment = .right
+        return label
+    }()
+    var estimatedTaxesLabel: UILabel = {
+        let label = UILabel()
+        label.text = String(format: "$%.2f", Constants.estTaxesCost[0])
+        label.font = UIFont(name: "Futura-Medium", size: 14)
+        label.textColor = .black
+        label.textAlignment = .right
+        return label
+    }()
+    var totalLabel: UILabel = {
+        let label = UILabel()
+        label.text = String(format: "$%.2f", Double(CommonStore.shared.calculateSubtotal())! + Constants.shippingTotalCost[0])
+        label.font = UIFont(name: "Futura-Medium", size: 14)
+        label.textColor = .black
+        label.textAlignment = .right
+        return label
+    }()
+    var totalBoldLabel: UILabel = {
+        let label = UILabel()
+        label.text = String(format: "$%.2f", Double(CommonStore.shared.calculateSubtotal())! + Constants.shippingTotalCost[0])
+        label.font = UIFont(name: "Futura-Bold", size: 14)
+        label.textColor = .black
+        label.textAlignment = .right
+        return label
+    }()
+    
+    var shippingChoiceButtons: [UIButton] = [UIButton]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,10 +119,7 @@ extension ShippingViewController {
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
         let backButton = BackButton.createBackButton(title: "Checkout", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
-            let checkoutVC = self.navigationController?.viewControllers.first(where: { $0 is CheckoutViewController }) as! CheckoutViewController
-            checkoutVC.userEmail = self.userEmail
-            checkoutVC.address = self.address
-            self.navigationController?.popViewController(animated: true)
+            self.popBackToCheckout()
         }))
         
         stackView.addArrangedSubview(backButton)
@@ -133,6 +178,31 @@ extension ShippingViewController {
         stackView.setCustomSpacing(24, after: contactShippingSeparator)
         contactShippingSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         contactShippingSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        let shippingChoiceStack = createShippingChoiceStack()
+        stackView.addArrangedSubview(shippingChoiceStack)
+        stackView.setCustomSpacing(24, after: shippingChoiceStack)
+        shippingChoiceStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        shippingChoiceStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        let shippingButtonSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
+        stackView.addArrangedSubview(shippingButtonSeparator)
+        stackView.setCustomSpacing(24, after: shippingButtonSeparator)
+        shippingButtonSeparator.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        shippingButtonSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        
+        let buttonStack = CustomCheckoutComponent.createTotalCheckoutStack(
+            leftTop: "Total Price",
+            leftBotLabel: totalBoldLabel,
+            buttonTitle: "SHIPPING",
+            buttonTapped: UIAction(handler: { action in
+                print("tapped")
+            })
+        )
+        stackView.addArrangedSubview(buttonStack)
+        stackView.setCustomSpacing(20, after: buttonStack)
+        buttonStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        buttonStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
     }
     
     func createAllProductCard(addTo stackView: UIStackView){
@@ -214,26 +284,27 @@ extension ShippingViewController {
         column.axis = .vertical
         column.spacing = 8
         
-        let subtotalRow = createSubtotalRow()
-        let shippingRow = createShippingRow()
-        let importDutyRow = createImportDutyRow()
-        let totalRow = createTotalRow()
+        let subtotalRow = createDescRow(leftTitle: "Subtotal", rightLabel: subtotalLabel)
+        let shippingRow = createDescRow(leftTitle: "Shipping", rightLabel: shippingLabel)
+        let importDutyRow = createDescRow(leftTitle: "Import Duty/Taxes", rightLabel: importDutyLabel)
+        let estTaxRow = createDescRow(leftTitle: "Estimated Taxes", rightLabel: estimatedTaxesLabel)
+        let totalRow = createTotalRow(rightLabel: totalLabel)
         column.addArrangedSubview(subtotalRow)
         column.addArrangedSubview(shippingRow)
         column.addArrangedSubview(importDutyRow)
+        column.addArrangedSubview(estTaxRow)
         column.addArrangedSubview(totalRow)
         
         return column
     }
     
-    func createSubtotalRow() -> UIStackView{
+    func createDescRow(leftTitle: String, rightLabel: UILabel) -> UIStackView{
         let row = UIStackView()
         row.translatesAutoresizingMaskIntoConstraints = false
         row.axis = .horizontal
         row.alignment = .center
         
-        let leftLabel = createLabel(title: "Subtotal", fontsize: 14, color: .black, textAlign: .left)
-        let rightLabel = createLabel(title: "$\(CommonStore.shared.calculateSubtotal())", fontsize: 14, color: .black, textAlign: .right)
+        let leftLabel = createLabel(title: leftTitle, fontsize: 14, color: .black, textAlign: .left)
         
         row.addArrangedSubview(leftLabel)
         row.addArrangedSubview(rightLabel)
@@ -241,44 +312,7 @@ extension ShippingViewController {
         return row
     }
     
-    func createShippingRow() -> UIStackView {
-        let row = UIStackView()
-        row.translatesAutoresizingMaskIntoConstraints = false
-        row.axis = .horizontal
-        row.alignment = .center
-        
-        let leftLabel = createLabel(title: "Shipping", fontsize: 14, color: .black, textAlign: .left)
-        let rightLabel = createLabel(title: "$0.00", fontsize: 14, color: .black, textAlign: .right)
-        
-        row.addArrangedSubview(leftLabel)
-        row.addArrangedSubview(rightLabel)
-        
-        return row
-    }
-    
-    func createImportDutyRow() -> UIStackView {
-        let row = UIStackView()
-        row.translatesAutoresizingMaskIntoConstraints = false
-        row.axis = .horizontal
-        row.alignment = .center
-        
-        let leftLabel = createLabel(title: "Import Duty/Taxes", fontsize: 14, color: .black, textAlign: .left)
-        leftLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        let button = CustomButton.createImageButton(imageName: "icInfo", tapped: UIAction(handler: { action in
-            print("info tapped")
-        }))
-        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        let rightLabel = createLabel(title: "Calculated at next step", fontsize: 12, color: .black.withAlphaComponent(0.5), textAlign: .right)
-        
-        row.addArrangedSubview(leftLabel)
-        row.setCustomSpacing(4, after: leftLabel)
-        row.addArrangedSubview(button)
-        row.addArrangedSubview(rightLabel)
-        
-        return row
-    }
-    
-    func createTotalRow() -> UIStackView {
+    func createTotalRow(rightLabel: UILabel) -> UIStackView {
         let row = UIStackView()
         row.translatesAutoresizingMaskIntoConstraints = false
         row.axis = .horizontal
@@ -288,7 +322,6 @@ extension ShippingViewController {
         let currencyLabel = createLabel(title: "USD", fontsize: 12, color: .black.withAlphaComponent(0.5), textAlign: .left)
         currencyLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         currencyLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        let rightLabel = createLabel(title: "$\(CommonStore.shared.calculateSubtotal())", fontsize: 18, color: .black, textAlign: .right)
         rightLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         row.addArrangedSubview(leftLabel)
@@ -335,7 +368,7 @@ extension ShippingViewController {
         titleLabel.textColor = .black.withAlphaComponent(0.5)
         
         let button = CustomButton.createUnderlinedButton(title: "CHANGE", action: UIAction(handler: { action in
-            self.navigationController?.popViewController(animated: true)
+            self.popBackToCheckout()
         }))
         
         titleAndButtonStack.addArrangedSubview(titleLabel)
@@ -353,6 +386,99 @@ extension ShippingViewController {
         section.addArrangedSubview(subtitleLabel)
         
         return section
+    }
+    
+    func createShippingChoiceStack() -> UIStackView{
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 8
+        
+        for i in 0 ... Constants.shippingOptionsTitle.count - 1 {
+            let option = createShippingOptionsRow(index: i)
+            stack.addArrangedSubview(option)
+        }
+        return stack
+    }
+    
+    func createShippingOptionsRow(index: Int) -> UIStackView {
+        let row = UIStackView()
+        row.axis = .horizontal
+        row.alignment = .leading
+        row.translatesAutoresizingMaskIntoConstraints = false
+        
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: selectedShippingIndex == index ? "icRadioSelected" : "icRadio")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addAction(UIAction(handler: { action in
+            self.selectedShippingIndex = index
+            DispatchQueue.main.async {
+                //update button
+                for i in 0...self.shippingChoiceButtons.count - 1 {
+                    let button = self.shippingChoiceButtons[i]
+                    let currentImage = button.currentImage
+                    //make all unselected
+                    if currentImage == UIImage(named: "icRadioSelected")?.withRenderingMode(.alwaysOriginal) {
+                        button.setImage(UIImage(named: "icRadio")?.withRenderingMode(.alwaysOriginal), for: .normal)
+                    }
+                    //select one
+                    if i == self.selectedShippingIndex {
+                        button.setImage(UIImage(named: "icRadioSelected")?.withRenderingMode(.alwaysOriginal), for: .normal)
+                    }
+                }
+                //update all label
+                self.shippingLabel.text = String(format: "$%.2f", Constants.shippingCost[self.selectedShippingIndex])
+                self.importDutyLabel.text = String(format: "$%.2f", Constants.importTaxesCost[self.selectedShippingIndex])
+                self.estimatedTaxesLabel.text = String(format: "$%.2f", Constants.estTaxesCost[self.selectedShippingIndex])
+                self.totalLabel.text = self.calculateTotal(index: self.selectedShippingIndex)
+                self.totalBoldLabel.text = self.calculateTotal(index: self.selectedShippingIndex)
+            }
+        }), for: .touchUpInside)
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        shippingChoiceButtons.append(button)
+        
+        let titleDescStack = createShippingOptionDescStack(index: index)
+        titleDescStack.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let priceLabel = createLabel(
+            title: String(format: "$%.2f", Constants.shippingTotalCost[index]),
+            fontsize: 14,
+            color: .black,
+            textAlign: .right
+        )
+        
+        row.addArrangedSubview(button)
+        row.setCustomSpacing(8, after: button)
+        row.addArrangedSubview(titleDescStack)
+        row.addArrangedSubview(priceLabel)
+        
+        return row
+    }
+    
+    func createShippingOptionDescStack(index: Int) -> UIStackView {
+        let descStack = UIStackView()
+        descStack.axis = .vertical
+        descStack.alignment = .leading
+        descStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        let title = Constants.shippingOptionsTitle[index]
+        let titleLabel = createShippingOptionsLabel(title: title, fontsize: 14, color: .black, textAlign: .left)
+        let subtitle = Constants.shippingOptionsDesc[index]
+        let subtitleLabel = createShippingOptionsLabel(title: subtitle, fontsize: 14, color: .black.withAlphaComponent(0.5), textAlign: .left)
+        
+        descStack.addArrangedSubview(titleLabel)
+        descStack.setCustomSpacing(4, after: titleLabel)
+        descStack.addArrangedSubview(subtitleLabel)
+        
+        return descStack
+    }
+    
+    func createShippingOptionsLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {
+        let label = UILabel()
+        label.text = title
+        label.font = UIFont(name: "Futura-Medium", size: fontsize)
+        label.textColor = color
+        label.textAlignment = textAlign
+        label.numberOfLines = 0
+        return label
     }
     
     func createLabel(title: String, fontsize: CGFloat, color: UIColor, textAlign: NSTextAlignment) -> UILabel {
@@ -375,5 +501,24 @@ extension ShippingViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
+    }
+}
+
+//MARK: Button Pressed Logic
+extension ShippingViewController {
+    func popBackToCheckout(){
+        let checkoutVC = self.navigationController?.viewControllers.first(where: { $0 is CheckoutViewController }) as! CheckoutViewController
+        checkoutVC.userEmail = self.userEmail
+        checkoutVC.address = self.address
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func calculateTotal(index: Int) -> String{
+        var res = 0.00
+        let subtotal = Double(CommonStore.shared.calculateSubtotal())
+        let shipping = Constants.shippingTotalCost[index]
+        res = (subtotal ?? 0.00) + shipping
+        
+        return String(format: "$%.2f", res)
     }
 }

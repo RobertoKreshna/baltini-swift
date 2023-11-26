@@ -35,5 +35,18 @@ class Constants {
         Magazine(imageName: "magazine4", title: "Looked Back at How Hollywood Glamorous Celebrities Welcoming Christmas in Their Time", date: "Des 01, 2022")
     ]
     
+    static let shippingOptionsTitle = [
+        "Standart International Shipping (7-10 Business Days) Import Duties & Tax Included",
+        "Express International Shipping (3-5 Business Days) Import Duties & Tax Included",
+        "Next Day International Shipping (1-2 Business Days) Import Duties & Tax Included"
+    ]
+    static let shippingOptionsDesc = [
+        "11.00 Shipping\n$15.00 Import Duty & Taxes", "$12.00 Shipping\n$16.00 Import Duty & Taxes", "$13.00 Shipping\n$17.00 Import Duty & Taxes"
+    ]
+    static let shippingTotalCost = [26.00, 28.00, 30.00]
+    static let shippingCost = [11.00, 12.00, 13.00]
+    static let importTaxesCost = [15.00, 16.00, 17.00]
+    static let estTaxesCost = [12.75, 13.60, 14.45]
+    
     static let key: String = "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"
 }
