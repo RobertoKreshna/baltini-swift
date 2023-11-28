@@ -48,5 +48,14 @@ class Constants {
     static let importTaxesCost = [15.00, 16.00, 17.00]
     static let estTaxesCost = [12.75, 13.60, 14.45]
     
+    static let paymentOptions = ["Credit Card", "Shop pay - Pay in full or in installments", "AfterPay", "Klarna - Flexible payments", "NihaoPay"]
+    static let paymentOptionsLogo = [
+        ["paymentCC1","paymentCC2","paymentCC3","paymentCC4"],
+        ["paymentShopPay"],
+        ["paymentAfterPay"],
+        ["paymentKlarna"],
+        ["paymentNihao1", "paymentNihao2", "paymentNihao3"]
+    ]
+    
     static let key: String = "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"
 }

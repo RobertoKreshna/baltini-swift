@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import DropDown
 
 class ShippingViewController: UIViewController {
     var userEmail: String?
@@ -118,7 +117,7 @@ extension ShippingViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        let backButton = BackButton.createBackButton(title: "Checkout", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+        let backButton = BackButton.createBackButton(title: "Shipping", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
             self.popBackToCheckout()
         }))
         
@@ -136,10 +135,10 @@ extension ShippingViewController {
         orderTitleLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         orderTitleLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
-        createAllProductCard(addTo: stackView)
+        CustomCheckoutComponent.createAllProductCard(addTo: stackView)
         
         if CommonStore.shared.cartGetProtect() == true{
-            let card = createProtectCard()
+            let card = CustomCheckoutComponent.createProtectCard()
             stackView.addArrangedSubview(card)
             card.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
             card.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
@@ -147,7 +146,7 @@ extension ShippingViewController {
         
         stackView.setCustomSpacing(50, after: stackView.subviews.last!)
         
-        let couponStack = createCouponStack()
+        let couponStack = CustomCheckoutComponent.createCouponStack(owner: self)
         stackView.addArrangedSubview(couponStack)
         couponStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         couponStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
@@ -196,86 +195,17 @@ extension ShippingViewController {
             leftBotLabel: totalBoldLabel,
             buttonTitle: "SHIPPING",
             buttonTapped: UIAction(handler: { action in
-                print("tapped")
+                let vc = PaymentViewController()
+                vc.userEmail = self.userEmail
+                vc.address = self.address
+                vc.selectedShippingIndex = self.selectedShippingIndex
+                self.navigationController?.pushViewController(vc, animated: true)
             })
         )
         stackView.addArrangedSubview(buttonStack)
         stackView.setCustomSpacing(20, after: buttonStack)
         buttonStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         buttonStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
-    }
-    
-    func createAllProductCard(addTo stackView: UIStackView){
-        let products = CommonStore.shared.getCartProducts()
-        let qtyList = CommonStore.shared.getQty()
-        let varIndexList = CommonStore.shared.getVariantsIndex()
-        for i in 0 ... CommonStore.shared.getCartProductCount() - 1 {
-            let card = CustomCard.createCheckoutItemCard(
-                item: products[i],
-                qty: qtyList[i],
-                variantIndex: varIndexList[i]
-            )
-            
-            stackView.addArrangedSubview(card)
-            
-            card.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-            card.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
-        }
-    }
-    
-    func createProtectCard() -> UIStackView {
-        let card = UIStackView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.axis = .horizontal
-        card.alignment = .center
-        
-        let imageView = UIImageView(image: UIImage(named: "imageProtect"))
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Shipping Protection"
-        titleLabel.font = UIFont(name: "Futura-Bold", size: 14)
-        titleLabel.textColor = .black
-        let priceLabel = UILabel()
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.text = "$22.00"
-        priceLabel.font = UIFont(name: "Futura-Medium", size: 16)
-        priceLabel.textColor = .black
-        priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        
-        card.addArrangedSubview(imageView)
-        card.setCustomSpacing(8, after: imageView)
-        card.addArrangedSubview(titleLabel)
-        card.addArrangedSubview(priceLabel)
-        
-        imageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        
-        return card
-    }
-    
-    func createCouponStack() -> UIStackView {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.alignment = .trailing
-        
-        let textfield = CustomTextfield.createTextfield(
-            placeholder: "Gift card or discount code",
-            isPassword: false,
-            owner: self,
-            useDesc: false,
-            lineLength: UIScreen.main.bounds.width * 287 / 375
-        )
-        
-        let btn = CustomButton.createBlackImageButton(imageName: "icRight", tapped: UIAction(handler: { action in
-            print("tapped")
-        }))
-        
-        stack.addArrangedSubview(textfield)
-        stack.setCustomSpacing(16, after: textfield)
-        stack.addArrangedSubview(btn)
-        
-        return stack
     }
     
     func createDescStack() -> UIStackView {

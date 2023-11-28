@@ -84,10 +84,10 @@ extension CheckoutViewController {
         orderTitleLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         orderTitleLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
-        createAllProductCard(addTo: stackView)
+        CustomCheckoutComponent.createAllProductCard(addTo: stackView)
         
         if CommonStore.shared.cartGetProtect() == true{
-            let card = createProtectCard()
+            let card = CustomCheckoutComponent.createProtectCard()
             stackView.addArrangedSubview(card)
             card.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
             card.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
@@ -95,7 +95,7 @@ extension CheckoutViewController {
         
         stackView.setCustomSpacing(50, after: stackView.subviews.last!)
         
-        let couponStack = createCouponStack()
+        let couponStack = CustomCheckoutComponent.createCouponStack(owner: self)
         stackView.addArrangedSubview(couponStack)
         couponStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         couponStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
@@ -153,79 +153,6 @@ extension CheckoutViewController {
         stackView.setCustomSpacing(20, after: buttonStack)
         buttonStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
         buttonStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
-    }
-    
-    func createAllProductCard(addTo stackView: UIStackView){
-        let products = CommonStore.shared.getCartProducts()
-        let qtyList = CommonStore.shared.getQty()
-        let varIndexList = CommonStore.shared.getVariantsIndex()
-        for i in 0 ... CommonStore.shared.getCartProductCount() - 1 {
-            let card = CustomCard.createCheckoutItemCard(
-                item: products[i],
-                qty: qtyList[i],
-                variantIndex: varIndexList[i]
-            )
-            
-            stackView.addArrangedSubview(card)
-            
-            card.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-            card.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
-        }
-    }
-    
-    func createProtectCard() -> UIStackView {
-        let card = UIStackView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.axis = .horizontal
-        card.alignment = .center
-        
-        let imageView = UIImageView(image: UIImage(named: "imageProtect"))
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Shipping Protection"
-        titleLabel.font = UIFont(name: "Futura-Bold", size: 14)
-        titleLabel.textColor = .black
-        let priceLabel = UILabel()
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.text = "$22.00"
-        priceLabel.font = UIFont(name: "Futura-Medium", size: 16)
-        priceLabel.textColor = .black
-        priceLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        
-        card.addArrangedSubview(imageView)
-        card.setCustomSpacing(8, after: imageView)
-        card.addArrangedSubview(titleLabel)
-        card.addArrangedSubview(priceLabel)
-        
-        imageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        
-        return card
-    }
-    
-    func createCouponStack() -> UIStackView {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.alignment = .trailing
-        
-        let textfield = CustomTextfield.createTextfield(
-            placeholder: "Gift card or discount code",
-            isPassword: false,
-            owner: self,
-            useDesc: false,
-            lineLength: UIScreen.main.bounds.width * 287 / 375
-        )
-        
-        let btn = CustomButton.createBlackImageButton(imageName: "icRight", tapped: UIAction(handler: { action in
-            print("tapped")
-        }))
-        
-        stack.addArrangedSubview(textfield)
-        stack.setCustomSpacing(16, after: textfield)
-        stack.addArrangedSubview(btn)
-        
-        return stack
     }
     
     func createDescStack() -> UIStackView {
@@ -428,12 +355,20 @@ extension CheckoutViewController {
         let values = ["First Name", "Last Name", "Company (Optional)", "Address 1", "Address 2", "City", "Country", "Province / State", "ZIP Code", "Phone Number"]
         let text = [ address?.firstName, address?.lastName, address?.company, address?.address1, address?.address2, address?.city, address?.country, address?.province, address?.zipCode, address?.phoneNumber ]
         for i in 0 ... values.count - 1 {
-            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self, text: text[i])
+            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self)
             addressStack.addArrangedSubview(textfield)
-            addressStack.setCustomSpacing(32, after: textfield)
+            addressStack.setCustomSpacing(i == values.count - 1 ? 4 : 32, after: textfield)
             textfield.leftAnchor.constraint(equalTo: addressStack.leftAnchor).isActive = true
             textfield.rightAnchor.constraint(equalTo: addressStack.rightAnchor).isActive = true
         }
+        
+        let attributedTitle = NSAttributedString(
+            string: "Incase we need to contact you about your order.",
+            attributes: [.font : UIFont(name: "Futura-Medium", size: 12)!]
+        )
+        let label = UILabel()
+        label.attributedText = attributedTitle
+        addressStack.addArrangedSubview(label)
         
         return addressStack
     }
