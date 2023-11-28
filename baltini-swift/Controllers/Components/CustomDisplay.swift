@@ -76,23 +76,23 @@ class CustomDisplay {
     }
     
     private static func createAddressDetailRow(address1: String, address2: String, city: String, province: String, country: String) -> UIStackView {
-    let addressDetailRow = UIStackView()
-    addressDetailRow.axis = .horizontal
-    
-    let string = constructAddressDetailString(address1, address2, city, province, country)
-    let addressDetail = NSAttributedString(
-        string: string,
-        attributes: [.font : UIFont(name: "Futura-Medium", size: 13)!]
-    )
-    
-    let addressDetailLabel = UILabel()
-    addressDetailLabel.attributedText = addressDetail
-    addressDetailLabel.numberOfLines = 0
-    
-    addressDetailRow.addArrangedSubview(addressDetailLabel)
-    
-    return addressDetailRow
-}
+        let addressDetailRow = UIStackView()
+        addressDetailRow.axis = .horizontal
+        
+        let string = constructAddressDetailString(address1, address2, city, province, country)
+        let addressDetail = NSAttributedString(
+            string: string,
+            attributes: [.font : UIFont(name: "Futura-Medium", size: 13)!]
+        )
+        
+        let addressDetailLabel = UILabel()
+        addressDetailLabel.attributedText = addressDetail
+        addressDetailLabel.numberOfLines = 0
+        
+        addressDetailRow.addArrangedSubview(addressDetailLabel)
+        
+        return addressDetailRow
+    }
     
     private static func constructAddressDetailString( _ address1: String, _ address2: String, _ city: String, _ province: String, _ country : String) -> String {
         return address2.isEmpty ? "\(address1), \(city), \(province), \(country)" : "\(address1), \(address2), \(city), \(province), \(country)"

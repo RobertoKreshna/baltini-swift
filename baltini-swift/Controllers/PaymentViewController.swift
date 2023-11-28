@@ -7,6 +7,7 @@
 
 import UIKit
 import DropDown
+import CoreData
 
 class PaymentViewController: UIViewController {
     var userEmail: String?
@@ -37,7 +38,6 @@ class PaymentViewController: UIViewController {
         }
     }
 }
-
 
 //MARK: Create UI Methods
 extension PaymentViewController {
@@ -146,11 +146,11 @@ extension PaymentViewController {
         paymentAddressSeparator.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
         addressTextfieldStack = createAddressStack()
-        let billingAddressSrack = createBillingAddressStack(addressInputStack: addressTextfieldStack!)
-        stackView.addArrangedSubview(billingAddressSrack)
-        stackView.setCustomSpacing(24, after: billingAddressSrack)
-        billingAddressSrack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
-        billingAddressSrack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
+        let billingAddressStack = createBillingAddressStack(addressInputStack: addressTextfieldStack!)
+        stackView.addArrangedSubview(billingAddressStack)
+        stackView.setCustomSpacing(24, after: billingAddressStack)
+        billingAddressStack.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 16).isActive = true
+        billingAddressStack.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -16).isActive = true
         
         let addressButtonSeparator = CustomSeparator.createHorizontalLine(width: 2, color: UIColor.brandGray)
         stackView.addArrangedSubview(addressButtonSeparator)
@@ -163,7 +163,7 @@ extension PaymentViewController {
             leftBot: String(format: "$%.2f", Double(CommonStore.shared.calculateSubtotal())! + Constants.shippingTotalCost[selectedShippingIndex!]),
             buttonTitle: "PAY NOW",
             buttonTapped: UIAction(handler: { action in
-                print("tapped")
+                self.saveOrder(stack: self.addressTextfieldStack!)
             })
         )
         stackView.addArrangedSubview(buttonStack)
@@ -505,5 +505,169 @@ extension PaymentViewController {
         checkoutVC.userEmail = self.userEmail
         checkoutVC.address = self.address
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func saveOrder(stack: UIStackView){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let args = createAddressArgs(from: stack)
+        if sameBillingAddressIndex == 0 {
+            saveOrderWithSameAddress(context: context)
+        } else {
+            if checkAddressNotEmpty(args: args){
+                saveOrderWithDiffAddress(context: context, args: args)
+            } else {
+                CustomToast.showErrorToast(msg: "All fields required, please fill all the fields above", sender: self)
+            }
+        }
+    }
+}
+
+//MARK: Save Order Functions
+extension PaymentViewController {
+    func createRandomId() -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<13).map{ _ in letters.randomElement()! })
+    }
+    
+    func createAllProducts(context: NSManagedObjectContext) -> NSSet {
+        let cartItems = CommonStore.shared.getCartProducts()
+        let cartQty = CommonStore.shared.getQty()
+        let cartVarIndex = CommonStore.shared.getVariantsIndex()
+        let products: NSMutableSet = NSMutableSet()
+        for i in 0 ..< CommonStore.shared.getCartProductCount() {
+            let cartItem = cartItems[i]
+            let cartItemQty = cartQty[i]
+            let cartItemVariant = cartVarIndex[i]
+            let product = OrderProduct(context: context)
+            product.brand = cartItem.brand
+            product.imageName = cartItem.images[0]
+            product.name = cartItem.name
+            product.price = String(cartItem.price[cartItemVariant])
+            product.quantity = Double(cartItemQty)
+            product.size = cartItem.variants![cartItemVariant]
+            products.add(product)
+        }
+        return products
+    }
+    
+    func getStringFromAddress(addressArgs: AddressArgs) -> String{
+        return addressArgs.address2!.isEmpty 
+        ? "\(addressArgs.address1), \(addressArgs.city), \(addressArgs.province), \(addressArgs.zipCode), \(addressArgs.country)"
+        : "\(addressArgs.address1), \(addressArgs.address2!), \(addressArgs.city), \(addressArgs.province), \(addressArgs.zipCode), \(addressArgs.country)"
+    }
+    
+    func createAddressArgs(from stack: UIStackView) -> AddressArgs{
+        let firstNameStack = stack.arrangedSubviews[0] as! UIStackView
+        let firstNameTextfield = firstNameStack.arrangedSubviews[1] as! UITextField
+        let lastNameStack = stack.arrangedSubviews[1] as! UIStackView
+        let lastNameTextfield = lastNameStack.arrangedSubviews[1] as! UITextField
+        let companyStack = stack.arrangedSubviews[2] as! UIStackView
+        let companyTextfield = companyStack.arrangedSubviews[1] as! UITextField
+        let address1Stack = stack.arrangedSubviews[3] as! UIStackView
+        let address1Textfield = address1Stack.arrangedSubviews[1] as! UITextField
+        let address2Stack = stack.arrangedSubviews[4] as! UIStackView
+        let address2Textfield = address2Stack.arrangedSubviews[1] as! UITextField
+        let cityStack = stack.arrangedSubviews[5] as! UIStackView
+        let cityTextfield = cityStack.arrangedSubviews[1] as! UITextField
+        let countryStack = stack.arrangedSubviews[6] as! UIStackView
+        let countryTextfield = countryStack.arrangedSubviews[1] as! UITextField
+        let provinceStack = stack.arrangedSubviews[7] as! UIStackView
+        let provinceTextfield = provinceStack.arrangedSubviews[1] as! UITextField
+        let zipStack = stack.arrangedSubviews[8] as! UIStackView
+        let zipCodeTextfield = zipStack.arrangedSubviews[1] as! UITextField
+        let phoneStack = stack.arrangedSubviews[9] as! UIStackView
+        let phoneNumberTextfield = phoneStack.arrangedSubviews[1] as! UITextField
+        
+        return AddressArgs(
+            firstName: firstNameTextfield.text!,
+            lastName: lastNameTextfield.text!,
+            company: companyTextfield.text,
+            address1: address1Textfield.text!,
+            address2: address2Textfield.text,
+            city: cityTextfield.text!,
+            country: countryTextfield.text!,
+            province: provinceTextfield.text!,
+            zipCode: zipCodeTextfield.text!,
+            phoneNumber: phoneNumberTextfield.text!
+        )
+    }
+    
+    func checkAddressNotEmpty(args: AddressArgs) -> Bool{
+        return (args.firstName.isEmpty) || (args.lastName.isEmpty) || (args.address1.isEmpty) || (args.city.isEmpty) || (args.country.isEmpty) || (args.province.isEmpty) || (args.zipCode.isEmpty) || (args.phoneNumber.isEmpty) ? false : true
+    }
+    
+    func saveOrderWithSameAddress(context: NSManagedObjectContext){
+        let newOrder = Order(context: context)
+        //contact email
+        newOrder.contactEmail = self.userEmail
+        //create id
+        newOrder.id = createRandomId()
+        //create order date
+        newOrder.orderDate = Date()
+        //create payment address
+        newOrder.paymentAddress = getStringFromAddress(addressArgs: address!)
+        //create payment date
+        newOrder.paymentDate = Date()
+        //create payment method
+        newOrder.paymentMethod = Constants.paymentOptions[selectedPaymentIndex]
+        //create shipping address
+        newOrder.shippingAddress = getStringFromAddress(addressArgs: address!)
+        //create shipping cost
+        newOrder.shippingCost = String(format: "$%.2f", Constants.shippingCost[selectedShippingIndex!])
+        //create shipping method
+        newOrder.shippingMethod = Constants.shippingOptionsTitle[selectedShippingIndex!]
+        //create import cost
+        newOrder.importCost = String(format: "$%.2f", Constants.importTaxesCost[selectedShippingIndex!])
+        //create est tax cost
+        newOrder.estTaxCost = String(format: "$%.2f", Constants.estTaxesCost[selectedShippingIndex!])
+        //create products
+        newOrder.has = createAllProducts(context: context)
+        //create user
+        newOrder.belongsTo = CommonStore.shared.getUser()
+        do {
+            try context.save()
+            CommonStore.shared.resetCart()
+            self.navigationController?.popToRootViewController(animated: true)
+        } catch {
+            print(error)
+            CustomToast.showErrorToast(msg: "Failed to save order", sender: self)
+        }
+    }
+    
+    func saveOrderWithDiffAddress(context: NSManagedObjectContext, args: AddressArgs){
+        let newOrder = Order(context: context)
+        //contact email
+        newOrder.contactEmail = self.userEmail
+        //create id
+        newOrder.id = createRandomId()
+        //create order date
+        newOrder.orderDate = Date()
+        //create payment address
+        newOrder.paymentAddress = getStringFromAddress(addressArgs: args)
+        //create payment date
+        newOrder.paymentDate = Date()
+        //create payment method
+        newOrder.paymentMethod = Constants.paymentOptions[selectedPaymentIndex]
+        //create shipping address
+        newOrder.shippingAddress = getStringFromAddress(addressArgs: address!)
+        //create shipping cost
+        newOrder.shippingCost = String(format: "$%.2f", Constants.shippingCost[selectedShippingIndex!])
+        //create shipping method
+        newOrder.shippingMethod = Constants.shippingOptionsTitle[selectedShippingIndex!]
+        //create import cost
+        newOrder.importCost = String(format: "$%.2f", Constants.importTaxesCost[selectedShippingIndex!])
+        //create est tax cost
+        newOrder.estTaxCost = String(format: "$%.2f", Constants.estTaxesCost[selectedShippingIndex!])
+        //create products
+        newOrder.has = createAllProducts(context: context)
+        //create user
+        newOrder.belongsTo = CommonStore.shared.getUser()
+        do {
+            try context.save()
+            CommonStore.shared.resetCart()
+            self.navigationController?.popToRootViewController(animated: true)
+        } catch {
+            CustomToast.showErrorToast(msg: "Failed to save order", sender: self)
+        }
     }
 }

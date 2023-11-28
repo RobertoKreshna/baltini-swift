@@ -355,7 +355,7 @@ extension CheckoutViewController {
         let values = ["First Name", "Last Name", "Company (Optional)", "Address 1", "Address 2", "City", "Country", "Province / State", "ZIP Code", "Phone Number"]
         let text = [ address?.firstName, address?.lastName, address?.company, address?.address1, address?.address2, address?.city, address?.country, address?.province, address?.zipCode, address?.phoneNumber ]
         for i in 0 ... values.count - 1 {
-            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self)
+            let textfield = CustomTextfield.createTextfield(placeholder: values[i], isPassword: false, owner: self, text: text[i])
             addressStack.addArrangedSubview(textfield)
             addressStack.setCustomSpacing(i == values.count - 1 ? 4 : 32, after: textfield)
             textfield.leftAnchor.constraint(equalTo: addressStack.leftAnchor).isActive = true
