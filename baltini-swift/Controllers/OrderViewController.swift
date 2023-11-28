@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class OrderViewController: UIViewController {
+    
+    var orders: [Order]?
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
-        view.backgroundColor = .systemBlue
+        loadData()
+        createUI()
     }
     
     override func viewDidLoad() {
@@ -25,4 +29,30 @@ class OrderViewController: UIViewController {
            subview.removeFromSuperview()
        }
    }
+}
+
+//MARK: Load data method
+extension OrderViewController{
+    func loadData(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let user = CommonStore.shared.getUser()
+        let request: NSFetchRequest<Order> = Order.fetchRequest()
+        do {
+            let allOrders = try context.fetch(request)
+            var res = [Order]()
+            allOrders.forEach { order in
+                if order.belongsTo == user { res.append(order) }
+            }
+            orders = res
+        } catch { CustomToast.showErrorToast(msg: "Failed to get all orders data", sender: self) }
+    }
+}
+
+//MARK: Create UI Methods
+extension OrderViewController {
+    func createUI(){
+        view.backgroundColor = .systemBlue
+        
+        print(orders?.count)
+    }
 }
