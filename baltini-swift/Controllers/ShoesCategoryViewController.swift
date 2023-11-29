@@ -69,7 +69,7 @@ extension ShoesCategoryViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        let backButton = BackButton.createBackButton(title: "Clothing" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+        let backButton = BackButton.createBackButton(title: "Shoes" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
             self.navigationController?.popViewController(animated: true)
         }))
         stackView.addArrangedSubview(backButton)

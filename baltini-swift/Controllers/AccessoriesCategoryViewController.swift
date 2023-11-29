@@ -69,7 +69,7 @@ extension AccessoriesCategoryViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        let backButton = BackButton.createBackButton( title: "Clothing", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+        let backButton = BackButton.createBackButton( title: "Accessories", icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
             self.navigationController?.popViewController(animated: true)
         }))
         
