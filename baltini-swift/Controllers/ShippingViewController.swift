@@ -15,7 +15,7 @@ class ShippingViewController: UIViewController {
     
     var subtotalLabel: UILabel = {
         let label = UILabel()
-        label.text = CommonStore.shared.calculateSubtotal()
+        label.text = String(format: "$%.2f", (CommonStore.shared.calculateSubtotal() as NSString).doubleValue)
         label.font = UIFont(name: "Futura-Medium", size: 14)
         label.textColor = .black
         label.textAlignment = .right

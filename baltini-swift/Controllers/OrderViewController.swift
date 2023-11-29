@@ -116,7 +116,7 @@ extension OrderViewController {
         let status = createStatusStack()
         let products = order.has!.allObjects as! [OrderProduct]
         let firstItemRow = createItemRow(item: products[0])
-        let totalRow = createTotalRow(total: calculateTotal(products: products, shippingCost: order.shippingCost!))
+        let totalRow = createTotalRow(total: calculateTotal(products: products, shippingCost: order.shippingCost!, useProtect: order.useProtect))
         
         card.addArrangedSubview(idDateRow)
         card.setCustomSpacing(4, after: idDateRow)
@@ -319,10 +319,11 @@ extension OrderViewController {
         return dateFormatter.string(from: date)
     }
     
-    func calculateTotal(products: [OrderProduct], shippingCost: String) -> String {
+    func calculateTotal(products: [OrderProduct], shippingCost: String, useProtect: Bool) -> String {
         var res = 0.0
         products.forEach { product in res = res + Double(product.price!)! * product.quantity }
         res = res + (shippingCost.trimmingPrefix("$") as NSString).doubleValue
+        if useProtect { res += 22.00  }
         return String(format: "$%.2f", res)
     }
 }

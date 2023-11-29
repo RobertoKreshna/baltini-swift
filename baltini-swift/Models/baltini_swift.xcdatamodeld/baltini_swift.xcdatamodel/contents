@@ -25,6 +25,7 @@
         <attribute name="shippingAddress" attributeType="String"/>
         <attribute name="shippingCost" attributeType="String"/>
         <attribute name="shippingMethod" attributeType="String"/>
+        <attribute name="useProtect" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasOrders" inverseEntity="User"/>
         <relationship name="has" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrderProduct" inverseName="belongsTo" inverseEntity="OrderProduct"/>
     </entity>

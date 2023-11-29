@@ -177,8 +177,7 @@ extension PaymentViewController {
         column.translatesAutoresizingMaskIntoConstraints = false
         column.axis = .vertical
         column.spacing = 8
-        
-        let subtotalRow = createDescRow(leftTitle: "Subtotal", rightTitle: CommonStore.shared.calculateSubtotal())
+        let subtotalRow = createDescRow(leftTitle: "Subtotal", rightTitle: String(format: "$%.2f", (CommonStore.shared.calculateSubtotal() as NSString).doubleValue))
         let shippingRow = createDescRow(leftTitle: "Shipping", rightTitle: String(format: "$%.2f", Constants.shippingCost[selectedShippingIndex!]))
         let importDutyRow = createDescRow(leftTitle: "Import Duty/Taxes", rightTitle: String(format: "$%.2f", Constants.importTaxesCost[selectedShippingIndex!]))
         let estTaxRow = createDescRow(leftTitle: "Estimated Taxes", rightTitle: String(format: "$%.2f", Constants.estTaxesCost[selectedShippingIndex!]))
@@ -624,6 +623,8 @@ extension PaymentViewController {
         newOrder.has = createAllProducts(context: context)
         //create user
         newOrder.belongsTo = CommonStore.shared.getUser()
+        //create useProtect
+        newOrder.useProtect = CommonStore.shared.cartGetProtect()
         do {
             try context.save()
             CommonStore.shared.resetCart()
@@ -662,6 +663,8 @@ extension PaymentViewController {
         newOrder.has = createAllProducts(context: context)
         //create user
         newOrder.belongsTo = CommonStore.shared.getUser()
+        //create useProtect
+        newOrder.useProtect = CommonStore.shared.cartGetProtect()
         do {
             try context.save()
             CommonStore.shared.resetCart()

@@ -82,6 +82,7 @@ class CommonStore {
                 res += Double(cart.products[i].price[cart.variantsIndex[i]]) * Double(cart.qty[i])
             }
         }
+        if(cart.useProtect == true) { res += 22.00 }
         
         return String(format: "%.2f", res)
     }
