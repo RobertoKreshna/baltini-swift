@@ -94,6 +94,7 @@ extension OrderViewController {
             for i in 0 ... orders!.count - 1 {
                 //make card
                 let card = createOrderCard(order: orders![i])
+                card.addGestureRecognizer(OrderTapped(target: self, action: #selector(tapped(_:)), currentOrder: orders![i]))
                 stackView.addArrangedSubview(card)
                 //make separator
                 if i != orders!.count - 1 {
@@ -323,5 +324,14 @@ extension OrderViewController {
         products.forEach { product in res = res + Double(product.price!)! * product.quantity }
         res = res + (shippingCost.trimmingPrefix("$") as NSString).doubleValue
         return String(format: "$%.2f", res)
+    }
+}
+
+//MARK: Navigation
+extension OrderViewController {
+    @objc private func tapped(_ recognizer: OrderTapped){
+        let vc = OrderDetailViewController()
+        vc.currentOrder = recognizer.currentOrder
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

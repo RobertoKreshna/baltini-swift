@@ -17,6 +17,15 @@ class ItemTapped: UITapGestureRecognizer {
     }
 }
 
+class OrderTapped: UITapGestureRecognizer {
+    let currentOrder: Order
+    
+    init(target: Any?, action: Selector?, currentOrder: Order) {
+        self.currentOrder = currentOrder
+        super.init(target: target, action: action)
+    }
+}
+
 class sortTapped: UITapGestureRecognizer {
     let sortDropdown: DropDown
     
