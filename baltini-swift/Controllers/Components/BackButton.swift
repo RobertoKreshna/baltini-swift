@@ -96,6 +96,9 @@ class BackButton {
         backSearchCartBar.translatesAutoresizingMaskIntoConstraints = false
         
         let backBtnImage = createBackButton(icName: "icBack", tapped: UIAction(handler: { action in
+            //reset sorting value
+            SortFilterValue.shared.setSortValue(new: "Featured")
+            //pop
             owner.navigationController?.popViewController(animated: true)
         }))
         backBtnImage.setContentHuggingPriority(.defaultHigh, for: .horizontal)
