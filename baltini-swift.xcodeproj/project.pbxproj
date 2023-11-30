@@ -15,6 +15,8 @@
 		B86993252B10485200FE9DA1 /* ShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993242B10485200FE9DA1 /* ShippingViewController.swift */; };
 		B86993272B14306200FE9DA1 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993262B14306200FE9DA1 /* PaymentViewController.swift */; };
 		B86993292B16E07700FE9DA1 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993282B16E07700FE9DA1 /* OrderDetailViewController.swift */; };
+		B869932B2B185D4D00FE9DA1 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869932A2B185D4D00FE9DA1 /* FilterViewController.swift */; };
+		B869932D2B185F8300FE9DA1 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869932C2B185F8300FE9DA1 /* SortViewController.swift */; };
 		B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */; };
 		B869B7BF2AEE20D300ABB82D /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */; };
 		B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFAE2AE64FF60009C607 /* AppDelegate.swift */; };
@@ -81,6 +83,8 @@
 		B86993242B10485200FE9DA1 /* ShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingViewController.swift; sourceTree = "<group>"; };
 		B86993262B14306200FE9DA1 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		B86993282B16E07700FE9DA1 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		B869932A2B185D4D00FE9DA1 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		B869932C2B185F8300FE9DA1 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
 		B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressViewController.swift; sourceTree = "<group>"; };
 		B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		B879EFAB2AE64FF60009C607 /* baltini-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baltini-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +268,8 @@
 				B86993242B10485200FE9DA1 /* ShippingViewController.swift */,
 				B86993262B14306200FE9DA1 /* PaymentViewController.swift */,
 				B86993282B16E07700FE9DA1 /* OrderDetailViewController.swift */,
+				B869932A2B185D4D00FE9DA1 /* FilterViewController.swift */,
+				B869932C2B185F8300FE9DA1 /* SortViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -484,6 +490,8 @@
 				B8CB5E242AFE008300E9558C /* AuthenticityViewController.swift in Sources */,
 				B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */,
 				B8CB5E382B022A7800E9558C /* AccessoriesCategoryViewController.swift in Sources */,
+				B869932D2B185F8300FE9DA1 /* SortViewController.swift in Sources */,
+				B869932B2B185D4D00FE9DA1 /* FilterViewController.swift in Sources */,
 				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,
 				B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */,
 				B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */,

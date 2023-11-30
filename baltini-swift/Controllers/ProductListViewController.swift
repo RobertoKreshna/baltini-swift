@@ -9,7 +9,7 @@ import UIKit
 
 class ProductListViewController : UIViewController {
     var productList: [Product]? = nil
-    var sortValue: String = "Featured" {
+    var sortValue: String = SortFilterValue.shared.getSortValue() {
         didSet { Task{ removeUI(); await loadData(); createUI(); } }
     }
     var filterValue: KeyValuePairs<String, [String]> = [
@@ -148,25 +148,15 @@ extension ProductListViewController {
     
     func addFilterSort(to stack: UIStackView){
         let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in
-            var keys: [String] = []
-            var values : [[String]] = []
-            for i in 0..<self.filterValue.count { keys.append(self.filterValue[i].key); values.append(self.filterValue[i].value) }
-            CustomBottomSheet.getFilterPopup(
-                keys: keys,
-                values: values,
-                tapped: [
-                    UITapGestureRecognizer(target: self, action: #selector(self.genderFilterPressed)),
-                    UITapGestureRecognizer(target: self, action: #selector(self.categoryFilterPressed)),
-                    UITapGestureRecognizer(target: self, action: #selector(self.productTypeFilterPressed)),
-                    UITapGestureRecognizer(target: self, action: #selector(self.designerFilterPressed)),
-                    UITapGestureRecognizer(target: self, action: #selector(self.sizeFilterPressed)),
-                    UITapGestureRecognizer(target: self, action: #selector(self.priceFilterPressed))
-                ],
-                owner: self
-            )
+            let vc = FilterViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: false)
         }))
         let sortButton = CustomButton.createSortButton(value: sortValue, tapped: UIAction(handler: { action in
-            CustomBottomSheet.getSortPopup(selected: self.sortValue, tapped: self.sortValueChanged, owner: self)
+            let vc = SortViewController()
+            vc.callBackAfterSet = { self.sortValue = SortFilterValue.shared.getSortValue() }
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: false)
         }))
         
         let buttonStack = UIStackView()
@@ -182,9 +172,7 @@ extension ProductListViewController {
         buttonStack.rightAnchor.constraint(equalTo: stack.rightAnchor, constant: -16).isActive = true
     }
     
-    func sortValueChanged(newValue: String){
-        sortValue = newValue
-    }
+
 }
 
 //MARK: Navigations

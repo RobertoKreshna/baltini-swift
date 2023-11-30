@@ -96,3 +96,17 @@ class CommonStore {
     
     func getSearchHistory() -> [String]{ return searchHistory }
 }
+
+class SortFilterValue {
+    static let shared = SortFilterValue()
+    
+    private var sortValue: String
+    
+    private init() {
+        sortValue = "Featured"
+    }
+
+    //sort functions
+    func setSortValue(new: String){ self.sortValue = new }
+    func getSortValue() -> String{ return sortValue }
+}

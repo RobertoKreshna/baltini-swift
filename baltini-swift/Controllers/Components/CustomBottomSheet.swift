@@ -9,32 +9,6 @@ import UIKit
 
 class CustomBottomSheet {
     
-    static func getFilterPopup(keys: [String], values: [[String]], tapped: [UITapGestureRecognizer], owner: UIViewController){
-        let popupBackgroundView = createBackgroundView(width: Int(owner.view.frame.size.width), height: Int(owner.view.frame.size.height))
-        
-        let contentView = createFilterContent(keys: keys, values: values, tapped: tapped, close: {
-            popupBackgroundView.removeFromSuperview()
-        })
-        
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addAction(
-            UIAction(handler: { action in popupBackgroundView.removeFromSuperview() }),
-            for: .touchUpInside
-        )
-        
-        popupBackgroundView.addSubview(button)
-        popupBackgroundView.addSubview(contentView)
-
-        contentView.widthAnchor.constraint(equalTo: popupBackgroundView.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: popupBackgroundView.heightAnchor, multiplier: 0.56).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: popupBackgroundView.bottomAnchor).isActive = true
-        button.widthAnchor.constraint(equalTo: popupBackgroundView.widthAnchor).isActive = true
-        button.heightAnchor.constraint(equalTo: popupBackgroundView.heightAnchor).isActive = true
-        
-        owner.view.addSubview(popupBackgroundView)
-    }
-    
     static func getSortPopup(selected: String, tapped: @escaping (String) -> Void, owner: UIViewController){
         let popupBackgroundView = createBackgroundView(width: Int(owner.view.frame.size.width), height: Int(owner.view.frame.size.height))
         
@@ -111,7 +85,7 @@ class CustomBottomSheet {
         return button
     }
     
-    static private func createSortContent(selected: String, tapped: @escaping (String) -> Void , close: @escaping () -> Void) -> UIView {
+    static func createSortContent(selected: String, tapped: @escaping (String) -> Void , close: @escaping () -> Void) -> UIView {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
@@ -267,7 +241,7 @@ class CustomBottomSheet {
         return tileStack
     }
     
-    static private func createFilterContent(keys: [String], values:[[String]], tapped: [UITapGestureRecognizer], close: @escaping () -> Void) -> UIView {
+    static func createFilterContent(keys: [String], values:[[String]], tapped: [UITapGestureRecognizer], close: @escaping () -> Void) -> UIView {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
