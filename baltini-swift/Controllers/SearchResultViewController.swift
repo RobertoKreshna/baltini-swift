@@ -15,14 +15,6 @@ class SearchResultViewController : UIViewController {
     var sortValue: String = SortFilterValue.shared.getSortValue() {
         didSet { Task{ removeUI(); createUI(); } }
     }
-    var filterValue: KeyValuePairs<String, [String]> = [
-        "Gender" : [],
-        "Category" : [],
-        "ProductType" : [],
-        "Designer" : [],
-        "Size" : [],
-        "Price" : [],
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,30 +168,6 @@ extension SearchResultViewController {
         let vc = ProductDetailViewController()
         vc.productId = recognizer.id
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc private func genderFilterPressed() {
-        print("Gender")
-    }
-    
-    @objc private func categoryFilterPressed() {
-        print("Category")
-    }
-    
-    @objc private func productTypeFilterPressed() {
-        print("Product Type")
-    }
-    
-    @objc private func designerFilterPressed() {
-        print("Designer")
-    }
-    
-    @objc private func sizeFilterPressed() {
-        print("Size")
-    }
-    
-    @objc private func priceFilterPressed() {
-        print("Price")
     }
 }
 

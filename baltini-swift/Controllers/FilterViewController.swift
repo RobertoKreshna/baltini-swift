@@ -33,8 +33,8 @@ extension FilterViewController {
         view.backgroundColor = .black.withAlphaComponent(0.2)
         
         let contentView = CustomBottomSheet.createFilterContent(
-            keys: ["A", "B", "C", "D", "E", "F"],
-            values: [[],[],[],[],[],[]],
+            keys: SortFilterValue.shared.getFilterDictKeys(),
+            values: SortFilterValue.shared.getFilterDictValues(),
             tapped: [
                 UITapGestureRecognizer(target: self, action: #selector(self.genderFilterPressed)),
                 UITapGestureRecognizer(target: self, action: #selector(self.categoryFilterPressed)),

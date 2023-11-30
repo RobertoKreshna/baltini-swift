@@ -101,12 +101,42 @@ class SortFilterValue {
     static let shared = SortFilterValue()
     
     private var sortValue: String
+    private var filterDict: KeyValuePairs <String, [String]>
     
     private init() {
         sortValue = "Featured"
+        filterDict = [
+            "Gender" : [],
+            "Category" : [],
+            "ProductType" : [],
+            "Designer" : [],
+            "Size" : [],
+            "Price" : [],
+        ]
     }
 
     //sort functions
     func setSortValue(new: String){ self.sortValue = new }
     func getSortValue() -> String{ return sortValue }
+    
+    //filter functions
+    func addFilterTo(key: String, value: String){
+        
+    }
+    
+    func getFilterDictKeys() -> [String] {
+        var res = [String]()
+        filterDict.forEach { (key: String, value: [String]) in
+            res.append(key)
+        }
+        return res
+    }
+    
+    func getFilterDictValues() -> [[String]] {
+        var res = [[String]]()
+        filterDict.forEach { (key: String, value: [String]) in
+            res.append(value)
+        }
+        return res
+    }
 }

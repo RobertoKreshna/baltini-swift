@@ -12,14 +12,6 @@ class ProductListViewController : UIViewController {
     var sortValue: String = SortFilterValue.shared.getSortValue() {
         didSet { Task{ removeUI(); await loadData(); createUI(); } }
     }
-    var filterValue: KeyValuePairs<String, [String]> = [
-        "Gender" : [],
-        "Category" : [],
-        "ProductType" : [],
-        "Designer" : [],
-        "Size" : [],
-        "Price" : [],
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,29 +178,5 @@ extension ProductListViewController {
     
     @objc private func goToCart(){
         self.navigationController?.pushViewController(CartViewController(), animated: true)
-    }
-    
-    @objc private func genderFilterPressed() {
-        print("Gender")
-    }
-    
-    @objc private func categoryFilterPressed() {
-        print("Category")
-    }
-    
-    @objc private func productTypeFilterPressed() {
-        print("Product Type")
-    }
-    
-    @objc private func designerFilterPressed() {
-        print("Designer")
-    }
-    
-    @objc private func sizeFilterPressed() {
-        print("Size")
-    }
-    
-    @objc private func priceFilterPressed() {
-        print("Price")
     }
 }
