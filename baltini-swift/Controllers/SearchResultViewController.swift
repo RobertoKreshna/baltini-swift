@@ -15,7 +15,7 @@ class SearchResultViewController : UIViewController {
     var sortValue: String = "Featured" {
         didSet { Task{ removeUI(); createUI(); } }
     }
-    var filterValue: [String : [String]] = [
+    var filterValue: KeyValuePairs<String, [String]> = [
         "Gender" : [],
         "Category" : [],
         "ProductType" : [],
@@ -144,7 +144,22 @@ extension SearchResultViewController {
     
     func addFilterSort(to stack: UIStackView){
         let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in
-            CustomBottomSheet.getFilterPopup(keys: Array(self.filterValue.keys), values: Array(self.filterValue.values), owner: self) 
+            var keys: [String] = []
+            var values : [[String]] = []
+            for i in 0..<self.filterValue.count { keys.append(self.filterValue[i].key); values.append(self.filterValue[i].value) }
+            CustomBottomSheet.getFilterPopup(
+                keys: keys,
+                values: values,
+                tapped: [
+                    UITapGestureRecognizer(target: self, action: #selector(self.genderFilterPressed)),
+                    UITapGestureRecognizer(target: self, action: #selector(self.categoryFilterPressed)),
+                    UITapGestureRecognizer(target: self, action: #selector(self.productTypeFilterPressed)),
+                    UITapGestureRecognizer(target: self, action: #selector(self.designerFilterPressed)),
+                    UITapGestureRecognizer(target: self, action: #selector(self.sizeFilterPressed)),
+                    UITapGestureRecognizer(target: self, action: #selector(self.priceFilterPressed))
+                ],
+                owner: self
+            )
         }))
         let sortButton = CustomButton.createSortButton(value: sortValue, tapped: UIAction(handler: { action in
             CustomBottomSheet.getSortPopup(selected: self.sortValue, tapped: self.sortValueChanged, owner: self)
@@ -171,6 +186,30 @@ extension SearchResultViewController {
         let vc = ProductDetailViewController()
         vc.productId = recognizer.id
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func genderFilterPressed() {
+        print("Gender")
+    }
+    
+    @objc private func categoryFilterPressed() {
+        print("Category")
+    }
+    
+    @objc private func productTypeFilterPressed() {
+        print("Product Type")
+    }
+    
+    @objc private func designerFilterPressed() {
+        print("Designer")
+    }
+    
+    @objc private func sizeFilterPressed() {
+        print("Size")
+    }
+    
+    @objc private func priceFilterPressed() {
+        print("Price")
     }
 }
 

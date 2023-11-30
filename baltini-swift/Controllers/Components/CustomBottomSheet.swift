@@ -9,10 +9,10 @@ import UIKit
 
 class CustomBottomSheet {
     
-    static func getFilterPopup(keys: [String], values: [[String]], owner: UIViewController){
+    static func getFilterPopup(keys: [String], values: [[String]], tapped: [UITapGestureRecognizer], owner: UIViewController){
         let popupBackgroundView = createBackgroundView(width: Int(owner.view.frame.size.width), height: Int(owner.view.frame.size.height))
         
-        let contentView = createFilterContent(keys: keys, values: values, close: {
+        let contentView = createFilterContent(keys: keys, values: values, tapped: tapped, close: {
             popupBackgroundView.removeFromSuperview()
         })
         
@@ -216,7 +216,7 @@ class CustomBottomSheet {
         return contentView
     }
     
-    static private func createFilterTile(title: String, value: [String]) -> UIView {
+    static private func createFilterTile(title: String, value: [String], tapped: UITapGestureRecognizer) -> UIView {
         let attributedTitle = NSAttributedString(
             string: title,
             attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
@@ -262,10 +262,12 @@ class CustomBottomSheet {
         tileStack.isLayoutMarginsRelativeArrangement = true
         tileStack.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         
+        tileStack.addGestureRecognizer(tapped)
+        
         return tileStack
     }
     
-    static private func createFilterContent(keys: [String], values:[[String]], close: @escaping () -> Void) -> UIView {
+    static private func createFilterContent(keys: [String], values:[[String]], tapped: [UITapGestureRecognizer], close: @escaping () -> Void) -> UIView {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
@@ -273,12 +275,12 @@ class CustomBottomSheet {
         
         let indicator = createGrayIndicator()
         let description = createDescription(string: "FILTER")
-        let gender = createFilterTile(title: keys[0], value: values[0])
-        let category = createFilterTile(title: keys[1], value: values[1])
-        let productType = createFilterTile(title: keys[2], value: values[2])
-        let designer = createFilterTile(title: keys[3], value: values[3])
-        let size = createFilterTile(title: keys[4], value: values[4])
-        let price = createFilterTile(title: keys[5], value: values[5])
+        let gender = createFilterTile(title: keys[0], value: values[0], tapped: tapped[0])
+        let category = createFilterTile(title: keys[1], value: values[1], tapped: tapped[1])
+        let productType = createFilterTile(title: keys[2], value: values[2], tapped: tapped[2])
+        let designer = createFilterTile(title: keys[3], value: values[3], tapped: tapped[3])
+        let size = createFilterTile(title: keys[4], value: values[4], tapped: tapped[4])
+        let price = createFilterTile(title: keys[5], value: values[5], tapped: tapped[5])
         let button = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in close() }))
         button.translatesAutoresizingMaskIntoConstraints = false
         
