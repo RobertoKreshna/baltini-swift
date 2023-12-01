@@ -86,10 +86,11 @@ class CustomBottomSheet {
     }
     
     static func createSortContent(selected: String, tapped: @escaping (String) -> Void , close: @escaping () -> Void) -> UIView {
-        let contentView = UIView()
+        let contentView = UIStackView()
+        contentView.axis = .vertical
+        contentView.alignment = .center
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 16
         
         let indicator = createGrayIndicator()
         let description = createDescription(string: "SORT PRODUCTS")
@@ -133,59 +134,38 @@ class CustomBottomSheet {
             selected: selected == "Date, Old to New" ? true : false,
             pressed: UIAction(handler: { action in tapped("Date, Old to New") })
         )
-        
-        contentView.addSubview(indicator)
-        contentView.addSubview(description)
-        contentView.addSubview(bestButton)
-        contentView.addSubview(featuredButton)
-        contentView.addSubview(lowPriceButton)
-        contentView.addSubview(highPriceButton)
-        contentView.addSubview(aToZButton)
-        contentView.addSubview(zToAButton)
-        contentView.addSubview(newToOldButton)
-        contentView.addSubview(oldToNewButton)
-        
+        contentView.addArrangedSubview(indicator)
+        contentView.setCustomSpacing(12, after: indicator)
         indicator.widthAnchor.constraint(equalToConstant: 35).isActive = true
         indicator.heightAnchor.constraint(equalToConstant: 4).isActive = true
-        indicator.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        indicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
-        description.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32).isActive = true
-        description.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        description.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        description.topAnchor.constraint(equalTo: indicator.bottomAnchor, constant: 17).isActive = true
-        
-        bestButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        bestButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        bestButton.topAnchor.constraint(equalTo: description.bottomAnchor, constant: 4).isActive = true
-        
-        featuredButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        featuredButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        featuredButton.topAnchor.constraint(equalTo: bestButton.bottomAnchor).isActive = true
-        
-        lowPriceButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        lowPriceButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        lowPriceButton.topAnchor.constraint(equalTo: featuredButton.bottomAnchor).isActive = true
-        
-        highPriceButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        highPriceButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        highPriceButton.topAnchor.constraint(equalTo: lowPriceButton.bottomAnchor).isActive = true
-        
-        aToZButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        aToZButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        aToZButton.topAnchor.constraint(equalTo: highPriceButton.bottomAnchor).isActive = true
-        
-        zToAButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        zToAButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        zToAButton.topAnchor.constraint(equalTo: aToZButton.bottomAnchor).isActive = true
-        
-        newToOldButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        newToOldButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        newToOldButton.topAnchor.constraint(equalTo: zToAButton.bottomAnchor).isActive = true
-        
-        oldToNewButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        oldToNewButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        oldToNewButton.topAnchor.constraint(equalTo: newToOldButton.bottomAnchor).isActive = true
+        contentView.addArrangedSubview(description)
+        description.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        description.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        contentView.addArrangedSubview(bestButton)
+        bestButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        bestButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        contentView.addArrangedSubview(featuredButton)
+        featuredButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        featuredButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        contentView.addArrangedSubview(lowPriceButton)
+        lowPriceButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        lowPriceButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        contentView.addArrangedSubview(highPriceButton)
+        highPriceButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        highPriceButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        contentView.addArrangedSubview(aToZButton)
+        aToZButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        aToZButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        contentView.addArrangedSubview(zToAButton)
+        zToAButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        zToAButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        contentView.addArrangedSubview(newToOldButton)
+        newToOldButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        newToOldButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        contentView.addArrangedSubview(oldToNewButton)
+        oldToNewButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        oldToNewButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
         return contentView
     }

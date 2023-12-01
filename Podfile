@@ -12,5 +12,6 @@ target 'baltini-swift' do
   pod 'BadgeSwift'
   pod 'TTGSnackbar'
   pod 'DropDown'
+  pod 'BottomSheet', :git => 'https://github.com/joomcode/BottomSheet'
 
 end

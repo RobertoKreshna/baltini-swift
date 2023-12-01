@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import BottomSheet
 
 class SearchResultViewController : UIViewController {
     var searchKeyword: String? = nil
@@ -143,8 +144,14 @@ extension SearchResultViewController {
         let sortButton = CustomButton.createSortButton(value: sortValue, tapped: UIAction(handler: { action in
             let vc = SortViewController()
             vc.callBackAfterSet = { self.sortValue = SortFilterValue.shared.getSortValue() }
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: false)
+            self.presentBottomSheet(
+                viewController: vc,
+                configuration: .init(
+                    cornerRadius: 16,
+                    pullBarConfiguration: .hidden,
+                    shadowConfiguration: .init(backgroundColor: .black.withAlphaComponent(0.2))
+                )
+            )
         }))
         
         let buttonStack = UIStackView()
