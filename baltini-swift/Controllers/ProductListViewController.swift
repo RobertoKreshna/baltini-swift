@@ -142,8 +142,14 @@ extension ProductListViewController {
     func addFilterSort(to stack: UIStackView){
         let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in
             let vc = FilterViewController()
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: false)
+            self.presentBottomSheet(
+                viewController: vc,
+                configuration: .init(
+                    cornerRadius: 16,
+                    pullBarConfiguration: .hidden,
+                    shadowConfiguration: .init(backgroundColor: .black.withAlphaComponent(0.2))
+                )
+            )
         }))
         let sortButton = CustomButton.createSortButton(value: sortValue, tapped: UIAction(handler: { action in
             let vc = SortViewController()

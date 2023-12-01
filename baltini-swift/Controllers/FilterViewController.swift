@@ -30,7 +30,9 @@ class FilterViewController : UIViewController {
 //MARK: Create UI methods
 extension FilterViewController {
     func createUI(){
-        view.backgroundColor = .black.withAlphaComponent(0.2)
+        self.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height * 0.4) + 32)
+        view.backgroundColor = .white
+        view.clipsToBounds = true
         
         let contentView = CustomBottomSheet.createFilterContent(
             keys: SortFilterValue.shared.getFilterDictKeys(),
@@ -47,22 +49,11 @@ extension FilterViewController {
                 self.dismiss(animated: false)
             }
         )
-        
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addAction(
-            UIAction(handler: { action in self.dismiss(animated: false)}),
-            for: .touchUpInside
-        )
-        
-        view.addSubview(button)
         view.addSubview(contentView)
 
-        contentView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.56).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        button.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        button.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        contentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        contentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
     }
     
     @objc private func genderFilterPressed() {

@@ -222,7 +222,9 @@ class CustomBottomSheet {
     }
     
     static func createFilterContent(keys: [String], values:[[String]], tapped: [UITapGestureRecognizer], close: @escaping () -> Void) -> UIView {
-        let contentView = UIView()
+        let contentView = UIStackView()
+        contentView.axis = .vertical
+        contentView.alignment = .center
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 16
@@ -238,53 +240,42 @@ class CustomBottomSheet {
         let button = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in close() }))
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.addSubview(indicator)
-        contentView.addSubview(description)
-        contentView.addSubview(gender)
-        contentView.addSubview(category)
-        contentView.addSubview(productType)
-        contentView.addSubview(designer)
-        contentView.addSubview(size)
-        contentView.addSubview(price)
-        contentView.addSubview(button)
+        contentView.addArrangedSubview(indicator)
+        contentView.addArrangedSubview(description)
+        contentView.addArrangedSubview(gender)
+        contentView.addArrangedSubview(category)
+        contentView.addArrangedSubview(productType)
+        contentView.addArrangedSubview(designer)
+        contentView.addArrangedSubview(size)
+        contentView.addArrangedSubview(price)
+        contentView.addArrangedSubview(button)
         
         indicator.widthAnchor.constraint(equalToConstant: 35).isActive = true
         indicator.heightAnchor.constraint(equalToConstant: 4).isActive = true
-        indicator.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        indicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
-        description.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32).isActive = true
-        description.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        description.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        description.topAnchor.constraint(equalTo: indicator.bottomAnchor, constant: 17).isActive = true
+        description.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        description.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        gender.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        gender.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        gender.topAnchor.constraint(equalTo: description.bottomAnchor, constant: 4).isActive = true
+        gender.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        gender.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        category.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        category.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        category.topAnchor.constraint(equalTo: gender.bottomAnchor).isActive = true
+        category.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        category.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        productType.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        productType.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        productType.topAnchor.constraint(equalTo: category.bottomAnchor).isActive = true
+        productType.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        productType.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        designer.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        designer.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        designer.topAnchor.constraint(equalTo: productType.bottomAnchor).isActive = true
+        designer.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        designer.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        size.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        size.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        size.topAnchor.constraint(equalTo: designer.bottomAnchor).isActive = true
+        size.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        size.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        price.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        price.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        price.topAnchor.constraint(equalTo: size.bottomAnchor).isActive = true
+        price.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        price.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        button.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
-        button.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16).isActive = true
-        button.topAnchor.constraint(equalTo: price.bottomAnchor, constant: 24).isActive = true
+        button.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        button.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
         return contentView
     }

@@ -44,7 +44,7 @@ extension SortViewController {
         
         contentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         contentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32).isActive = true
+        contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
     }
     
     func sortValueChanged(newValue: String){
