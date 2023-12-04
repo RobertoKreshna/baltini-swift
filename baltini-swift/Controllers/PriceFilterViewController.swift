@@ -10,7 +10,6 @@ import RangeSeekSlider
 class PriceFilterViewController : UIViewController {
     let minLabel: UILabel = {
         let minLabel = UILabel()
-        minLabel.text = "172.00"
         minLabel.font = UIFont(name: "Futura-Medium", size: 16)
         minLabel.textColor = .black.withAlphaComponent(0.5)
         minLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -18,7 +17,6 @@ class PriceFilterViewController : UIViewController {
     }()
     let maxLabel: UILabel = {
         let maxLabel = UILabel()
-        maxLabel.text = "1996.00"
         maxLabel.font = UIFont(name: "Futura-Medium", size: 16)
         maxLabel.textColor = .black.withAlphaComponent(0.5)
         maxLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -50,13 +48,21 @@ extension PriceFilterViewController {
         view.backgroundColor = .white
         view.clipsToBounds = true
         
+        if SortFilterValue.shared.getFilterDictValues().last!.isEmpty {
+            minLabel.text = "72.00"
+            maxLabel.text = "2096.00"
+        } else {
+            minLabel.text = SortFilterValue.shared.getFilterDictValues().last![0]
+            maxLabel.text = SortFilterValue.shared.getFilterDictValues().last![1]
+        }
+        
         let contentView = CustomBottomSheet.createPriceFilterContent(
-            backButtonTapped: UIAction(handler: { action in
-                self.navigationController?.popViewController(animated: true)
-            }),
             owner: self,
             minLabel: minLabel,
-            maxLabel: maxLabel
+            maxLabel: maxLabel,
+            close: {
+                self.navigationController?.popViewController(animated: true)
+            }
         )
         view.addSubview(contentView)
         

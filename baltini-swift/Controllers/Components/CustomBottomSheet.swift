@@ -171,13 +171,13 @@ class CustomBottomSheet {
         return contentView
     }
     
-    static private func createFilterTile(title: String, value: [String], tapped: UITapGestureRecognizer) -> UIView {
+    static private func createFilterTile(title: String, value: [String], tapped: UITapGestureRecognizer, isRange: Bool) -> UIView {
         let attributedTitle = NSAttributedString(
             string: title,
             attributes: [.font : UIFont(name: "Futura-Medium", size: 14)!, .foregroundColor : UIColor.black]
         )
         let attributedSubtitle = NSAttributedString(
-            string: value.joined(separator: ","),
+            string: value.joined(separator: isRange ? " - " : ", "),
             attributes: [.font: UIFont(name: "Futura-Medium", size: 10)!, .foregroundColor : UIColor.black.withAlphaComponent(0.5)]
         )
         
@@ -232,12 +232,12 @@ class CustomBottomSheet {
         
         let indicator = createGrayIndicator()
         let description = createDescription(string: "FILTER")
-        let gender = createFilterTile(title: keys[0], value: values[0], tapped: tapped[0])
-        let category = createFilterTile(title: keys[1], value: values[1], tapped: tapped[1])
-        let productType = createFilterTile(title: keys[2], value: values[2], tapped: tapped[2])
-        let designer = createFilterTile(title: keys[3], value: values[3], tapped: tapped[3])
-        let size = createFilterTile(title: keys[4], value: values[4], tapped: tapped[4])
-        let price = createFilterTile(title: keys[5], value: values[5], tapped: tapped[5])
+        let gender = createFilterTile(title: keys[0], value: values[0], tapped: tapped[0], isRange: false)
+        let category = createFilterTile(title: keys[1], value: values[1], tapped: tapped[1], isRange: false)
+        let productType = createFilterTile(title: keys[2], value: values[2], tapped: tapped[2], isRange: false)
+        let designer = createFilterTile(title: keys[3], value: values[3], tapped: tapped[3], isRange: false)
+        let size = createFilterTile(title: keys[4], value: values[4], tapped: tapped[4], isRange: false)
+        let price = createFilterTile(title: keys[5], value: values[5], tapped: tapped[5], isRange: true)
         let button = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in close() }))
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -281,7 +281,7 @@ class CustomBottomSheet {
         return contentView
     }
     
-    static func createPriceFilterContent(backButtonTapped: UIAction, owner: RangeSeekSliderDelegate, minLabel: UILabel, maxLabel: UILabel) -> UIView {
+    static func createPriceFilterContent(owner: RangeSeekSliderDelegate, minLabel: UILabel, maxLabel: UILabel, close: @escaping () -> Void) -> UIView {
         let contentView = UIStackView()
         contentView.axis = .vertical
         contentView.alignment = .center
@@ -290,7 +290,9 @@ class CustomBottomSheet {
         contentView.layer.cornerRadius = 16
         
         let indicator = createGrayIndicator()
-        let backButton = BackButton.createBackButton(title: "FILTER - PRICE", icName: "icBack", usePadding: false, tapped: backButtonTapped)
+        let backButton = BackButton.createBackButton(title: "FILTER - PRICE", icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+            close()
+        }))
         //row
         let minStack = createPriceStack(priceLabel: minLabel)
         let maxStack = createPriceStack(priceLabel: maxLabel)
@@ -313,10 +315,13 @@ class CustomBottomSheet {
         minStack.widthAnchor.constraint(equalTo: maxStack.widthAnchor).isActive = true
         
         //slider
-        let slider = createSlider(min: 72, max: 2096, minLabel: minLabel, maxLabel: maxLabel, owner: owner)
+        let cgFloatMin = CGFloat((minLabel.text! as NSString).doubleValue)
+        let cgFloatMax = CGFloat((maxLabel.text! as NSString).doubleValue)
+        let slider = createSlider(min: cgFloatMin, max: cgFloatMax, minLabel: minLabel, maxLabel: maxLabel, owner: owner)
         //button
         let filterButton = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in
-            print("tapped")
+            SortFilterValue.shared.addFilterTo(key: "Price", value: [minLabel.text!, maxLabel.text!], replace: true)
+            close()
         }))
         
         contentView.addArrangedSubview(indicator)
@@ -346,10 +351,10 @@ class CustomBottomSheet {
     static private func createSlider(min: CGFloat, max: CGFloat, minLabel: UILabel, maxLabel: UILabel, owner: RangeSeekSliderDelegate) -> RangeSeekSlider {
         let slider = RangeSeekSlider()
         //min max
-        slider.minValue = min
-        slider.selectedMinValue = min + 100
-        slider.maxValue = max
-        slider.selectedMaxValue = max - 100
+        slider.minValue = 72
+        slider.selectedMinValue = min
+        slider.maxValue = 2096
+        slider.selectedMaxValue = max
         slider.minDistance = 50
         slider.step = 1
         //label

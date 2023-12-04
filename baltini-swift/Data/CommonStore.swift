@@ -101,18 +101,13 @@ class SortFilterValue {
     static let shared = SortFilterValue()
     
     private var sortValue: String
-    private var filterDict: KeyValuePairs <String, [String]>
+    private var filterKeys: [String]
+    private var filterValues: [[String]]
     
     private init() {
         sortValue = "Featured"
-        filterDict = [
-            "Gender" : [],
-            "Category" : [],
-            "ProductType" : [],
-            "Designer" : [],
-            "Size" : [],
-            "Price" : [],
-        ]
+        filterKeys = ["Gender", "Category", "ProductType", "Designer", "Size", "Price"]
+        filterValues = [[],[],[],[],[],[]]
     }
 
     //sort functions
@@ -120,23 +115,17 @@ class SortFilterValue {
     func getSortValue() -> String{ return sortValue }
     
     //filter functions
-    func addFilterTo(key: String, value: String){
-        
-    }
+    func getFilterDictKeys() -> [String] { return filterKeys }
+    func getFilterDictValues() -> [[String]] { return filterValues }
     
-    func getFilterDictKeys() -> [String] {
-        var res = [String]()
-        filterDict.forEach { (key: String, value: [String]) in
-            res.append(key)
+    func addFilterTo(key: String, value: [String], replace: Bool){
+        for i in 0 ..< filterKeys.count {
+            if filterKeys[i] == key { replace == true ? filterValues[i] = value : filterValues[i].append(contentsOf: value) }
         }
-        return res
     }
-    
-    func getFilterDictValues() -> [[String]] {
-        var res = [[String]]()
-        filterDict.forEach { (key: String, value: [String]) in
-            res.append(value)
-        }
-        return res
-    }
+}
+
+struct FilterValue{
+    let key: String
+    let values: [String]
 }
