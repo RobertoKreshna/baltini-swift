@@ -9,41 +9,6 @@ import UIKit
 import RangeSeekSlider
 
 class CustomBottomSheet {
-    
-    static func getSortPopup(selected: String, tapped: @escaping (String) -> Void, owner: UIViewController){
-        let popupBackgroundView = createBackgroundView(width: Int(owner.view.frame.size.width), height: Int(owner.view.frame.size.height))
-        
-        let contentView = createSortContent(selected: selected, tapped: tapped, close: {
-            popupBackgroundView.removeFromSuperview()
-        })
-        
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addAction(
-            UIAction(handler: { action in popupBackgroundView.removeFromSuperview() }),
-            for: .touchUpInside
-        )
-        
-        popupBackgroundView.addSubview(button)
-        popupBackgroundView.addSubview(contentView)
-
-        contentView.widthAnchor.constraint(equalTo: popupBackgroundView.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: popupBackgroundView.heightAnchor, multiplier: 0.6).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: popupBackgroundView.bottomAnchor).isActive = true
-        button.widthAnchor.constraint(equalTo: popupBackgroundView.widthAnchor).isActive = true
-        button.heightAnchor.constraint(equalTo: popupBackgroundView.heightAnchor).isActive = true
-        
-        owner.view.addSubview(popupBackgroundView)
-    }
-    
-    static private func createBackgroundView(width: Int, height: Int) -> UIView {
-        let backgroundFrame = CGRect(x: 0, y: 0, width: width, height: height)
-        let popupBackgroundView = UIView(frame: backgroundFrame)
-        popupBackgroundView.backgroundColor = .black.withAlphaComponent(0.2)
-        
-        return popupBackgroundView
-    }
-    
     static private func createGrayIndicator() -> UIView {
         let view = UIView()
         view.backgroundColor = UIColor.brandGray
