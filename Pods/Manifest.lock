@@ -5,6 +5,7 @@ PODS:
   - HSCycleGalleryView (1.2.0)
   - LZViewPager (1.2.8):
     - SnapKit (~> 5.6.0)
+  - RangeSeekSlider (1.8.0)
   - SnapKit (5.6.0)
   - Toast-Swift (5.0.1)
   - TTGSnackbar (1.11.1)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - DropDown
   - HSCycleGalleryView
   - LZViewPager
+  - RangeSeekSlider
   - Toast-Swift
   - TTGSnackbar
 
@@ -24,6 +26,7 @@ SPEC REPOS:
     - DropDown
     - HSCycleGalleryView
     - LZViewPager
+    - RangeSeekSlider
     - SnapKit
     - Toast-Swift
     - TTGSnackbar
@@ -43,10 +46,11 @@ SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   HSCycleGalleryView: 5101435175a26d08f1c062cf6cb245f58f09b425
   LZViewPager: 832bd177210060e1282b67aa1e9cd201ded67a5b
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TTGSnackbar: fea91c62637b5662f808a4c3b55f7631cb7e1ef7
 
-PODFILE CHECKSUM: b6628b1992e2cc4c7a525fd51e2f2281364a3660
+PODFILE CHECKSUM: 5aacab2a48db48c904243a2a4f5c4f3f27a0f220
 
 COCOAPODS: 1.13.0

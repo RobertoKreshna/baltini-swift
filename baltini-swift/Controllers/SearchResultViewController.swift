@@ -138,7 +138,7 @@ extension SearchResultViewController {
     func addFilterSort(to stack: UIStackView){
         let filterButton = CustomButton.createFilterButton(tapped: UIAction(handler: { action in
             let vc = FilterViewController()
-            self.presentBottomSheet(
+            self.presentBottomSheetInsideNavigationController(
                 viewController: vc,
                 configuration: .init(
                     cornerRadius: 16,

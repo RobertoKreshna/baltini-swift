@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		99E98AF461EFDB368BC2FC01 /* Pods_baltini_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */; };
+		B824F9162B19C31C006FAFDF /* PriceFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824F9152B19C31C006FAFDF /* PriceFilterViewController.swift */; };
 		B869931D2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869931C2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift */; };
 		B869931F2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869931E2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift */; };
 		B86993212B0C71BF00FE9DA1 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993202B0C71BF00FE9DA1 /* CheckoutViewController.swift */; };
@@ -76,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_baltini_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B824F9152B19C31C006FAFDF /* PriceFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFilterViewController.swift; sourceTree = "<group>"; };
 		B869931C2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnMoreViewController.swift; sourceTree = "<group>"; };
 		B869931E2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionViewController.swift; sourceTree = "<group>"; };
 		B86993202B0C71BF00FE9DA1 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				B86993282B16E07700FE9DA1 /* OrderDetailViewController.swift */,
 				B869932A2B185D4D00FE9DA1 /* FilterViewController.swift */,
 				B869932C2B185F8300FE9DA1 /* SortViewController.swift */,
+				B824F9152B19C31C006FAFDF /* PriceFilterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				B879EFD62AE8C5BF0009C607 /* CategoryViewController.swift in Sources */,
 				B879EFD42AE7CCC50009C607 /* TabbarViewController.swift in Sources */,
 				B8D3ABA12AEB5ED50026832F /* CustomButton.swift in Sources */,
+				B824F9162B19C31C006FAFDF /* PriceFilterViewController.swift in Sources */,
 				B8CB5E282AFE142300E9558C /* CartModel.swift in Sources */,
 				B8CB5E302B02207A00E9558C /* ClothingCategoryViewController.swift in Sources */,
 				B8CB5E162AFA2ACC00E9558C /* StringExtension.swift in Sources */,

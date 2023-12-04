@@ -77,6 +77,6 @@ extension FilterViewController {
     }
     
     @objc private func priceFilterPressed() {
-        print("Price")
+        self.navigationController?.pushViewController(PriceFilterViewController(), animated: true)
     }
 }

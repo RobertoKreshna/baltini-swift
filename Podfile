@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '12.0'
 
 target 'baltini-swift' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -13,5 +13,6 @@ target 'baltini-swift' do
   pod 'TTGSnackbar'
   pod 'DropDown'
   pod 'BottomSheet', :git => 'https://github.com/joomcode/BottomSheet'
+  pod 'RangeSeekSlider'
 
 end

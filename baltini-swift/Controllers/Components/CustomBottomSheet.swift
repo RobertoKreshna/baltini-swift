@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RangeSeekSlider
 
 class CustomBottomSheet {
     
@@ -278,5 +279,124 @@ class CustomBottomSheet {
         button.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
         return contentView
+    }
+    
+    static func createPriceFilterContent(backButtonTapped: UIAction, owner: RangeSeekSliderDelegate, minLabel: UILabel, maxLabel: UILabel) -> UIView {
+        let contentView = UIStackView()
+        contentView.axis = .vertical
+        contentView.alignment = .center
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 16
+        
+        let indicator = createGrayIndicator()
+        let backButton = BackButton.createBackButton(title: "FILTER - PRICE", icName: "icBack", usePadding: false, tapped: backButtonTapped)
+        //row
+        let minStack = createPriceStack(priceLabel: minLabel)
+        let maxStack = createPriceStack(priceLabel: maxLabel)
+        
+        let tillLabel = UILabel()
+        tillLabel.text = "-"
+        tillLabel.font = UIFont(name: "Futura-Medium", size: 16)
+        tillLabel.textColor = .black
+        tillLabel.textAlignment = .center
+        tillLabel.setContentHuggingPriority(.required, for: .horizontal)
+        
+        let row = UIStackView()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        row.spacing = 16
+        row.addArrangedSubview(minStack)
+        row.addArrangedSubview(tillLabel)
+        row.addArrangedSubview(maxStack)
+        
+        minStack.widthAnchor.constraint(equalTo: maxStack.widthAnchor).isActive = true
+        
+        //slider
+        let slider = createSlider(min: 72, max: 2096, minLabel: minLabel, maxLabel: maxLabel, owner: owner)
+        //button
+        let filterButton = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in
+            print("tapped")
+        }))
+        
+        contentView.addArrangedSubview(indicator)
+        contentView.setCustomSpacing(12, after: indicator)
+        contentView.addArrangedSubview(backButton)
+        contentView.setCustomSpacing(34, after: backButton)
+        contentView.addArrangedSubview(row)
+        contentView.setCustomSpacing(37, after: row)
+        contentView.addArrangedSubview(slider)
+        contentView.setCustomSpacing(40, after: slider)
+        contentView.addArrangedSubview(filterButton)
+        
+        indicator.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: 4).isActive = true
+        backButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        backButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        row.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        row.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        slider.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        slider.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        filterButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        filterButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        
+        return contentView
+    }
+    
+    static private func createSlider(min: CGFloat, max: CGFloat, minLabel: UILabel, maxLabel: UILabel, owner: RangeSeekSliderDelegate) -> RangeSeekSlider {
+        let slider = RangeSeekSlider()
+        //min max
+        slider.minValue = min
+        slider.selectedMinValue = min + 100
+        slider.maxValue = max
+        slider.selectedMaxValue = max - 100
+        slider.minDistance = 50
+        slider.step = 1
+        //label
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "$"
+        slider.numberFormatter = formatter
+        slider.minLabelFont = UIFont(name: "Futura-Medium", size: 14)!
+        slider.minLabelColor = .black
+        slider.maxLabelFont = UIFont(name: "Futura-Medium", size: 14)!
+        slider.maxLabelColor = .black
+        //ui
+        slider.handleImage = UIImage(named: "icSlider")
+        slider.tintColor = .black.withAlphaComponent(0.5)
+        slider.colorBetweenHandles = .black
+        slider.delegate = owner
+        
+        return slider
+    }
+    
+    static private func createPriceStack(priceLabel: UILabel) -> UIStackView {
+        let column = UIStackView()
+        column.translatesAutoresizingMaskIntoConstraints = false
+        column.axis = .vertical
+        
+        let row = UIStackView()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        
+        let currencyLabel = UILabel()
+        currencyLabel.text = "$"
+        currencyLabel.font = UIFont(name: "Futura-Medium", size: 16)
+        currencyLabel.textColor = .black
+        currencyLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        
+        row.addArrangedSubview(currencyLabel)
+        row.addArrangedSubview(priceLabel)
+        
+        let border = CustomSeparator.createHorizontalLine(width: 1, color: .brandGray)
+        
+        column.addArrangedSubview(row)
+        column.setCustomSpacing(4, after: row)
+        column.addArrangedSubview(border)
+        
+        border.leftAnchor.constraint(equalTo: column.leftAnchor).isActive = true
+        border.rightAnchor.constraint(equalTo: column.rightAnchor).isActive = true
+        
+        return column
     }
 }
