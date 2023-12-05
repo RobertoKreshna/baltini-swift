@@ -118,9 +118,9 @@ class SortFilterValue {
     func getFilterDictKeys() -> [String] { return filterKeys }
     func getFilterDictValues() -> [[String]] { return filterValues }
     
-    func addFilterTo(key: String, value: [String], replace: Bool){
+    func addFilterTo(key: String, value: [String]){
         for i in 0 ..< filterKeys.count {
-            if filterKeys[i] == key { replace == true ? filterValues[i] = value : filterValues[i].append(contentsOf: value) }
+            if filterKeys[i] == key { filterValues[i] = value }
         }
     }
 }

@@ -285,7 +285,7 @@ class CustomBottomSheet {
         let slider = createSlider(min: cgFloatMin, max: cgFloatMax, minLabel: minLabel, maxLabel: maxLabel, owner: owner)
         //button
         let filterButton = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in
-            SortFilterValue.shared.addFilterTo(key: "Price", value: [minLabel.text!, maxLabel.text!], replace: true)
+            SortFilterValue.shared.addFilterTo(key: "Price", value: [minLabel.text!, maxLabel.text!])
             close()
         }))
         
@@ -370,4 +370,89 @@ class CustomBottomSheet {
         return column
     }
     
+    static func createSizeFilterContent(data: [String], selectedData: [String], close: @escaping () -> Void) -> UIView {
+        let contentView = UIStackView()
+        contentView.axis = .vertical
+        contentView.alignment = .center
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 16
+        
+        let indicator = createGrayIndicator()
+        let backButton = BackButton.createBackButton(title: "FILTER - SIZE", icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+            close()
+        }))
+        
+        contentView.addArrangedSubview(indicator)
+        contentView.setCustomSpacing(12, after: indicator)
+        contentView.addArrangedSubview(backButton)
+        contentView.setCustomSpacing(12, after: backButton)
+        
+        indicator.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: 4).isActive = true
+        backButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        backButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        
+        var allTiles = [UIStackView]()
+        data.forEach({ current in
+            let tile = createSizeFilterRow(size: current, selected: selectedData.contains(current))
+            contentView.addArrangedSubview(tile)
+            allTiles.append(tile)
+            tile.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+            tile.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        })
+        
+        contentView.setCustomSpacing(24, after: contentView.arrangedSubviews.last!)
+        
+        let button = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in
+            var res = [String]()
+            allTiles.forEach { tile in
+                let imageView = tile.arrangedSubviews[0] as! UIImageView
+                let label = tile.arrangedSubviews[1] as! UILabel
+                if imageView.image == UIImage(named: "icCheckSelected") { res.append(label.text!) }
+            }
+            SortFilterValue.shared.addFilterTo(key: "Size", value: res)
+            close()
+        }))
+        
+        contentView.addArrangedSubview(button)
+        button.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        button.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        
+        return contentView
+    }
+    
+    static private func createSizeFilterRow(size: String, selected: Bool) -> UIStackView {
+        let row = UIStackView()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        
+        let checkbox = UIImageView(image: UIImage(named: selected ? "icCheckSelected" : "icCheck"))
+        checkbox.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        let label = UILabel()
+        label.text = size
+        label.font = UIFont(name: "Futura-Medium", size: 14)
+        
+        row.addArrangedSubview(checkbox)
+        row.setCustomSpacing(12, after: checkbox)
+        row.addArrangedSubview(label)
+        
+        row.isLayoutMarginsRelativeArrangement = true
+        row.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        
+        row.addGestureRecognizer(FilterRowTapped(target: self, action: #selector(filterRowTapped(_:)), imageView: checkbox))
+        
+        return row
+    }
+    
+    @objc static private func filterRowTapped(_ recognizer: FilterRowTapped) {
+        DispatchQueue.main.async {
+            if recognizer.imageView.image == UIImage(named: "icCheck") {
+                recognizer.imageView.image = UIImage(named: "icCheckSelected")
+            } else {
+                recognizer.imageView.image = UIImage(named: "icCheck")
+            }
+        }
+    }
 }

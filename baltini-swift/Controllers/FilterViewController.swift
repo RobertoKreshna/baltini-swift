@@ -73,7 +73,7 @@ extension FilterViewController {
     }
     
     @objc private func sizeFilterPressed() {
-        print("Size")
+        self.navigationController?.pushViewController(SizeFilterViewController(), animated: true)
     }
     
     @objc private func priceFilterPressed() {

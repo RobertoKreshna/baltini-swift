@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		99E98AF461EFDB368BC2FC01 /* Pods_baltini_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */; };
 		B824F9162B19C31C006FAFDF /* PriceFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824F9152B19C31C006FAFDF /* PriceFilterViewController.swift */; };
+		B860D6FF2B1DD71C00DC7AB5 /* SizeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860D6FE2B1DD71C00DC7AB5 /* SizeFilterViewController.swift */; };
 		B869931D2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869931C2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift */; };
 		B869931F2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869931E2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift */; };
 		B86993212B0C71BF00FE9DA1 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86993202B0C71BF00FE9DA1 /* CheckoutViewController.swift */; };
@@ -78,6 +79,7 @@
 /* Begin PBXFileReference section */
 		AAE09D392421D22EA3254E77 /* Pods_baltini_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_baltini_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B824F9152B19C31C006FAFDF /* PriceFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFilterViewController.swift; sourceTree = "<group>"; };
+		B860D6FE2B1DD71C00DC7AB5 /* SizeFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeFilterViewController.swift; sourceTree = "<group>"; };
 		B869931C2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnMoreViewController.swift; sourceTree = "<group>"; };
 		B869931E2B0C6D5B00FE9DA1 /* TermsConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionViewController.swift; sourceTree = "<group>"; };
 		B86993202B0C71BF00FE9DA1 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				B869932A2B185D4D00FE9DA1 /* FilterViewController.swift */,
 				B869932C2B185F8300FE9DA1 /* SortViewController.swift */,
 				B824F9152B19C31C006FAFDF /* PriceFilterViewController.swift */,
+				B860D6FE2B1DD71C00DC7AB5 /* SizeFilterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				B8CB5DF82AEFB3D900E9558C /* EditAddressViewController.swift in Sources */,
 				B8BD63882B0B0C58002E62BD /* SearchViewController.swift in Sources */,
 				B8CB5E202AFDF24900E9558C /* CustomSeparator.swift in Sources */,
+				B860D6FF2B1DD71C00DC7AB5 /* SizeFilterViewController.swift in Sources */,
 				B8CB5E2E2B01BC2900E9558C /* ManCategoryViewController.swift in Sources */,
 				B869931D2B0C6D2B00FE9DA1 /* LearnMoreViewController.swift in Sources */,
 				B8CB5E082AF3410200E9558C /* ImageExtenstion.swift in Sources */,

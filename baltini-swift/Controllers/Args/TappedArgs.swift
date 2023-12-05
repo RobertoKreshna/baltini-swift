@@ -34,3 +34,12 @@ class sortTapped: UITapGestureRecognizer {
         super.init(target: target, action: action)
     }
 }
+
+class FilterRowTapped: UITapGestureRecognizer {
+    let imageView: UIImageView
+    
+    init(target: Any?, action: Selector?, imageView: UIImageView) {
+        self.imageView = imageView
+        super.init(target: target, action: action)
+    }
+}
