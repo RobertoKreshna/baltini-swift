@@ -50,7 +50,8 @@ extension SizeFilterViewController {
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        let contentView = CustomBottomSheet.createSizeFilterContent(
+        let contentView = CustomBottomSheet.createCheckboxListFilterContent(
+            title: "FILTER - SIZE",
             data: sizes,
             selectedData: SortFilterValue.shared.getFilterDictValues()[4],
             close: { self.navigationController?.popViewController(animated: true) }
@@ -61,9 +62,5 @@ extension SizeFilterViewController {
         contentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         contentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-    }
-    
-    @objc func tapped(value: String) {
-        print(value)
     }
 }

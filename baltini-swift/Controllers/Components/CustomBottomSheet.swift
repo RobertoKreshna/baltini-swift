@@ -370,7 +370,7 @@ class CustomBottomSheet {
         return column
     }
     
-    static func createSizeFilterContent(data: [String], selectedData: [String], close: @escaping () -> Void) -> UIView {
+    static func createCheckboxListFilterContent(title: String, data: [String], selectedData: [String], close: @escaping () -> Void) -> UIView {
         let contentView = UIStackView()
         contentView.axis = .vertical
         contentView.alignment = .center
@@ -379,7 +379,7 @@ class CustomBottomSheet {
         contentView.layer.cornerRadius = 16
         
         let indicator = createGrayIndicator()
-        let backButton = BackButton.createBackButton(title: "FILTER - SIZE", icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+        let backButton = BackButton.createBackButton(title: title, icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
             close()
         }))
         
