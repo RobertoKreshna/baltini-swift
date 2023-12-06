@@ -106,7 +106,7 @@ class SortFilterValue {
     
     private init() {
         sortValue = "Featured"
-        filterKeys = ["Gender", "Category", "ProductType", "Designer", "Size", "Price"]
+        filterKeys = ["Gender", "Category", "Product Type", "Designer", "Size", "Price"]
         filterValues = [[],[],[],[],[],[]]
     }
 

@@ -370,7 +370,7 @@ class CustomBottomSheet {
         return column
     }
     
-    static func createCheckboxListFilterContent(title: String, data: [String], selectedData: [String], close: @escaping () -> Void) -> UIView {
+    static func createCheckboxListFilterContent(title: String, key: String, data: [String], selectedData: [String], close: @escaping () -> Void) -> UIView {
         let contentView = UIStackView()
         contentView.axis = .vertical
         contentView.alignment = .center
@@ -411,7 +411,7 @@ class CustomBottomSheet {
                 let label = tile.arrangedSubviews[1] as! UILabel
                 if imageView.image == UIImage(named: "icCheckSelected") { res.append(label.text!) }
             }
-            SortFilterValue.shared.addFilterTo(key: "Size", value: res)
+            SortFilterValue.shared.addFilterTo(key: key, value: res)
             close()
         }))
         

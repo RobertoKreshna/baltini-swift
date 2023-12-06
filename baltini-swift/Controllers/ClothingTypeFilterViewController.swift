@@ -1,19 +1,16 @@
 //
-//  SizeFilterViewController.swift
+//  ClothingTypeFilterViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 04/12/23.
+//  Created by Roberto Kreshna on 06/12/23.
 //
 
 import UIKit
 
-class SizeFilterViewController : UIViewController {
-    let sizes = [
-        "XXXS", "XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL", "One Size", "90", "100", "110", "115", "125", "135",
-        "Women 5 US", "Women 5.5 US", "Women 6 US", "Women 6.5 US", "Women 7 US", "Women 7.5 US", "Women 8 US", "Women 8.5 US",
-        "Women 9 US", "Women 9.5 US", "Women 10 US", "Women 10.5 US", "Women 11 US", "Women 11.5 US", "Women 12 US", "Women 12.5 US",
-        "Men 5 US", "Men 5.5 US", "Men 6 US", "Men 6.5 US", "Men 7 US", "Men 7.5 US", "Men 8 US", "Men 8.5 US",
-        "Men 9 US", "Men 9.5 US", "Men 10 US", "Men 10.5 US", "Men 11 US", "Men 11.5 US", "Men 12 US", "Men 12.5 US"
+class ClothingTypeFilterViewController : UIViewController {
+    let types = [
+        "T-Shirt", "Sweatshirt", "Trousers", "Shorts", "Shirt", "Jacket", "Jeans", "Briefs", "Shoes", "Blazer", "Jumper", "Swim shorts", "Bag",
+        "Coat", "Cardigan", "Leggings", "Skirt", "Blouse", "Bodysuit", "Pyjamas", "Bustier", "Socks", "Jumpsuit"
     ]
     
     override func viewDidLoad() {
@@ -36,9 +33,9 @@ class SizeFilterViewController : UIViewController {
 }
 
 //MARK: Create UI methods
-extension SizeFilterViewController {
+extension ClothingTypeFilterViewController {
     func createUI(){
-        self.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3)
         view.backgroundColor = .white
        
         let scrollView = UIScrollView()
@@ -51,10 +48,10 @@ extension SizeFilterViewController {
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         let contentView = CustomBottomSheet.createCheckboxListFilterContent(
-            title: "FILTER - SIZE",
-            key: "Size",
-            data: sizes,
-            selectedData: SortFilterValue.shared.getFilterDictValues()[4],
+            title: "FILTER - CLOTHING TYPE",
+            key: "Product Type",
+            data: types,
+            selectedData: SortFilterValue.shared.getFilterDictValues()[2],
             close: { self.navigationController?.popViewController(animated: true) }
         )
         scrollView.addSubview(contentView)

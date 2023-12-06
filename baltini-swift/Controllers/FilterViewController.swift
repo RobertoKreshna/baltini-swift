@@ -65,7 +65,7 @@ extension FilterViewController {
     }
     
     @objc private func productTypeFilterPressed() {
-        print("Product Type")
+        self.navigationController?.pushViewController(ClothingTypeFilterViewController(), animated: true)
     }
     
     @objc private func designerFilterPressed() {
