@@ -40,7 +40,6 @@ extension ProductTypeFilterViewController {
         self.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.66)
         view.backgroundColor = .white
         
-        
         let button = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in
             var res = [String]()
             let allTiles = self.getAllTilesFromPage()
@@ -71,7 +70,6 @@ extension ProductTypeFilterViewController {
         
         contentView = CustomBottomSheet.createCheckboxListFilterContent(
             title: "FILTER - CLOTHING TYPE",
-            key: "Product Type",
             data: types,
             selectedData: SortFilterValue.shared.getFilterDictValues()[2],
             close: { self.navigationController?.popViewController(animated: true) }

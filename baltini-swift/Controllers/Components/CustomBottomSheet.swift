@@ -370,7 +370,7 @@ class CustomBottomSheet {
         return column
     }
     
-    static func createCheckboxListFilterContent(title: String, key: String, data: [String], selectedData: [String], close: @escaping () -> Void) -> UIStackView {
+    static func createCheckboxListFilterContent(title: String, data: [String], selectedData: [String], close: @escaping () -> Void) -> UIStackView {
         let contentView = UIStackView()
         contentView.axis = .vertical
         contentView.alignment = .center
