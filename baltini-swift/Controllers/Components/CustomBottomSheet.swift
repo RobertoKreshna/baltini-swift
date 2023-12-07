@@ -370,7 +370,7 @@ class CustomBottomSheet {
         return column
     }
     
-    static func createCheckboxListFilterContent(title: String, key: String, data: [String], selectedData: [String], close: @escaping () -> Void) -> UIView {
+    static func createCheckboxListFilterContent(title: String, key: String, data: [String], selectedData: [String], close: @escaping () -> Void) -> UIStackView {
         let contentView = UIStackView()
         contentView.axis = .vertical
         contentView.alignment = .center
@@ -401,23 +401,6 @@ class CustomBottomSheet {
             tile.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
             tile.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         })
-        
-        contentView.setCustomSpacing(24, after: contentView.arrangedSubviews.last!)
-        
-        let button = CustomButton.createBlackButton(title: "FILTER", action: UIAction(handler: { action in
-            var res = [String]()
-            allTiles.forEach { tile in
-                let imageView = tile.arrangedSubviews[0] as! UIImageView
-                let label = tile.arrangedSubviews[1] as! UILabel
-                if imageView.image == UIImage(named: "icCheckSelected") { res.append(label.text!) }
-            }
-            SortFilterValue.shared.addFilterTo(key: key, value: res)
-            close()
-        }))
-        
-        contentView.addArrangedSubview(button)
-        button.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        button.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
         return contentView
     }
