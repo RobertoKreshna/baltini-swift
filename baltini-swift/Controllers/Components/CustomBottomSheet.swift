@@ -395,7 +395,7 @@ class CustomBottomSheet {
         
         var allTiles = [UIStackView]()
         data.forEach({ current in
-            let tile = createSizeFilterRow(size: current, selected: selectedData.contains(current))
+            let tile = createFilterRow(size: current, selected: selectedData.contains(current))
             contentView.addArrangedSubview(tile)
             allTiles.append(tile)
             tile.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
@@ -405,7 +405,48 @@ class CustomBottomSheet {
         return contentView
     }
     
-    static private func createSizeFilterRow(size: String, selected: Bool) -> UIStackView {
+    static func createCheckboxListFilterContentWithSearchBar(title: String, data: [String], selectedData: [String], owner: UITextFieldDelegate, searchKeyword: String, close: @escaping () -> Void) -> UIStackView {
+        let contentView = UIStackView()
+        contentView.axis = .vertical
+        contentView.alignment = .center
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 16
+        
+        let indicator = createGrayIndicator()
+        let backButton = BackButton.createBackButton(title: title, icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+            close()
+        }))
+        
+        contentView.addArrangedSubview(indicator)
+        contentView.setCustomSpacing(12, after: indicator)
+        contentView.addArrangedSubview(backButton)
+        contentView.setCustomSpacing(12, after: backButton)
+        
+        indicator.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: 4).isActive = true
+        backButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        backButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        
+        let searchBar = CustomTextfield.createFilledSearchBar(owner: owner, placeholder: "Search designer", text: searchKeyword)
+        contentView.addArrangedSubview(searchBar)
+        contentView.setCustomSpacing(12, after: searchBar)
+        searchBar.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        searchBar.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        
+        var allTiles = [UIStackView]()
+        data.forEach({ current in
+            let tile = createFilterRow(size: current, selected: selectedData.contains(current))
+            contentView.addArrangedSubview(tile)
+            allTiles.append(tile)
+            tile.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+            tile.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        })
+        
+        return contentView
+    }
+
+    static private func createFilterRow(size: String, selected: Bool) -> UIStackView {
         let row = UIStackView()
         row.translatesAutoresizingMaskIntoConstraints = false
         row.axis = .horizontal

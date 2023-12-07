@@ -69,7 +69,7 @@ extension FilterViewController {
     }
     
     @objc private func designerFilterPressed() {
-        print("Designer")
+        self.navigationController?.pushViewController(DesignerFilterViewController(), animated: true)
     }
     
     @objc private func sizeFilterPressed() {
