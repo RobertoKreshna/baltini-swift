@@ -43,3 +43,12 @@ class FilterRowTapped: UITapGestureRecognizer {
         super.init(target: target, action: action)
     }
 }
+
+class MagazineTapped: UITapGestureRecognizer {
+    let magazine: Magazine
+    
+    init(target: Any?, action: Selector?, magazine: Magazine) {
+        self.magazine = magazine
+        super.init(target: target, action: action)
+    }
+}

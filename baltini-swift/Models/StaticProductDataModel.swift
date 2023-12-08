@@ -109,4 +109,7 @@ struct Magazine {
     let imageName: String
     let title: String
     let date: String
+    let quotes: String
+    let by: String
+    let desc : String
 }

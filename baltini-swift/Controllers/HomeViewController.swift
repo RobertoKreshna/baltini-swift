@@ -289,9 +289,10 @@ extension HomeViewController {
         individualMagazineStack.setCustomSpacing(12, after: magazineImageView)
         individualMagazineStack.addArrangedSubview(magazineDetailStack)
         
-        
         magazineImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         magazineImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        individualMagazineStack.addGestureRecognizer(MagazineTapped(target: self, action: #selector(magazineTapped(_:)), magazine: magazine))
         
         stack.addArrangedSubview(individualMagazineStack)
         
@@ -307,6 +308,12 @@ extension HomeViewController {
     
     @objc func goToCart(){
         self.navigationController?.pushViewController(CartViewController(), animated: true)
+    }
+    
+    @objc private func magazineTapped(_ recognizer: MagazineTapped){
+        let vc = MagazineDetailViewController()
+        vc.magazine = recognizer.magazine
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

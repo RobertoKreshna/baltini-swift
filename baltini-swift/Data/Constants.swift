@@ -29,10 +29,38 @@ class Constants {
     ]
     
     static let magazinesData: [Magazine] = [
-        Magazine(imageName: "magazine1", title: "Is Imperfect The New Perfect?", date: "Mar 01, 2023"),
-        Magazine(imageName: "magazine2", title: "Why Is Fashion so Obsessed With Itself?", date: "Feb 01, 2023"),
-        Magazine(imageName: "magazine3", title: "Corset Is One Of The Biggest Trends Of 2022", date: "Feb 01, 2023"),
-        Magazine(imageName: "magazine4", title: "Looked Back at How Hollywood Glamorous Celebrities Welcoming Christmas in Their Time", date: "Des 01, 2022")
+        Magazine(
+            imageName: "magazine1",
+            title: "Is Imperfect The New Perfect?",
+            date: "Mar 01, 2023",
+            quotes: "The Industry has hit peak archive, as designers themselves are scooping up their own work left and right and reissuing their greatest hits.",
+            by: "RK",
+            desc: "Fashion has officially become infatuated with the idea of archives. It’s wildly ubiquitous; now as common as a pair of jeans or an old leather belt stashed in the back of your closet. From people on TikTok marveling over their personal collections and labeling items down to the minute details of exact season and runway look number, to designers themselves diligently hunting down their own work in the secondhand market, it surpasses clothing and garments that are simply vintage, and is more specifically linked to extremely rare runway pieces. In the world of archive fashion, everyone is a collector—but even the world’s top designers can’t get their hands on all their goods. Earlier last year, Anna Sui came across a gray crushed velvet and fur-trimmed halter dress from her fall 1998 collection for sale on Poshmark and immediately DMed Casey Jackson, the blogger behind Seek the Finds, who posted it. “Hi this is Anna Sui. I saw you sold this already but I was wondering if it would be possible for me to buy it instead? We don’t have this sample and it would mean a lot for me to have it in my archive,” she wrote. The conversation went viral on Twitter. Just a few months later, for her resort 2023 collection, she reissued the infamous dress. “It’s strange; I never really looked back, because we were always so busy,” Sui says. “You never have time to really reflect. A lot of the clothes went from the showroom right into storage or garment bags. We never looked at them again.”us in these matters."
+        ),
+        Magazine(
+            imageName: "magazine2", 
+            title: "Why Is Fashion so Obsessed With Itself?",
+            date: "Feb 01, 2023",
+            quotes: "Fashions fade, style is eternal",
+            by: "Roberto",
+            desc: "Fashion has officially become infatuated with the idea of archives. It’s wildly ubiquitous; now as common as a pair of jeans or an old leather belt stashed in the back of your closet. From people on TikTok marveling over their personal collections and labeling items down to the minute details of exact season and runway look number, to designers themselves diligently hunting down their own work in the secondhand market, it surpasses clothing and garments that are simply vintage, and is more specifically linked to extremely rare runway pieces. In the world of archive fashion, everyone is a collector—but even the world’s top designers can’t get their hands on all their goods. Earlier last year, Anna Sui came across a gray crushed velvet and fur-trimmed halter dress from her fall 1998 collection for sale on Poshmark and immediately DMed Casey Jackson, the blogger behind Seek the Finds, who posted it. “Hi this is Anna Sui. I saw you sold this already but I was wondering if it would be possible for me to buy it instead? We don’t have this sample and it would mean a lot for me to have it in my archive,” she wrote. The conversation went viral on Twitter. Just a few months later, for her resort 2023 collection, she reissued the infamous dress. “It’s strange; I never really looked back, because we were always so busy,” Sui says. “You never have time to really reflect. A lot of the clothes went from the showroom right into storage or garment bags. We never looked at them again.”us in these matters."
+        ),
+        Magazine(
+            imageName: "magazine3", 
+            title: "Corset Is One Of The Biggest Trends Of 2022", 
+            date: "Feb 01, 2023",
+            quotes: "I don't do fashion, i am fashion",
+            by: "Kreshna",
+            desc: "Fashion has officially become infatuated with the idea of archives. It’s wildly ubiquitous; now as common as a pair of jeans or an old leather belt stashed in the back of your closet. From people on TikTok marveling over their personal collections and labeling items down to the minute details of exact season and runway look number, to designers themselves diligently hunting down their own work in the secondhand market, it surpasses clothing and garments that are simply vintage, and is more specifically linked to extremely rare runway pieces. In the world of archive fashion, everyone is a collector—but even the world’s top designers can’t get their hands on all their goods. Earlier last year, Anna Sui came across a gray crushed velvet and fur-trimmed halter dress from her fall 1998 collection for sale on Poshmark and immediately DMed Casey Jackson, the blogger behind Seek the Finds, who posted it. “Hi this is Anna Sui. I saw you sold this already but I was wondering if it would be possible for me to buy it instead? We don’t have this sample and it would mean a lot for me to have it in my archive,” she wrote. The conversation went viral on Twitter. Just a few months later, for her resort 2023 collection, she reissued the infamous dress. “It’s strange; I never really looked back, because we were always so busy,” Sui says. “You never have time to really reflect. A lot of the clothes went from the showroom right into storage or garment bags. We never looked at them again.”us in these matters."
+        ),
+        Magazine(
+            imageName: "magazine4", 
+            title: "Looked Back at How Hollywood Glamorous Celebrities Welcoming Christmas in Their Time", 
+            date: "Des 01, 2022",
+            quotes: "Buy less, choose well, make it last",
+            by: "roberto kreshna",
+            desc: "Fashion has officially become infatuated with the idea of archives. It’s wildly ubiquitous; now as common as a pair of jeans or an old leather belt stashed in the back of your closet. From people on TikTok marveling over their personal collections and labeling items down to the minute details of exact season and runway look number, to designers themselves diligently hunting down their own work in the secondhand market, it surpasses clothing and garments that are simply vintage, and is more specifically linked to extremely rare runway pieces. In the world of archive fashion, everyone is a collector—but even the world’s top designers can’t get their hands on all their goods. Earlier last year, Anna Sui came across a gray crushed velvet and fur-trimmed halter dress from her fall 1998 collection for sale on Poshmark and immediately DMed Casey Jackson, the blogger behind Seek the Finds, who posted it. “Hi this is Anna Sui. I saw you sold this already but I was wondering if it would be possible for me to buy it instead? We don’t have this sample and it would mean a lot for me to have it in my archive,” she wrote. The conversation went viral on Twitter. Just a few months later, for her resort 2023 collection, she reissued the infamous dress. “It’s strange; I never really looked back, because we were always so busy,” Sui says. “You never have time to really reflect. A lot of the clothes went from the showroom right into storage or garment bags. We never looked at them again.”us in these matters."
+        )
     ]
     
     static let shippingOptionsTitle = [

@@ -68,6 +68,7 @@
 		B8CB5E3A2B030BCD00E9558C /* DesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CB5E392B030BCD00E9558C /* DesignerViewController.swift */; };
 		B8CDF1B92B209AE0008795DF /* ProductTypeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1B82B209ADF008795DF /* ProductTypeFilterViewController.swift */; };
 		B8CDF1BB2B21C249008795DF /* DesignerFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1BA2B21C249008795DF /* DesignerFilterViewController.swift */; };
+		B8CDF1BD2B23039F008795DF /* MagazineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1BC2B23039F008795DF /* MagazineDetailViewController.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -142,6 +143,7 @@
 		B8CB5E392B030BCD00E9558C /* DesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewController.swift; sourceTree = "<group>"; };
 		B8CDF1B82B209ADF008795DF /* ProductTypeFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeFilterViewController.swift; sourceTree = "<group>"; };
 		B8CDF1BA2B21C249008795DF /* DesignerFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerFilterViewController.swift; sourceTree = "<group>"; };
+		B8CDF1BC2B23039F008795DF /* MagazineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineDetailViewController.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				B860D6FE2B1DD71C00DC7AB5 /* SizeFilterViewController.swift */,
 				B8CDF1B82B209ADF008795DF /* ProductTypeFilterViewController.swift */,
 				B8CDF1BA2B21C249008795DF /* DesignerFilterViewController.swift */,
+				B8CDF1BC2B23039F008795DF /* MagazineDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				B86993272B14306200FE9DA1 /* PaymentViewController.swift in Sources */,
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */,
+				B8CDF1BD2B23039F008795DF /* MagazineDetailViewController.swift in Sources */,
 				B8CB5E1C2AFC730F00E9558C /* SizeChartViewController.swift in Sources */,
 				B86993212B0C71BF00FE9DA1 /* CheckoutViewController.swift in Sources */,
 				B8CB5E222AFE006B00E9558C /* ShippingReturnViewController.swift in Sources */,
