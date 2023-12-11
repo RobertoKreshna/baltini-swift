@@ -1,13 +1,13 @@
 //
-//  TermsConditionViewController.swift
+//  PartnershipViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 21/11/23.
+//  Created by Roberto Kreshna on 11/12/23.
 //
 
 import UIKit
 
-class TermsConditionViewController : UIViewController {
+class PartnershipViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,7 +29,7 @@ class TermsConditionViewController : UIViewController {
 
 //MARK: Create UI Methods
 
-extension TermsConditionViewController {
+extension PartnershipViewController {
     func createUI(){
         view.backgroundColor = .white
         
@@ -58,22 +58,27 @@ extension TermsConditionViewController {
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 
-        let backButton = BackButton.createBackButton(title: "Terms And Conditions" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
+        let backButton = BackButton.createBackButton(title: "Partnerships" , icName: "icBack", usePadding: true, tapped: UIAction(handler: { action in
             self.navigationController?.popViewController(animated: true)
         }))
         let overview = createSection(
-            sectionTitle: "Overview",
-            sectionDesc: "This website is operated by Baltini. Throughout the site, the terms “we”, “us,” and “our” refer to Baltini. Baltini offers this website, including all information, tools, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here."
+            sectionDesc: "Baltini offers a Partnership Program to collaborate directly with other fashion companies and boutiques worldwide. We make selling your products super easy by giving you access to showcase your brand on our platform to worldwide customers."
         )
-        let overview2 = createSection(sectionDesc: "By visiting our site and/ or purchasing something from us, you engage in our “Service” and agree to be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply to all site users, including, without limitation, users who are browsers, vendors, customers, merchants, and/ or contributors of content.")
-        let overview3 = createSection(sectionDesc: "Please read these Terms of Service carefully before accessing or using our website. By accessing or using any part of the site, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services. If these Terms of Service are considered an offer, acceptance is expressly limited to these Terms of Service.")
+        let overview2 = createSection(
+            sectionTitle: "What Do You Stand to Gain?",
+            sectionDesc: "Becoming a partner lets you make more profit and reach your business goals by getting your products in the faces of our 20,000+ daily unique visitors and growing. Baltini is known for offering luxury fashion items, and our platform is designed to target potential buyers directly through our advanced marketing and technology system. For this reason, you can rest assured that you will find fashion-loving customers on our platform at no extra cost. All you have to do is sign up while we handle all the processing, order fulfillment, shipping, and customer service."
+        )
+        let overview3 = createSection(
+            sectionTitle: "Product Criteria",
+            sectionDesc: "Baltini takes great pride in offering the most exclusive, exquisite, and in-vogue luxury fashion items that let both men and women fully express themselves. Our partners share the same vision and mission as Baltini's values."
+        )
         
         stackView.addArrangedSubview(backButton)
         stackView.setCustomSpacing(18, after: backButton)
         stackView.addArrangedSubview(overview)
-        stackView.setCustomSpacing(8, after: overview)
+        stackView.setCustomSpacing(24, after: overview)
         stackView.addArrangedSubview(overview2)
-        stackView.setCustomSpacing(8, after: overview2)
+        stackView.setCustomSpacing(24, after: overview2)
         stackView.addArrangedSubview(overview3)
         
         backButton.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true

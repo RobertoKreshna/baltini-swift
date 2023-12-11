@@ -60,9 +60,9 @@ extension AccountViewController {
         }
         
         let magazineRow = createBlackRow(title: "Baltini Magazine", action: #selector(tapped))
-        let aboutRow = createBlackRow(title: "About Baltini", action: #selector(tapped))
-        let tcRow = createBlackRow(title: "Terms and Conditions", action: #selector(tapped))
-        let partnerRow = createBlackRow(title: "Partnership", action: #selector(tapped))
+        let aboutRow = createBlackRow(title: "About Baltini", action: #selector(goToAbout))
+        let tcRow = createBlackRow(title: "Terms and Conditions", action: #selector(goToTermsCondition))
+        let partnerRow = createBlackRow(title: "Partnership", action: #selector(goToPartnership))
         let helpsRow = createBlackRow(title: "Helps", action: #selector(tapped))
         
         pageStackView.addArrangedSubview(magazineRow)
@@ -154,6 +154,18 @@ extension AccountViewController {
     
     @objc func goToProfile(){
         self.navigationController?.pushViewController(MyProfileViewController(), animated: true)
+    }
+    
+    @objc func goToAbout(){
+        self.navigationController?.pushViewController(AboutBaltiniViewController(), animated: true)
+    }
+    
+    @objc func goToTermsCondition(){
+        self.navigationController?.pushViewController(TermsConditionViewController(), animated: true)
+    }
+    
+    @objc func goToPartnership(){
+        self.navigationController?.pushViewController(PartnershipViewController(), animated: true)
     }
 }
 
