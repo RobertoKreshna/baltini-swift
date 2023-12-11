@@ -71,6 +71,7 @@
 		B8CDF1BD2B23039F008795DF /* MagazineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1BC2B23039F008795DF /* MagazineDetailViewController.swift */; };
 		B8CDF1BF2B26C18A008795DF /* AboutBaltiniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1BE2B26C18A008795DF /* AboutBaltiniViewController.swift */; };
 		B8CDF1C12B26D117008795DF /* PartnershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1C02B26D117008795DF /* PartnershipViewController.swift */; };
+		B8CDF1C32B27091D008795DF /* HelpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1C22B27091D008795DF /* HelpsViewController.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -148,6 +149,7 @@
 		B8CDF1BC2B23039F008795DF /* MagazineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineDetailViewController.swift; sourceTree = "<group>"; };
 		B8CDF1BE2B26C18A008795DF /* AboutBaltiniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBaltiniViewController.swift; sourceTree = "<group>"; };
 		B8CDF1C02B26D117008795DF /* PartnershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnershipViewController.swift; sourceTree = "<group>"; };
+		B8CDF1C22B27091D008795DF /* HelpsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpsViewController.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				B8CDF1BC2B23039F008795DF /* MagazineDetailViewController.swift */,
 				B8CDF1BE2B26C18A008795DF /* AboutBaltiniViewController.swift */,
 				B8CDF1C02B26D117008795DF /* PartnershipViewController.swift */,
+				B8CDF1C22B27091D008795DF /* HelpsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				B8CB5E222AFE006B00E9558C /* ShippingReturnViewController.swift in Sources */,
 				B8D3ABA52AEB77DB0026832F /* ForgotPasswordViewController.swift in Sources */,
 				B8CB5E262AFE009400E9558C /* AskQuestionViewController.swift in Sources */,
+				B8CDF1C32B27091D008795DF /* HelpsViewController.swift in Sources */,
 				B8CB5DFF2AF0CFE400E9558C /* ChangePasswordViewController.swift in Sources */,
 				B8CB5E142AF9DF5800E9558C /* TappedArgs.swift in Sources */,
 				B8CB5E052AF25B0700E9558C /* CustomCard.swift in Sources */,

@@ -63,7 +63,7 @@ extension AccountViewController {
         let aboutRow = createBlackRow(title: "About Baltini", action: #selector(goToAbout))
         let tcRow = createBlackRow(title: "Terms and Conditions", action: #selector(goToTermsCondition))
         let partnerRow = createBlackRow(title: "Partnership", action: #selector(goToPartnership))
-        let helpsRow = createBlackRow(title: "Helps", action: #selector(tapped))
+        let helpsRow = createBlackRow(title: "Helps", action: #selector(goToHelp))
         
         pageStackView.addArrangedSubview(magazineRow)
         pageStackView.addArrangedSubview(aboutRow)
@@ -166,6 +166,10 @@ extension AccountViewController {
     
     @objc func goToPartnership(){
         self.navigationController?.pushViewController(PartnershipViewController(), animated: true)
+    }
+    
+    @objc func goToHelp(){
+        self.navigationController?.pushViewController(HelpsViewController(), animated: true)
     }
 }
 
