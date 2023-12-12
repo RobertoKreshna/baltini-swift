@@ -47,7 +47,7 @@ extension HelpsViewController {
             self.navigationController?.popViewController(animated: true)
         }))
         
-        let contactRow = createBlackRow(title: "Contact Us", action: #selector(tapped))
+        let contactRow = createBlackRow(title: "Contact Us", action: #selector(goToContactUs))
         let accessibilityRow = createBlackRow(title: "Accessibility Statement", action: #selector(tapped))
         let authenticRow = createBlackRow(title: "Authenticity Guarantee", action: #selector(tapped))
         let orderShippingRow = createBlackRow(title: "Orders and Shipping", action: #selector(tapped))
@@ -94,4 +94,8 @@ extension HelpsViewController {
     }
     
     @objc func tapped(){ print("abc") }
+    
+    @objc func goToContactUs(){
+        self.navigationController?.pushViewController(ContactUsViewController(), animated: true)
+    }
 }

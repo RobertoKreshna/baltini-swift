@@ -72,6 +72,7 @@
 		B8CDF1BF2B26C18A008795DF /* AboutBaltiniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1BE2B26C18A008795DF /* AboutBaltiniViewController.swift */; };
 		B8CDF1C12B26D117008795DF /* PartnershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1C02B26D117008795DF /* PartnershipViewController.swift */; };
 		B8CDF1C32B27091D008795DF /* HelpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1C22B27091D008795DF /* HelpsViewController.swift */; };
+		B8CDF1C52B28316F008795DF /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDF1C42B28316F008795DF /* ContactUsViewController.swift */; };
 		B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB952AEA2DA00026832F /* LoginViewController.swift */; };
 		B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9B2AEA4D080026832F /* BackButton.swift */; };
 		B8D3AB9E2AEA75870026832F /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */; };
@@ -150,6 +151,7 @@
 		B8CDF1BE2B26C18A008795DF /* AboutBaltiniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBaltiniViewController.swift; sourceTree = "<group>"; };
 		B8CDF1C02B26D117008795DF /* PartnershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnershipViewController.swift; sourceTree = "<group>"; };
 		B8CDF1C22B27091D008795DF /* HelpsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpsViewController.swift; sourceTree = "<group>"; };
+		B8CDF1C42B28316F008795DF /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		B8D3AB952AEA2DA00026832F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8D3AB9B2AEA4D080026832F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B8D3AB9D2AEA75870026832F /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -290,10 +292,11 @@
 				B8CDF1BC2B23039F008795DF /* MagazineDetailViewController.swift */,
 				B8CDF1BE2B26C18A008795DF /* AboutBaltiniViewController.swift */,
 				B8CDF1C02B26D117008795DF /* PartnershipViewController.swift */,
-				B8CDF1C22B27091D008795DF /* HelpsViewController.swift */,
 				B8CB5E212AFE006B00E9558C /* ShippingReturnViewController.swift */,
 				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
 				B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */,
+				B8CDF1C22B27091D008795DF /* HelpsViewController.swift */,
+				B8CDF1C42B28316F008795DF /* ContactUsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				B8CB5E122AF9CE6A00E9558C /* ProductDetailViewController.swift in Sources */,
 				B879EFD22AE6C49B0009C607 /* StaticProductDataModel.swift in Sources */,
 				B86993252B10485200FE9DA1 /* ShippingViewController.swift in Sources */,
+				B8CDF1C52B28316F008795DF /* ContactUsViewController.swift in Sources */,
 				B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */,
 				B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */,
 				B869B7BF2AEE20D300ABB82D /* AddAddressViewController.swift in Sources */,
