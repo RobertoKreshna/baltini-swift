@@ -58,7 +58,7 @@ extension DesignerFilterViewController {
                 let label = tile.arrangedSubviews[1] as! UILabel
                 if imageView.image == UIImage(named: "icCheckSelected") { res.append(label.text!) }
             }
-            SortFilterValue.shared.addFilterTo(key: "Product Type", value: res)
+            SortFilterValue.shared.addFilterTo(key: "Designer", value: res)
             self.navigationController?.popViewController(animated: true)
         }))
         
@@ -81,7 +81,7 @@ extension DesignerFilterViewController {
         contentView = CustomBottomSheet.createCheckboxListFilterContentWithSearchBar(
             title: "FILTER - DESIGNER",
             data: searchRes,
-            selectedData: SortFilterValue.shared.getFilterDictValues()[2],
+            selectedData: SortFilterValue.shared.getFilterDictValues()[3],
             owner: self,
             searchKeyword: keyword,
             close: { self.navigationController?.popViewController(animated: true) }
@@ -127,7 +127,7 @@ extension DesignerFilterViewController {
     func getAllTilesFromPage() -> [UIStackView] {
         let subviews = contentView?.arrangedSubviews
         var res: [UIStackView] = [UIStackView]()
-        for i in 2 ..< subviews!.count {
+        for i in 3 ..< subviews!.count {
             res.append(subviews![i] as! UIStackView)
         }
         return res

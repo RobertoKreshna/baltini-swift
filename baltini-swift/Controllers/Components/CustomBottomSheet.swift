@@ -393,11 +393,9 @@ class CustomBottomSheet {
         backButton.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         backButton.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        var allTiles = [UIStackView]()
         data.forEach({ current in
             let tile = createFilterRow(size: current, selected: selectedData.contains(current))
             contentView.addArrangedSubview(tile)
-            allTiles.append(tile)
             tile.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
             tile.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         })
@@ -434,11 +432,9 @@ class CustomBottomSheet {
         searchBar.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         searchBar.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        var allTiles = [UIStackView]()
         data.forEach({ current in
             let tile = createFilterRow(size: current, selected: selectedData.contains(current))
             contentView.addArrangedSubview(tile)
-            allTiles.append(tile)
             tile.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
             tile.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         })

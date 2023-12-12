@@ -265,9 +265,6 @@
 				B8CB5E002AF1FB3700E9558C /* ProductListViewController.swift */,
 				B8CB5E112AF9CE6A00E9558C /* ProductDetailViewController.swift */,
 				B8CB5E1B2AFC730F00E9558C /* SizeChartViewController.swift */,
-				B8CB5E212AFE006B00E9558C /* ShippingReturnViewController.swift */,
-				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
-				B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */,
 				B8CB5E2B2B00D08800E9558C /* WomanCategoryViewController.swift */,
 				B8CB5E2D2B01BC2800E9558C /* ManCategoryViewController.swift */,
 				B8CB5E2F2B02207A00E9558C /* ClothingCategoryViewController.swift */,
@@ -294,6 +291,9 @@
 				B8CDF1BE2B26C18A008795DF /* AboutBaltiniViewController.swift */,
 				B8CDF1C02B26D117008795DF /* PartnershipViewController.swift */,
 				B8CDF1C22B27091D008795DF /* HelpsViewController.swift */,
+				B8CB5E212AFE006B00E9558C /* ShippingReturnViewController.swift */,
+				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
+				B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
