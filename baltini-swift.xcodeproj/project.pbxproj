@@ -295,11 +295,11 @@
 				B8CDF1BE2B26C18A008795DF /* AboutBaltiniViewController.swift */,
 				B8CDF1C02B26D117008795DF /* PartnershipViewController.swift */,
 				B8CB5E212AFE006B00E9558C /* ShippingReturnViewController.swift */,
-				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
 				B8CB5E252AFE009400E9558C /* AskQuestionViewController.swift */,
 				B8CDF1C22B27091D008795DF /* HelpsViewController.swift */,
 				B8CDF1C42B28316F008795DF /* ContactUsViewController.swift */,
 				B8761CEE2B2947FF004245B7 /* AccessibilityViewController.swift */,
+				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
