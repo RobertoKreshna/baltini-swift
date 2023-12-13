@@ -39,7 +39,7 @@ extension HelpsViewController {
         view.addSubview(pageStackView)
         
         pageStackView.translatesAutoresizingMaskIntoConstraints = false
-        pageStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 22).isActive = true
+        pageStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         pageStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         pageStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
 
@@ -48,7 +48,7 @@ extension HelpsViewController {
         }))
         
         let contactRow = createBlackRow(title: "Contact Us", action: #selector(goToContactUs))
-        let accessibilityRow = createBlackRow(title: "Accessibility Statement", action: #selector(tapped))
+        let accessibilityRow = createBlackRow(title: "Accessibility Statement", action: #selector(goToAccessibility))
         let authenticRow = createBlackRow(title: "Authenticity Guarantee", action: #selector(tapped))
         let orderShippingRow = createBlackRow(title: "Orders and Shipping", action: #selector(tapped))
         let shippingInsuranceRow = createBlackRow(title: "Shipping Insurance Policies", action: #selector(tapped))
@@ -97,5 +97,9 @@ extension HelpsViewController {
     
     @objc func goToContactUs(){
         self.navigationController?.pushViewController(ContactUsViewController(), animated: true)
+    }
+    
+    @objc func goToAccessibility(){
+        self.navigationController?.pushViewController(AccessibilityViewController(), animated: true)
     }
 }
