@@ -22,6 +22,7 @@
 		B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */; };
 		B869B7BF2AEE20D300ABB82D /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */; };
 		B8761CEF2B2947FF004245B7 /* AccessibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8761CEE2B2947FF004245B7 /* AccessibilityViewController.swift */; };
+		B8761CF12B2ABA17004245B7 /* OrderShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8761CF02B2ABA17004245B7 /* OrderShippingViewController.swift */; };
 		B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFAE2AE64FF60009C607 /* AppDelegate.swift */; };
 		B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFB02AE64FF60009C607 /* SceneDelegate.swift */; };
 		B879EFB32AE64FF60009C607 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFB22AE64FF60009C607 /* HomeViewController.swift */; };
@@ -100,6 +101,7 @@
 		B869B7BC2AEE10C000ABB82D /* MyAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressViewController.swift; sourceTree = "<group>"; };
 		B869B7BE2AEE20D300ABB82D /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		B8761CEE2B2947FF004245B7 /* AccessibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityViewController.swift; sourceTree = "<group>"; };
+		B8761CF02B2ABA17004245B7 /* OrderShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingViewController.swift; sourceTree = "<group>"; };
 		B879EFAB2AE64FF60009C607 /* baltini-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baltini-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B879EFAE2AE64FF60009C607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B879EFB02AE64FF60009C607 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				B8CDF1C42B28316F008795DF /* ContactUsViewController.swift */,
 				B8761CEE2B2947FF004245B7 /* AccessibilityViewController.swift */,
 				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
+				B8761CF02B2ABA17004245B7 /* OrderShippingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				B869932D2B185F8300FE9DA1 /* SortViewController.swift in Sources */,
 				B869932B2B185D4D00FE9DA1 /* FilterViewController.swift in Sources */,
 				B8D3AB962AEA2DA00026832F /* LoginViewController.swift in Sources */,
+				B8761CF12B2ABA17004245B7 /* OrderShippingViewController.swift in Sources */,
 				B8D3ABAB2AEBBD010026832F /* CustomToast.swift in Sources */,
 				B869B7BD2AEE10C000ABB82D /* MyAddressViewController.swift in Sources */,
 				B8BD638C2B0B68FD002E62BD /* SearchResultViewController.swift in Sources */,
