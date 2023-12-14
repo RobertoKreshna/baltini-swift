@@ -53,7 +53,7 @@ extension HelpsViewController {
         let orderShippingRow = createBlackRow(title: "Orders and Shipping", action: #selector(goToOrderShipping))
         let shippingInsuranceRow = createBlackRow(title: "Shipping Insurance Policies", action: #selector(tapped))
         let returnRefundRow = createBlackRow(title: "Returns and Refunds", action: #selector(tapped))
-        let reqReturnRow = createBlackRow(title: "Request a Return", action: #selector(tapped))
+        let reqReturnRow = createBlackRow(title: "Request a Return", action: #selector(goToRequestReturn))
         let prodCareRow = createBlackRow(title: "Product Care", action: #selector(tapped))
         let klarnaRow = createBlackRow(title: "Klarna Payment", action: #selector(tapped))
         let faqRow = createBlackRow(title: "FAQs", action: #selector(tapped))
@@ -108,5 +108,9 @@ extension HelpsViewController {
     }
     @objc func goToOrderShipping(){
         self.navigationController?.pushViewController(OrderShippingViewController(), animated: true)
+    }
+    
+    @objc func goToRequestReturn(){
+        self.navigationController?.pushViewController(RequestReturnViewController(), animated: true)
     }
 }
