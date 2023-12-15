@@ -24,6 +24,9 @@
 		B8761CEF2B2947FF004245B7 /* AccessibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8761CEE2B2947FF004245B7 /* AccessibilityViewController.swift */; };
 		B8761CF12B2ABA17004245B7 /* OrderShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8761CF02B2ABA17004245B7 /* OrderShippingViewController.swift */; };
 		B8761CF32B2B0115004245B7 /* RequestReturnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8761CF22B2B0115004245B7 /* RequestReturnViewController.swift */; };
+		B8761CF52B2BDF54004245B7 /* ProductCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8761CF42B2BDF54004245B7 /* ProductCareViewController.swift */; };
+		B8761CF72B2BDF7D004245B7 /* KlarnaPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8761CF62B2BDF7D004245B7 /* KlarnaPaymentViewController.swift */; };
+		B8761CF92B2BDFA4004245B7 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8761CF82B2BDFA4004245B7 /* FAQViewController.swift */; };
 		B879EFAF2AE64FF60009C607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFAE2AE64FF60009C607 /* AppDelegate.swift */; };
 		B879EFB12AE64FF60009C607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFB02AE64FF60009C607 /* SceneDelegate.swift */; };
 		B879EFB32AE64FF60009C607 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879EFB22AE64FF60009C607 /* HomeViewController.swift */; };
@@ -104,6 +107,9 @@
 		B8761CEE2B2947FF004245B7 /* AccessibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityViewController.swift; sourceTree = "<group>"; };
 		B8761CF02B2ABA17004245B7 /* OrderShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingViewController.swift; sourceTree = "<group>"; };
 		B8761CF22B2B0115004245B7 /* RequestReturnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestReturnViewController.swift; sourceTree = "<group>"; };
+		B8761CF42B2BDF54004245B7 /* ProductCareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCareViewController.swift; sourceTree = "<group>"; };
+		B8761CF62B2BDF7D004245B7 /* KlarnaPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlarnaPaymentViewController.swift; sourceTree = "<group>"; };
+		B8761CF82B2BDFA4004245B7 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		B879EFAB2AE64FF60009C607 /* baltini-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baltini-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B879EFAE2AE64FF60009C607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B879EFB02AE64FF60009C607 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -306,6 +312,9 @@
 				B8CB5E232AFE008300E9558C /* AuthenticityViewController.swift */,
 				B8761CF02B2ABA17004245B7 /* OrderShippingViewController.swift */,
 				B8761CF22B2B0115004245B7 /* RequestReturnViewController.swift */,
+				B8761CF42B2BDF54004245B7 /* ProductCareViewController.swift */,
+				B8761CF62B2BDF7D004245B7 /* KlarnaPaymentViewController.swift */,
+				B8761CF82B2BDFA4004245B7 /* FAQViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -515,11 +524,13 @@
 				B879EFD82AE8C6490009C607 /* OrderViewController.swift in Sources */,
 				B8D3AB9C2AEA4D080026832F /* BackButton.swift in Sources */,
 				B869B7BF2AEE20D300ABB82D /* AddAddressViewController.swift in Sources */,
+				B8761CF52B2BDF54004245B7 /* ProductCareViewController.swift in Sources */,
 				B8CB5E012AF1FB3700E9558C /* ProductListViewController.swift in Sources */,
 				B8CB5DF62AEF494300E9558C /* CustomDisplay.swift in Sources */,
 				B86993272B14306200FE9DA1 /* PaymentViewController.swift in Sources */,
 				B879EFDC2AE924470009C607 /* CommonStore.swift in Sources */,
 				B8D3ABA72AEB80130026832F /* RegisterViewController.swift in Sources */,
+				B8761CF92B2BDFA4004245B7 /* FAQViewController.swift in Sources */,
 				B8CDF1BD2B23039F008795DF /* MagazineDetailViewController.swift in Sources */,
 				B8CB5E1C2AFC730F00E9558C /* SizeChartViewController.swift in Sources */,
 				B86993212B0C71BF00FE9DA1 /* CheckoutViewController.swift in Sources */,
@@ -528,6 +539,7 @@
 				B8CB5E262AFE009400E9558C /* AskQuestionViewController.swift in Sources */,
 				B8CDF1C32B27091D008795DF /* HelpsViewController.swift in Sources */,
 				B8CB5DFF2AF0CFE400E9558C /* ChangePasswordViewController.swift in Sources */,
+				B8761CF72B2BDF7D004245B7 /* KlarnaPaymentViewController.swift in Sources */,
 				B8CB5E142AF9DF5800E9558C /* TappedArgs.swift in Sources */,
 				B8CB5E052AF25B0700E9558C /* CustomCard.swift in Sources */,
 				B8CDF1BF2B26C18A008795DF /* AboutBaltiniViewController.swift in Sources */,

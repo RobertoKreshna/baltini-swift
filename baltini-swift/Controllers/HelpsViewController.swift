@@ -54,9 +54,9 @@ extension HelpsViewController {
         let shippingInsuranceRow = createBlackRow(title: "Shipping Insurance Policies", action: #selector(tapped))
         let returnRefundRow = createBlackRow(title: "Returns and Refunds", action: #selector(tapped))
         let reqReturnRow = createBlackRow(title: "Request a Return", action: #selector(goToRequestReturn))
-        let prodCareRow = createBlackRow(title: "Product Care", action: #selector(tapped))
-        let klarnaRow = createBlackRow(title: "Klarna Payment", action: #selector(tapped))
-        let faqRow = createBlackRow(title: "FAQs", action: #selector(tapped))
+        let prodCareRow = createBlackRow(title: "Product Care", action: #selector(goToProdCare))
+        let klarnaRow = createBlackRow(title: "Klarna Payment", action: #selector(goToKlarna))
+        let faqRow = createBlackRow(title: "FAQs", action: #selector(goToFAQ))
         
         pageStackView.addArrangedSubview(backButton)
         pageStackView.setCustomSpacing(10, after: backButton)
@@ -112,5 +112,17 @@ extension HelpsViewController {
     
     @objc func goToRequestReturn(){
         self.navigationController?.pushViewController(RequestReturnViewController(), animated: true)
+    }
+    
+    @objc func goToProdCare(){
+        self.navigationController?.pushViewController(ProductCareViewController(), animated: true)
+    }
+    
+    @objc func goToKlarna(){
+        self.navigationController?.pushViewController(KlarnaPaymentViewController(), animated: true)
+    }
+    
+    @objc func goToFAQ(){
+        self.navigationController?.pushViewController(FAQViewController(), animated: true)
     }
 }
