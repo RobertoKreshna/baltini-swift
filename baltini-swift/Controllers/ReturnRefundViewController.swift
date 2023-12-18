@@ -1,26 +1,31 @@
 //
-//  ShippingPoliciesViewController.swift
+//  ReturnRefundViewController.swift
 //  baltini-swift
 //
-//  Created by Roberto Kreshna on 15/12/23.
+//  Created by Roberto Kreshna on 17/12/23.
 //
 
 import Foundation
 import UIKit
 
-class ShippingPoliciesViewController: UIViewController {
-    let titles = ["Lost Items Policies", "Stolen Items Policies", "Damaged Items Policies", "General Policies"]
+class ReturnRefundViewController: UIViewController {
+    let titles = [
+        "Do I need an account to place an order?", "How do I place an order on your site?", "Where can I find size & fit advice?",
+        "Can I cancel my Baltini order or make changes to it?", "I have forgotten my password: what should I do?"
+    ]
     let descs = [
-        "Lost Items Policies" : "we cover the subtotal of the order. Shipping costs, taxes, and the premium are not included. In some circumstances, we will only issue a store credit instead of refund, depending on the situation.",
-        "Stolen Items Policies" : "we cover the subtotal of the order. Shipping costs, taxes, and the premium are not included. In some circumstances, we will only issue a store credit instead of refund, depending on the situation.",
-        "Damaged Items Policies" : "we cover the subtotal of the order. Shipping costs, taxes, and the premium are not included. In some circumstances, we will only issue a store credit instead of refund, depending on the situation.",
-        "General Policies" : "we cover the subtotal of the order. Shipping costs, taxes, and the premium are not included. In some circumstances, we will only issue a store credit instead of refund, depending on the situation.",
+        "Do I need an account to place an order?" : "No, all you need is an email address. We recommend you register for an account to add pieces to your Wishlist. However, you can also place and track orders as a guest and sign up at a time that suits you.",
+        "How do I place an order on your site?" : "You need to checkout the items after adding those items to your cart.",
+        "Where can I find size & fit advice?" : "You could see our size chart by going to the details of each product or if you're still don't know what size you are, you can send messages and our staff would be happy to help.",
+        "Can I cancel my Baltini order or make changes to it?" : "Yes, you can cancel your Baltini orders but currently you can't make changes yet.",
+        "I have forgotten my password: what should I do?" : "You can use the forgot password so that we can send a link to reset your password after verifying your identity."
     ]
     var showDesc = [
-        "Lost Items Policies" : true,
-        "Stolen Items Policies" : false,
-        "Damaged Items Policies" : false,
-        "General Policies" : false,
+        "Do I need an account to place an order?" : true,
+        "How do I place an order on your site?" : false,
+        "Where can I find size & fit advice?" : false,
+        "Can I cancel my Baltini order or make changes to it?" : false,
+        "I have forgotten my password: what should I do?" : false,
     ]
     
     override func viewDidLoad() {
@@ -43,7 +48,7 @@ class ShippingPoliciesViewController: UIViewController {
 }
 
 //MARK: Create UI methods
-extension ShippingPoliciesViewController {
+extension ReturnRefundViewController {
     
     func createUI(){
         view.backgroundColor = .white
@@ -70,28 +75,22 @@ extension ShippingPoliciesViewController {
         pageStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         pageStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32).isActive = true
         
-        let backButton = BackButton.createBackButton(title: "Shipping Insurance Policies" , icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
+        let backButton = BackButton.createBackButton(title: "Returns and Refunds" , icName: "icBack", usePadding: false, tapped: UIAction(handler: { action in
             self.navigationController?.popViewController(animated: true)
         }))
         
-        let overview = createLabel(normalString: "Only eligible if shipping protection is selected. By deselecting shipping protection, BALTINI CORPORATION is Not Liable for lost, damaged or stolen items.")
-        let overview2 = createLabel(
-            boldString: "When Refunding An Item",
-            normalString: "we cover the subtotal of the order. Shipping costs, taxes, and the premium are not included. In some circumstances, we will only issue a store credit instead of refund, depending on the situation."
-        )
-        let overview3 = createLabel(
-            boldString: "When Replacing An Item",
-            normalString: "we cover the subtotal of the order, the premium, shipping costs, and taxes. We do not pay custom/duty fees."
+        let overview = createLabel(
+            text: "How To Shop At Baltini",
+            fontSize: 16,
+            color: .black,
+            align: .left,
+            isBold: true
         )
     
         pageStackView.addArrangedSubview(backButton)
         pageStackView.setCustomSpacing(18, after: backButton)
         pageStackView.addArrangedSubview(overview)
         pageStackView.setCustomSpacing(16, after: overview)
-        pageStackView.addArrangedSubview(overview2)
-        pageStackView.setCustomSpacing(16, after: overview2)
-        pageStackView.addArrangedSubview(overview3)
-        pageStackView.setCustomSpacing(16, after: overview3)
         
         titles.forEach { title in
             let row = createRow(title: title , showDesc: showDesc[title]!)
@@ -108,7 +107,7 @@ extension ShippingPoliciesViewController {
         contentStack.setCustomSpacing(14, after: titleRow)
         
         if(showDesc == true){
-            let desc = createLabel(boldString: title, normalString: descs[title]!)
+            let desc = createLabel(text: descs[title]! , fontSize: 14, color: .black, align: .left, isBold: false)
             contentStack.addArrangedSubview(desc)
             contentStack.setCustomSpacing(16, after: desc)
         }
@@ -144,22 +143,15 @@ extension ShippingPoliciesViewController {
         return titleRow
     }
     
-    func createLabel(boldString: String? = nil, normalString: String) -> UILabel{
+    func createLabel(text: String, fontSize: CGFloat, color: UIColor, align: NSTextAlignment, isBold: Bool) -> UILabel {
         let label = UILabel()
-        label.attributedText = createString(boldString: boldString, normalString: normalString)
+        label.text =  text
+        label.font = UIFont(name: isBold ? "Futura-Bold" : "Futura-Medium", size: fontSize)
+        label.textColor = color
         label.numberOfLines = 0
-        label.textAlignment = .justified
+        label.textAlignment = align
         
         return label
-    }
-    
-    func createString(boldString: String?, normalString: String) -> NSAttributedString {
-        let myMutableString = NSMutableAttributedString(
-            string: boldString == nil ? normalString : "\(boldString!), \(normalString)",
-            attributes: [NSAttributedString.Key.font: UIFont(name: "Futura-Medium", size: 14)!]
-        )
-        myMutableString.addAttribute(.font, value: UIFont(name: "Futura-Bold", size: 14)!, range: NSRange(location: 0, length: boldString?.count ?? 0))
-        return myMutableString
     }
     
     func iconPressed(title: String){
